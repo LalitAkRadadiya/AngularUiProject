@@ -1,0 +1,45 @@
+<div class="d-flex" id="wrapper">
+<div class="sidenavbar">
+  <!-- Sidebar -->
+  <div class="border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">
+      <img src="/assets/images/logo.jpg"></div>
+    <div class="list-group list-group-flush">
+      <a routerLink="home" class="list-group-item list-group-item-action bg-light"><i class="fa fa-home" aria-hidden="true"></i><b> Home</b> </a>
+      <a routerLink="customervehicle" class="list-group-item list-group-item-action bg-light "><i class="fa fa-user" aria-hidden="true"></i><b> Customer</b> </a>
+      <a routerLink="service" class="list-group-item list-group-item-action bg-light "><i class="fa fa-cogs" aria-hidden="true"></i><b> Service</b></a>
+      <a routerLink="mechanical" class="list-group-item list-group-item-action bg-light"><i class="fa fa-wrench" aria-hidden="true"></i><b> Mechanic</b></a>
+      <a routerLink="appoinment" class="list-group-item list-group-item-action bg-light"><i class="fa fa-calendar" aria-hidden="true"></i><b> Appoinment</b></a>
+      <!-- <a routerLink="vehical" class="list-group-item list-group-item-action bg-light"><i class="fa fa-car" aria-hidden="true"></i><b> Vehicle</b></a> -->
+      <a routerLink="dealer" class="list-group-item list-group-item-action bg-light"><i class="fa fa-male" aria-hidden="true"></i><b> Dealer</b></a>
+    </div>
+  </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  
+  <div id="page-content-wrapper">
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-outline-dark" id="menu-toggle">&#9776;</button>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><i class="fa fa-power-off" aria-hidden="true"></i><b> Logout</b> <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+<!-- /#wrapper -->

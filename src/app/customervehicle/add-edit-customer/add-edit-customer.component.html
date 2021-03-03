@@ -1,0 +1,67 @@
+<div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+    <div class="row">
+        <label class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Last Name</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="FName">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Zip Code</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Country</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Mobile</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</div>
+
+<button (click)="addCustomer()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add
+    Customer</button>
+<!-- *ngIf="customer.Id==0" -->
+
+<button (click)="editCustomer()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
+    Customer</button>
+<!-- *ngIf="customer.Id!=0" -->

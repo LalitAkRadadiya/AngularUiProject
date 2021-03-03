@@ -1,0 +1,70 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<!-- Button trigger modal -->
+<button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" 
+data-bs-toggle="modal" data-bs-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false">
+<i class="fa fa-plus" aria-hidden="true"></i></button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="btn-close" 
+          data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-appoinment [appoinment]="appoinment" *ngIf="ActivateAddEditAppoinmentComp"></app-add-edit-appoinment>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Model</th>
+            <th>Brand</th>
+            <th>Status</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of AppointmentList">
+            <td>{{dataItem.Id}}</td>
+            <td>{{dataItem.FName}}</td>
+            <td>{{dataItem.LName}}</td>
+            <td>{{dataItem.MobileNo}}</td>
+            <td>{{dataItem.EMailID}}</td>
+            <td>{{dataItem.City}}</td>
+            <td>{{dataItem.Country}}</td>
+            <td>{{dataItem.Model}}</td>
+            <td>{{dataItem.Brand}}</td>
+            <td>{{dataItem.Status}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-success"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="editClick(dataItem)"
+                
+                data-backdrop="static" data-keyboard="false">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
+                (click)="deleteClick(dataItem)">
+                <i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+<div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Vehicle Description</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Brand</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Licence Plate</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Modal</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Meter Value</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Registration Date</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Vehicle Weight</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">MCH Code</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">VIN</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Engine Number</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Vehicle Color</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</div>
+<button (click)="addVehicle()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add
+    Vehicle</button>
+<!-- *ngIf="vehicle.Id==0" -->
+<button (click)="editVehicle()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
+    Vehicle</button>
+<!-- *ngIf="vehicle.Id==0" -->

@@ -1,0 +1,143 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<!-- Button trigger modal -->
+<button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" (click)="addCustomerClick()"
+    data-bs-toggle="modal" data-bs-target="#customerModal" data-backdrop="static" data-keyboard="false">
+    <i class="fa fa-plus" aria-hidden="true"></i></button>
+
+
+<!-- Modal Customer-->
+<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-customer [customer]="customer" *ngIf="ActivateAddEditCustomerComp">
+                </app-add-edit-customer>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Vehicle-->
+<div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-edit-vehicle [vehicle]="vehicle" *ngIf="ActivateAddEditVehicleComp"></app-add-edit-vehicle>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>ZipCode</th>
+            <th>Country</th>
+            <th>Mobile</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- *ngFor="let dataItem of CustomerList" -->
+        <ng-container *ngFor="let dataItem of numSequence(2) ; index as i">
+            <tr>
+                <td>{{i}}</td>
+                <td>a</td>
+                <td>aaa</td>
+                <td>aaa</td>
+                <td>aaa</td>
+                <td>aaa</td>
+                <td>aaa</td>
+                <td>
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#customerModal" (click)="editCustomerClick()" data-backdrop="static"
+                        data-keyboard="false">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <!-- (click)="editCustomerClick(dataItem)" -->
+
+                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+
+                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <!-- (click)="deleteClick(dataItem)" -->
+
+                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
+                        data-bs-toggle="modal" data-bs-target="#vehicleModal" (click)="addVehicleClick()"
+                        data-backdrop="static" data-keyboard="false">
+                        <i class="fa fa-car" aria-hidden="true"></i></button>
+                    <!-- (click)="addVehicle(dataItem)" -->
+
+                    <button class="btn btn-primary" type="button" style="margin-left: 5%;" data-toggle="collapse"
+                        [attr.data-target]="'#collapseVehicle'+i" aria-expanded="true"
+                        [attr.aria-controls]="'collapseVehicle'+i">
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true">Vehicles</i>
+                    </button>
+                    <!-- (click)="displayVehicles(dataItem)" -->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8">
+                    <table class="collapse" id="collapseVehicle{{i}}" class="table"
+                        style="background-color: rgba(212, 226, 250, 0.5);">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>Brand</th>
+                                <th>Licence Plate</th>
+                                <th>Model</th>
+                                <th>Meter Value</th>
+                                <th>Registration Date</th>
+                                <th>Weight</th>
+                                <th>MCH Code</th>
+                                <th>Vin</th>
+                                <th>Engine Number</th>
+                                <th>Color</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dataItem of numSequence(1)">
+                                <td>34</td>
+                                <td>43</td>
+                                <td>43</td>
+                                <td>34</td>
+                                <td>34</td>
+                                <td>sd</td>
+                                <td>fd</td>
+                                <td>sdf</td>
+                                <td>dsf</td>
+                                <td>sdf</td>
+                                <td>f</td>
+                                <td>sdf</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal" (click)="editVehicleClick()"
+                                        data-backdrop="static" data-keyboard="false">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
+                                        (click)="deleteVehicleClick(dataItem)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

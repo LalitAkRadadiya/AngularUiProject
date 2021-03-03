@@ -1,0 +1,94 @@
+<div  class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+    <div class="row">
+        <div class="col-sm-5">
+        <label>
+            Please Select Dealer!
+        </label>
+        <select id="dealer" name="dealer" class="form-control">
+            <option value="">Dealer 1</option>
+            <option value="">Dealer 2</option>
+            <option value="">Dealer 3</option>
+        </select>
+        </div>
+
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Enter Vehicle Number</label>
+    </div>
+    <div class="row">
+    <div class="col-sm-5">
+        <input type="text" class="form-control"  name="">
+    </div>
+    </div>
+</div>
+<div class="row">
+    <label>Customer Details</label>
+    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Model</th>
+                <th>Brand</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                </tbody>
+                </table>
+                </div>
+
+                <div class="row">
+                    <label><b>Vehicle Details</b></label>
+                    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th>Model</th>
+                                <th>Brand</th>
+                                <th>Status</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dataItem of ">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                </div>
+                
+<button (click)="addAppoinment()"  *ngIf="appoinment.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Book Appoinment</button>
+<button (click)="editAppoinment()" *ngIf="appoinment.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update Appoinment</button>
