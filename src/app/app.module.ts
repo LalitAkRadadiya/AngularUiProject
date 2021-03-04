@@ -20,6 +20,8 @@ import { AddEditVehicleComponent } from './customervehicle/add-edit-vehicle/add-
 import { ShowCustomervehicleComponent } from './customervehicle/show-customervehicle/show-customervehicle.component';
 import { AddEditDealerComponent } from './dealer/add-edit-dealer/add-edit-dealer.component';
 import { ShowDealerComponent } from './dealer/show-dealer/show-dealer.component';
+import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
+import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add-edit-mechanical.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ShowDealerComponent } from './dealer/show-dealer/show-dealer.component'
     ShowCustomervehicleComponent,
     AddEditDealerComponent,
     ShowDealerComponent,
+    ShowMechanicalComponent,
+    AddEditMechanicalComponent,
    
   
 

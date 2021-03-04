@@ -7,6 +7,8 @@ import { DealerComponent } from './dealer/dealer.component';
 import { MechanicalComponent } from './mechanical/mechanical.component';
 import { CustomervehicleComponent } from './customervehicle/customervehicle.component';
 import { CommonModule } from '@angular/common';  
+
+import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'appoinment',component:AppoinmentComponent},
@@ -21,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingmod =[DealerComponent];
+export const routingmod =[DealerComponent,MechanicalComponent];
