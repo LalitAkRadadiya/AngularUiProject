@@ -10,19 +10,20 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowCustomervehicleComponent implements OnInit {
 
+
+  isEdit= false;
+  
   constructor(private service:SharedService) { }
 
   CustomerList:any = [];
 
   ModalTitle!:string;
-  ActivateAddEditCustomerComp:boolean=true;
-  ActivateAddEditVehicleComp:boolean=true;
   customer:any;
   vehicle:any;
 
 
   ngOnInit(): void {
-    this.refreshAppoinmentList();
+    this.refreshcustomerList();
   }
 
   addCustomerClick(){
@@ -30,53 +31,57 @@ export class ShowCustomervehicleComponent implements OnInit {
       Id:0
     }
     this.ModalTitle="Add Customer";
-    this.ActivateAddEditCustomerComp=true;
+    
+    this.isEdit = true;
   }
-
-  addVehicleClick(){
-    this.vehicle={
-      Id:0
-    }
-    this.ModalTitle="Add Vehicle";
-    this.ActivateAddEditVehicleComp=true;
-  }
-
-  editCustomerClick(){
-    // this.customer=item
+  editCustomerClick(item : any){
+    this.customer = item;    
+    console.log('this.cut',this.customer);
     this.ModalTitle = "Edit Customer"
-    this.ActivateAddEditCustomerComp=true;
+    this.isEdit = true;
   }
 
-  editVehicleClick(){
-    // this.customer=item
-    this.ModalTitle = "Edit Vehicle"
-    this. ActivateAddEditVehicleComp=true;
-  }
+  // addVehicleClick(){
+  //   this.vehicle={
+  //     Id:0
+  //   }
+  //   this.ModalTitle="Add Vehicle";
+  //   this.ActivateAddEditVehicleComp=true;
+    
+  // }
+
+ 
+
+  // editVehicleClick(){
+  //   // this.customer=item
+  //   this.ModalTitle = "Edit Vehicle"
+  //   this. ActivateAddEditVehicleComp=true;
+  // }
 
   deleteCustomerClick(item:any){
     if(confirm('Are You Sure?')){
-      // this.service.deleteCustomer(item.Id).subscribe(data=>{
-      //   alert(data.toString());
-      //   this.refreshCustomerList();
-      // });
+      this.service.deleteCustomer(item.Id).subscribe(data=>{
+        alert(data.toString());
+        this.refreshcustomerList();
+      });
     }
   }
 
-  deleteVehicleClick(item:any){
-    if(confirm('Are You Sure?')){
-      // this.service.deleteCustomer(item.Id).subscribe(data=>{
-      //   alert(data.toString());
-      //   this.refreshCustomerList();
-      // });
-    }
-  }
+  // deleteVehicleClick(item:any){
+  //   if(confirm('Are You Sure?')){
+  //     // this.service.deleteCustomer(item.Id).subscribe(data=>{
+  //     //   alert(data.toString());
+  //     //   this.refreshcustomerList();
+  //     // });
+  //   }
+  // }
 
-  displayVehicles(item:Number){
+  // displayVehicles(item:Number){
     
-  }
-  refreshAppoinmentList(){
+  // }
+  refreshcustomerList(){
     this.service.getCustomerList().subscribe(data=>{
-      debugger;
+      // debugger;
     this.CustomerList=data;
     console.log('customer',this.CustomerList);
         }

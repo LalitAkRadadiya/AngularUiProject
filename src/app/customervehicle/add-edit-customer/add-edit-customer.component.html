@@ -6,11 +6,11 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" name="FName">
+            <input type="text" class="form-control" name="FName" [(ngModel)]='customer.FName'>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.LName'>
         </div>
     </div>
     <div class="row">
@@ -20,11 +20,11 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.Address'>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.ZipCode'>
         </div>
     </div>
     <div class="row">
@@ -34,11 +34,11 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.City'>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.Country'>
         </div>
     </div>
 
@@ -49,19 +49,17 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.Email'>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='customer.CustomerNo'>
         </div>
     </div>
 </div>
 
-<button (click)="addCustomer()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add
+<button (click)="addCustomer()" *ngIf="customer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
     Customer</button>
-<!-- *ngIf="customer.Id==0" -->
 
-<button (click)="editCustomer()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
+<button (click)="editCustomer()" *ngIf="customer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
     Customer</button>
-<!-- *ngIf="customer.Id!=0" -->

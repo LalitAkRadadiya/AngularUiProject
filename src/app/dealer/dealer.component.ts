@@ -7,16 +7,13 @@ import { SharedService } from 'src/app/shared.service';
   styleUrls: ['./dealer.component.css']
 })
 export class DealerComponent implements OnInit {
-
+  isEdit = false;
   constructor(private service:SharedService) { }
 
   DealerList:any = [];
 
   ModalTitle!:string;
-  ActivateAddEditDealerComp:boolean=true;
-  ActivateAddEditVehicleComp:boolean=true;
   dealer:any;
-  vehicle:any;
 
 
   ngOnInit(): void {
@@ -28,14 +25,14 @@ export class DealerComponent implements OnInit {
       Id:0
     }
     this.ModalTitle="Add Dealer";
-    this.ActivateAddEditDealerComp=true;
+    this.isEdit = true;
   }
 
 
-  editDealerClick(){
-    // this.dealer=item
-    this.ModalTitle = "Edit Dealer"
-    this.ActivateAddEditDealerComp=true;
+  editDealerClick(item : any){
+    this.dealer=item
+    this.ModalTitle = "Edit Dealer";
+    this.isEdit = true;
   }
 
 
@@ -48,10 +45,6 @@ export class DealerComponent implements OnInit {
   }
 
   
-
-  displayVehicles(item:Number){
-    
-  }
   refreshDealerList(){
     this.service.getDealerList().subscribe(data=>{
     this.DealerList=data;

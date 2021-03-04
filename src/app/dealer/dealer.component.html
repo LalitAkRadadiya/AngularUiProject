@@ -1,15 +1,12 @@
-<p>helolo</p>
+
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- Button trigger modal -->
 <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" (click)="addDealerClick()"
     data-bs-toggle="modal" data-bs-target="#dealerModal" data-backdrop="static" data-keyboard="false">
     <i class="fa fa-plus" aria-hidden="true"></i></button>
 
-
-<!-- Modal Dealer-->
 <div class="modal fade" id="dealerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
@@ -17,29 +14,17 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <!-- <app-add-edit-dealer [dealer]="dealer" *ngIf="ActivateAddEditDealerComp"> -->
-                <!-- </app-add-edit-dealer> -->
+            <div class="modal-body" *ngIf="isEdit">
+                <app-add-edit-dealer [dealer]="dealer">
+
+                </app-add-edit-dealer>
+                
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Modal Vehicle-->
-<div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- <app-add-edit-vehicle [vehicle]="vehicle" *ngIf="ActivateAddEditVehicleComp"></app-add-edit-vehicle> -->
-            </div>
-        </div>
-    </div>
-</div>
 
 <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
     <thead>
@@ -67,10 +52,11 @@
                 <td>{{dataItem.DealerNo}}</td>
                 <td>
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#dealerModal" (click)="editDealerClick()" data-backdrop="static"
+                        data-bs-target="#dealerModal"  data-backdrop="static"
                         data-keyboard="false">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <!-- (click)="editDealerClick(dataItem)" -->
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"(click)="editDealerClick(dataItem)">
+                        </i></button>
+                  
 
                     <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger" (click)="deleteDealer(dataItem)">
 
@@ -78,11 +64,7 @@
                     
 
 
-                    <button class="btn btn-primary" type="button" style="margin-left: 5%;" data-toggle="collapse"
-                        [attr.data-target]="'#collapseVehicle'+i" aria-expanded="true"
-                        [attr.aria-controls]="'collapseVehicle'+i">
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true">Vehicles</i>
-                    </button>
+                 
                     <!-- (click)="displayVehicles(dataItem)" -->
                 </td>
             </tr>

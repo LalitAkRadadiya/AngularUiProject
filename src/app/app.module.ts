@@ -18,6 +18,7 @@ import { CustomervehicleComponent } from './customervehicle/customervehicle.comp
 import { AddEditCustomerComponent } from './customervehicle/add-edit-customer/add-edit-customer.component';
 import { AddEditVehicleComponent } from './customervehicle/add-edit-vehicle/add-edit-vehicle.component';
 import { ShowCustomervehicleComponent } from './customervehicle/show-customervehicle/show-customervehicle.component';
+import { AddEditDealerComponent } from './dealer/add-edit-dealer/add-edit-dealer.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ShowCustomervehicleComponent } from './customervehicle/show-customerveh
     AddEditCustomerComponent,
     AddEditVehicleComponent,
     ShowCustomervehicleComponent,
+    AddEditDealerComponent,
    
   
 
@@ -46,6 +48,7 @@ import { ShowCustomervehicleComponent } from './customervehicle/show-customerveh
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
+    
     MDBBootstrapModule.forRoot()
     
   ],

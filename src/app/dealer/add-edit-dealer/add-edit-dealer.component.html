@@ -1,0 +1,65 @@
+<div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+    <div class="row">
+        <label class="col-sm-2 col-form-label">DealerName</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">DealerNo</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="FName" [(ngModel)]='dealer.DealerName'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.DealerNo'>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">isActive</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">isOnline</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.isActive'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.isOnline'>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Website</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Email</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.Website'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.Email'>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-2 col-form-label">PhoneNo</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Address</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.PhoneNo'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='dealer.Address'>
+        </div>
+    </div>
+</div>
+
+<button (click)="addDealer()" *ngIf="dealer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
+    Dealer</button>
+
+<button (click)="editDealer()" *ngIf="dealer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
+    Dealer</button>

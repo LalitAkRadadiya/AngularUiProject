@@ -26,20 +26,19 @@ export class AddEditVehicleComponent implements OnInit {
   UpdateBy!: string;
 
   ngOnInit(): void {
-    if (this.vehicle != null && this.vehicle != undefined) {
-      this.Id = this.vehicle.Id;
-      this.Description = this.vehicle.Description;
-      this.Brand = this.vehicle.Brand;
-      this.LicencePlate = this.vehicle.LicencePlate;
-      this.Model = this.vehicle.Model;
-      this.MeterValue = this.vehicle.MeterValue;
-      this.RegDate = this.vehicle.RegDate;
-      this.Weight = this.vehicle.Weight;
-      this.MCHCode = this.vehicle.MCHCode;
-      this.Vin = this.vehicle.Vin;
-      this.EngNo = this.vehicle.EngNo;
-      this.Colour = this.vehicle.Colour;
-    }
+      // this.Id = this.vehicle.Id;
+      // this.Description = this.vehicle.Description;
+      // this.Brand = this.vehicle.Brand;
+      // this.LicencePlate = this.vehicle.LicencePlate;
+      // this.Model = this.vehicle.Model;
+      // this.MeterValue = this.vehicle.MeterValue;
+      // this.RegDate = this.vehicle.RegDate;
+      // this.Weight = this.vehicle.Weight;
+      // this.MCHCode = this.vehicle.MCHCode;
+      // this.Vin = this.vehicle.Vin;
+      // this.EngNo = this.vehicle.EngNo;
+      // this.Colour = this.vehicle.Colour;
+    
   }
 
   addVehicle() {
@@ -60,9 +59,6 @@ export class AddEditVehicleComponent implements OnInit {
       CreatedBy: 1,
       UpdatedBy: 1,
     };
-    // this.service.addCustomer(val).subscribe(res=>{
-    //   alert(res.toString());
-    // });
   }
   editVehicle() {
     var val = {

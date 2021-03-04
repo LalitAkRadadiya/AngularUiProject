@@ -62,7 +62,7 @@ export class ShowAppoinmentComponent implements OnInit {
   }
 refreshAppoinmentList(){
   this.service.getAppointmentList().subscribe(data=>{
-    debugger;
+    console.log(data);
   this.AppointmentList=data;
       }
     );

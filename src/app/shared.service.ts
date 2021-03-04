@@ -37,13 +37,20 @@ getCustomerList()
   return this.http.get<any>(this.APIUrl+'/Customer/allCustomers');
 }
 addCustomer(val:any){
-return this.http.post(this.APIUrl+'/customer',val);
+return this.http.post(this.APIUrl+'/Customer/CreateCustomers',val);
+}
+
+addDealer(val:any){
+  return this.http.post(this.APIUrl+'/Dealer/CreateDealers',val);
 }
 editCustomer(val:any){
-return this.http.put(this.APIUrl+'/customer',val);
+return this.http.put(this.APIUrl+'/Customer/UpdateCustomers/',val);
+}
+editDealer(val:any){
+return this.http.put(this.APIUrl+'/Dealer/UpdateDealers/',val);
 }
 deleteCustomer(id:any){
-  return this.http.delete(this.APIUrl+'/customer/'+id);
+  return this.http.delete(this.APIUrl+'/Customer/DeleteCustomers/'+id);
 }
 
 getVehicleList()

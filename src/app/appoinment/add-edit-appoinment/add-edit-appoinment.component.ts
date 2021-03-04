@@ -51,7 +51,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
 addAppoinment(){
  
-  var val={Id:this.Id,
+  var val={
+          Id:this.Id,
           FName:this.FName,
           LName:this.LName,
           MobileNo:this.MobileNo,

@@ -8,15 +8,15 @@
 
 
 <!-- Modal Customer-->
-<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <app-add-edit-customer [customer]="customer" *ngIf="ActivateAddEditCustomerComp">
+            <div class="modal-body" *ngIf="isEdit">
+                <app-add-edit-customer [customer]="customer">  
                 </app-add-edit-customer>
             </div>
         </div>
@@ -25,7 +25,7 @@
 
 
 <!-- Modal Vehicle-->
-<div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
     <thead>
@@ -62,30 +62,31 @@
                 <td>{{dataItem.City}}</td>
                 <td>{{dataItem.ZipCode}}</td>
                 <td>{{dataItem.Country}}</td>
-                <td>{{dataItem.Mobile}}</td>
+                <td>{{dataItem.CustomerNo}}</td>
                 <td>
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#customerModal" (click)="editCustomerClick()" data-backdrop="static"
+                        data-bs-target="#customerModal" (click)="editCustomerClick(dataItem)" data-backdrop="static"
                         data-keyboard="false">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     <!-- (click)="editCustomerClick(dataItem)" -->
 
-                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
+                    (click)="deleteCustomerClick(dataItem)">
 
                         <i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <!-- (click)="deleteClick(dataItem)" -->
+                    <!--  -->
 
-                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
+                    <!-- <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
                         data-bs-toggle="modal" data-bs-target="#vehicleModal" (click)="addVehicleClick()"
                         data-backdrop="static" data-keyboard="false">
-                        <i class="fa fa-car" aria-hidden="true"></i></button>
+                        <i class="fa fa-car" aria-hidden="true"></i></button> -->
                     <!-- (click)="addVehicle(dataItem)" -->
-
+<!-- 
                     <button class="btn btn-primary" type="button" style="margin-left: 5%;" data-toggle="collapse"
                         [attr.data-target]="'#collapseVehicle'+i" aria-expanded="true"
                         [attr.aria-controls]="'collapseVehicle'+i">
                         <i class="fa fa-chevron-circle-down" aria-hidden="true">Vehicles</i>
-                    </button>
+                    </button> -->
                     <!-- (click)="displayVehicles(dataItem)" -->
                 </td>
             </tr>
