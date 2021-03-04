@@ -7,14 +7,15 @@ import {SharedService} from 'src/app/shared.service';
 })
 export class AddEditAppoinmentComponent implements OnInit {
 
+  DealerList : any= [];
   constructor(private service:SharedService) { }
-
+  CustomerVehicleInfo: any;
   @Input() appoinment:any;
   Id:Number = 0;
   FName!:string;
   LName!:string;
   MobileNo!:Number;
-  EMailID!:string;
+  Email!:string;
   City!:string;
   Country!:string;
   Model!:string;
@@ -27,15 +28,21 @@ export class AddEditAppoinmentComponent implements OnInit {
   TotalPrice!:string;
   CreatedBy!:string;
   UpdateBy!:string;
+  DealerId : Number;
  
-
+  loadDealerList(){
+    this.service.dealerDropdown().subscribe(data=>{
+      this.DealerList = data;
+    });
+  }
   ngOnInit(): void {
+    this.loadDealerList();
     if(this.appoinment != null && this.appoinment != undefined){
   this.Id=this.appoinment.Id;
   this.FName=this.appoinment.FName;
   this.LName=this.appoinment.LName;
   this.MobileNo=this.appoinment.MobileNo;
-  this.EMailID=this.appoinment.EMailID;
+  this.Email=this.appoinment.Email;
   this.City=this.appoinment.City;
   this.Country=this.appoinment.Country;
   this.Model=this.appoinment.Model;
@@ -50,13 +57,12 @@ export class AddEditAppoinmentComponent implements OnInit {
   }
 
 addAppoinment(){
- 
   var val={
           Id:this.Id,
           FName:this.FName,
           LName:this.LName,
           MobileNo:this.MobileNo,
-          EMailID:this.EMailID,
+          Email:this.Email,
           City:this.City,
           Country:this.Country,
           Model:this.Model,
@@ -70,6 +76,7 @@ addAppoinment(){
           CreatedBy:1,
           UpdatedBy:1,
         };
+        console.log('vallll',val);
           this.service.addAppoinment(val).subscribe(res=>{
             alert(res.toString());
           });
@@ -79,7 +86,7 @@ addAppoinment(){
             FName:this.FName,
             LName:this.LName,
             MobileNo:this.MobileNo,
-            EMailID:this.EMailID,
+            Email:this.Email,
             City:this.City,
             Country:this.Country,
             Model:this.Model,
@@ -96,5 +103,14 @@ addAppoinment(){
             this.service.editAppoinment(val).subscribe(res=>{
             alert(res.toString());
                       });
+          }
+          getvehical = false;
+          getCustomerVehicleInfo(item: string){
+            
+            this.getvehical = true;
+            this.service.getCustomerVehicleInfo(item).subscribe(data => {
+              console.log('data0',data);
+            this.CustomerVehicleInfo = data;
+            });
           }
   }

@@ -52,7 +52,9 @@ return this.http.put(this.APIUrl+'/Dealer/UpdateDealers/',val);
 deleteCustomer(id:any){
   return this.http.delete(this.APIUrl+'/Customer/DeleteCustomers/'+id);
 }
-
+dealerDropdown():Observable<any[]>{
+  return this.http.get<any>(this.APIUrl+'/Dealer/DealerDropdown');
+}
 getVehicleList()
 {
   return this.http.get<any>(this.APIUrl+'/Vehicle/allVehicles');
@@ -70,6 +72,9 @@ deleteVehicle(id:any){
 getServiceList()
 {
   return this.http.get<any>(this.APIUrl+'/Service/allServices');
+}
+getCustomerVehicleInfo(LicencePlate: string):Observable<any>{
+  return this.http.get<any>(this.APIUrl + "/Vehicle/GetVehicleInfo?LicencePlate=" + LicencePlate);
 }
 addService(val:any){
 return this.http.post(this.APIUrl+'/service',val);

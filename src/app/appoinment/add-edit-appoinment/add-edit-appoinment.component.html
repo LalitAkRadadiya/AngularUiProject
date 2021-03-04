@@ -1,94 +1,92 @@
-<div  class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+<div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
         <div class="col-sm-5">
-        <label>
-            Please Select Dealer!
-        </label>
-        <select id="dealer" name="dealer" class="form-control">
-            <option value="">Dealer 1</option>
-            <option value="">Dealer 2</option>
-            <option value="">Dealer 3</option>
-        </select>
+            <label>
+                Please Select Dealer!
+            </label>
+            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <option *ngFor="let data of DealerList" [value]="data.Id">
+                    {{data.DealerName}} - {{data.DealerNo}}
+                </option>
+            </select>
         </div>
 
     </div>
     <div class="row">
         <label class="col-sm-2 col-form-label">Enter Vehicle Number</label>
     </div>
+
     <div class="row">
-    <div class="col-sm-5">
-        <input type="text" class="form-control"  name="">
-    </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate">
+            <button type="button" (click)="getCustomerVehicleInfo(LicencePlate)">Search</button>
+        </div>
+        <div>
+
+        </div>
     </div>
 </div>
+
 <div class="row">
     <label>Customer Details</label>
-    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+    <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Mobile</th>
+                <th>Address</th>
                 <th>Email</th>
                 <th>City</th>
                 <th>Country</th>
-                <th>Model</th>
-                <th>Brand</th>
-                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngIf="getvehical">
+                <td [(ngModel)]="FName">{{ CustomerVehicleInfo.FName }}</td>
+                <td [(ngModel)]="LName">{{ CustomerVehicleInfo.LName }}</td>
+                <td [(ngModel)]="MobileNo">{{ CustomerVehicleInfo.CustomerNo }}</td>
+                <td>{{ CustomerVehicleInfo.Address }}</td>
+                <td [(ngModel)]="Email">{{ CustomerVehicleInfo.Email }}</td>
+                <td [(ngModel)]="City">{{ CustomerVehicleInfo.City }}</td>
+                <td [(ngModel)]="Country">{{ CustomerVehicleInfo.Country }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- </div> -->
+    <div class="row">
+        <label><b>Vehicle Details</b></label>
+        <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
+            <thead>
+                <tr>
+                    <th>LicencePlate</th>
+                    <th>Model</th>
+                    <th>Brand</th>
+                    <th>MeterValue</th>
+                    <th>RegDate</th>
+                    <th>Vin</th>
+                    <th>Colour</th>
+                    <th>EngNo</th>
                 </tr>
-                </tbody>
-                </table>
-                </div>
+            </thead>
+            <tbody>
+                <tr *ngIf="getvehical">
+                    <td [(ngModel)]="LicencePlate">{{ CustomerVehicleInfo.LicencePlate }}</td>
+                    <td [(ngModel)]="Model">{{ CustomerVehicleInfo.Model }}</td>
+                    <td [(ngModel)]="Brand">{{ CustomerVehicleInfo.Brand }}</td>
+                    <td [(ngModel)]="Status">{{ CustomerVehicleInfo.MeterValue }}</td>
+                    <td>{{ CustomerVehicleInfo.RegDate }}</td>
+                    <td>{{ CustomerVehicleInfo.Vin }}</td>
+                    <td>{{ CustomerVehicleInfo.Colour }}</td>
+                    <td>{{ CustomerVehicleInfo.EngNo }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<div *ngIf="getvehical">
 
-                <div class="row">
-                    <label><b>Vehicle Details</b></label>
-                    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Mobile</th>
-                                <th>Email</th>
-                                <th>City</th>
-                                <th>Country</th>
-                                <th>Model</th>
-                                <th>Brand</th>
-                                <th>Status</th>
-                                <th>Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let dataItem of ">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                </tr>
-                                </tbody>
-                                </table>
-                                </div>
-                
-<!-- <button (click)="addAppoinment()"  *ngIf="appoinment.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Book Appoinment</button>
-<button (click)="editAppoinment()" *ngIf="appoinment.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update Appoinment</button> -->
+    <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
+        style="margin-top:2%; margin-left: 43%;">Book Appoinment</button>
+    <button (click)="editAppoinment()" *ngIf="appoinment.Id!=0" class="btn btn-outline-primary"
+        style="margin-top:2%; margin-left: 43%;">Update Appoinment</button>
+</div>
