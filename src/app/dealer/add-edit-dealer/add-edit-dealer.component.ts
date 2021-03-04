@@ -11,11 +11,7 @@ export class AddEditDealerComponent implements OnInit {
   constructor(private service:SharedService) { }
   
   @Input() dealer: any;
-
-
   ngOnInit(): void {
-    
-     
   }
 
   
@@ -43,7 +39,7 @@ export class AddEditDealerComponent implements OnInit {
   editDealer() {
 
       console.log('ddd',this.dealer);
-    var val = {
+      var val = {
       Id: this.dealer.Id,
       DealerName : this.dealer.DealerName,
       DealerNo: this.dealer.DealerNo,

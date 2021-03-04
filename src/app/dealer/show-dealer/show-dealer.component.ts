@@ -10,9 +10,10 @@ import { SharedService } from 'src/app/shared.service';
 export class ShowDealerComponent implements OnInit {
 
  
-  isEdit = false;
+  ActivateAddEditDealerComp:boolean=false;
+  
   constructor(private service:SharedService) { }
-
+  dealer:any;
   DealerList:any = [];
 
   ModalTitle!:string;
@@ -28,20 +29,27 @@ export class ShowDealerComponent implements OnInit {
       Id:0
     }
     this.ModalTitle="Add Dealer";
-    this.isEdit = true;
+  
+    
+    this.ActivateAddEditDealerComp=true;
   }
 
 
   editDealerClick(item : any){
     console.log('ddd',item);
-    this.dealermain=item;
+    this.dealer=item;
     this.ModalTitle = "Edit Dealer";
-    this.isEdit = true;
+    
+    
+    this.ActivateAddEditDealerComp=true;
   }
 
-
+  closeClick(){
+    this.ActivateAddEditDealerComp=false;
+    this.refreshDealerList();
+  }
   deleteDealer(item:any){
-    console.log('id>',item.Id);
+    console.log('id',item.Id);
       this.service.deleteDealer(item.Id).subscribe(data=>{
         alert(data.toString());
         this.refreshDealerList();
