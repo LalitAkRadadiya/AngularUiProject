@@ -6,7 +6,7 @@ import { ServiceComponent } from './service/service.component';
 import { DealerComponent } from './dealer/dealer.component';
 import { MechanicalComponent } from './mechanical/mechanical.component';
 import { CustomervehicleComponent } from './customervehicle/customervehicle.component';
-
+import { CommonModule } from '@angular/common';  
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'appoinment',component:AppoinmentComponent},
@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
