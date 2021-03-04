@@ -54,15 +54,15 @@
     </thead>
     <tbody>
         <!-- *ngFor="let dataItem of CustomerList" -->
-        <ng-container *ngFor="let dataItem of numSequence(2) ; index as i">
+        <ng-container *ngFor="let dataItem of CustomerList ; index as i">
             <tr>
-                <td>{{i}}</td>
-                <td>a</td>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>aaa</td>
+                <td>{{dataItem.id}}</td>
+                <td>{{dataItem.CustomerName}}</td>
+                <td>{{dataItem.Address}}</td>
+                <td>{{dataItem.City}}</td>
+                <td>{{dataItem.ZipCode}}</td>
+                <td>{{dataItem.Country}}</td>
+                <td>{{dataItem.Mobile}}</td>
                 <td>
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                         data-bs-target="#customerModal" (click)="editCustomerClick()" data-backdrop="static"
@@ -95,7 +95,7 @@
                         style="background-color: rgba(212, 226, 250, 0.5);">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <!-- <th>ID</th>
                                 <th>Description</th>
                                 <th>Brand</th>
                                 <th>Licence Plate</th>
@@ -107,12 +107,12 @@
                                 <th>Vin</th>
                                 <th>Engine Number</th>
                                 <th>Color</th>
-                                <th>Options</th>
+                                <th>Options</th> -->
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let dataItem of numSequence(1)">
-                                <td>34</td>
+                                <!-- <td>34</td>
                                 <td>43</td>
                                 <td>43</td>
                                 <td>34</td>
@@ -123,15 +123,15 @@
                                 <td>dsf</td>
                                 <td>sdf</td>
                                 <td>f</td>
-                                <td>sdf</td>
+                                <td>sdf</td> -->
                                 <td>
-                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                    <!-- <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal" (click)="editVehicleClick()"
                                         data-backdrop="static" data-keyboard="false">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                     <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                                         (click)="deleteVehicleClick(dataItem)">
-                                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        <i class="fa fa-trash" aria-hidden="true"></i></button> -->
                                 </td>
                             </tr>
                         </tbody>

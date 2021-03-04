@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule , routingmod } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppoinmentComponent } from './appoinment/appoinment.component';
 import { ShowAppoinmentComponent } from './appoinment/show-appoinment/show-appoinment.component';
@@ -19,10 +19,9 @@ import { AddEditCustomerComponent } from './customervehicle/add-edit-customer/ad
 import { AddEditVehicleComponent } from './customervehicle/add-edit-vehicle/add-edit-vehicle.component';
 import { ShowCustomervehicleComponent } from './customervehicle/show-customervehicle/show-customervehicle.component';
 
-
-
 @NgModule({
   declarations: [
+    routingmod ,
     AppComponent,
     AppoinmentComponent,
     ShowAppoinmentComponent,
@@ -34,7 +33,9 @@ import { ShowCustomervehicleComponent } from './customervehicle/show-customerveh
     CustomervehicleComponent,
     AddEditCustomerComponent,
     AddEditVehicleComponent,
-    ShowCustomervehicleComponent
+    ShowCustomervehicleComponent,
+   
+  
 
   ],
   imports: [

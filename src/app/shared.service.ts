@@ -15,6 +15,11 @@ getAppointmentList()
 {
   return this.http.get<any>(this.APIUrl+'/Appointment/allAppointments');
 }
+
+getDealerList()
+{
+  return this.http.get<any>(this.APIUrl+'/Dealer/allDealers');
+}
 addAppoinment(val:any){
 return this.http.post(this.APIUrl+'/Appoinment/CreateAppoinments',val);
 }
@@ -23,6 +28,9 @@ return this.http.put(this.APIUrl+'/Appoinment/UpdateAppoinments',val);
 }
 deleteAppoinment(id:any){
   return this.http.delete(this.APIUrl+'/Appoinment/DeleteAppoinments/'+id);
+}
+deleteDealer(id:any){
+  return this.http.delete(this.APIUrl+'/Dealer/DeleteDealers/'+id);
 }
 getCustomerList()
 {

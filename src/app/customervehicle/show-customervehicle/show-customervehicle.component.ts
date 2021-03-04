@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SharedService } from 'src/app/shared.service';
+
+
 @Component({
   selector: 'app-show-customervehicle',
   templateUrl: './show-customervehicle.component.html',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowCustomervehicleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
 
   CustomerList:any = [];
 
@@ -19,6 +22,7 @@ export class ShowCustomervehicleComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.refreshAppoinmentList();
   }
 
   addCustomerClick(){
@@ -70,7 +74,14 @@ export class ShowCustomervehicleComponent implements OnInit {
   displayVehicles(item:Number){
     
   }
-
+  refreshAppoinmentList(){
+    this.service.getCustomerList().subscribe(data=>{
+      debugger;
+    this.CustomerList=data;
+    console.log('customer',this.CustomerList);
+        }
+      );
+    }
   numSequence(n: number): Array<number> { 
     return Array(n); 
   } 
