@@ -19,6 +19,7 @@ import { AddEditCustomerComponent } from './customervehicle/add-edit-customer/ad
 import { AddEditVehicleComponent } from './customervehicle/add-edit-vehicle/add-edit-vehicle.component';
 import { ShowCustomervehicleComponent } from './customervehicle/show-customervehicle/show-customervehicle.component';
 import { AddEditDealerComponent } from './dealer/add-edit-dealer/add-edit-dealer.component';
+import { ShowDealerComponent } from './dealer/show-dealer/show-dealer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddEditDealerComponent } from './dealer/add-edit-dealer/add-edit-dealer
     AddEditVehicleComponent,
     ShowCustomervehicleComponent,
     AddEditDealerComponent,
+    ShowDealerComponent,
    
   
 

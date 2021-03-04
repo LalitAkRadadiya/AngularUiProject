@@ -31,12 +31,10 @@ export class ShowCustomervehicleComponent implements OnInit {
       Id:0
     }
     this.ModalTitle="Add Customer";
-    
     this.isEdit = true;
   }
   editCustomerClick(item : any){
     this.customer = item;    
-    console.log('this.cut',this.customer);
     this.ModalTitle = "Edit Customer"
     this.isEdit = true;
   }
@@ -81,14 +79,12 @@ export class ShowCustomervehicleComponent implements OnInit {
   // }
   refreshcustomerList(){
     this.service.getCustomerList().subscribe(data=>{
-      // debugger;
     this.CustomerList=data;
-    console.log('customer',this.CustomerList);
         }
       );
     }
-  numSequence(n: number): Array<number> { 
-    return Array(n); 
-  } 
+  // numSequence(n: number): Array<number> { 
+  //   return Array(n); 
+  // } 
 
 }

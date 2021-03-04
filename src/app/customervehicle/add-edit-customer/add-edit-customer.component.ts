@@ -15,7 +15,6 @@ export class AddEditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     
-    console.log('final customer',this.customer);
      
   }
 
@@ -56,8 +55,6 @@ export class AddEditCustomerComponent implements OnInit {
     };
     
    
-    
-    console.log('val',val)
     this.service.editCustomer(val).subscribe(res=>{
     alert(res.toString());
     });

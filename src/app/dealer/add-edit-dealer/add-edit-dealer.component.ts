@@ -15,7 +15,6 @@ export class AddEditDealerComponent implements OnInit {
 
   ngOnInit(): void {
     
-    console.log('final dealer',this.dealer);
      
   }
 
@@ -42,6 +41,8 @@ export class AddEditDealerComponent implements OnInit {
     });
   }
   editDealer() {
+
+      console.log('ddd',this.dealer);
     var val = {
       Id: this.dealer.Id,
       DealerName : this.dealer.DealerName,
