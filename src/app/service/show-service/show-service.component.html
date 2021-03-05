@@ -20,8 +20,8 @@
             data-bs-dismiss="modal" aria-label="Close"
             (click)="closeClick()"></button>
           </div>
-          <div class="modal-body">
-              <app-add-edit-service  *ngIf="ActivateAddEditServiceComp"></app-add-edit-service>
+          <div class="modal-body"  *ngIf="ActivateAddEditServiceComp">
+              <app-add-edit-service [services]="services"></app-add-edit-service>
           </div>
         </div>
       </div>
@@ -37,21 +37,16 @@
               <th>Fix Price</th>
               <th>Discount</th>
               <th>Description</th>
-              <th>Options</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let dataItem of ServiceList">
               <td>{{dataItem.Id}}</td>
-              <td>{{dataItem.FName}}</td>
-              <td>{{dataItem.LName}}</td>
-              <td>{{dataItem.MobileNo}}</td>
-              <td>{{dataItem.EMailID}}</td>
-              <td>{{dataItem.City}}</td>
-              <td>{{dataItem.Country}}</td>
-              <td>{{dataItem.Model}}</td>
-              <td>{{dataItem.Brand}}</td>
-              <td>{{dataItem.Status}}</td>
+              <td>{{dataItem.Name}}</td>
+              <td>{{dataItem.Price}}</td>
+              <td>{{dataItem.FixPrice}}</td>
+              <td>{{dataItem.Discount}}</td>
+              <td>{{dataItem.Description}}</td>
               <td>
                   <button type="button" class="btn btn-outline-success"
                   data-bs-toggle="modal" data-bs-target="#exampleModal"

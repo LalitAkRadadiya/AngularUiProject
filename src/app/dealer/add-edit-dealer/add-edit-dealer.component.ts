@@ -11,7 +11,40 @@ export class AddEditDealerComponent implements OnInit {
   constructor(private service:SharedService) { }
   
   @Input() dealer: any;
+  Id!: Number;
+  DealerName !: string;
+  DealerNo!: Number;
+  isActive!: string;
+  Website!: string;
+  PhoneNo!: Number;
+  Email!: string;
+  Latitude!: Number;
+  Longitude!: Number
+  isOnline!: string;
+  Address!: string;
+
+
+
   ngOnInit(): void {
+
+
+    if(this.dealer != null && this.dealer != undefined){
+        
+      this.Id = this.dealer.Id;
+      this.DealerName = this.dealer.DealerName;
+      this.DealerNo= this.dealer.DealerNo;
+      this.isActive= this.dealer.isActive;
+      this.Website= this.dealer.Website;
+      this.PhoneNo= this.dealer.PhoneNo;
+      this.Email= this.dealer.Email;
+      this.Latitude= this.dealer.Latitude;
+      this.Longitude= this.dealer.Longitude;
+      this.isOnline= this.dealer.isOnline;
+      this.Address= this.dealer.Address;
+    }
+
+
+    console.log(this.dealer);
   }
 
   

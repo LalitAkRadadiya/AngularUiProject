@@ -14,7 +14,7 @@ export class ShowServiceComponent implements OnInit {
   ServiceList:any=[];
 
   ModalTitle!:string;
-  ActivateAddEditServiceComp:boolean=true;
+  ActivateAddEditServiceComp:boolean=false;
   services:any;
   ngOnInit(): void {
     this.refreshServiceList();

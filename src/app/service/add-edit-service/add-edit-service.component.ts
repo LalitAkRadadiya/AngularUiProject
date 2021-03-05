@@ -12,7 +12,7 @@ export class AddEditServiceComponent implements OnInit {
 
   @Input() services:any;
   Id:Number = 0;
-  ServiceName!:string;
+  Name!:string;
   Price!:Number;
   FixPrice!:Number;
   Discount!:Number;
@@ -25,18 +25,18 @@ export class AddEditServiceComponent implements OnInit {
   ngOnInit(): void {
     if(this.services != null && this.services != undefined){
       this.Id=this.services.Id;
-      this.ServiceName=this.services.ServiceName;
+      this.Name=this.services.Name;
       this.Price=this.services.Price;
       this.FixPrice=this.services.FixPrice;
       this.Discount=this.services.Discount;
       this.Description=this.services.Description;
         }
-
+        console.log(this.services);
   }
   addService(){
  
     var val={Id:this.Id,
-            ServiceName:this.ServiceName,
+            Name:this.Name,
             Price:this.Price,
             FixPrice:this.FixPrice,
             Discount:this.Discount,
@@ -50,7 +50,7 @@ export class AddEditServiceComponent implements OnInit {
   }
         editService(){
           var val={Id:this.Id,
-            ServiceName:this.ServiceName,
+            Name:this.Name,
             Price:this.Price,
             FixPrice:this.FixPrice,
             Discount:this.Discount,

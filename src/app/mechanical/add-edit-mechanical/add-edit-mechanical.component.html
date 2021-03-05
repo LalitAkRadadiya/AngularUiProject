@@ -38,7 +38,16 @@
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='Mechanic.DealerId'>
+            
+                    <label>
+                        Please Select Dealer!
+                    </label>
+                    <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                        <option *ngFor="let data of DealerList" [value]="data.Id">
+                            {{data.DealerName}} - {{data.DealerNo}}
+                        </option>
+                    </select>
+              
         </div>
     </div>
 

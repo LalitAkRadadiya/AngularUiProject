@@ -59,6 +59,7 @@ export class ShowMechanicalComponent implements OnInit {
   
   refreshMechanicList(){
     this.service.getMechanicList().subscribe(data=>{
+      console.log('dataitem',data);
           this.MechanicList=data;
         }
       );

@@ -9,9 +9,27 @@ import { SharedService } from 'src/app/shared.service';
 export class AddEditMechanicalComponent implements OnInit {
 
   constructor(private service:SharedService) { }
+  DealerList : any= [];
   
   @Input() Mechanic: any;
+  Id:Number = 0;
+  MechanicName!:string;
+  EmployeeNo!:Number;
+  isActive!:Number;
+  EmailId!:string;
+  MobileNo!:string;
+  DealerId : Number;  
+  CreatedBy:1;
+  UpdatedBy:1;
+
+
+  loadDealerList(){
+    this.service.dealerDropdown().subscribe(data=>{
+      this.DealerList = data;
+    });
+  }
   ngOnInit(): void {
+    this.loadDealerList();
   }
 
   
@@ -24,9 +42,10 @@ export class AddEditMechanicalComponent implements OnInit {
       isActive: this.Mechanic.isActive,
       EmailId: this.Mechanic.EmailId,
       MobileNo: this.Mechanic.MobileNo,
-      DealerId: this.Mechanic.DealerId,
+      DealerId: this.DealerId,
       
     };
+    console.log('value112',val);
     this.service.addMechanic(val).subscribe(res=>{
       alert(res.toString());
     });
@@ -41,7 +60,7 @@ export class AddEditMechanicalComponent implements OnInit {
       isActive: this.Mechanic.isActive,
       EmailId: this.Mechanic.EmailId,
       MobileNo: this.Mechanic.MobileNo,
-      DealerId: this.Mechanic.DealerId,
+      DealerId: this.DealerId,
       
     };
     

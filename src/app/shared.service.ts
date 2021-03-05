@@ -86,13 +86,13 @@ export class SharedService {
     return this.http.get<any>(this.APIUrl + '/Service/allServices');
   }
   addService(val: any) {
-    return this.http.post(this.APIUrl + '/service/', val);
+    return this.http.post(this.APIUrl + '/Service/CreateServices', val);
   }
   editService(val: any) {
-    return this.http.put(this.APIUrl + '/service', val);
+    return this.http.put(this.APIUrl + '/Service/UpdateServices', val);
   }
   deleteService(id: any) {
-    return this.http.delete(this.APIUrl + '/service/' + id);
+    return this.http.delete(this.APIUrl + '/Service/DeleteServices/' + id);
   }
 
   
