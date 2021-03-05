@@ -59,18 +59,21 @@ export class SharedService {
   }
 
 
+  getVehicalById(id : any){
+    return this.http.get<any>(this.APIUrl + '/VehicleByCustomerId/'+id);
 
+  }
   getVehicleList() {
     return this.http.get<any>(this.APIUrl + '/Vehicle/allVehicles');
   }
   addVehicle(val: any) {
-    return this.http.post(this.APIUrl + '/vehicle', val);
+    return this.http.post(this.APIUrl + '/Vehicle/CreateVehicles', val);
   }
   editVehicle(val: any) {
-    return this.http.put(this.APIUrl + '/vehicle', val);
+    return this.http.put(this.APIUrl + '/Vehicle/UpdateVehicles', val);
   }
   deleteVehicle(id: any) {
-    return this.http.delete(this.APIUrl + '/vehicle/' + id);
+    return this.http.delete(this.APIUrl + '/Vehicle/DeleteVehicles/' + id);
   }
 
 

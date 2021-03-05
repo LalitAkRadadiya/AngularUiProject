@@ -22,7 +22,7 @@ export class ShowCustomervehicleComponent implements OnInit {
 
   ModalTitle!:string;
   customer:any;
-  vehicle:any;
+  vehicleA:any;
 
 
   ngOnInit(): void {
@@ -42,21 +42,25 @@ export class ShowCustomervehicleComponent implements OnInit {
     this.isEdit = true;
   }
 
-  addVehicleClick(){
-    this.vehicle={
+  
+ addeditVehicle = false;
+  addVehicleClick(item: any){
+    this.vehicleA={
       Id:0
     }
+    this.vehicleA = item;
     this.ModalTitle="Add Vehicle";
     this.ActivateAddEditVehicalComp=true;
     
+    this.addeditVehicle = true;
   }
 
- 
-
-  editVehicleClick(){
-    // this.customer=item
-    this.ModalTitle = "Edit Vehicle"
+  editVehicleClick(item: any){
+    this.vehicleA=item
+    this.ModalTitle = "Edit Vehicle";
     this. ActivateAddEditVehicalComp=true;
+    
+    this.addeditVehicle = true;
   }
 
   deleteCustomerClick(item:any){
@@ -68,26 +72,38 @@ export class ShowCustomervehicleComponent implements OnInit {
     }
   }
 
-  // deleteVehicleClick(item:any){
-  //   if(confirm('Are You Sure?')){
-  //     // this.service.deleteCustomer(item.Id).subscribe(data=>{
-  //     //   alert(data.toString());
-  //     //   this.refreshcustomerList();
-  //     // });
-  //   }
-  // }
-
-  // displayVehicles(item:Number){
+  deleteVehicleClick(item:any){
+    // if(confirm('Are You Sure?')){
+      
+      console.log('data',item.Id);
+      this.service.deleteVehicle(item.Id).subscribe(data=>{
+        alert(data.toString());
+        console.log('data',data);
+        this.refreshcustomerList();
+      });
+    // }
+  }
+  display = false;
+ 
+  vehical:any = [];
+  displayVehicles(item:any){
+    console.log('data',item);
+    this.display= true;
+    this.vehical = item;
+    this.service.getVehicalById(item.Id).subscribe(data=>{
+      this.vehical = data;
+      console.log('vehical',this.vehical);
+    });
     
-  // }
+  }
   refreshcustomerList(){
     this.service.getCustomerList().subscribe(data=>{
     this.CustomerList=data;
         }
       );
     }
-  // numSequence(n: number): Array<number> { 
-  //   return Array(n); 
-  // } 
+  Customervehicle(n: number): Array<number> { 
+    return Array(n); 
+  } 
 
 }

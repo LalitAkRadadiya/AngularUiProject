@@ -1,16 +1,16 @@
 <div  class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
-    <label class="col-sm-2 col-form-label">Vehicle Description</label>
+    <label class="col-sm-2 col-form-label" >Vehicle Description</label>
     <div class="col-sm-5"></div>
     <label class="col-sm-2 col-form-label">Brand</label>
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Description'>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Brand'>
         </div>
         </div>
         <div class="row">
@@ -20,11 +20,11 @@
         </div>
         <div class="row">
             <div class="col-sm-5">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate'>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" [(ngModel)]='vehicle.Model'>
             </div>
         </div>
         <div class="row">
@@ -34,11 +34,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" >
+                    <input type="text" class="form-control" [(ngModel)]='vehicle.MeterValue'>
                 </div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]='vehicle.RegDate'>
                 </div>
             </div>
     
@@ -49,11 +49,11 @@
             </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]='vehicle.Weight'>
                     </div>
                     <div class="col-sm-2"></div>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]='vehicle.MCHCode'> 
                 </div>
             </div>
             <div class="row">
@@ -63,11 +63,11 @@
             </div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" [(ngModel)]='vehicle.Vin'>
                     </div>
                     <div class="col-sm-2"></div>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]='vehicle.EngNo'>
                 </div>
         </div>
         <div class="row">
@@ -75,11 +75,11 @@
         </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]='vehicle.Colour'>
                 </div>
         </div>
     </div>
-    <button (click)="addVehicle()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
-    <!-- *ngIf="vehicle.Id==0" -->
-    <button (click)="editVehicle()" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update Vehicle</button>
-    <!-- *ngIf="vehicle.Id==0" -->
+    <button (click)="addVehicle()"  *ngIf="vehicle.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
+    <!-- *ngIf="Id==0" -->
+    <button (click)="editVehicle()" *ngIf="vehicle.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update Vehicle</button>
+    <!-- *ngIf="Id==0" -->

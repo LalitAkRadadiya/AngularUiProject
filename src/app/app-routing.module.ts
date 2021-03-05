@@ -10,11 +10,12 @@ import { CommonModule } from '@angular/common';
 
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 const routes: Routes = [
+  {path:'',redirectTo:'home', pathMatch:'full'},
   {path:'home',component:HomeComponent},
   {path:'appoinment',component:AppoinmentComponent},
   {path:'service',component:ServiceComponent},
   {path:'dealer',component:DealerComponent},
-  {path:'mechanical',component:MechanicalComponent},
+  {path:'mechanic',component:MechanicalComponent},
   {path:'customervehicle', component:CustomervehicleComponent}
 ];
 
