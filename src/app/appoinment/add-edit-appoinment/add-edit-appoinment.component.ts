@@ -32,6 +32,7 @@ export class AddEditAppoinmentComponent implements OnInit {
  
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
+      console.log('load',data);
       this.DealerList = data;
     });
   }
@@ -57,49 +58,21 @@ export class AddEditAppoinmentComponent implements OnInit {
   }
 
 addAppoinment(){
-  var val={
-          Id:this.Id,
-          FName:this.FName,
-          LName:this.LName,
-          MobileNo:this.MobileNo,
-          Email:this.Email,
-          City:this.City,
-          Country:this.Country,
-          Model:this.Model,
-          Brand:this.Brand,
-          LicencePlate:this.LicencePlate,
-          Status:this.Status,
-          StartDate:this.EndDate,
-          EndDate:this.EndDate,
-          TotalTime:this.TotalTime,
-          TotalPrice:this.TotalPrice,
-          CreatedBy:1,
-          UpdatedBy:1,
-        };
-        console.log('vallll',val);
+        var val = this.CustomerVehicleInfo;
+        val['MobileNo'] = val['CustomerNo'];
+        val['Email'] = "123";
+        val['DealerId'] = this.DealerId;
+        console.log('app value',val);
+
           this.service.addAppoinment(val).subscribe(res=>{
             alert(res.toString());
           });
 }
       editAppoinment(){
-          var val={Id:this.Id,
-            FName:this.FName,
-            LName:this.LName,
-            MobileNo:this.MobileNo,
-            Email:this.Email,
-            City:this.City,
-            Country:this.Country,
-            Model:this.Model,
-            Brand:this.Brand,
-            LicencePlate:this.LicencePlate,
-            Status:this.Status,
-            StartDate:this.EndDate,
-            EndDate:this.EndDate,
-            TotalTime:this.TotalTime,
-            TotalPrice:this.TotalPrice,
-            CreatedBy:1,
-            UpdatedBy:1,
-          };
+        var val = this.CustomerVehicleInfo;
+        val['MobileNo'] = val['CustomerNo'];
+        val['Email'] = "123";
+        val['DealerId'] = this.DealerId;
             this.service.editAppoinment(val).subscribe(res=>{
             alert(res.toString());
                       });
@@ -109,6 +82,7 @@ addAppoinment(){
             
             this.getvehical = true;
             this.service.getCustomerVehicleInfo(item).subscribe(data => {
+              delete data.Email
               console.log('data0',data);
             this.CustomerVehicleInfo = data;
             });

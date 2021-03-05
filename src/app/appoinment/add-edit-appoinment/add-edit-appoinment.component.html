@@ -36,20 +36,20 @@
                 <th>Last Name</th>
                 <th>Mobile</th>
                 <th>Address</th>
-                <th>Email</th>
+                <!-- <th>Email</th> -->
                 <th>City</th>
                 <th>Country</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngIf="getvehical">
-                <td [(ngModel)]="FName">{{ CustomerVehicleInfo.FName }}</td>
-                <td [(ngModel)]="LName">{{ CustomerVehicleInfo.LName }}</td>
-                <td [(ngModel)]="MobileNo">{{ CustomerVehicleInfo.CustomerNo }}</td>
-                <td>{{ CustomerVehicleInfo.Address }}</td>
-                <td [(ngModel)]="Email">{{ CustomerVehicleInfo.Email }}</td>
-                <td [(ngModel)]="City">{{ CustomerVehicleInfo.City }}</td>
-                <td [(ngModel)]="Country">{{ CustomerVehicleInfo.Country }}</td>
+                <td  >{{ CustomerVehicleInfo.FName }}</td>
+                <td  >{{ CustomerVehicleInfo.LName }}</td>
+                <td  >{{ CustomerVehicleInfo.CustomerNo }}</td>
+                <td  >{{ CustomerVehicleInfo.Address }}</td>
+                <!-- <td  >{{ CustomerVehicleInfo.Email }}</td> -->
+                <td  >{{ CustomerVehicleInfo.City }}</td>
+                <td  >{{ CustomerVehicleInfo.Country }}</td>
             </tr>
         </tbody>
     </table>
@@ -71,14 +71,14 @@
             </thead>
             <tbody>
                 <tr *ngIf="getvehical">
-                    <td [(ngModel)]="LicencePlate">{{ CustomerVehicleInfo.LicencePlate }}</td>
-                    <td [(ngModel)]="Model">{{ CustomerVehicleInfo.Model }}</td>
-                    <td [(ngModel)]="Brand">{{ CustomerVehicleInfo.Brand }}</td>
-                    <td [(ngModel)]="Status">{{ CustomerVehicleInfo.MeterValue }}</td>
-                    <td>{{ CustomerVehicleInfo.RegDate }}</td>
-                    <td>{{ CustomerVehicleInfo.Vin }}</td>
-                    <td>{{ CustomerVehicleInfo.Colour }}</td>
-                    <td>{{ CustomerVehicleInfo.EngNo }}</td>
+                    <td >{{ CustomerVehicleInfo.LicencePlate }}</td>
+                    <td  >{{ CustomerVehicleInfo.Model }}</td>
+                    <td  >{{ CustomerVehicleInfo.Brand }}</td>
+                    <td  >{{ CustomerVehicleInfo.MeterValue }}</td>
+                    <td >{{ CustomerVehicleInfo.RegDate }}</td>
+                    <td >{{ CustomerVehicleInfo.Vin }}</td>
+                    <td >{{ CustomerVehicleInfo.Colour }}</td>
+                    <td >{{ CustomerVehicleInfo.EngNo }}</td>
                 </tr>
             </tbody>
         </table>
