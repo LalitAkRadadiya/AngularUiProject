@@ -37,6 +37,8 @@
               <th>Fix Price</th>
               <th>Discount</th>
               <th>Description</th>
+              
+              <th>DealerName</th>
           </tr>
       </thead>
       <tbody>
@@ -47,6 +49,8 @@
               <td>{{dataItem.FixPrice}}</td>
               <td>{{dataItem.Discount}}</td>
               <td>{{dataItem.Description}}</td>
+              <td>
+                Dealer - {{dataItem.DealerId}}</td>
               <td>
                   <button type="button" class="btn btn-outline-success"
                   data-bs-toggle="modal" data-bs-target="#exampleModal"

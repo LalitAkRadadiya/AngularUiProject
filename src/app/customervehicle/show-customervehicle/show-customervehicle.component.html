@@ -25,7 +25,7 @@
 
 
 <!-- Modal Vehicle-->
-<!-- <div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -33,11 +33,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <app-add-edit-vehicle [vehicle]="vehicle" *ngIf="ActivateAddEditVehicleComp"></app-add-edit-vehicle>
+                <app-add-edit-vehicle [vehicle]="vehicle" *ngIf="ActivateAddEditVehicalComp"></app-add-edit-vehicle>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
     <thead>
@@ -76,17 +76,17 @@
                         <i class="fa fa-trash" aria-hidden="true"></i></button>
                     <!--  -->
 
-                    <!-- <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
+                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
                         data-bs-toggle="modal" data-bs-target="#vehicleModal" (click)="addVehicleClick()"
                         data-backdrop="static" data-keyboard="false">
-                        <i class="fa fa-car" aria-hidden="true"></i></button> -->
+                        <i class="fa fa-car" aria-hidden="true"></i></button>
                     <!-- (click)="addVehicle(dataItem)" -->
-<!-- 
+
                     <button class="btn btn-primary" type="button" style="margin-left: 5%;" data-toggle="collapse"
                         [attr.data-target]="'#collapseVehicle'+i" aria-expanded="true"
                         [attr.aria-controls]="'collapseVehicle'+i">
                         <i class="fa fa-chevron-circle-down" aria-hidden="true">Vehicles</i>
-                    </button> -->
+                    </button>
                     <!-- (click)="displayVehicles(dataItem)" -->
                 </td>
             </tr>

@@ -30,7 +30,7 @@
     <div class="row">
         <label class="col-sm-2 col-form-label">Description</label>
         <div class="col-sm-5"></div>
-        <!-- <label class="col-sm-2 col-form-label">Email</label> -->
+        <label class="col-sm-2 col-form-label">Dealer Select</label>
     </div>
     <div class="row">
         <div class="col-sm-5">
@@ -38,7 +38,14 @@
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <!-- <input type="text" class="form-control" [(ngModel)]='services.Email'> -->
+            
+            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <option *ngFor="let data of DealerList" [value]="data.Id">
+                    {{data.DealerName}} - {{data.DealerNo}}
+                </option>
+            </select>
+
+
         </div>
     </div>
 

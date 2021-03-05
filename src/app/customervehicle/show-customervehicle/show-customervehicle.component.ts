@@ -16,6 +16,9 @@ export class ShowCustomervehicleComponent implements OnInit {
   constructor(private service:SharedService) { }
 
   CustomerList:any = [];
+  
+
+  ActivateAddEditVehicalComp:boolean=true;
 
   ModalTitle!:string;
   customer:any;
@@ -39,22 +42,22 @@ export class ShowCustomervehicleComponent implements OnInit {
     this.isEdit = true;
   }
 
-  // addVehicleClick(){
-  //   this.vehicle={
-  //     Id:0
-  //   }
-  //   this.ModalTitle="Add Vehicle";
-  //   this.ActivateAddEditVehicleComp=true;
+  addVehicleClick(){
+    this.vehicle={
+      Id:0
+    }
+    this.ModalTitle="Add Vehicle";
+    this.ActivateAddEditVehicalComp=true;
     
-  // }
+  }
 
  
 
-  // editVehicleClick(){
-  //   // this.customer=item
-  //   this.ModalTitle = "Edit Vehicle"
-  //   this. ActivateAddEditVehicleComp=true;
-  // }
+  editVehicleClick(){
+    // this.customer=item
+    this.ModalTitle = "Edit Vehicle"
+    this. ActivateAddEditVehicalComp=true;
+  }
 
   deleteCustomerClick(item:any){
     if(confirm('Are You Sure?')){

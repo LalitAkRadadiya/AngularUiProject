@@ -9,6 +9,7 @@ export class AddEditVehicleComponent implements OnInit {
 
   constructor() { }
 
+  ActivateAddEditVehicalComp:boolean=true;
   @Input() vehicle: any;
   Id: Number = 0;
   Description!: string;
@@ -77,9 +78,6 @@ export class AddEditVehicleComponent implements OnInit {
       CreatedBy: 1,
       UpdatedBy: 1,
     };
-    // this.service.editCustomer(val).subscribe(res=>{
-    // alert(res.toString());
-    //           });
   }
 
 }
