@@ -37,3 +37,7 @@ body {
         background-color: rgb(245, 248, 253);
     }
   }
+  a.active {
+    background-color: #339fdd;
+    color: white;
+  }

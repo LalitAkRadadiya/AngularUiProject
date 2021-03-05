@@ -11,7 +11,7 @@ export class AddEditDealerComponent implements OnInit {
   constructor(private service:SharedService) { }
   
   @Input() dealer: any;
-  Id!: Number;
+  Id:Number = 0;
   DealerName !: string;
   DealerNo!: Number;
   isActive!: string;
@@ -26,48 +26,34 @@ export class AddEditDealerComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-
-    if(this.dealer != null && this.dealer != undefined){
-        
-      this.Id = this.dealer.Id;
-      this.DealerName = this.dealer.DealerName;
-      this.DealerNo= this.dealer.DealerNo;
-      this.isActive= this.dealer.isActive;
-      this.Website= this.dealer.Website;
-      this.PhoneNo= this.dealer.PhoneNo;
-      this.Email= this.dealer.Email;
-      this.Latitude= this.dealer.Latitude;
-      this.Longitude= this.dealer.Longitude;
-      this.isOnline= this.dealer.isOnline;
-      this.Address= this.dealer.Address;
-    }
-
-
+    // this.DealerName = this.dealer.DealerName;
     console.log(this.dealer);
   }
 
   
   addDealer() {
-    
-    var val = {
-      Id: this.dealer.Id,
-      DealerName : this.dealer.DealerName,
-      DealerNo: this.dealer.DealerNo,
-      isActive: this.dealer.isActive,
-      Website: this.dealer.Website,
-      PhoneNo: this.dealer.PhoneNo,
-      Email: this.dealer.Email,
-      Latitude: this.dealer.Latitude,
-      Longitude: this.dealer.Longitude,
-      isOnline: this.dealer.isOnline,
-      Address: this.dealer.Address,
-      CreatedBy: 1,
-      UpdatedBy: 1,
-    };
-    this.service.addDealer(val).subscribe(res=>{
-      alert(res.toString());
-    });
+    if(this.dealer){
+      
+        var val = {
+          Id: this.dealer.Id,
+          DealerName : this.dealer.DealerName,
+          DealerNo: this.dealer.DealerNo,
+          isActive: this.dealer.isActive,
+          Website: this.dealer.Website,
+          PhoneNo: this.dealer.PhoneNo,
+          Email: this.dealer.Email,
+          Latitude: this.dealer.Latitude,
+          Longitude: this.dealer.Longitude,
+          isOnline: this.dealer.isOnline,
+          Address: this.dealer.Address,
+          CreatedBy: 1,
+          UpdatedBy: 1,
+        };
+        this.service.addDealer(val).subscribe(res=>{
+          alert(res.toString());
+        });
+    }
+   
   }
   editDealer() {
 

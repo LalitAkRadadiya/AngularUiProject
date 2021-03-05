@@ -29,8 +29,6 @@ export class ShowDealerComponent implements OnInit {
       Id:0
     }
     this.ModalTitle="Add Dealer";
-  
-    
     this.ActivateAddEditDealerComp=true;
   }
 

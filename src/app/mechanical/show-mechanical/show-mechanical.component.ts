@@ -36,7 +36,6 @@ export class ShowMechanicalComponent implements OnInit {
 
 
   editMechanicClick(item : any){
-    console.log('ddd',item);
     this.mechanic=item;
     this.ModalTitle = "Edit Mechanic";
     
