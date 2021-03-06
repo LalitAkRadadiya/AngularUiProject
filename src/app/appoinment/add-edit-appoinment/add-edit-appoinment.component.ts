@@ -9,6 +9,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   DealerList : any= [];
   ServiceList : any = [];
+  
+  MechanicList : any = [];
   constructor(private service:SharedService) { }
   CustomerVehicleInfo: any;
   @Input() appoinment:any;
@@ -23,14 +25,13 @@ export class AddEditAppoinmentComponent implements OnInit {
   Brand!:string;
   LicencePlate!:string;
   Status!:string;
-  StartDate!:string;
-  EndDate!:string;
   TotalTime!:string;
   TotalPrice!:string;
   CreatedBy!:string;
   UpdateBy!:string;
 
 
+  MechanicId : Number;
   DealerId : Number;
   ServiceId: Number;
   CostType!: string;
@@ -38,10 +39,20 @@ export class AddEditAppoinmentComponent implements OnInit {
   Quantity!: string;
   PricePerUnit!: string;
 
+  
+  StartDate!:string;
+  EndDate!:string;
+  Duration!: string;
 
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
       this.DealerList = data;
+    });
+  }
+  loadMechanicList(){
+    this.service.mechanicDropdown(this.appoinment.DealerId).subscribe(data=>{
+      this.MechanicList = data;
+      
     });
   }
   loadServiceList(){
@@ -108,7 +119,19 @@ editAppoinment(){
     alert(res.toString());
   });
 
-
+      }
+      createPlan(){
+        var val = {
+          AppointmentId : this.appoinment.Id,
+          MechanicId : this.MechanicId,
+          AppoinmentServiceId : 0,
+          StartDate: this.StartDate,
+          EndDate : this.EndDate,
+          Duration : 'NULL'
+        }
+        this.service.addPlanning(val).subscribe(res=>{
+          alert(res.toString());
+        });
       }
       // editAppoinment(){
       //   val =  this.DealerId;

@@ -66,7 +66,9 @@ export class SharedService {
   serviceDropdown(id : any): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Service/ServiceDropdown/'+ id);
   }
-
+  mechanicDropdown(id : any):Observable<any[]>{
+    return this.http.get<any>(this.APIUrl + '/Mechanic/MechanicDropdown/'+ id);
+  }
 
   getVehicalById(id : any){
     return this.http.get<any>(this.APIUrl + '/VehicleByCustomerId/'+id);
@@ -86,7 +88,9 @@ export class SharedService {
   }
 
 
-
+  addPlanning(val: any){
+    return this.http.post(this.APIUrl + '/Planning/CreatePlanning', val);
+  }
 
   getCustomerVehicleInfo(LicencePlate: string): Observable<any> {
     return this.http.get<any>(this.APIUrl + "/Vehicle/GetVehicleInfo?LicencePlate=" + LicencePlate);
