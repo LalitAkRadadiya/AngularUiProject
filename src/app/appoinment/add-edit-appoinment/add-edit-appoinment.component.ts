@@ -30,15 +30,20 @@ export class AddEditAppoinmentComponent implements OnInit {
   UpdateBy!:string;
   DealerId : Number;
  
+
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
       console.log('load',data);
       this.DealerList = data;
     });
   }
+  editAppinment = 0;
   ngOnInit(): void {
+
+    this.editAppinment = this.appoinment.Id
     this.loadDealerList();
     if(this.appoinment != null && this.appoinment != undefined){
+      
   this.Id=this.appoinment.Id;
   this.FName=this.appoinment.FName;
   this.LName=this.appoinment.LName;

@@ -13,13 +13,16 @@ export class ShowAppoinmentComponent implements OnInit {
   AppointmentList:any=[];
 
   ModalTitle!:string;
-  ActivateAddEditAppoinmentComp:boolean=true;
+  ActivateAddEditAppoinmentComp:boolean=false;
   appoinment:any;
 
   ngOnInit(): void {
     this.refreshAppoinmentList();
   }
   addClick(){
+    this.appoinment={
+      Id:0
+    }
     this.appoinment={
       Id:0,
       FName:"",
@@ -42,7 +45,11 @@ export class ShowAppoinmentComponent implements OnInit {
 
   }
   editClick(item:any){
+    this.appoinment={
+      Id: item.Id
+    }
     this.appoinment=item
+    console.log('curent ap', this.appoinment);
     this.ModalTitle="Edit Appoinment";
     this.ActivateAddEditAppoinmentComp=true;
   }

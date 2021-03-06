@@ -18,8 +18,8 @@ data-backdrop="static" data-keyboard="false">
           data-bs-dismiss="modal" aria-label="Close"
           (click)="closeClick()"></button>
         </div>
-        <div class="modal-body">
-            <app-add-edit-appoinment [appoinment]="appoinment" *ngIf="ActivateAddEditAppoinmentComp"></app-add-edit-appoinment>
+        <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
+            <app-add-edit-appoinment [appoinment]="appoinment" ></app-add-edit-appoinment>
         </div>
       </div>
     </div>
