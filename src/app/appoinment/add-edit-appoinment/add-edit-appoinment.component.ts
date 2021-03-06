@@ -8,6 +8,7 @@ import {SharedService} from 'src/app/shared.service';
 export class AddEditAppoinmentComponent implements OnInit {
 
   DealerList : any= [];
+  ServiceList : any = [];
   constructor(private service:SharedService) { }
   CustomerVehicleInfo: any;
   @Input() appoinment:any;
@@ -28,20 +29,35 @@ export class AddEditAppoinmentComponent implements OnInit {
   TotalPrice!:string;
   CreatedBy!:string;
   UpdateBy!:string;
+
+
   DealerId : Number;
- 
+  ServiceId: Number;
+  CostType!: string;
+  SalesPart!: string;
+  Quantity!: string;
+  PricePerUnit!: string;
+
 
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
-      console.log('load',data);
       this.DealerList = data;
     });
   }
+  loadServiceList(){
+    console.log(this.appoinment.DealerId);
+    this.service.serviceDropdown(this.appoinment.DealerId).subscribe(data=>{
+      console.log('load',data);
+      this.ServiceList = data;
+    });
+  }
+  
   editAppinment = 0;
   ngOnInit(): void {
 
     this.editAppinment = this.appoinment.Id
     this.loadDealerList();
+    
     if(this.appoinment != null && this.appoinment != undefined){
       
   this.Id=this.appoinment.Id;
@@ -64,24 +80,46 @@ export class AddEditAppoinmentComponent implements OnInit {
 
 addAppoinment(){
         var val = this.CustomerVehicleInfo;
-        val['MobileNo'] = val['CustomerNo'];
+        val['MobileNo'] =  val['CustomerNo'];
         val['Email'] = "123";
         val['DealerId'] = this.DealerId;
+        val['Status'] = "pending";
         console.log('app value',val);
 
           this.service.addAppoinment(val).subscribe(res=>{
             alert(res.toString());
           });
 }
-      editAppoinment(){
-        var val = this.CustomerVehicleInfo;
-        val['MobileNo'] = val['CustomerNo'];
-        val['Email'] = "123";
-        val['DealerId'] = this.DealerId;
-            this.service.editAppoinment(val).subscribe(res=>{
-            alert(res.toString());
-                      });
-          }
+editAppoinment(){
+          
+  
+  var val = {
+    AppointmentId: this.appoinment.Id,
+    ServiceId: this.ServiceId,
+    CostType:this.CostType,
+    SalesPart: this.SalesPart,
+    Quantity: this.Quantity,
+    PricePerUnit: this.PricePerUnit,
+    CreatedBy : "Lalit"
+  };
+
+    console.log('val cal',val);
+  this.service.addAppoinmentService(val).subscribe(res=>{
+    alert(res.toString());
+  });
+
+
+      }
+      // editAppoinment(){
+      //   val =  this.DealerId;
+      //   var val = this.CustomerVehicleInfo;
+      //   val['MobileNo'] = val['CustomerNo'];
+      //   val['Email'] = "123";
+      //   val['DealerId'] = this.DealerId;
+      //       this.service.editAppoinment(val).subscribe(res=>{
+      //       alert(res.toString());
+      //                 });
+      //     }
           getvehical = false;
           getCustomerVehicleInfo(item: string){
             

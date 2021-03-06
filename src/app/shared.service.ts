@@ -24,6 +24,12 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/Appoinment/DeleteAppoinments/' + id);
   }
 
+  getAppointmentServiceList() {
+    return this.http.get<any>(this.APIUrl + 'AppointmentService/allAppointmentServices');
+  }
+  addAppoinmentService(val: any) {
+    return this.http.post(this.APIUrl + '/AppoinmentService/CreateAppoinmentServices', val);
+  }
 
   getDealerList() {
     return this.http.get<any>(this.APIUrl + '/Dealer/allDealers');
@@ -56,6 +62,9 @@ export class SharedService {
 
   dealerDropdown(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Dealer/DealerDropdown');
+  }
+  serviceDropdown(id : any): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl + '/Service/ServiceDropdown/'+ id);
   }
 
 
