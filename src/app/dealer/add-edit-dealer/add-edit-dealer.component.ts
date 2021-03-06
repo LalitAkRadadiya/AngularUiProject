@@ -26,6 +26,11 @@ export class AddEditDealerComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.dealer == undefined)
+    {
+      this.dealer = {};
+      this.dealer.DealerName = "";
+    }
     // this.DealerName = this.dealer.DealerName;
     console.log(this.dealer);
   }

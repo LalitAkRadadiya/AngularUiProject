@@ -85,14 +85,15 @@ export class ShowCustomervehicleComponent implements OnInit {
   }
   display = false;
  
+
+
   vehical:any = [];
+  currentVehical = 0;
   displayVehicles(item:any){
-    console.log('data',item);
     this.display= true;
-    this.vehical = item;
+    this.currentVehical = item.Id;
     this.service.getVehicalById(item.Id).subscribe(data=>{
       this.vehical = data;
-      console.log('vehical',this.vehical);
     });
     
   }

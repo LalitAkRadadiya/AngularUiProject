@@ -85,6 +85,7 @@
                     
 
                     <button class="btn btn-primary" type="button" style="margin-left: 5%;" data-toggle="collapse"
+                        name="{{dataItem.Id}}" id="{{dataItem.Id}}"
                         [attr.data-target]="'#collapseVehicle'+dataItem.Id" aria-expanded="true"
                         [attr.aria-controls]="'collapseVehicle'+dataItem.Id">
                         <i class="fa fa-chevron-circle-down" aria-hidden="true" (click)="displayVehicles(dataItem)">Vehicles</i>
@@ -93,7 +94,7 @@
                 </td>
             </tr>
             <tr>
-                <td *ngIf="display" colspan="8">
+                <td *ngIf="display && dataItem.Id == currentVehical" colspan="8">
                     <table class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
                         style="background-color: rgba(212, 226, 250, 0.5);">
                         <thead>

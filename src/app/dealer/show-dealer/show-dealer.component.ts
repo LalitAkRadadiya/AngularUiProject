@@ -17,15 +17,15 @@ export class ShowDealerComponent implements OnInit {
   DealerList:any = [];
 
   ModalTitle!:string;
-  dealermain:any;
-
 
   ngOnInit(): void {
     this.refreshDealerList();
   }
 
   addDealerClick(){
-    this.dealermain={
+    
+    this.dealer = undefined;
+    this.dealer={
       Id:0
     }
     this.ModalTitle="Add Dealer";
