@@ -1,49 +1,54 @@
 <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
+        <label class="col-sm-2 col-form-label">
+            Dealer Select
+        </label>
+        <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Service Name</label>
-        <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">Price</label>
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" name="Name" [(ngModel)]='services.Name'>
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='services.Price'>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-sm-2 col-form-label">Fix Price</label>
-        <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">Discount</label>
-    </div>
-    <div class="row">
-        <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='services.FixPrice'>
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='services.Discount'>
-        </div>
-    </div>
-    <div class="row">
-        <label class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">Dealer Select</label>
-    </div>
-    <div class="row">
-        <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='services.Description'>
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5">
+            
             
             <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                 <option *ngFor="let data of DealerList" [value]="data.Id">
                      Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}
                 </option>
             </select>
+            
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='services.Name'>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label"> Price</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Fix Price</label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='services.Price'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='services.FixPrice'>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Discount</label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Description</label>
+        <!-- <label class="col-sm-2 col-form-label">Dealer Select</label> -->
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control"  [(ngModel)]='services.Discount'>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='services.Description'>
 
 
         </div>

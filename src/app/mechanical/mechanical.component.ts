@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
+
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-mechanical',
   templateUrl: './mechanical.component.html',
@@ -12,7 +14,9 @@ export class MechanicalComponent implements OnInit {
 
   ActivateAddEditMechanicComp:boolean=false;
   
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service:SharedService,private toastr: ToastrService,private titleService:Title) { 
+    this.titleService.setTitle("Mechanic");
+  }
   mechanic:any;
   MechanicList:any = [];
 

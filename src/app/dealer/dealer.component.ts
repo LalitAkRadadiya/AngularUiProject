@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
-
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-dealer',
   templateUrl: './dealer.component.html',
@@ -9,7 +9,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DealerComponent implements OnInit {
   isEdit = false;
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service:SharedService,private toastr: ToastrService,private titleService:Title) { 
+    this.titleService.setTitle("Dealer");
+  }
 
   DealerList:any = [];
 

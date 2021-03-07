@@ -32,6 +32,8 @@ data-backdrop="static" data-keyboard="false">
     <thead>
         <tr>
             <th>ID</th>
+            <th>Dealer Id</th>
+            <th>Licence Plate</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Mobile</th>
@@ -40,6 +42,7 @@ data-backdrop="static" data-keyboard="false">
             <th>Country</th>
             <th>Model</th>
             <th>Brand</th>
+            <th>Booking Date</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -47,6 +50,8 @@ data-backdrop="static" data-keyboard="false">
     <tbody>
         <tr *ngFor="let dataItem of AppointmentList">
             <td>{{dataItem.Id}}</td>
+            <td>{{dataItem.DealerId}}</td>
+            <td>{{dataItem.LicencePlate}}</td>
             <td>{{dataItem.FName}}</td>
             <td>{{dataItem.LName}}</td>
             <td>{{dataItem.MobileNo}}</td>
@@ -55,6 +60,7 @@ data-backdrop="static" data-keyboard="false">
             <td>{{dataItem.Country}}</td>
             <td>{{dataItem.Model}}</td>
             <td>{{dataItem.Brand}}</td>
+            <td>{{dataItem.CreatedDate}}</td>
             <td>{{dataItem.Status}}</td>
             <td>
                 <button type="button" class="btn btn-outline-success"
