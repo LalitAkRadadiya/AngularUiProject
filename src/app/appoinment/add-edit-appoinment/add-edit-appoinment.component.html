@@ -10,7 +10,7 @@
                         </label>
                         <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                             <option *ngFor="let data of DealerList" [value]="data.Id">
-                                DealerName : {{data.DealerName}} - DealerNo :  {{data.DealerNo}}
+                                DealerName : {{data.DealerName}} - DealerNo :  {{data.PhoneNo}}
                             </option>
                         </select>
                     </div>
@@ -21,9 +21,11 @@
                 </div>
             
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-5" style="display: flex">
                         <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate">
-                        <button type="button" (click)="getCustomerVehicleInfo(LicencePlate)">Search</button>
+                        <button type="button" class="btn btn-success" style="margin: 0" (click)="getCustomerVehicleInfo(LicencePlate)">
+                        
+                                <i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                     <div>
             
@@ -45,16 +47,16 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Mobile</th>
-                            <th>LicencePlate</th>
+                            <th>Licence Plate</th>
                             <th>City</th>
                             <th>Country</th>
                             <th>Model</th>
                             <th>Brand</th>
                             <th>Status</th>
-                            <th>StartDate</th>
-                            <th>EndDate</th>
-                            <th>TotalTime</th>
-                            <th>TotalPrice</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Total Time</th>
+                            <th>Total Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,12 +86,12 @@
             </select>
             <div style="display: flex">
                     <div class="col-sm-5">
-                            <label>CostType</label>
+                            <label>Cost Type</label>
                             <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="CostType">
                     </div>
                     <div class="col-sm-5">
                         
-                            <label>SalesPart</label>
+                            <label>Sales Part</label>
                             <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="SalesPart">
                     </div>
                     
@@ -100,7 +102,7 @@
                             <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity">
                     </div>
                     <div class="col-sm-5">
-                        <label>PricePerUnit</label>
+                        <label>Price Per Unit</label>
                             <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="PricePerUnit">
                     </div>
             </div>
@@ -118,7 +120,7 @@
                                     Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
                             </div>
                             <ng-template #elseBlock>
-                                No Data Fond
+                                No Data Found
                             </ng-template>
         
                         </option>
@@ -126,11 +128,11 @@
         </div>
         <div style="display: flex">
                 <div class="col-sm-5">
-                        <label>StartDate</label>
+                        <label>Start Date</label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
                 </div>
                 <div class="col-sm-5">
-                    <label>EndDate</label>
+                    <label>End Date</label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
                 </div>
         </div>
@@ -171,18 +173,18 @@
                 </table>
                 <!-- </div> -->
                 <div class="row">
-                    <label><b>Vehicle Details</b></label>
+                    <label>Vehicle Details</label>
                     <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
                         <thead>
                             <tr>
-                                <th>LicencePlate</th>
+                                <th>Licence Plate</th>
                                 <th>Model</th>
                                 <th>Brand</th>
-                                <th>MeterValue</th>
-                                <th>RegDate</th>
+                                <th>Meter Value</th>
+                                <th>Reg. Date</th>
                                 <th>Vin</th>
                                 <th>Colour</th>
-                                <th>EngNo</th>
+                                <th>Eng. No</th>
                             </tr>
                         </thead>
                         <tbody>

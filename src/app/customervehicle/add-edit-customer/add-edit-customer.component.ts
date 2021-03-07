@@ -22,7 +22,7 @@ export class AddEditCustomerComponent implements OnInit {
     
     var val = {
       Id: this.customer.Id,
-      CustomerName : this.customer.FName+ '' + this.customer.Name,
+      CustomerName : this.customer.FName+ ' ' + this.customer.LName,
       FName: this.customer.FName,
       LName: this.customer.LName,
       Address: this.customer.Address,
@@ -43,7 +43,7 @@ export class AddEditCustomerComponent implements OnInit {
       Id: this.customer.Id,
       FName: this.customer.FName,
       LName: this.customer.LName,
-      CustomerName : this.customer.FName+ '' + this.customer.LName,
+      CustomerName : this.customer.FName+ ' ' + this.customer.LName,
       Address: this.customer.Address,
       ZipCode: this.customer.ZipCode,
       City: this.customer.City,

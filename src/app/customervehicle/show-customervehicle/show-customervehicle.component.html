@@ -2,9 +2,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <!-- Button trigger modal -->
+<br>
+<h5>Home / Customer</h5>
 <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" (click)="addCustomerClick()"
     data-bs-toggle="modal" data-bs-target="#customerModal" data-backdrop="static" data-keyboard="false">
-    <i class="fa fa-plus" aria-hidden="true"></i></button>
+    <i class="fa fa-plus" aria-hidden="true"></i> Add Customer</button>
 
 
 <!-- Modal Customer-->
@@ -46,10 +48,10 @@
             <th>Name</th>
             <th>Address</th>
             <th>City</th>
-            <th>ZipCode</th>
+            <th>Zip Code</th>
             <th>Country</th>
             <th>Mobile</th>
-            <th>Action</th>
+            <th style="text-align:center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -80,7 +82,7 @@
                     <button type="button" style="margin-left: 5%;" class="btn btn-outline-primary"
                         data-bs-toggle="modal" data-bs-target="#vehicleModal" (click)="addVehicleClick(dataItem)"
                         data-backdrop="static" data-keyboard="false">
-                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <i class="fa fa-car" aria-hidden="true"></i> &ensp;Add Vehicle
                     </button>
                     
 
@@ -88,7 +90,7 @@
                         name="{{dataItem.Id}}" id="{{dataItem.Id}}"
                         [attr.data-target]="'#collapseVehicle'+dataItem.Id" aria-expanded="true"
                         [attr.aria-controls]="'collapseVehicle'+dataItem.Id">
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true" (click)="displayVehicles(dataItem)">Vehicles</i>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true" (click)="displayVehicles(dataItem)"> &ensp;Show Vehicles</i>
                     </button>
 
                 </td>
@@ -99,9 +101,9 @@
                         style="background-color: rgba(212, 226, 250, 0.5);">
                         <thead>
                             <tr>
-                                <th>LicencePlate</th>
+                                <th>Licence Plate</th>
                                 <th>Brand</th>
-                                <th>MeterValue</th>
+                                <th>Meter Value</th>
                                 <th>Colour</th>
                                 <th>Description</th>
                                 <th>Model</th>
@@ -115,7 +117,7 @@
                                 <td>{{dataItem.LicencePlate}}</td>
                                 <td>{{dataItem.Brand}}</td>
                                 <td>{{dataItem.MeterValue}}</td>
-                                <td>{{dataItem.colour}}</td>
+                                <td>{{dataItem.Colour}}</td>
                                 <td>{{dataItem.Description}}</td>
                                 <td>{{dataItem.Model}}</td>
                                 <td>{{dataItem.RegDate}}</td>

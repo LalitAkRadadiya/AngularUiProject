@@ -29,22 +29,7 @@ export class AddEditVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     
-    // console.log('vehical get', this.vehicle);
-      if(this.vehicle!= null){
-        console.log('vehical get', this.vehicle);
-        this.Id = this.vehicle.Id;
-        this.Description= this.vehicle.Description;
-        this.Brand = this.vehicle.Brand;
-        this.LicencePlate= this.vehicle.LicencePlate;
-        this.Model= this.vehicle.Model;
-        this.MeterValue= this.vehicle.MeterValue;
-        this.RegDate= this.vehicle.RegDate;
-        this.Weight= this.vehicle.Weight;
-        this.MCHCode= this.vehicle.MCHCode;
-        this.Vin= this.vehicle.Vin;
-        this.EngNo= this.vehicle.EngNo;
-        this.Colour= this.vehicle.Colour;
-      }
+    
     
   }
 

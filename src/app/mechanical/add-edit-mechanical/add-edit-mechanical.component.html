@@ -1,8 +1,8 @@
 <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
-        <label class="col-sm-2 col-form-label">MechanicName</label>
+        <label class="col-sm-2 col-form-label">Mechanic Name</label>
         <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">EmployeeNo</label>
+        <label class="col-sm-2 col-form-label">Employee No</label>
     </div>
     <div class="row">
         <div class="col-sm-5">
@@ -14,9 +14,9 @@
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">isActive</label>
+        <label class="col-sm-2 col-form-label">IsActive</label>
         <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">EmailId</label>
+        <label class="col-sm-2 col-form-label">Email Id</label>
     </div>
     <div class="row">
         <div class="col-sm-5">
@@ -28,9 +28,9 @@
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">MobileNo</label>
+        <label class="col-sm-2 col-form-label">Mobile No</label>
         <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">DealerId</label>
+        
     </div>
     <div class="row">
         <div class="col-sm-5">
@@ -39,12 +39,12 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             
-                    <label>
+                <label>
                         Please Select Dealer!
                     </label>
                     <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                         <option *ngFor="let data of DealerList" [value]="data.Id">
-                            {{data.DealerName}} - {{data.DealerNo}}
+                            Dealer Name : {{data.DealerName}} - Mobile NO :{{data.PhoneNo}}
                         </option>
                     </select>
               

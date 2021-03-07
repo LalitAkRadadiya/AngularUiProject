@@ -58,8 +58,9 @@
     </div>
 </div>
 
-<button (click)="addCustomer()" *ngIf="customer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
-    Customer</button>
+<div style="text-align: center">
 
-<button (click)="editCustomer()" *ngIf="customer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
-    Customer</button>
+        <button (click)="addCustomer()" *ngIf="customer.Id==0" type="button" class="btn btn-success">Save</button>
+        <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+        <button (click)="editCustomer()" *ngIf="customer.Id!=0" type="button" class="btn btn-success">Save</button>
+</div>

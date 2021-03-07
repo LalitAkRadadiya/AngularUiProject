@@ -1,6 +1,6 @@
 <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
-        <label class="col-sm-2 col-form-label">ServiceName</label>
+        <label class="col-sm-2 col-form-label">Service Name</label>
         <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Price</label>
     </div>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">FixPrice</label>
+        <label class="col-sm-2 col-form-label">Fix Price</label>
         <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Discount</label>
     </div>
@@ -41,7 +41,7 @@
             
             <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                 <option *ngFor="let data of DealerList" [value]="data.Id">
-                    {{data.DealerName}} - {{data.DealerNo}}
+                     Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}
                 </option>
             </select>
 

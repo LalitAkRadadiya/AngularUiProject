@@ -26,6 +26,7 @@ export class AddEditMechanicalComponent implements OnInit {
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
       this.DealerList = data;
+      console.log('dealer', this.DealerList);
     });
   }
   ngOnInit(): void {

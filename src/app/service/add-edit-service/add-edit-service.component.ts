@@ -54,7 +54,6 @@ export class AddEditServiceComponent implements OnInit {
             UpdatedBy:1,
             DealerId:this.DealerId
           };
-          val['Name']="lalit";
           // val['Description']=this.Description;
             this.service.addService(val).subscribe(res=>{
               alert(res.toString());
@@ -62,11 +61,11 @@ export class AddEditServiceComponent implements OnInit {
   }
         editService(){
           var val={Id:this.Id,
-            Name:this.Name,
-            Price:this.Price,
-            FixPrice:this.FixPrice,
-            Discount:this.Discount,
-            Description:this.Description,
+            Name:this.services.Name,
+            Price:this.services.Price,
+            FixPrice:this.services.FixPrice,
+            Discount:this.services.Discount,
+            Description:this.services.Description,
             CreatedBy:1,
             UpdatedBy:1,
           };
