@@ -61,7 +61,18 @@ data-backdrop="static" data-keyboard="false">
             <td>{{dataItem.Model}}</td>
             <td>{{dataItem.Brand}}</td>
             <td>{{dataItem.CreatedDate}}</td>
-            <td>{{dataItem.Status}}</td>
+            <td>
+              {{dataItem.Status}}
+              <!-- <button>Update Status</button> -->
+              <select  name="status" class="form-control" (change)="updateAppoinmentStatus(dataItem.Id)" [(ngModel)]="updatedStatus"  >
+                  <option >Pending</option>
+                  <option >Confirm</option>
+                  <option >Started</option>
+                  <option >Work Done</option>
+                  <option >Finished</option>
+              </select>
+            </td>
+            
             <td>
                 <button type="button" class="btn btn-outline-success"
                 data-bs-toggle="modal" data-bs-target="#exampleModal"

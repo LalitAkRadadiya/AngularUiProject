@@ -25,6 +25,7 @@ import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DataTablesModule} from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
+
 import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
 @NgModule({
   declarations: [

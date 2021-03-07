@@ -16,8 +16,9 @@ export class ShowAppoinmentComponent implements OnInit {
   ModalTitle!:string;
   ActivateAddEditAppoinmentComp:boolean=false;
   appoinment:any;
-
+  updatedStatus:any;
   ngOnInit(): void {
+    // this.updateAppoinmentStatus();
     this.refreshAppoinmentList();
     setTimeout(() => {
       //init Datatable
@@ -52,6 +53,15 @@ export class ShowAppoinmentComponent implements OnInit {
     this.ModalTitle="Add Appoinment";
     this.ActivateAddEditAppoinmentComp=true;
 
+  }
+  updateAppoinmentStatus(id : any){
+      var val = {
+        Id: id,
+        Status : this.updatedStatus
+      }
+      this.service.editAppoinmentStatus(val).subscribe(res=>{
+        this.toastr.success(res.toString());
+      });
   }
   editClick(item:any){
     this.appoinment={

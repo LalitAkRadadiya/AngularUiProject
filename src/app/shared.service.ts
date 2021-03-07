@@ -13,7 +13,9 @@ export class SharedService {
   getAppointmentById(id: any){
     return this.http.get<any>(this.APIUrl + '/Appointment/AppointmentTracker/' + id);
   }
-
+  editAppoinmentStatus(val: any) {
+    return this.http.put(this.APIUrl + '/Appointment/UpdateStatus', val);
+  }
 
 
   getAppointmentList() {
