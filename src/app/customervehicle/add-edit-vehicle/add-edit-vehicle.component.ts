@@ -37,6 +37,32 @@ export class AddEditVehicleComponent implements OnInit {
   addVehicle() {
 
     var val = {
+      Id: 0,
+      Description: this.vehicle.Description,
+      Brand: this.vehicle.Brand,
+      LicencePlate: this.vehicle.LicencePlate,
+      Model: this.vehicle.Model,
+      MeterValue: this.vehicle.MeterValue,
+      RegDate: this.vehicle.RegDate,
+      Weight: this.vehicle.Weight,
+      MCHCode: this.vehicle.MCHCode,
+      Vin: this.vehicle.Vin,
+      EngNo: this.vehicle.EngNo,
+      Colour: this.vehicle.Colour,
+      CreatedBy: 1,
+      UpdatedBy: 1,
+      CustomerId:this.vehicle.Id
+      //should use dyn custid
+    };
+    console.log('vehicle added',this.vehicle);
+    this.service.addVehicle(val).subscribe(res=>{
+      this.toastr.success(res.toString());
+    });
+
+    
+  }
+  editVehicle() {
+    var val = {
       Id: this.vehicle.Id,
       Description: this.vehicle.Description,
       Brand: this.vehicle.Brand,
@@ -51,34 +77,11 @@ export class AddEditVehicleComponent implements OnInit {
       Colour: this.vehicle.Colour,
       CreatedBy: 1,
       UpdatedBy: 1,
-      CustomerId:1
-      //should use dyn custid
-    };
-    this.service.addVehicle(val).subscribe(res=>{
-      this.toastr.success(res.toString());
-    });
-
-    
-  }
-  editVehicle() {
-    var val = {
-      Id: this.Id,
-      Description: this.Description,
-      Brand: this.Brand,
-      LicencePlate: this.LicencePlate,
-      Model: this.Model,
-      MeterValue: this.MeterValue,
-      RegDate: this.vehicle.RegDate,
-      Weight: this.vehicle.Weight,
-      MCHCode: this.vehicle.MCHCode,
-      Vin: this.vehicle.Vin,
-      EngNo: this.vehicle.EngNo,
-      Colour: this.vehicle.Colour,
-      CreatedBy: 1,
-      UpdatedBy: 1,
       CustomerId : this.vehicle.CustomerId
     };
+    console.log('val',val);
     this.service.editVehicle(val).subscribe(res=>{
+      console.log('res',res);
       this.toastr.success(res.toString());
     });
 

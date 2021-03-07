@@ -23,7 +23,7 @@ export class ShowCustomervehicleComponent implements OnInit {
 
   ModalTitle!:string;
   customer:any;
-  vehicleA:any;
+  vehicle:any;
 
 
   ngOnInit(): void {
@@ -46,10 +46,12 @@ export class ShowCustomervehicleComponent implements OnInit {
   
  addeditVehicle = false;
   addVehicleClick(item: any){
-    this.vehicleA={
+    this.vehicle={
       Id:0
     }
-    this.vehicleA = item;
+    
+    console.log('addvehicleclick',item);
+    this.vehicle = item;
     this.ModalTitle="Add Vehicle";
     this.ActivateAddEditVehicalComp=true;
     
@@ -57,7 +59,7 @@ export class ShowCustomervehicleComponent implements OnInit {
   }
 
   editVehicleClick(item: any){
-    this.vehicleA=item
+    this.vehicle=item
     this.ModalTitle = "Edit Vehicle";
     this. ActivateAddEditVehicalComp=true;
     
