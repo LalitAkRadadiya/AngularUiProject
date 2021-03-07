@@ -1,6 +1,7 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-show-appoinment',
   templateUrl: './show-appoinment.component.html',
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowAppoinmentComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
 
   AppointmentList:any=[];
 
@@ -61,7 +62,7 @@ export class ShowAppoinmentComponent implements OnInit {
   deleteClick(item:any){
     if(confirm('Are You Sure?')){
       this.service.deleteAppoinment(item.Id).subscribe(data=>{
-        alert(data.toString());
+        this.toastr.success(data.toString());
         this.refreshAppoinmentList();
       });
     }

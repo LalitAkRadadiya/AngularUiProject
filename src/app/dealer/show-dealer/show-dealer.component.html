@@ -18,7 +18,7 @@
             <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
             <button type="button" class="btn-close" 
             data-bs-dismiss="modal" aria-label="Close"
-            (click)="closeClick()"></button>
+            (click)="closeClick()"#closeAddExpenseModal ></button>
           </div> 
           <div class="modal-body" *ngIf="ActivateAddEditDealerComp">
               <app-add-edit-dealer [dealer]="dealer" ></app-add-edit-dealer>

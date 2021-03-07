@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-mechanical',
   templateUrl: './add-edit-mechanical.component.html',
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditMechanicalComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
   DealerList : any= [];
   
   @Input() Mechanic: any;
@@ -48,7 +49,7 @@ export class AddEditMechanicalComponent implements OnInit {
     };
     console.log('value112',val);
     this.service.addMechanic(val).subscribe(res=>{
-      alert(res.toString());
+      this.toastr.success(res.toString());
     });
   }
   editMechanic() {
@@ -69,7 +70,7 @@ export class AddEditMechanicalComponent implements OnInit {
     
     console.log('val',val)
     this.service.editMechanic(val).subscribe(res=>{
-    alert(res.toString());
+    this.toastr.success(res.toString());
     });
   }
 }

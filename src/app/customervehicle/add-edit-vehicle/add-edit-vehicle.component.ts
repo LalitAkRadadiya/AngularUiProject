@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-vehicle',
   templateUrl: './add-edit-vehicle.component.html',
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditVehicleComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
 
   ActivateAddEditVehicalComp:boolean=true;
   @Input() vehicle: any;
@@ -54,7 +55,7 @@ export class AddEditVehicleComponent implements OnInit {
       //should use dyn custid
     };
     this.service.addVehicle(val).subscribe(res=>{
-      alert(res.toString());
+      this.toastr.success(res.toString());
     });
 
     
@@ -78,7 +79,7 @@ export class AddEditVehicleComponent implements OnInit {
       CustomerId : this.vehicle.CustomerId
     };
     this.service.editVehicle(val).subscribe(res=>{
-      alert(res.toString());
+      this.toastr.success(res.toString());
     });
 
   }

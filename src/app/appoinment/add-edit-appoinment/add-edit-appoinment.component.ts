@@ -1,5 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
+
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-appoinment',
   templateUrl: './add-edit-appoinment.component.html',
@@ -11,7 +13,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   ServiceList : any = [];
   
   MechanicList : any = [];
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
   CustomerVehicleInfo: any;
   @Input() appoinment:any;
   Id:Number = 0;
@@ -98,7 +100,7 @@ addAppoinment(){
         console.log('app value',val);
 
           this.service.addAppoinment(val).subscribe(res=>{
-            alert(res.toString());
+            this.toastr.success(res.toString());
           });
 }
 editAppoinment(){
@@ -116,7 +118,7 @@ editAppoinment(){
 
     console.log('val cal',val);
   this.service.addAppoinmentService(val).subscribe(res=>{
-    alert(res.toString());
+    this.toastr.success(res.toString());
   });
 
       }
@@ -130,7 +132,7 @@ editAppoinment(){
           Duration : 'NULL'
         }
         this.service.addPlanning(val).subscribe(res=>{
-          alert(res.toString());
+          this.toastr.success(res.toString());
         });
       }
       // editAppoinment(){
@@ -140,7 +142,7 @@ editAppoinment(){
       //   val['Email'] = "123";
       //   val['DealerId'] = this.DealerId;
       //       this.service.editAppoinment(val).subscribe(res=>{
-      //       alert(res.toString());
+      //       this.toastr.success(res.toString());
       //                 });
       //     }
           getvehical = false;

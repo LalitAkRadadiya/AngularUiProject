@@ -22,7 +22,9 @@ import { AddEditDealerComponent } from './dealer/add-edit-dealer/add-edit-dealer
 import { ShowDealerComponent } from './dealer/show-dealer/show-dealer.component';
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add-edit-mechanical.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     routingmod ,
@@ -42,6 +44,7 @@ import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add
     ShowDealerComponent,
     ShowMechanicalComponent,
     AddEditMechanicalComponent,
+
    
   
 
@@ -54,6 +57,8 @@ import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
     
     MDBBootstrapModule.forRoot()
     

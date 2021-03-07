@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-mechanical',
   templateUrl: './mechanical.component.html',
@@ -11,7 +12,7 @@ export class MechanicalComponent implements OnInit {
 
   ActivateAddEditMechanicComp:boolean=false;
   
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
   mechanic:any;
   MechanicList:any = [];
 
@@ -50,7 +51,7 @@ export class MechanicalComponent implements OnInit {
   deleteMechanic(item:any){
     console.log('id',item.Id);
       this.service.deleteMechanic(item.Id).subscribe(data=>{
-        alert(data.toString());
+        this.toastr.success(data.toString());
         this.refreshMechanicList();
       });
   }

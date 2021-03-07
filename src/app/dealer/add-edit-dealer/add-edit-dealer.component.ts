@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-add-edit-dealer',
   templateUrl: './add-edit-dealer.component.html',
@@ -8,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditDealerComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
   
   @Input() dealer: any;
   Id:Number = 0;
@@ -55,7 +57,7 @@ export class AddEditDealerComponent implements OnInit {
           UpdatedBy: 1,
         };
         this.service.addDealer(val).subscribe(res=>{
-          alert(res.toString());
+          this.toastr.success(res.toString());
         });
     }
    
@@ -83,7 +85,7 @@ export class AddEditDealerComponent implements OnInit {
     
     console.log('val',val)
     this.service.editDealer(val).subscribe(res=>{
-    alert(res.toString());
+    this.toastr.success(res.toString());
     });
   }
 

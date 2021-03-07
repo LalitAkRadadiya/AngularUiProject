@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dealer',
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class DealerComponent implements OnInit {
   isEdit = false;
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
 
   DealerList:any = [];
 
@@ -39,7 +40,7 @@ export class DealerComponent implements OnInit {
   deleteDealer(item:any){
     console.log('id>',item.Id);
       this.service.deleteDealer(item.Id).subscribe(data=>{
-        alert(data.toString());
+        this.toastr.success(data.toString());
         this.refreshDealerList();
       });
   }

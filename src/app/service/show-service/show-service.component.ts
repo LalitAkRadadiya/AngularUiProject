@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowServiceComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService,private toastr: ToastrService) { }
 
   ServiceList:any=[];
 
@@ -38,7 +39,7 @@ export class ShowServiceComponent implements OnInit {
   deleteClick(item:any){
     if(confirm('Are You Sure?')){
       this.service.deleteService(item.Id).subscribe(data=>{
-        alert(data.toString());
+        this.toastr.success(data.toString());
         this.refreshServiceList();
       });
     }
