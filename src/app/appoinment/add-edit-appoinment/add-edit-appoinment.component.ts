@@ -103,8 +103,9 @@ addAppoinment(){
             this.toastr.success(res.toString());
           });
 }
+planAvailble = false;
 editAppoinment(){
-          
+    this.planAvailble = true;    
   
   var val = {
     AppointmentId: this.appoinment.Id,
