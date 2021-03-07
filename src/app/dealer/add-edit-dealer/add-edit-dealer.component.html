@@ -58,8 +58,16 @@
     </div>
 </div>
 
-<button (click)="addDealer()" *ngIf="dealer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >
+<!-- <button (click)="addDealer()" *ngIf="dealer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >
     Add Dealer</button>
 
 <button (click)="editDealer()" *ngIf="dealer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">
     Update Dealer</button>
+     -->
+    
+    <div style="text-align: center">
+    
+            <button (click)="addDealer()" *ngIf="dealer.Id==0" type="button" class="btn btn-success">Save</button>
+            <button (click)="editDealer()" *ngIf="dealer.Id!=0" type="button" class="btn btn-success">Save</button>
+            <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+    </div>

@@ -51,9 +51,18 @@
 
     
 </div>
-
+<!-- 
 <button (click)="addService()" *ngIf="services.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
     Service</button>
 
 <button (click)="editService()" *ngIf="services.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
-    Service</button>
+    Service</button> -->
+
+    
+<div style="text-align: center">
+
+        <button (click)="addService()" *ngIf="services.Id==0" type="button" class="btn btn-success">Save</button>
+        
+        <button (click)="editService()" *ngIf="services.Id!=0" type="button" class="btn btn-success">Save</button>
+        <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+</div>

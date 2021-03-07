@@ -53,9 +53,17 @@
 
     
 </div>
-
+<!-- 
 <button (click)="addMechanic()" *ngIf="Mechanic.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
     Mechanic</button>
 
 <button (click)="editMechanic()" *ngIf="Mechanic.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
-    Mechanic</button>
+    Mechanic</button> -->
+
+    
+<div style="text-align: center">
+
+        <button (click)="addMechanic()" *ngIf="Mechanic.Id==0" type="button" class="btn btn-success">Save</button>
+        <button (click)="editMechanic()" *ngIf="Mechanic.Id!=0" type="button" class="btn btn-success">Save</button>
+        <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+</div>
