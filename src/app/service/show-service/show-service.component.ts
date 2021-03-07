@@ -19,6 +19,14 @@ export class ShowServiceComponent implements OnInit {
   services:any;
   ngOnInit(): void {
     this.refreshServiceList();
+    setTimeout(() => {
+      //init Datatable
+      $('#filterListTable').DataTable(
+      {
+      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
+      }
+      );
+      }, 5000);
   }
   addClick(){
     this.services={

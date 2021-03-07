@@ -21,6 +21,14 @@ export class ShowDealerComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshDealerList();
+    setTimeout(() => {
+      //init Datatable
+      $('#filterListTable').DataTable(
+      {
+      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
+      }
+      );
+      }, 5000);
   }
 
   addDealerClick(){

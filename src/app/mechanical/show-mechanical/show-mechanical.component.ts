@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit,enableProdMode } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
@@ -22,9 +22,18 @@ export class ShowMechanicalComponent implements OnInit {
 
 
   ngOnInit(): void {
+      setTimeout(() => {
+        //init Datatable
+        $('#filterListTable').DataTable(
+        {
+        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
+        }
+        );
+        }, 5000);
+    
     this.refreshMechanicList();
   }
-
+  
   addMechanicClick(){
     this.mechanic={
       Id:0

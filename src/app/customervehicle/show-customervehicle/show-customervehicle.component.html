@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+<table id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
     <thead>
         <tr>
             <th>ID</th>
@@ -95,48 +95,52 @@
 
                 </td>
             </tr>
-            <tr>
-                <td *ngIf="display && dataItem.Id == currentVehical" colspan="8">
-                    <table class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
-                        style="background-color: rgba(212, 226, 250, 0.5);">
-                        <thead>
-                            <tr>
-                                <th>Licence Plate</th>
-                                <th>Brand</th>
-                                <th>Meter Value</th>
-                                <th>Colour</th>
-                                <th>Description</th>
-                                <th>Model</th>
-                                <th>Registration Date</th>
-                                <th>Weight</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let dataItem of vehical">
-                                <td>{{dataItem.LicencePlate}}</td>
-                                <td>{{dataItem.Brand}}</td>
-                                <td>{{dataItem.MeterValue}}</td>
-                                <td>{{dataItem.Colour}}</td>
-                                <td>{{dataItem.Description}}</td>
-                                <td>{{dataItem.Model}}</td>
-                                <td>{{dataItem.RegDate}}</td>
-                                <td>{{dataItem.Weight}}</td>
-                                
-                                <td>
-                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                                        data-bs-target="#vehicleModal"(click)="editVehicleClick(dataItem)"
-                                        data-backdrop="static" data-keyboard="false">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
-                                        (click)="deleteVehicleClick(dataItem)">
-                                        <i class="fa fa-trash" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
+            
         </ng-container>
     </tbody>
 </table>
+
+<ng-container *ngFor="let dataItem of CustomerList ; index as i">
+<tr>
+    <td *ngIf="display && dataItem.Id == currentVehical" colspan="8">
+        <table  class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
+            style="background-color: rgba(212, 226, 250, 0.5);">
+            <thead>
+                <tr>
+                    <th>Licence Plate</th>
+                    <th>Brand</th>
+                    <th>Meter Value</th>
+                    <th>Colour</th>
+                    <th>Description</th>
+                    <th>Model</th>
+                    <th>Registration Date</th>
+                    <th>Weight</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dataItem of vehical">
+                    <td>{{dataItem.LicencePlate}}</td>
+                    <td>{{dataItem.Brand}}</td>
+                    <td>{{dataItem.MeterValue}}</td>
+                    <td>{{dataItem.Colour}}</td>
+                    <td>{{dataItem.Description}}</td>
+                    <td>{{dataItem.Model}}</td>
+                    <td>{{dataItem.RegDate}}</td>
+                    <td>{{dataItem.Weight}}</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                            data-bs-target="#vehicleModal"(click)="editVehicleClick(dataItem)"
+                            data-backdrop="static" data-keyboard="false">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
+                            (click)="deleteVehicleClick(dataItem)">
+                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>
+</ng-container>

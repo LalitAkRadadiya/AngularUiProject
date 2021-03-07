@@ -23,7 +23,7 @@ import { ShowDealerComponent } from './dealer/show-dealer/show-dealer.component'
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add-edit-mechanical.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {DataTablesModule} from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
@@ -57,6 +57,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
+    DataTablesModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
     
