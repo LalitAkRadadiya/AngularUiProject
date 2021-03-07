@@ -8,6 +8,7 @@ import { MechanicalComponent } from './mechanical/mechanical.component';
 import { CustomervehicleComponent } from './customervehicle/customervehicle.component';
 import { CommonModule } from '@angular/common';  
 
+import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 const routes: Routes = [
   {path:'',redirectTo:'home', pathMatch:'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'service',component:ServiceComponent},
   {path:'dealer',component:DealerComponent},
   {path:'mechanic',component:MechanicalComponent},
+  {path:'tracking/:id',component:AppoinmentTrackingComponent},
   {path:'customervehicle', component:CustomervehicleComponent}
 ];
 

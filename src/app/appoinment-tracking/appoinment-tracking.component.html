@@ -1,0 +1,33 @@
+<html>
+<body>
+<h1 style="text-align: center;">Service Tracker</h1>
+<img  style="margin-left: 27%;"   src="../../assets/bg4.gif"/>
+
+<div class="appoinmentid">
+<h4 style="text-align: center;">Appoinment ID: <span class="text-primary font-weight-bold">{{id}}</span></h4>
+</div> 
+<div>
+<span >Licence Plate:<span class="text-primary font-weight-bold">{{appoinmentData.LicencePlate}}</span></span><br>
+<span >Service Name:<span class="text-primary font-weight-bold">{{appoinmentData.ServiceName}}</span></span><br>
+<span >Mechanic Name:<span class="text-primary font-weight-bold">{{appoinmentData.MechanicName}}</span></span><br>
+
+<span >First Name:<span class="text-primary font-weight-bold">{{appoinmentData.FName}}</span></span><br>
+<span >Last Name:<span class="text-primary font-weight-bold">{{appoinmentData.LName}}</span></span><br>
+<span >Mobile:<span class="text-primary font-weight-bold">{{appoinmentData.MobileNo}}</span></span><br>
+</div>
+
+<h1 >Service Status : </h1>
+ <div class="container">
+ <span *ngFor="let item of counts;let i = index" >
+<span class="circle-desc" [class.circle-desc-active]="orderStatus == item">{{ item }}</span>
+<span class="circles" [class.active]="orderStatus == item"></span>
+<span class="bar" *ngIf="(i != counts.length-1)"></span>
+</span>
+
+<br>
+<br>
+<br>
+<br>
+</div>
+</body>
+</html>

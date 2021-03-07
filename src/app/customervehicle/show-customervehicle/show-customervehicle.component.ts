@@ -37,14 +37,7 @@ export class ShowCustomervehicleComponent implements OnInit {
         );
         }, 5000);
 
-        setTimeout(() => {
-          //init Datatable
-          $('#collapseVehicle1').DataTable(
-          {
-          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
-          }
-          );
-          }, 5000);
+        
   }
 
   addCustomerClick(){

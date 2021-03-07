@@ -24,11 +24,11 @@ export class ShowDealerComponent implements OnInit {
     setTimeout(() => {
       //init Datatable
       $('#filterListTable').DataTable(
-      {
-      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
-      }
+        {
+          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+        }
       );
-      }, 5000);
+    }, 5000);
   }
 
   addDealerClick(){

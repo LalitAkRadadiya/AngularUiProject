@@ -1,0 +1,120 @@
+body{
+    font-size:1em;
+     height: 100%;
+     background-color: rgb(224, 242, 253);
+    
+  }
+  .box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid blue;    
+    background-color: yellow; 
+  }
+  .appoinmentid{
+      background-color: rgba(251, 251, 251, 0.897);
+  }
+  .customerdetails{
+    background-color: rgba(251, 251, 251, 0.897);
+}
+  .cardetails{
+    background-color: rgb(175, 224, 255);
+  }
+  h1 {
+    font-family: Lato;
+    text-align: center;
+    color:	black;
+    /* background-image:url("/assets/bg_tracker.jpg") ; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .customer{
+      float: left;
+  }
+  
+  .circles{
+    height: 1.999em;
+    width: 1.999em;
+    border: 0.199em solid #000;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 1%;
+  }
+  
+  .active{
+      background-color:#ffa500;
+  }
+  
+  .circle-desc-active{
+  font-weight: bold;
+  }
+  
+  .bar{
+    width: 10%;
+    height: 0.063em;
+    margin-bottom:0.469em;
+    border: 0.031em solid #000;
+    color:#000;
+    background-color:#000;
+    display: inline-block;
+    text-align:center;
+    margin:"0 auto";
+  }
+  
+  .container{
+    min-width:380px;
+    margin: "0px auto";
+    text-align: center;
+  }
+  
+  .circle-desc{
+   /* position: absolute; */
+   /* top:19.000em; */
+   /* font-size: 1.125em; */
+   width: auto;
+   max-width:9.375em;
+   /* margin-left:-0.750em; */
+  }
+  
+  @media only screen and (max-width: 320px){
+     body {
+       font-size:20%
+    }
+  } 
+  
+  /*extra small devices*/
+  @media only screen and (max-width: 600px){
+     body {
+       font-size:40%
+    }
+  } 
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+     body {
+       font-size:60%
+    }
+  } 
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    body {
+       font-size:80%
+    }
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    body {
+       font-size:100%
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+     body {
+       font-size:120%
+    }
+  }
