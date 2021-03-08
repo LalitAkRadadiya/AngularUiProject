@@ -58,9 +58,8 @@ export class AddEditAppoinmentComponent implements OnInit {
       
     });
   }
-  loadServiceList(){
-    console.log(this.appoinment.DealerId);
-    this.service.serviceDropdown(this.appoinment.DealerId).subscribe(data=>{
+  loadServiceList(val: any){
+    this.service.serviceDropdown(val).subscribe(data=>{
       console.log('load',data);
       this.ServiceList = data;
     });
@@ -100,6 +99,8 @@ export class AddEditAppoinmentComponent implements OnInit {
   this.TotalTime=this.appoinment.TotalTime;
   this.TotalPrice=this.appoinment.TotalPrice;
     }
+    console.log(this.appoinment.de)
+    
   }
 
 addAppoinment(){
@@ -113,6 +114,7 @@ addAppoinment(){
           this.service.addAppoinment(val).subscribe(res=>{
             this.toastr.success(res.toString());
           });
+          this.loadServiceList(this.DealerId);
 }
 planAvailble = false;
 editAppoinment(){
@@ -121,10 +123,10 @@ editAppoinment(){
   var val = {
     AppointmentId: this.appoinment.Id,
     ServiceId: this.ServiceId,
-    CostType:this.CostType,
-    SalesPart: this.SalesPart,
+    CostType:'FIX',
+    SalesPart: 50,
     Quantity: this.Quantity,
-    PricePerUnit: this.PricePerUnit,
+    PricePerUnit: 30,
     CreatedBy : "Lalit"
   };
 

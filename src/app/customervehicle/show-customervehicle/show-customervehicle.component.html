@@ -103,8 +103,8 @@
 <ng-container *ngFor="let dataItem of CustomerList ; index as i">
 <tr>
     <td *ngIf="display && dataItem.Id == currentVehical" colspan="8">
-        <table  class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
-            style="background-color: rgba(212, 226, 250, 0.5);">
+        <table  id="filterListTable" class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
+            style="background-color: rgba(212, 226, 250, 0.5);    width: 1425px">
             <thead>
                 <tr>
                     <th>Licence Plate</th>

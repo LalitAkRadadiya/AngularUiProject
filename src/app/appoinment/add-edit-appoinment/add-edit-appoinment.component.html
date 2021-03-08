@@ -2,218 +2,223 @@
 
 
 
-        <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+    <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+        <div class="row">
+            <div class="col-sm-5">
+                <label>
+                    Please Select Dealer!
+                    <span style="color: red;">*</span></label>
+                <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                    <option *ngFor="let data of DealerList" [value]="data.Id">
+                        DealerName : {{data.DealerName}} - MobileNo : {{data.PhoneNo}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-5">
                 <div class="row">
-                    <div class="col-sm-5">
-                        <label>
-                            Please Select Dealer!
-                        <span style="color: red;">*</span></label>
-                        <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
-                            <option *ngFor="let data of DealerList" [value]="data.Id">
-                                DealerName : {{data.DealerName}} - MobileNo :  {{data.PhoneNo}}
-                            </option>
-                        </select>
-                    </div>
-            
+                    <label class="col-form-label">Enter Vehicle Number<span style="color: red;">*</span></label>
                 </div>
+
                 <div class="row">
-                    <label class="col-sm-2 col-form-label">Enter Vehicle Number<span style="color: red;">*</span></label>
-                </div>
-            
-                <div class="row">
-                    <div class="col-sm-5" style="display: flex">
+                    <div style="display: flex">
                         <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate">
-                        <button type="button" class="btn btn-success" style="margin: 0" (click)="getCustomerVehicleInfo(LicencePlate)">
-                        
-                                <i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-success" style="margin: 0"
+                            (click)="getCustomerVehicleInfo(LicencePlate)">
+
+                            <i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                     <div>
-            
                     </div>
+
                 </div>
+
+
             </div>
-            
-            
-            
+        </div>
+
+</div>
+
+
+
 
 
 </div>
 <ng-template #elseBlock>
-        <div class="row">
-                <label>Appoinment Details<span style="color: red;">*</span></label>
-                <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Mobile</th>
-                            <th>Licence Plate</th>
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>Model</th>
-                            <th>Brand</th>
-                            <th>Status</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Total Time</th>
-                            <th>Total Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                                <td>{{appoinment.FName}}</td>
-                                <td>{{appoinment.LName}}</td>
-                                <td>{{appoinment.MobileNo}}</td>
-                                <td>{{appoinment.LicencePlate }}</td>
-                                <td>{{appoinment.City}}</td>
-                                <td>{{appoinment.Country }}</td>
-                                <td>{{appoinment.Model}}</td>
-                                <td>{{appoinment.Brand}}</td>
-                                <td>{{appoinment.Status}}
-                                    
+    <div class="row">
+        <label>Appoinment Details<span style="color: red;">*</span></label>
+        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Mobile</th>
+                    <th>Licence Plate</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Model</th>
+                    <th>Brand</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Total Time</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{appoinment.FName}}</td>
+                    <td>{{appoinment.LName}}</td>
+                    <td>{{appoinment.MobileNo}}</td>
+                    <td>{{appoinment.LicencePlate }}</td>
+                    <td>{{appoinment.City}}</td>
+                    <td>{{appoinment.Country }}</td>
+                    <td>{{appoinment.Model}}</td>
+                    <td>{{appoinment.Brand}}</td>
+                    <td>{{appoinment.Status}}
 
-                        <select  name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)" [(ngModel)]="updatedStatus"  >
-                            <option >Pending</option>
-                            <option >Confirm</option>
-                            <option >Started</option>
-                            <option >Work Done</option>
-                            <option >Finished</option>
+
+                        <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                            [(ngModel)]="updatedStatus">
+                            <option>Pending</option>
+                            <option>Confirm</option>
+                            <option>Started</option>
+                            <option>Work Done</option>
+                            <option>Finished</option>
                         </select>
 
 
-                                </td>
-                                <td>{{appoinment.StartDate}}</td>
-                                <td>{{appoinment.EndDate}}</td>
-                                <td>{{appoinment.TotalTime}}</td>
-                                <td>{{appoinment.TotalPrice}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <label>Choose Service<span style="color: red;">*</span></label>
-            <select (click)="loadServiceList()" id="service" name="service" class="form-control" [(ngModel)]="ServiceId">
-                    <option *ngFor="let data of ServiceList" [value]="data.Id">
-                        Service Name : {{data.Name}} - Price :  {{data.Price}}
-                    </option>
-            </select>
-            <div style="display: flex">
-                    <div class="col-sm-5">
-                            <label>Cost Type<span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="CostType">
-                    </div>
-                    <div class="col-sm-5">
-                        
-                            <label>Sales Part<span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="SalesPart">
-                    </div>
-                    
-            </div>
-            <div style="display: flex">
-                    <div class="col-sm-5">
-                            <label>Quantity<span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity">
-                    </div>
-                    <div class="col-sm-5">
-                        <label>Price Per Unit<span style="color: red;">*</span></label>
-                            <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="PricePerUnit">
-                    </div>
-            </div>
+                    </td>
+                    <td>{{appoinment.StartDate}}</td>
+                    <td>{{appoinment.EndDate}}</td>
+                    <td>{{appoinment.TotalTime}}</td>
+                    <td>{{appoinment.TotalPrice}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 
-        <button (click)="editAppoinment()" *ngIf="appoinment.Id!=0" class="btn btn-outline-primary"style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
-        
-        
-        <div>
-                <label>Choose Mechanic<span style="color: red;">*</span></label>
-                <select (click)="loadMechanicList()" id="Mechanic" name="Mechanic" class="form-control" [(ngModel)]="MechanicId">
-                        
-                        <option *ngFor="let data of MechanicList" [value]="data.Id">
-                            <div *ngIf="MechanicList?.length else elseBlock" >
-                                    Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
-                            </div>
-                            <ng-template #elseBlock>
-                                No Data Found
-                            </ng-template>
-        
-                        </option>
-                </select>
-        </div>
-        <div style="display: flex">
-                <div class="col-sm-5">
-                        <label>Start Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
-                </div>
-                <div class="col-sm-5">
-                    <label>End Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
-                </div>
-        </div>
-        <button (click)="createPlan()" *ngIf="appoinment.Id!=0" class="btn btn-outline-primary"style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-        
-        
+
+
 </ng-template>
 
 
 
 
-<div  *ngIf="appoinment.Id==0; ">
+<div *ngIf="appoinment.Id==0; ">
+    <div class="row">
+        <label>Customer Details<span style="color: red;">*</span></label>
+        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                    <!-- <th>Email</th> -->
+                    <th>City</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="getvehical">
+                    <td>{{CustomerVehicleInfo.FName }}</td>
+                    <td>{{CustomerVehicleInfo.LName }}</td>
+                    <td>{{CustomerVehicleInfo.CustomerNo }}</td>
+                    <td>{{CustomerVehicleInfo.Address }}</td>
+                    <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
+                    <td>{{CustomerVehicleInfo.City }}</td>
+                    <td>{{CustomerVehicleInfo.Country }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </div> -->
         <div class="row">
-                <label>Customer Details<span style="color: red;">*</span></label>
-                <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Mobile</th>
-                            <th>Address</th>
-                            <!-- <th>Email</th> -->
-                            <th>City</th>
-                            <th>Country</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngIf="getvehical">
-                            <td>{{CustomerVehicleInfo.FName }}</td>
-                            <td>{{CustomerVehicleInfo.LName }}</td>
-                            <td>{{CustomerVehicleInfo.CustomerNo }}</td>
-                            <td>{{CustomerVehicleInfo.Address }}</td>
-                            <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
-                            <td>{{CustomerVehicleInfo.City }}</td>
-                            <td>{{CustomerVehicleInfo.Country }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- </div> -->
-                <div class="row">
-                    <label>Vehicle Details<span style="color: red;">*</span></label>
-                    <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
-                        <thead>
-                            <tr>
-                                <th>Licence Plate</th>
-                                <th>Model</th>
-                                <th>Brand</th>
-                                <th>Meter Value</th>
-                                <th>Reg. Date</th>
-                                <th>Vin</th>
-                                <th>Colour</th>
-                                <th>Eng. No</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngIf="getvehical">
-                                <td>{{CustomerVehicleInfo.LicencePlate }}</td>
-                                <td>{{CustomerVehicleInfo.Model }}</td>
-                                <td>{{CustomerVehicleInfo.Brand }}</td>
-                                <td>{{CustomerVehicleInfo.MeterValue }}</td>
-                                <td>{{CustomerVehicleInfo.RegDate }}</td>
-                                <td>{{CustomerVehicleInfo.Vin }}</td>
-                                <td>{{CustomerVehicleInfo.Colour }}</td>
-                                <td>{{CustomerVehicleInfo.EngNo }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            
-                <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
-                style="margin-top:2%; width: 50% ;margin-left:25%;">Book Appoinment</button>
-</div>
+            <label>Vehicle Details<span style="color: red;">*</span></label>
+            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                <thead>
+                    <tr>
+                        <th>Licence Plate</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Meter Value</th>
+                        <th>Reg. Date</th>
+                        <th>Vin</th>
+                        <th>Colour</th>
+                        <th>Eng. No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="getvehical">
+                        <td>{{CustomerVehicleInfo.LicencePlate }}</td>
+                        <td>{{CustomerVehicleInfo.Model }}</td>
+                        <td>{{CustomerVehicleInfo.Brand }}</td>
+                        <td>{{CustomerVehicleInfo.MeterValue }}</td>
+                        <td>{{CustomerVehicleInfo.RegDate }}</td>
+                        <td>{{CustomerVehicleInfo.Vin }}</td>
+                        <td>{{CustomerVehicleInfo.Colour }}</td>
+                        <td>{{CustomerVehicleInfo.EngNo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
+            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
+    </div>
+
+
+    <div *ngIf="appoinment.Id==0">
+        <div style="display: flex">
+            <div class="col-sm-5">
+                <label>Choose Service<span style="color: red;">*</span></label>
+                <select  id="service" name="service" class="form-control"
+                    [(ngModel)]="ServiceId">
+                    <option *ngFor="let data of ServiceList" [value]="data.Id">
+                        Service Name : {{data.Name}} - Price : {{data.Price}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <label>Quantity<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity">
+            </div>
+
+        </div>
+
+
+        <button (click)="editAppoinment()"  class="btn btn-outline-primary"
+            style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
+
+
+        <div>
+            <label>Choose Mechanic<span style="color: red;">*</span></label>
+            <select (click)="loadMechanicList()" id="Mechanic" name="Mechanic" class="form-control"
+                [(ngModel)]="MechanicId">
+
+                <option *ngFor="let data of MechanicList" [value]="data.Id">
+                    <div *ngIf="MechanicList?.length else elseBlock">
+                        Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
+                    </div>
+                    <ng-template #elseBlock>
+                        No Data Found
+                    </ng-template>
+
+                </option>
+            </select>
+        </div>
+        <div style="display: flex">
+            <div class="col-sm-5">
+                <label>Start Date<span style="color: red;">*</span></label>
+                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
+            </div>
+            <div class="col-sm-5">
+                <label>End Date<span style="color: red;">*</span></label>
+                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
+            </div>
+        </div>
+        <button (click)="createPlan()"  class="btn btn-outline-primary"
+            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+
+
+    </div>
