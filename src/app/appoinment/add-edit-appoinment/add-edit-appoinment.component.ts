@@ -11,7 +11,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   DealerList : any= [];
   ServiceList : any = [];
-  
+  updatedStatus:any;
+
   MechanicList : any = [];
   constructor(private service:SharedService,private toastr: ToastrService) { }
   CustomerVehicleInfo: any;
@@ -64,7 +65,17 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.ServiceList = data;
     });
   }
-  
+
+  updateAppoinmentStatus(id : any){
+      var val = {
+        Id: id,
+        Status : this.updatedStatus
+      }
+      
+      this.service.editAppoinmentStatus(val).subscribe(res=>{
+        this.toastr.success(res.toString());
+      });
+  }
   editAppinment = 0;
   ngOnInit(): void {
 

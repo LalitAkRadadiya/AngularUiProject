@@ -16,7 +16,7 @@ export class ShowAppoinmentComponent implements OnInit {
   ModalTitle!:string;
   ActivateAddEditAppoinmentComp:boolean=false;
   appoinment:any;
-  updatedStatus:any;
+  
   ngOnInit(): void {
     // this.updateAppoinmentStatus();
     this.refreshAppoinmentList();
@@ -54,15 +54,7 @@ export class ShowAppoinmentComponent implements OnInit {
     this.ActivateAddEditAppoinmentComp=true;
 
   }
-  updateAppoinmentStatus(id : any){
-      var val = {
-        Id: id,
-        Status : this.updatedStatus
-      }
-      this.service.editAppoinmentStatus(val).subscribe(res=>{
-        this.toastr.success(res.toString());
-      });
-  }
+  
   editClick(item:any){
     this.appoinment={
       Id: item.Id

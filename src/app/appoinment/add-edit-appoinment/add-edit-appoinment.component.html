@@ -40,7 +40,7 @@
 </div>
 <ng-template #elseBlock>
         <div class="row">
-                <label>Customer Details</label>
+                <label>Appoinment Details</label>
                 <table class="table"  style="background-color: rgba(212, 226, 250, 0.5);">
                     <thead>
                         <tr>
@@ -69,7 +69,19 @@
                                 <td>{{appoinment.Country }}</td>
                                 <td>{{appoinment.Model}}</td>
                                 <td>{{appoinment.Brand}}</td>
-                                <td>{{appoinment.Status}}</td>
+                                <td>{{appoinment.Status}}
+                                    
+
+                        <select  name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)" [(ngModel)]="updatedStatus"  >
+                            <option >Pending</option>
+                            <option >Confirm</option>
+                            <option >Started</option>
+                            <option >Work Done</option>
+                            <option >Finished</option>
+                        </select>
+
+
+                                </td>
                                 <td>{{appoinment.StartDate}}</td>
                                 <td>{{appoinment.EndDate}}</td>
                                 <td>{{appoinment.TotalTime}}</td>
@@ -205,5 +217,3 @@
                 <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
                 style="margin-top:2%; width: 50% ;margin-left:25%;">Book Appoinment</button>
 </div>
-
-

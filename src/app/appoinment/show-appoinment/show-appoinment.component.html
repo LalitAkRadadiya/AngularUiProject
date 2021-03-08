@@ -64,13 +64,7 @@ data-backdrop="static" data-keyboard="false">
             <td>
               {{dataItem.Status}}
               <!-- <button>Update Status</button> -->
-              <select  name="status" class="form-control" (change)="updateAppoinmentStatus(dataItem.Id)" [(ngModel)]="updatedStatus"  >
-                  <option >Pending</option>
-                  <option >Confirm</option>
-                  <option >Started</option>
-                  <option >Work Done</option>
-                  <option >Finished</option>
-              </select>
+             
             </td>
             
             <td>
