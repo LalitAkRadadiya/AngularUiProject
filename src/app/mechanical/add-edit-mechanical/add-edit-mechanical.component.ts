@@ -47,7 +47,9 @@ export class AddEditMechanicalComponent implements OnInit {
       DealerId: this.DealerId,
       
     };
-    console.log('value112',val);
+    if(val.isActive != true){
+      val['isActive'] = false; 
+    }
     this.service.addMechanic(val).subscribe(res=>{
       this.toastr.success(res.toString());
     });

@@ -56,6 +56,12 @@ export class AddEditDealerComponent implements OnInit {
           CreatedBy: 1,
           UpdatedBy: 1,
         };
+        if(val.isActive != true){
+          val['isActive'] = false; 
+        }
+        if(val.isOnline != true){
+          val['isOnline'] = false; 
+        }
         this.service.addDealer(val).subscribe(res=>{
           this.toastr.success(res.toString());
         });

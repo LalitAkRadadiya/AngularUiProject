@@ -14,28 +14,25 @@
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">IsActive<span style="color: red;">*</span></label>
+        
+        <label class="col-sm-2 col-form-label">Mobile No<span style="color: red;">*</span></label>
+        
         <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Email Id<span style="color: red;">*</span></label>
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='Mechanic.isActive'>
+            <input type="text" class="form-control" [(ngModel)]='Mechanic.MobileNo'>
+       
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='Mechanic.EmailId'>
         </div>
     </div>
+  
     <div class="row">
-        <label class="col-sm-2 col-form-label">Mobile No<span style="color: red;">*</span></label>
-        <div class="col-sm-5"></div>
-        
-    </div>
-    <div class="row">
-        <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='Mechanic.MobileNo'>
-        </div>
+        <label class="col-sm-5 col-form-label">IsActive<span style="color: red;">*</span><input type="checkbox" style="margin-left: 20px;" [(ngModel)]='Mechanic.isActive'></label>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             
