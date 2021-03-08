@@ -56,6 +56,7 @@ export class ShowServiceComponent implements OnInit {
       this.service.getServiceList().subscribe(data=>{
      
       this.ServiceList=data;
+      console.log(this.ServiceList)
           }
         );
         }

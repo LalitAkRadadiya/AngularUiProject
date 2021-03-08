@@ -22,7 +22,9 @@ export class AddEditServiceComponent implements OnInit {
   CreatedBy!:string;
   UpdateBy!:string;
   DealerId! : number;
-
+  CostType! : string;
+  PricePerUnit! : Number;
+  SalesPart ! : string; 
 
   loadDealerList(){
     this.service.dealerDropdown().subscribe(data=>{
@@ -40,6 +42,9 @@ export class AddEditServiceComponent implements OnInit {
       this.Discount=this.services.Discount;
       this.Description=this.services.Description;
       this.DealerId = this.DealerId;
+      this.CostType = this.CostType;
+      this.PricePerUnit= this.PricePerUnit;
+      this.SalesPart = this.SalesPart;
         }
         console.log(this.services);
   }
@@ -53,7 +58,10 @@ export class AddEditServiceComponent implements OnInit {
             Description:this.services.Description,
             CreatedBy:1,
             UpdatedBy:1,
-            DealerId:this.DealerId
+            DealerId:this.DealerId,
+            SalesPart : this.services.SalesPart,
+            PricePerUnit: this.services.PricePerUnit,
+            CostType: this.services.CostType
           };
           // val['Description']=this.Description;
             this.service.addService(val).subscribe(res=>{
@@ -69,6 +77,9 @@ export class AddEditServiceComponent implements OnInit {
             Description:this.services.Description,
             CreatedBy:1,
             UpdatedBy:1,
+            SalesPart : this.services.SalesPart,
+            PricePerUnit: this.services.PricePerUnit,
+            CostType: this.services.CostType
           };
               this.service.editService(val).subscribe(res=>{
               this.toastr.success(res.toString());
