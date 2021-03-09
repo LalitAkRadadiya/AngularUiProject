@@ -13,23 +13,23 @@ export class AddEditVehicleComponent implements OnInit {
 
   ActivateAddEditVehicalComp:boolean=true;
   @Input() vehicle: any;
-  Id: Number = 0;
-  Description!: string;
-  Brand!: string;
-  LicencePlate!: string;
-  Model!: string;
-  MeterValue!: string;
-  RegDate!: string;
-  Weight!: string;
-  MCHCode!: Number;
-  Vin!: Number;
-  EngNo!: Number;
-  Colour!: string;
-  CreatedBy!: string;
-  UpdateBy!: string;
+  // Id: Number = 0;
+  // Description!: string;
+  // Brand!: string;
+  // LicencePlate!: string;
+  // Model!: string;
+  // MeterValue!: string;
+  // RegDate!: string;
+  // Weight!: string;
+  // MCHCode!: Number;
+  // Vin!: Number;
+  // EngNo!: Number;
+  // Colour!: string;
+  // CreatedBy!: string;
+  // UpdateBy!: string;
 
   ngOnInit(): void {
-    
+    console.log(this.vehicle.Id);
     
     
   }
@@ -51,8 +51,8 @@ export class AddEditVehicleComponent implements OnInit {
       Colour: this.vehicle.Colour,
       CreatedBy: 1,
       UpdatedBy: 1,
-      CustomerId:this.vehicle.Id
-      //should use dyn custid
+      CustomerId:this.vehicle.CustomerId
+      
     };
     console.log('vehicle added',this.vehicle);
     this.service.addVehicle(val).subscribe(res=>{

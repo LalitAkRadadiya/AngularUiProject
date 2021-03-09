@@ -57,12 +57,14 @@ export class ShowCustomervehicleComponent implements OnInit {
   
  addeditVehicle = false;
   addVehicleClick(item: any){
-    this.vehicle={
-      Id:0
-    }
+    
     
     console.log('addvehicleclick',item);
     this.vehicle = item;
+    this.vehicle={
+      Id:0,
+      CustomerId: item.Id
+    }
     this.ModalTitle="Add Vehicle";
     this.ActivateAddEditVehicalComp=true;
     
