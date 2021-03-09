@@ -7,48 +7,60 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control" name="FName" [(ngModel)]='Mechanic.MechanicName'>
+            
+            <span *ngIf="tempMechanicName">MechanicName Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='Mechanic.EmployeeNo'>
+            
+            <span *ngIf="tempEmployeeNo">EmployeeNo Required</span>
         </div>
     </div>
     <div class="row">
-        
+
         <label class="col-sm-2 col-form-label">Mobile No<span style="color: red;">*</span></label>
-        
+
         <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Email Id<span style="color: red;">*</span></label>
     </div>
     <div class="row">
         <div class="col-sm-5">
+
             <input type="text" class="form-control" [(ngModel)]='Mechanic.MobileNo'>
-       
+
+            <span *ngIf="tempMobileNo">MobileNo Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='Mechanic.EmailId'>
-        </div>
-    </div>
-  
-    <div class="row">
-        <label class="col-sm-5 col-form-label">IsActive<span style="color: red;">*</span><input type="checkbox" style="margin-left: 20px;" [(ngModel)]='Mechanic.isActive'></label>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-5">
             
-                <label>
-                        Please Select Dealer!
-                    <span style="color: red;">*</span></label>
-                    <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
-                        <option *ngFor="let data of DealerList" [value]="data.Id">
-                            Dealer Name : {{data.DealerName}} - Mobile NO :{{data.PhoneNo}}
-                        </option>
-                    </select>
-              
+            <span *ngIf="tempEmailId">EmailId Required</span>
         </div>
     </div>
 
-    
+    <div class="row">
+        <label class="col-sm-5 col-form-label">IsActive<span style="color: red;">*</span>
+            <input type="checkbox" style="margin-left: 20px;" [(ngModel)]='Mechanic.isActive'></label>
+            <span *ngIf="tempisActive">isActive Required</span>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+
+            <label>
+                Please Select Dealer!
+                <span style="color: red;">*</span></label>
+            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <option *ngFor="let data of DealerList" [value]="data.Id">
+                    Dealer Name : {{data.DealerName}} - Mobile NO :{{data.PhoneNo}}
+                </option>
+            </select>
+            
+            <span *ngIf="tempDealerId">DealerId Required</span>
+
+        </div>
+    </div>
+
+
 </div>
 <!-- 
 <button (click)="addMechanic()" *ngIf="Mechanic.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
@@ -57,10 +69,10 @@
 <button (click)="editMechanic()" *ngIf="Mechanic.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update
     Mechanic</button> -->
 
-    
+
 <div style="text-align: center">
 
-        <button (click)="addMechanic()" *ngIf="Mechanic.Id==0" type="button" class="btn btn-success">Save</button>
-        <button (click)="editMechanic()" *ngIf="Mechanic.Id!=0" type="button" class="btn btn-success">Save</button>
-        <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+    <button (click)="addMechanic()" *ngIf="Mechanic.Id==0" type="button" class="btn btn-success">Save</button>
+    <button (click)="editMechanic()" *ngIf="Mechanic.Id!=0" type="button" class="btn btn-success">Save</button>
+    <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
 </div>

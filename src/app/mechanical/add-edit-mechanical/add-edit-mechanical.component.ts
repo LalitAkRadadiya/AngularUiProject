@@ -34,27 +34,67 @@ export class AddEditMechanicalComponent implements OnInit {
     this.loadDealerList();
   }
 
-  
+  tempMechanicName= false;
+  tempEmployeeNo= false;
+  tempMobileNo= false;
+  tempEmailId= false;
+  tempisActive= false;
+  tempDealerId= false;
   addMechanic() {
-    
-    var val = {
-      Id: this.Mechanic.Id,
-      MechanicName : this.Mechanic.MechanicName,
-      EmployeeNo: this.Mechanic.EmployeeNo,
-      isActive: this.Mechanic.isActive,
-      EmailId: this.Mechanic.EmailId,
-      MobileNo: this.Mechanic.MobileNo,
-      DealerId: this.DealerId,
-      
-    };
-    if(val.isActive != true){
-      val['isActive'] = false; 
+    if(!this.Mechanic.MechanicName){
+      this.tempMechanicName = true;
+    }else{
+      this.tempMechanicName= false;
     }
-    this.service.addMechanic(val).subscribe(res=>{
-      this.toastr.success(res.toString(),'', {
-        timeOut: 3000,
-      });
-    });
+    if(!this.Mechanic.EmployeeNo){
+      this.tempEmployeeNo = true;
+    }else{
+      this.tempEmployeeNo= false;
+    }
+    if(!this.Mechanic.isActive){
+      this.tempisActive= true;
+    }else{
+      this.tempisActive= false;
+    }
+    if(!this.Mechanic.EmailId){
+      this.tempEmailId = true;
+    }else{
+      this.tempEmailId = false;
+    }
+    if(!this.Mechanic.MobileNo){
+      this.tempMobileNo= true;
+    }else{
+      this.tempMobileNo= false;
+    }
+    if(!this.DealerId){
+      this.tempDealerId = true;
+    }else{
+      this.tempDealerId = false;
+    }
+
+    if(!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo && !this.tempisActive){
+
+              var val = {
+                Id: this.Mechanic.Id,
+                MechanicName : this.Mechanic.MechanicName,
+                EmployeeNo: this.Mechanic.EmployeeNo,
+                isActive: this.Mechanic.isActive,
+                EmailId: this.Mechanic.EmailId,
+                MobileNo: this.Mechanic.MobileNo,
+                DealerId: this.DealerId,
+                
+              };
+              if(val.isActive != true){
+                val['isActive'] = false; 
+              }
+              this.service.addMechanic(val).subscribe(res=>{
+                this.toastr.success(res.toString(),'', {
+                  timeOut: 3000,
+                });
+              });
+    }else{
+      return false;
+    }
   }
   editMechanic() {
 

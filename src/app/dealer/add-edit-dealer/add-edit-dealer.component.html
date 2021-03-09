@@ -7,16 +7,24 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control" name="FName" [(ngModel)]='dealer.DealerName'>
+            <span *ngIf="tempDealerName">DealerName Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='dealer.DealerNo'>
+            <span *ngIf="tempDealerNo">DealerNo Required</span>
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">IsActive<span style="color: red;">*</span> <input style="margin-left: 20px;" type="checkbox"  [(ngModel)]='dealer.isActive'></label>
+        <label class="col-sm-2 col-form-label">IsActive<span style="color: red;">*</span> 
+            <input style="margin-left: 20px;" type="checkbox"  [(ngModel)]='dealer.isActive'>
+           
+        </label>
         <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">IsOnline<span style="color: red;">*</span><input style="margin-left: 20px;" type="checkbox" [(ngModel)]='dealer.isOnline'></label>
+        <label class="col-sm-2 col-form-label">IsOnline<span style="color: red;">*</span>
+            <input style="margin-left: 20px;" type="checkbox" [(ngModel)]='dealer.isOnline'>
+            
+        </label>
     </div>
     
     <div class="row">
@@ -27,10 +35,12 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='dealer.Website'>
+            <span *ngIf="tempWebsite">Website Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='dealer.Email'>
+            <span *ngIf="tempEmail">Email Required</span>
         </div>
     </div>
 
@@ -42,10 +52,12 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='dealer.PhoneNo'>
+            <span *ngIf="tempPhoneNo">PhoneNo Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='dealer.Address'>
+            <span *ngIf="tempAddress">Address Required</span>
         </div>
     </div>
 </div>
