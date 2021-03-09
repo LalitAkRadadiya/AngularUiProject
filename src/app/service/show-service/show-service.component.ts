@@ -10,54 +10,73 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ShowServiceComponent implements OnInit {
 
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service: SharedService, private toastr: ToastrService) { }
 
-  ServiceList:any=[];
+  ServiceList: any = [];
 
-  ModalTitle!:string;
-  ActivateAddEditServiceComp:boolean=false;
-  services:any;
-  ngOnInit(): void {
+  ModalTitle!: string;
+  ActivateAddEditServiceComp: boolean = false;
+  services: any;
+  async  ngOnInit() {
+
+
     this.refreshServiceList();
+    
+    this.loader = this.service.showLoadeer();
     setTimeout(() => {
       //init Datatable
+      
+     
       $('#filterListTable').DataTable(
-      {
-      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]]
-      }
+        {
+          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+          retrieve: true,
+        }
       );
-      }, 5000);
+      
+    }, 5000);
   }
-  addClick(){
-    this.services={
-      Id:0
+  addClick() {
+    this.services = {
+      Id: 0
     }
-    this.ModalTitle="Add Service";
-    this.ActivateAddEditServiceComp=true;
+    this.ModalTitle = "Add Service";
+    this.ActivateAddEditServiceComp = true;
   }
-  editClick(item:any){
-    this.services=item
-    this.ModalTitle="Edit Service";
-    this.ActivateAddEditServiceComp=true;
+  editClick(item: any) {
+    this.services = item
+    this.ModalTitle = "Edit Service";
+    this.ActivateAddEditServiceComp = true;
   }
-  closeClick(){
-    this.ActivateAddEditServiceComp=false;
+  closeClick() {
+    this.ActivateAddEditServiceComp = false;
     this.refreshServiceList();
   }
-  deleteClick(item:any){
-    if(confirm('Are You Sure?')){
-      this.service.deleteService(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+  deleteClick(item: any) {
+    if (confirm('Are You Sure?')) {
+      this.service.deleteService(item.Id).subscribe(data => {
+        this.toastr.success(data.toString(),'', {
+          timeOut: 2000,
+        });
         this.refreshServiceList();
       });
     }
   }
-    refreshServiceList(){
-      this.service.getServiceList().subscribe(data=>{
+  
+  loader = "";
+  refreshServiceList() {
      
-      this.ServiceList=data;
-      console.log(this.ServiceList)
-          }
-        );
-        }
+    this.loader = this.service.showLoadeer();
+     this.service.getServiceList().subscribe(data => {
+      setTimeout(() => {
+        
+      this.ServiceList = data;
+
+
+      this.loader =  this.service.hideLoader();
+      }, 1000);
+    }
+    );
+     
   }
+}

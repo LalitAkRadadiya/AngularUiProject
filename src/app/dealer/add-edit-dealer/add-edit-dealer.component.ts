@@ -63,7 +63,9 @@ export class AddEditDealerComponent implements OnInit {
           val['isOnline'] = false; 
         }
         this.service.addDealer(val).subscribe(res=>{
-          this.toastr.success(res.toString());
+          this.toastr.success(res.toString(),'', {
+            timeOut: 3000,
+          });
         });
     }
    
@@ -91,7 +93,9 @@ export class AddEditDealerComponent implements OnInit {
     
     console.log('val',val)
     this.service.editDealer(val).subscribe(res=>{
-    this.toastr.success(res.toString());
+    this.toastr.success(res.toString(),'', {
+      timeOut: 3000,
+    });
     });
   }
 

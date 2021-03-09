@@ -60,18 +60,24 @@ export class ShowMechanicalComponent implements OnInit {
   deleteMechanic(item:any){
     console.log('id',item.Id);
       this.service.deleteMechanic(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshMechanicList();
       });
   }
 
-  
+  loader =""
   refreshMechanicList(){
-    this.service.getMechanicList().subscribe(data=>{
-      console.log('dataitem',data);
-          this.MechanicList=data;
-        }
-      );
+    this.loader = this.service.showLoadeer();
+    this.service.getMechanicList().subscribe(data => {
+     setTimeout(() => {
+       
+     this.MechanicList = data;
+
+
+     this.loader =  this.service.hideLoader();
+     }, 1000);
+   }
+   );
     }
  
 

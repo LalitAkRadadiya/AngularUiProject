@@ -15,6 +15,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   MechanicList : any = [];
   constructor(private service:SharedService,private toastr: ToastrService) { }
+  
   CustomerVehicleInfo: any;
   @Input() appoinment:any;
   Id:Number = 0;
@@ -72,7 +73,9 @@ export class AddEditAppoinmentComponent implements OnInit {
       }
       
       this.service.editAppoinmentStatus(val).subscribe(res=>{
-        this.toastr.success(res.toString());
+        this.toastr.success(res.toString(),'', {
+          timeOut: 3000,
+        });
       });
   }
   editAppinment = 0;
@@ -112,7 +115,9 @@ addAppoinment(){
         console.log('app value',val);
 
           this.service.addAppoinment(val).subscribe(res=>{
-            this.toastr.success(res.toString());
+            this.toastr.success(res.toString(),'', {
+              timeOut: 3000,
+            });
           });
           this.loadServiceList(this.DealerId);
 }
@@ -132,7 +137,9 @@ editAppoinment(){
 
     console.log('val cal',val);
   this.service.addAppoinmentService(val).subscribe(res=>{
-    this.toastr.success(res.toString());
+    this.toastr.success(res.toString(),'', {
+      timeOut: 3000,
+    });
   });
 
       }
@@ -146,7 +153,9 @@ editAppoinment(){
           Duration : 'NULL'
         }
         this.service.addPlanning(val).subscribe(res=>{
-          this.toastr.success(res.toString());
+          this.toastr.success(res.toString(),'', {
+            timeOut: 3000,
+          });
         });
       }
       // editAppoinment(){

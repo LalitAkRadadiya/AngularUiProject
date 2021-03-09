@@ -4,6 +4,8 @@
 <!-- Button trigger modal -->
 <br>
 <h5>Home / Customer</h5>
+
+<div class="lds-ripple" [ngClass]="loader" style="z-index: 10000;position: fixed;top: 50%;left: 50%;"><div></div><div></div></div>
 <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" (click)="addCustomerClick()"
     data-bs-toggle="modal" data-bs-target="#customerModal" data-backdrop="static" data-keyboard="false">
     <i class="fa fa-plus" aria-hidden="true"></i> Add Customer</button>
@@ -104,7 +106,7 @@
 <tr>
     <td *ngIf="display && dataItem.Id == currentVehical" colspan="8">
         <table  id="filterListTable" class="collapse" id="collapseVehicle{{dataItem.Id}}" class="table"
-            style="background-color: rgba(212, 226, 250, 0.5);    width: 1425px">
+            style="background-color: rgba(212, 226, 250, 0.5);    width: 1640px">
             <thead>
                 <tr>
                     <th>Licence Plate</th>

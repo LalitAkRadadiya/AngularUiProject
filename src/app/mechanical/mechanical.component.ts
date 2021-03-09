@@ -55,7 +55,7 @@ export class MechanicalComponent implements OnInit {
   deleteMechanic(item:any){
     console.log('id',item.Id);
       this.service.deleteMechanic(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshMechanicList();
       });
   }

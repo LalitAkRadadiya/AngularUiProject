@@ -10,6 +10,15 @@ export class SharedService {
   readonly APIUrl = "https://localhost:44370/api"
 
   constructor(private http: HttpClient) { }
+  
+  loader = ""; 
+  showLoadeer(){
+     return this.loader = "ShowloadDisplay";
+  }
+  hideLoader(){
+    return this.loader ="HideloadDisaply";
+  }
+
   getAppointmentById(id: any){
     return this.http.get<any>(this.APIUrl + '/Appointment/AppointmentTracker/' + id);
   }

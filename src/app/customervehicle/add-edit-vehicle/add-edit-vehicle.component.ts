@@ -56,7 +56,9 @@ export class AddEditVehicleComponent implements OnInit {
     };
     console.log('vehicle added',this.vehicle);
     this.service.addVehicle(val).subscribe(res=>{
-      this.toastr.success(res.toString());
+      this.toastr.success(res.toString(),'', {
+        timeOut: 3000,
+      });
     });
 
     
@@ -82,7 +84,9 @@ export class AddEditVehicleComponent implements OnInit {
     console.log('val',val);
     this.service.editVehicle(val).subscribe(res=>{
       console.log('res',res);
-      this.toastr.success(res.toString());
+      this.toastr.success(res.toString(),'', {
+        timeOut: 3000,
+      });
     });
 
   }

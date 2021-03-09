@@ -5,6 +5,8 @@
   </head>
   <br>
 <h5>Home / Services</h5>
+
+<div class="lds-ripple" [ngClass]="loader" style="z-index: 10000;position: fixed;top: 50%;left: 50%;"><div></div><div></div></div>
   <!-- Button trigger modal -->
   <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" 
   data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -37,7 +39,6 @@
               
               <th>Dealer Name</th>
               <th>Service Name</th>
-              
               <th>Price</th>
               <th>Fix Price</th>
               <th>Discount</th>
@@ -53,7 +54,6 @@
               <td>{{dataItem.Id}}</td>
               <td>{{dataItem.DealerName}}</td>
               <td>{{dataItem.Name}}</td>
-              
               <td>{{dataItem.Price}}</td>
               <td>{{dataItem.FixPrice}}</td>
               <td>{{dataItem.Discount}}</td>

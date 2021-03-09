@@ -36,7 +36,9 @@ export class AddEditCustomerComponent implements OnInit {
       UpdatedBy: 1,
     };
     this.service.addCustomer(val).subscribe(res=>{
-      this.toastr.success(res.toString());
+      this.toastr.success(res.toString(),'', {
+        timeOut: 3000,
+      });
     });
   }
   editCustomer() {
@@ -57,7 +59,9 @@ export class AddEditCustomerComponent implements OnInit {
     
    
     this.service.editCustomer(val).subscribe(res=>{
-    this.toastr.success(res.toString());
+    this.toastr.success(res.toString(),'', {
+      timeOut: 3000,
+    });
     });
   }
 

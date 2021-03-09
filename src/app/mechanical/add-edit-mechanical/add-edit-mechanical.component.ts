@@ -51,7 +51,9 @@ export class AddEditMechanicalComponent implements OnInit {
       val['isActive'] = false; 
     }
     this.service.addMechanic(val).subscribe(res=>{
-      this.toastr.success(res.toString());
+      this.toastr.success(res.toString(),'', {
+        timeOut: 3000,
+      });
     });
   }
   editMechanic() {
@@ -72,7 +74,9 @@ export class AddEditMechanicalComponent implements OnInit {
     
     console.log('val',val)
     this.service.editMechanic(val).subscribe(res=>{
-    this.toastr.success(res.toString());
+    this.toastr.success(res.toString(),'', {
+      timeOut: 3000,
+    });
     });
   }
 }

@@ -79,7 +79,7 @@ export class ShowCustomervehicleComponent implements OnInit {
   deleteCustomerClick(item:any){
     if(confirm('Are You Sure?')){
       this.service.deleteCustomer(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshcustomerList();
       });
     }
@@ -90,7 +90,7 @@ export class ShowCustomervehicleComponent implements OnInit {
       
       console.log('data',item.Id);
       this.service.deleteVehicle(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         console.log('data',data);
         this.refreshcustomerList();
       });
@@ -110,12 +110,23 @@ export class ShowCustomervehicleComponent implements OnInit {
     });
     
   }
-  refreshcustomerList(){
-    this.service.getCustomerList().subscribe(data=>{
-    this.CustomerList=data;
-        }
-      );
+ 
+  loader = "";
+  refreshcustomerList() {
+     
+    this.loader = this.service.showLoadeer();
+     this.service.getCustomerList().subscribe(data => {
+      setTimeout(() => {
+        
+      this.CustomerList = data;
+
+
+      this.loader =  this.service.hideLoader();
+      }, 1000);
     }
+    );
+     
+  }
   Customervehicle(n: number): Array<number> { 
     return Array(n); 
   } 

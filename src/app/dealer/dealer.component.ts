@@ -42,7 +42,7 @@ export class DealerComponent implements OnInit {
   deleteDealer(item:any){
     console.log('id>',item.Id);
       this.service.deleteDealer(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshDealerList();
       });
   }

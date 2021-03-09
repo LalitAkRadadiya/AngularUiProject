@@ -72,17 +72,28 @@ export class ShowAppoinmentComponent implements OnInit {
   deleteClick(item:any){
     if(confirm('Are You Sure?')){
       this.service.deleteAppoinment(item.Id).subscribe(data=>{
-        this.toastr.success(data.toString());
+        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshAppoinmentList();
       });
     }
 
   }
-refreshAppoinmentList(){
-  this.service.getAppointmentList().subscribe(data=>{
-    console.log('data',data);
-  this.AppointmentList=data;
-      }
+
+  
+  loader = "";
+  refreshAppoinmentList() {
+     
+    this.loader = this.service.showLoadeer();
+     this.service.getAppointmentList().subscribe(data => {
+      setTimeout(() => {
+        
+      this.AppointmentList = data;
+
+
+      this.loader =  this.service.hideLoader();
+      }, 1000);
+    }
     );
+     
   }
 }

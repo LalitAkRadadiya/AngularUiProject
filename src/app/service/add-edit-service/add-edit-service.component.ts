@@ -65,7 +65,9 @@ export class AddEditServiceComponent implements OnInit {
           };
           // val['Description']=this.Description;
             this.service.addService(val).subscribe(res=>{
-              this.toastr.success(res.toString());
+              this.toastr.success(res.toString(),'', {
+                timeOut: 3000,
+              });
             });
   }
         editService(){
@@ -82,7 +84,9 @@ export class AddEditServiceComponent implements OnInit {
             CostType: this.services.CostType
           };
               this.service.editService(val).subscribe(res=>{
-              this.toastr.success(res.toString());
+              this.toastr.success(res.toString(),'', {
+                timeOut: 3000,
+              });
                         });
             }
     }
