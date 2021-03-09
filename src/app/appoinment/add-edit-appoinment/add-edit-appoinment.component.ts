@@ -172,10 +172,17 @@ editAppoinment(){
           getCustomerVehicleInfo(item: string){
             
             this.getvehical = true;
-            this.service.getCustomerVehicleInfo(item).subscribe(data => {
-              delete data.Email
-              console.log('data0',data);
-            this.CustomerVehicleInfo = data;
-            });
+            try{
+              
+                  this.service.getCustomerVehicleInfo(item).subscribe(data => {
+                    delete data.Email
+                    console.log('data0',data);
+                  this.CustomerVehicleInfo = data;
+
+
+                  });
+            }catch(ex){
+                console.log('eee',ex);
+            }
           }
   }

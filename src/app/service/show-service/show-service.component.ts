@@ -30,7 +30,7 @@ export class ShowServiceComponent implements OnInit {
       $('#filterListTable').DataTable(
         {
           "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-          retrieve: true,
+          stateSave: true,
         }
       );
       
@@ -68,6 +68,7 @@ export class ShowServiceComponent implements OnInit {
      
     this.loader = this.service.showLoadeer();
      this.service.getServiceList().subscribe(data => {
+       console.log('data',data);
       setTimeout(() => {
         
       this.ServiceList = data;

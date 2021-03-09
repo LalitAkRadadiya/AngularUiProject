@@ -67,6 +67,7 @@
                 <td>{{dataItem.ZipCode}}</td>
                 <td>{{dataItem.Country}}</td>
                 <td>{{dataItem.CustomerNo}}</td>
+                <td>{{dataItem.DeleteButton}}</td>
                 <td>
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                         data-bs-target="#customerModal" (click)="editCustomerClick(dataItem)" data-backdrop="static"
@@ -75,7 +76,7 @@
                     </button>
                     
 
-                    <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
+                    <button [disabled]='!dataItem.DeleteButton' type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                         (click)="deleteCustomerClick(dataItem)">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>

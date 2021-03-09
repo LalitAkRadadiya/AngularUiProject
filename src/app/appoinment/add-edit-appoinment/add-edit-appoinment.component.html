@@ -106,7 +106,7 @@
 
 
 <div *ngIf="appoinment.Id==0; ">
-    <div class="row">
+    <div class="row" *ngIf="getvehical">
         <label>Customer Details<span style="color: red;">*</span></label>
         <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
             <thead>
@@ -121,7 +121,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngIf="getvehical">
+                <tr >
                     <td>{{CustomerVehicleInfo.FName }}</td>
                     <td>{{CustomerVehicleInfo.LName }}</td>
                     <td>{{CustomerVehicleInfo.CustomerNo }}</td>
@@ -133,7 +133,7 @@
             </tbody>
         </table>
         <!-- </div> -->
-        <div class="row">
+        <div class="row" *ngIf="getvehical">
             <label>Vehicle Details<span style="color: red;">*</span></label>
             <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
@@ -149,7 +149,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngIf="getvehical">
+                    <tr >
                         <td>{{CustomerVehicleInfo.LicencePlate }}</td>
                         <td>{{CustomerVehicleInfo.Model }}</td>
                         <td>{{CustomerVehicleInfo.Brand }}</td>
