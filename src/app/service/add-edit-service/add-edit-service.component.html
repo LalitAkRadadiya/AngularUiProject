@@ -16,11 +16,12 @@
                      Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}
                 </option>
             </select>
-            
+            <span *ngIf="serviceDealerId">Dealer Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='services.Name'>
+            <span *ngIf="sericeName">Name Required</span>
         </div>
     </div>
     <div class="row">
@@ -36,6 +37,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='services.FixPrice'>
+            <span *ngIf="servicefixprice">FixPrice Required</span>
         </div>
     </div>
     <div class="row">
@@ -47,10 +49,12 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control"  [(ngModel)]='services.Discount'>
+            <span *ngIf="serviceDiscount">Discount Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='services.Description'>
+            <span *ngIf="serviceDescription">Description Required</span>
 
 
         </div>
@@ -64,10 +68,12 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control"  [(ngModel)]='services.CostType'>
+            <span *ngIf="serviceCosttype">CostType Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='services.SalesPart'>
+            <span *ngIf="serviceSalesPart">SalesPart Required</span>
         </div>
     </div>
     <div class="row">
@@ -79,6 +85,7 @@
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control"  [(ngModel)]='services.PricePerUnit'>
+            <span *ngIf="servicePricePerUnit">PricePerUnit Required</span>
         </div>
         <div class="col-sm-2"></div>
         <!-- <div class="col-sm-5">
