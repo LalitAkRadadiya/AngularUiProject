@@ -46,12 +46,12 @@
 <table id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
     <thead>
         <tr>
-            <th>ID</th>
+            <th style="width: 10px;">ID</th>
             <th>Name</th>
             <th>Address</th>
             <th>City</th>
             <th>Zip Code</th>
-            <th>Country</th>
+            <!-- <th>Country</th> -->
             <th>Mobile</th>
             <th style="text-align:center">Action</th>
         </tr>
@@ -65,10 +65,10 @@
                 <td>{{dataItem.Address}}</td>
                 <td>{{dataItem.City}}</td>
                 <td>{{dataItem.ZipCode}}</td>
-                <td>{{dataItem.Country}}</td>
+                <!-- <td>{{dataItem.Country}}</td> -->
                 <td>{{dataItem.CustomerNo}}</td>
-                <td>{{dataItem.DeleteButton}}</td>
-                <td>
+                <!-- <td>{{dataItem.DeleteButton}}</td> -->
+                <td style="display: flex;">
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                         data-bs-target="#customerModal" (click)="editCustomerClick(dataItem)" data-backdrop="static"
                         data-keyboard="false">
@@ -132,7 +132,7 @@
                     <td>{{dataItem.RegDate}}</td>
                     <td>{{dataItem.Weight}}</td>
                     
-                    <td>
+                    <td style="display: flex;">
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                             data-bs-target="#vehicleModal"(click)="editVehicleClick(dataItem)"
                             data-backdrop="static" data-keyboard="false">

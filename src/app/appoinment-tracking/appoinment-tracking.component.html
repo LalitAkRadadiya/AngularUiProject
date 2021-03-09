@@ -6,16 +6,47 @@
 <!-- <img  style="margin-left: 27%;"   src="../../assets/bg4.gif"/> -->
 
 <div class="appoinmentid">
-<h4 style="text-align: center;">Appoinment ID: <span class="text-primary font-weight-bold">{{id}}</span></h4>
+<h4 style="text-align: center;margin:10px 0px;  padding: 3% 0px;">Appoinment ID: <span class="text-primary font-weight-bold">{{id}}</span></h4>
 </div> 
 <div>
-<span >Licence Plate:<span class="text-primary font-weight-bold">{{appoinmentData.LicencePlate}}</span></span><br>
-<span >Service Name:<span class="text-primary font-weight-bold">{{appoinmentData.ServiceName}}</span></span><br>
-<span >Mechanic Name:<span class="text-primary font-weight-bold">{{appoinmentData.MechanicName}}</span></span><br>
 
-<span >First Name:<span class="text-primary font-weight-bold">{{appoinmentData.FName}}</span></span><br>
-<span >Last Name:<span class="text-primary font-weight-bold">{{appoinmentData.LName}}</span></span><br>
-<span >Mobile:<span class="text-primary font-weight-bold">{{appoinmentData.MobileNo}}</span></span><br>
+    <div style="display: flex;text-align: center; padding-left: 18%;">
+        <div class="card col-md-3">
+            <div class="card-body">
+                <span >Licence Plate:<span class="text-primary font-weight-bold">{{appoinmentData.LicencePlate}}</span></span><br>
+            </div>
+          </div>
+          <div class="card col-md-3">
+            <div class="card-body">
+                <span >Service Name:<span class="text-primary font-weight-bold">{{appoinmentData.ServiceName}}</span></span><br>
+            </div>
+          </div>
+          <div class="card col-md-3">
+            <div class="card-body">
+                <span >Mechanic Name:<span class="text-primary font-weight-bold">{{appoinmentData.MechanicName}}</span></span><br>
+            </div>
+          </div>
+    </div>
+    <div style="display: flex;text-align: center; padding-left: 18%;">
+
+        <div class="card col-md-3">
+            <div class="card-body">
+                <span >First Name:<span class="text-primary font-weight-bold">{{appoinmentData.FName}}</span></span><br>
+            </div>
+          </div>
+          <div class="card col-md-3">
+            <div class="card-body">
+                <span >Last Name:<span class="text-primary font-weight-bold">{{appoinmentData.LName}}</span></span><br>
+            </div>
+          </div>
+          <div class="card col-md-3">
+            <div class="card-body">
+                <span >Mobile:<span class="text-primary font-weight-bold">{{appoinmentData.MobileNo}}</span></span><br>
+            </div>
+          </div>
+    </div>
+      
+
 </div>
 
 <h1 >Service Status : </h1>
