@@ -169,14 +169,20 @@ editAppoinment(){
       //                 });
       //     }
           getvehical = false;
+          vehicalnotfound = false;
           getCustomerVehicleInfo(item: string){
             
             this.getvehical = true;
             try{
-              
+                  
                   this.service.getCustomerVehicleInfo(item).subscribe(data => {
-                    delete data.Email
-                    console.log('data0',data);
+                    
+                    console.log('data0',data.length);
+                    if(data.length == 0){
+                      this.vehicalnotfound= true;
+                  }
+
+
                   this.CustomerVehicleInfo = data;
 
 

@@ -26,7 +26,10 @@
                             (click)="getCustomerVehicleInfo(LicencePlate)">
 
                             <i class="fa fa-search" aria-hidden="true"></i></button>
+                            <br>
                     </div>
+                    <span *ngIf="vehicalnotfound" style="color: red;">Vehical not Found</span>
+
                     <div>
                     </div>
 
@@ -107,64 +110,67 @@
 
 <div *ngIf="appoinment.Id==0; ">
     <div class="row" *ngIf="getvehical">
-        <label>Customer Details<span style="color: red;">*</span></label>
-        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Mobile</th>
-                    <th>Address</th>
-                    <!-- <th>Email</th> -->
-                    <th>City</th>
-                    <th>Country</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr >
-                    <td>{{CustomerVehicleInfo.FName }}</td>
-                    <td>{{CustomerVehicleInfo.LName }}</td>
-                    <td>{{CustomerVehicleInfo.CustomerNo }}</td>
-                    <td>{{CustomerVehicleInfo.Address }}</td>
-                    <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
-                    <td>{{CustomerVehicleInfo.City }}</td>
-                    <td>{{CustomerVehicleInfo.Country }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- </div> -->
-        <div class="row" *ngIf="getvehical">
-            <label>Vehicle Details<span style="color: red;">*</span></label>
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <th>Licence Plate</th>
-                        <th>Model</th>
-                        <th>Brand</th>
-                        <th>Meter Value</th>
-                        <th>Reg. Date</th>
-                        <th>Vin</th>
-                        <th>Colour</th>
-                        <th>Eng. No</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr >
-                        <td>{{CustomerVehicleInfo.LicencePlate }}</td>
-                        <td>{{CustomerVehicleInfo.Model }}</td>
-                        <td>{{CustomerVehicleInfo.Brand }}</td>
-                        <td>{{CustomerVehicleInfo.MeterValue }}</td>
-                        <td>{{CustomerVehicleInfo.RegDate }}</td>
-                        <td>{{CustomerVehicleInfo.Vin }}</td>
-                        <td>{{CustomerVehicleInfo.Colour }}</td>
-                        <td>{{CustomerVehicleInfo.EngNo }}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div *ngIf="CustomerVehicleInfo">
+                <label>Customer Details<span style="color: red;">*</span></label>
+                <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <!-- <th>Email</th> -->
+                            <th>City</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>{{CustomerVehicleInfo.FName }}</td>
+                            <td>{{CustomerVehicleInfo.LName }}</td>
+                            <td>{{CustomerVehicleInfo.CustomerNo }}</td>
+                            <td>{{CustomerVehicleInfo.Address }}</td>
+                            <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
+                            <td>{{CustomerVehicleInfo.City }}</td>
+                            <td>{{CustomerVehicleInfo.Country }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- </div> -->
+                <div class="row" *ngIf="getvehical">
+                    <label>Vehicle Details<span style="color: red;">*</span></label>
+                    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                        <thead>
+                            <tr>
+                                <th>Licence Plate</th>
+                                <th>Model</th>
+                                <th>Brand</th>
+                                <th>Meter Value</th>
+                                <th>Reg. Date</th>
+                                <th>Vin</th>
+                                <th>Colour</th>
+                                <th>Eng. No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td>{{CustomerVehicleInfo.LicencePlate }}</td>
+                                <td>{{CustomerVehicleInfo.Model }}</td>
+                                <td>{{CustomerVehicleInfo.Brand }}</td>
+                                <td>{{CustomerVehicleInfo.MeterValue }}</td>
+                                <td>{{CustomerVehicleInfo.RegDate }}</td>
+                                <td>{{CustomerVehicleInfo.Vin }}</td>
+                                <td>{{CustomerVehicleInfo.Colour }}</td>
+                                <td>{{CustomerVehicleInfo.EngNo }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+                <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
+                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
         </div>
-
-        <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
-            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
+        
     </div>
 
 

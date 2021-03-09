@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { AddEditAppoinmentComponent } from './appoinment/add-edit-appoinment/add-edit-appoinment.component';
 import { ShowServiceComponent } from './service/show-service/show-service.component';
 @Injectable({
@@ -107,9 +109,18 @@ export class SharedService {
   addPlanning(val: any){
     return this.http.post(this.APIUrl + '/Planning/CreatePlanning', val);
   }
-
+  errorMsg : any;
   getCustomerVehicleInfo(LicencePlate: string): Observable<any> {
-    return this.http.get<any>(this.APIUrl + "/Vehicle/GetVehicleInfo?LicencePlate=" + LicencePlate);
+    return this.http.get<any>(this.APIUrl + "/Vehicle/GetVehicleInfo?LicencePlate=" + LicencePlate).pipe(
+      catchError(error => {
+          if (error.error instanceof ErrorEvent) {
+              this.errorMsg = `Error: ${error.error.message}`;
+          } else {
+              this.errorMsg = `Error: ${error.message}`;
+          }
+          return of([]);
+      })
+  );;
   }
 
 
