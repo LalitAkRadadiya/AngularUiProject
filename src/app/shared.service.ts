@@ -28,6 +28,7 @@ export class SharedService {
     return this.http.put(this.APIUrl + '/Appointment/UpdateStatus', val);
   }
 
+ 
 
   getAppointmentList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Appointment/allAppointments');
@@ -42,9 +43,25 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/Appoinment/DeleteAppoinments/' + id);
   }
 
-  getAppointmentServiceList() :Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + '/AppointmentService/allAppointmentServices');
+  // getAppointmentServiceList() :Observable<any[]> {
+  //   return this.http.get<any>(this.APIUrl + '/AppointmentService/allAppointmentServices');
+  // }
+  getAppointmentServiceList(id: any) :Observable<any[]> {
+    return this.http.get<any>(this.APIUrl + '/AppointmentService/GetAppServicesByAppId/'+id);
   }
+  getPlanningList(id: any) :Observable<any[]> {
+    return this.http.get<any>(this.APIUrl + '/Planning/GetPlanningByAppId/'+id);
+  }
+  deleteAppoinmentService(id: any) {
+    return this.http.delete(this.APIUrl + '/AppointmentService/DeleteAppointmentServices/' + id);
+  }
+  deletePlanning(id: any){
+    return this.http.delete(this.APIUrl + '/Planning/DeletePlannings/' + id);
+  }
+
+
+
+
   addAppoinmentService(val: any) {
     return this.http.post(this.APIUrl + '/AppoinmentService/CreateAppoinmentServices', val);
   }
@@ -107,6 +124,7 @@ export class SharedService {
 
 
   addPlanning(val: any){
+    console.log('postvval',val);
     return this.http.post(this.APIUrl + '/Planning/CreatePlanning', val);
   }
   errorMsg : any;

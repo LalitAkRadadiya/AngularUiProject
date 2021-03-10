@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-add-edit-appoinment',
   templateUrl: './add-edit-appoinment.component.html',
@@ -12,6 +13,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   DealerList: any = [];
   ServiceList: any = [];
   AppServiceList : any = [];
+  PlanningList :  any = [];
   updatedStatus: any;
 
   MechanicList: any = [];
@@ -55,7 +57,8 @@ export class AddEditAppoinmentComponent implements OnInit {
     });
   }
   loadMechanicList() {
-    this.service.mechanicDropdown(this.appoinment.DealerId).subscribe(data => {
+    console.log('',this.DealerId);
+    this.service.mechanicDropdown(this.DealerId).subscribe(data => {
       this.MechanicList = data;
     });
   }
@@ -67,11 +70,18 @@ export class AddEditAppoinmentComponent implements OnInit {
   }
   
   AppointmentServiceList(val : any){
-    this.service.getAppointmentServiceList().subscribe(data =>{
-      this.AppServiceList = data.filter(x=>x.AppointmentId == val);
+    this.service.getAppointmentServiceList(val).subscribe(data =>{
+      this.AppServiceList = data;
       console.log('data',this.AppServiceList);
     });
   }
+  planningList(val : any){
+    this.service.getPlanningList(val).subscribe(data =>{
+      this.PlanningList = data;
+      console.log('data',this.PlanningList);
+    });
+  }
+  
   updateAppoinmentStatus(id: any) {
     var val = {
       Id: id,
@@ -84,11 +94,13 @@ export class AddEditAppoinmentComponent implements OnInit {
       });
     });
   }
+
   editAppinment = 0;
-  async ngOnInit() {
+
+  ngOnInit() {
 
     this.editAppinment = this.appoinment.Id
-    await this.loadDealerList();
+     this.loadDealerList();
 
     if (this.appoinment != null && this.appoinment != undefined) {
 
@@ -109,64 +121,117 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.TotalPrice = this.appoinment.TotalPrice;
     }
     console.log('id',this.appoinment.Id)
-    await this.AppointmentServiceList(this.appoinment.Id);
+     this.AppointmentServiceList(this.appoinment.Id);
+     this.planningList(this.appoinment.Id);
 
   }
 
   displayservice = false;
   displayMechanic = false;
   serviceAppoinment  : any;
+  tempDealer = false;
+  addappvalidation(){
+    if(!this.DealerId){
+      this.tempDealer = true; 
+    }else{
+      this.tempDealer= false;
+    }
+  }
+  disableappoinmentbutton = false;
   addAppoinment() {
-    var val = this.CustomerVehicleInfo;
-    val['MobileNo'] = val['CustomerNo'];
-    val['Email'] = "123";
-    val['DealerId'] = this.DealerId;
-    val['Status'] = "pending";
-    console.log('app value', val);
+    this.addappvalidation();
+    if(!this.tempDealer){
 
-    this.service.addAppoinment(val).subscribe(res => {
-      this.serviceAppoinment = res
-      this.toastr.success("SuccessFully Created", '', {
-        timeOut: 3000,
+      var val = this.CustomerVehicleInfo;
+      val['MobileNo'] = val['CustomerNo'];
+      val['Email'] = "123";
+      val['DealerId'] = this.DealerId;
+      val['Status'] = "pending";
+      console.log('app value', val);
+  
+      this.service.addAppoinment(val).subscribe(res => {
+        this.serviceAppoinment = res
+        this.toastr.success("SuccessFully Created", '', {
+          timeOut: 3000,
+        });
+        
+        this.displayservice = true;
       });
-      
-      this.displayservice = true;
-    });
-    this.loadServiceList(this.DealerId);
+      this.loadServiceList(this.DealerId);
+      this.disableappoinmentbutton = true;
+    }else{
+      return false;
+    }
   }
   planAvailble = false;
-  AddAppoinmentService() {
-    this.planAvailble = true;
 
+  currentAppoinmentServiceId : any;
+  disableappservicebutton =false;
+  tempAppservice = false;
+  AddAppoinmentService() {
+
+    this.planAvailble = true;
+    if(!this.ServiceId){
+      this.tempAppservice = true;
+    }else{
+      this.tempAppservice = false;
+    }
+    if(!this.tempAppservice){
+
+            var val = {
+              AppointmentId: this.serviceAppoinment,
+              ServiceId: this.ServiceId,
+              CostType: 'FIX',
+              SalesPart: 50,
+              Quantity: this.Quantity,
+              PricePerUnit: 30,
+              CreatedBy: "Lalit"
+            };
+        
+            console.log('val cal', val);
+            this.service.addAppoinmentService(val).subscribe(res => {
+              console.log(res);
+              this.currentAppoinmentServiceId = res;
+              this.toastr.success("Created Successfully", '', {
+                timeOut: 3000,
+              });
+              this.disableappservicebutton = true;
+              this.displayMechanic= true;
+            });
+  
+    }else{
+      return false;
+    }
+  }
+disbaleplanningbutton = false;
+  createPlanning() {
     var val = {
       AppointmentId: this.serviceAppoinment,
-      ServiceId: this.ServiceId,
-      CostType: 'FIX',
-      SalesPart: 50,
-      Quantity: this.Quantity,
-      PricePerUnit: 30,
-      CreatedBy: "Lalit"
-    };
-
-    console.log('val cal', val);
-    this.service.addAppoinmentService(val).subscribe(res => {
+      MechanicId: 28,
+      AppointmentServiceId: this.currentAppoinmentServiceId,
+      StartDate: this.StartDate,
+      EndDate: this.EndDate,
+      Duration: this.EndDate
+      
+    }
+    console.log(val);
+    this.service.addPlanning(val).subscribe(res => {
+      console.log(res);
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
-      this.displayMechanic= true;
+      this.disbaleplanningbutton=true;
     });
-
   }
-  createPlan() {
-    var val = {
-      AppointmentId: this.appoinment.Id,
-      MechanicId: this.MechanicId,
-      AppoinmentServiceId: 0,
-      StartDate: this.StartDate,
-      EndDate: this.EndDate,
-      Duration: 'NULL'
-    }
-    this.service.addPlanning(val).subscribe(res => {
+  deleteApppoinmentService(val : any){
+    this.service.deleteAppoinmentService(val.Id).subscribe(res => {
+      this.toastr.success(res.toString(), '', {
+        timeOut: 3000,
+      });
+    });
+  }
+  deletePlanning(val: any){
+    this.service.deletePlanning(val.Id).subscribe(res => {
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });

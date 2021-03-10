@@ -22,15 +22,15 @@ export class ShowAppoinmentComponent implements OnInit {
   ngOnInit(): void {
     // this.updateAppoinmentStatus();
     this.refreshAppoinmentList();
-    setTimeout(() => {
-      //init Datatable
-      $('#filterListTable').DataTable(
-      {
-      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-      stateSave: true,
-      }
-      );
-      }, 5000);
+    // setTimeout(() => {
+    //   //init Datatable
+    //   $('#filterListTable').DataTable(
+    //   {
+    //   "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+    //   stateSave: true,
+    //   }
+    //   );
+    //   }, 5000);
   }
   addClick(){
     this.appoinment={

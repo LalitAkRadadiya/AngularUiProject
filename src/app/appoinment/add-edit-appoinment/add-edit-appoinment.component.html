@@ -8,11 +8,12 @@
                 <label>
                     Please Select Dealer!
                     <span style="color: red;">*</span></label>
-                <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <select [disabled]="disableappoinmentbutton" id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                     <option *ngFor="let data of DealerList" [value]="data.Id">
                         DealerName : {{data.DealerName}} - MobileNo : {{data.PhoneNo}}
                     </option>
                 </select>
+                <span *ngIf="tempDealer" style="color: red;">Please Select Dealer</span>
             </div>
             <div class="col-sm-5">
                 <div class="row">
@@ -100,44 +101,82 @@
         </table>
     </div>
 
-    <div class="row">
-        <label>Appoinment Details<span style="color: red;">*</span></label>
-        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>AppoinmentId </th>
-                    <th>ServiceId</th>
-                    <th>CostType</th>
-                    <th>Description</th>
-                    <th>Discount</th>
-                    <th>FixPrice</th>
-                    <th>Price</th>
-                    <th>PricePerUnit</th>
-                    <th>Quantity</th>
-                    <th>SalesPart</th>
-                    <th>action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let data of AppServiceList">
-                    <td>{{data.Id}}</td>
-                    <td>{{data.AppoinmentId}}</td>
-                    <td>{{data.ServiceId}}</td>
-                    <td>{{data.CostType}}</td>
-                    <td>{{data.Description}}</td>
-                    <td>{{data.Discount }}</td>
-                    <td>{{data.FixPrice}}</td>
-                    <td>{{data.Price}}</td>
-                    <td>{{data.PricePerUnit}}
-                    <td>{{data.Quantity}}</td>
-                    <td>{{data.SalesPart}}</td>
-                     <button  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                    <i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <!-- (click)="deleteserviceClick(data)" -->
-                </tr>
-            </tbody>
-        </table>
+    <div class="row" >
+        <label>AppoinmentService Details<span style="color: red;">*</span></label>
+        <div *ngIf="AppServiceList">
+            <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <!-- <th>AppoinmentId </th> -->
+                        <th>Service Name</th> 
+                        <th>CostType</th>
+                        <th>Description</th>
+                        <th>Discount</th>
+                        <th>FixPrice</th>
+                        <th>Price</th>
+                        <th>PricePerUnit</th>
+                        <th>Quantity</th>
+                        <th>SalesPart</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of AppServiceList">
+                        <td>{{data.Id}}</td>
+                        <!-- <td>{{data.AppoinmentId}}</td> -->
+                        <td>{{data.ServiceName}}</td>
+                        <td>{{data.CostType}}</td>
+                        <td>{{data.Description}}</td>
+                        <td>{{data.Discount }}</td>
+                        <td>{{data.FixPrice}}</td>
+                        <td>{{data.Price}}</td>
+                        <td>{{data.PricePerUnit}}
+                        <td>{{data.Quantity}}</td>
+                        <td>{{data.SalesPart}}</td>
+                         <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <!-- (click)="deleteserviceClick(data)" -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="row" >
+        <label>Planning Details<span style="color: red;">*</span></label>
+        <div *ngIf="PlanningList">
+            <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <!-- <th>AppoinmentId </th> -->
+                        <th>AppointmentId</th> 
+                        <th>AppointmentServiceId</th>
+                        <th>Duration</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of PlanningList">
+                        <td>{{data.Id}}</td>
+                        <!-- <td>{{data.AppoinmentId}}</td> -->
+                        <td>{{data.AppointmentId}}</td>
+                        <td>{{data.AppointmentServiceId}}</td>
+                        <td>{{data.Duration}}</td>
+                        <td>{{data.StartDate }}</td>
+                        <td>{{data.EndDate}}</td>
+                        
+                         <button  (click)="deletePlanning(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <!-- (click)="deleteserviceClick(data)" -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 
 
@@ -205,7 +244,7 @@
                         </tbody>
                     </table>
         
-                <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
+                <button [disabled]="disableappoinmentbutton" (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-success"
                     style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
         </div>
         
@@ -214,19 +253,21 @@
 
     <div *ngIf="appoinment.Id==0">
         <div *ngIf="displayservice" style="display: flex">
-            <div class="col-sm-5">
+            <div class="col-sm-9">
                 <label>Choose Service<span style="color: red;">*</span></label>
-                <select  id="service" name="service" class="form-control"
+                <select [disabled]="disableappservicebutton" id="service" name="service" class="form-control"
                     [(ngModel)]="ServiceId">
                     <option *ngFor="let data of ServiceList" [value]="data.Id">
                         Service Name : {{data.Name}} - Price : {{data.Price}}
                     </option>
                 </select>
+                <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
             </div>
-            <div class="col-sm-5">
-                <!-- <label>Quantity<span style="color: red;">*</span></label>
-                <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
-                <button (click)="AddAppoinmentService()"  class="btn btn-outline-primary"
+            <div class="col-sm-3">
+                 <!-- <label><span style="color: red;"></span></label> -->
+                 <br>
+                <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+                <button [disabled]="disableappservicebutton"(click)="AddAppoinmentService()"  class="btn btn-success"
                 style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
             </div>
 
@@ -237,8 +278,9 @@
 
 
         <div *ngIf="displayMechanic">
+       
             <label>Choose Mechanic<span style="color: red;">*</span></label>
-            <select (click)="loadMechanicList()" id="Mechanic" name="Mechanic" class="form-control"
+            <select (click)="loadMechanicList()" [disabled]="disbaleplanningbutton" id="Mechanic" name="Mechanic" class="form-control"
                 [(ngModel)]="MechanicId">
 
                 <option *ngFor="let data of MechanicList" [value]="data.Id">
@@ -261,7 +303,7 @@
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
                     </div>
                 </div>
-                <button (click)="createPlan()"  class="btn btn-outline-primary"
+                <button [disabled]="disbaleplanningbutton" (click)="createPlanning()"  class="btn btn-success"
                     style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
         
         </div>

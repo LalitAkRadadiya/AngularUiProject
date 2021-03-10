@@ -10,8 +10,8 @@ import { SharedService } from 'src/app/shared.service'
 export class AppoinmentTrackingComponent implements OnInit {
 
   id: any;
-  counts: any[] = ["Pending", "Confirm", "Started","Work Done", "Finished"];
-  orderStatus: any = "Pending";
+  counts: any[] = ["pending", "Confirm", "Started","Work Done", "Finished"];
+  orderStatus: any = "[pending";
   appoinmentData: any;
   constructor(private service: SharedService, private router: ActivatedRoute) { }
 
