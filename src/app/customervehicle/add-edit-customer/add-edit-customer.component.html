@@ -7,11 +7,15 @@
         </div>
         <div class="row">
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="FName" [(ngModel)]='customer.FName' placeholder="First Name" required>
+                <input type="text" class="form-control" name="FName" [(ngModel)]='customer.FName'
+                    placeholder="First Name" required>
+                <span *ngIf="tempFName">First Name Required</span>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.LName'  placeholder="Last Name" required name="LName">
+                <input type="text" class="form-control" [(ngModel)]='customer.LName' placeholder="Last Name" required
+                    name="LName">
+                <span *ngIf="tempLName">Last Name Required</span>
             </div>
         </div>
         <div class="row">
@@ -21,11 +25,15 @@
         </div>
         <div class="row">
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.Address' placeholder="Address" required name="Address">
+                <input type="text" class="form-control" [(ngModel)]='customer.Address' placeholder="Address" required
+                    name="Address">
+                <span *ngIf="tempAddress">Address Required</span>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.ZipCode' required  placeholder="ZipCode" name="ZipCode">
+                <input type="text" class="form-control" [(ngModel)]='customer.ZipCode' required placeholder="ZipCode"
+                    name="ZipCode">
+                <span *ngIf="tempZipCode">ZipCode Required</span>
             </div>
         </div>
         <div class="row">
@@ -35,14 +43,15 @@
         </div>
         <div class="row">
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.City'   placeholder="City" required name="City">
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
+                <input type="text" class="form-control" [(ngModel)]='customer.City' placeholder="City" required
+                    name="City">
+                <span *ngIf="tempCity">City Required</span>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.Country' required   placeholder="Country" name="Country">
+                <input type="text" class="form-control" [(ngModel)]='customer.Country' required placeholder="Country"
+                    name="Country">
+                <span *ngIf="tempCountry">Country Required</span>
             </div>
         </div>
 
@@ -53,21 +62,23 @@
         </div>
         <div class="row">
             <div class="col-sm-5">
-                <input type="email" email class="form-control" [(ngModel)]='customer.Email'  placeholder="Email"  name="Email" required>
+                <input type="email" email class="form-control" [(ngModel)]='customer.Email' placeholder="Email"
+                    name="Email" required>
+                <span *ngIf="tempEmail">Email Required</span>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.CustomerNo' name="CustomerNo"  placeholder="MobileNo"  required>
+                <input type="text" class="form-control" [(ngModel)]='customer.CustomerNo' name="CustomerNo"
+                    placeholder="MobileNo" required>
+                <span *ngIf="tempCustomerNo">Mobile No Required</span>
             </div>
         </div>
     </div>
 
     <div style="text-align: center">
 
-        <button [disabled]="myForm.invalid" (click)="addCustomer()" *ngIf="customer.Id==0" type="button"
-            class="btn btn-success">Save</button>
-        <button [disabled]="myForm.invalid" (click)="editCustomer()" *ngIf="customer.Id!=0" type="button"
-            class="btn btn-success">Save</button>
+        <button (click)="addCustomer()" *ngIf="customer.Id==0" type="button" class="btn btn-success">Save</button>
+        <button (click)="editCustomer()" *ngIf="customer.Id!=0" type="button" class="btn btn-success">Save</button>
         <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
     </div>
 </form>

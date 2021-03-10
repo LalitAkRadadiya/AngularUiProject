@@ -21,7 +21,7 @@ export class SharedService {
     return this.loader ="HideloadDisaply";
   }
 
-  getAppointmentById(id: any){
+  getAppointmentById(id: any):Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Appointment/AppointmentTracker/' + id);
   }
   editAppoinmentStatus(val: any) {
@@ -29,7 +29,7 @@ export class SharedService {
   }
 
 
-  getAppointmentList() {
+  getAppointmentList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Appointment/allAppointments');
   }
   addAppoinment(val: any) {
@@ -42,14 +42,14 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/Appoinment/DeleteAppoinments/' + id);
   }
 
-  getAppointmentServiceList() {
+  getAppointmentServiceList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + 'AppointmentService/allAppointmentServices');
   }
   addAppoinmentService(val: any) {
     return this.http.post(this.APIUrl + '/AppoinmentService/CreateAppoinmentServices', val);
   }
 
-  getDealerList() {
+  getDealerList():Observable<any[]>  {
     return this.http.get<any>(this.APIUrl + '/Dealer/allDealers');
   }
   addDealer(val: any) {
@@ -64,7 +64,7 @@ export class SharedService {
 
 
 
-  getCustomerList() {
+  getCustomerList():Observable<any[]>  {
     return this.http.get<any>(this.APIUrl + '/Customer/allCustomers');
   }
   addCustomer(val: any) {
@@ -125,7 +125,7 @@ export class SharedService {
 
 
 
-  getServiceList() {
+  getServiceList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Service/allServices');
   }
   addService(val: any) {
@@ -139,7 +139,7 @@ export class SharedService {
   }
 
   
-  getMechanicList() {
+  getMechanicList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Mechanic/allMechanics');
   }
   addMechanic(val: any) {

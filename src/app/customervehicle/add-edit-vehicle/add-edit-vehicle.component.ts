@@ -9,9 +9,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddEditVehicleComponent implements OnInit {
 
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service: SharedService, private toastr: ToastrService) { }
 
-  ActivateAddEditVehicalComp:boolean=true;
+  ActivateAddEditVehicalComp: boolean = true;
   @Input() vehicle: any;
   // Id: Number = 0;
   // Description!: string;
@@ -30,65 +30,165 @@ export class AddEditVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.vehicle.Id);
-    
-    
+
+
   }
 
+  tempDescription = false;
+  tempBrand = false;
+  tempLicencePlate = false;
+  tempModel = false;
+  tempMeterValue = false;
+  tempRegDate = false;
+  tempWeight = false;
+  tempMCHCode = false;
+  tempVIN = false;
+  tempEngNo = false;
+  tempColour = false;
+
+
+
+
+  validationCheck() {
+    if (!this.vehicle.Description) {
+      this.tempDescription = true;
+    }
+    else {
+      this.tempDescription = false;
+    }
+    if (!this.vehicle.Brand) {
+      this.tempBrand = true;
+    }
+    else {
+      this.tempBrand = false;
+    }
+    if (!this.vehicle.LicencePlate) {
+      this.tempLicencePlate = true;
+    }
+    else {
+      this.tempLicencePlate = false;
+    }
+    if (!this.vehicle.Model) {
+      this.tempModel = true;
+    }
+    else {
+      this.tempModel = false;
+    }
+    if (!this.vehicle.MeterValue) {
+      this.tempMeterValue = true;
+    }
+    else {
+      this.tempMeterValue = false;
+    }
+    if (!this.vehicle.RegDate) {
+      this.tempRegDate = true;
+    }
+    else {
+      this.tempRegDate = false;
+    }
+    if (!this.vehicle.Weight) {
+      this.tempWeight = true;
+    }
+    else {
+      this.tempWeight = false;
+    }
+    if (!this.vehicle.MCHCode) {
+      this.tempMCHCode = true;
+    }
+    else {
+      this.tempMCHCode = false;
+    }
+    if (!this.vehicle.Vin) {
+      this.tempVIN = true;
+    }
+    else {
+      this.tempVIN = false;
+    }
+    if (!this.vehicle.EngNo) {
+      this.tempEngNo = true;
+    }
+    else {
+      this.tempEngNo = false;
+    }
+    if (!this.vehicle.Colour) {
+      this.tempColour = true;
+    }
+    else {
+      this.tempColour = false;
+    }
+  }
   addVehicle() {
 
-    var val = {
-      Id: 0,
-      Description: this.vehicle.Description,
-      Brand: this.vehicle.Brand,
-      LicencePlate: this.vehicle.LicencePlate,
-      Model: this.vehicle.Model,
-      MeterValue: this.vehicle.MeterValue,
-      RegDate: this.vehicle.RegDate,
-      Weight: this.vehicle.Weight,
-      MCHCode: this.vehicle.MCHCode,
-      Vin: this.vehicle.Vin,
-      EngNo: this.vehicle.EngNo,
-      Colour: this.vehicle.Colour,
-      CreatedBy: 1,
-      UpdatedBy: 1,
-      CustomerId:this.vehicle.CustomerId
-      
-    };
-    console.log('vehicle added',this.vehicle);
-    this.service.addVehicle(val).subscribe(res=>{
-      this.toastr.success(res.toString(),'', {
-        timeOut: 3000,
-      });
-    });
+    this.validationCheck();
 
-    
+    if (!this.tempDescription && !this.tempBrand && !this.tempLicencePlate && !this.tempModel && !this.tempMeterValue && !this.tempRegDate && !this.tempWeight && !this.tempMCHCode && !this.tempVIN && !this.tempEngNo && !this.tempColour) {
+      var val = {
+        Id: 0,
+        Description: this.vehicle.Description,
+        Brand: this.vehicle.Brand,
+        LicencePlate: this.vehicle.LicencePlate,
+        Model: this.vehicle.Model,
+        MeterValue: this.vehicle.MeterValue,
+        RegDate: this.vehicle.RegDate,
+        Weight: this.vehicle.Weight,
+        MCHCode: this.vehicle.MCHCode,
+        Vin: this.vehicle.Vin,
+        EngNo: this.vehicle.EngNo,
+        Colour: this.vehicle.Colour,
+        CreatedBy: 1,
+        UpdatedBy: 1,
+        CustomerId: this.vehicle.CustomerId
+
+      };
+      console.log('vehicle added', this.vehicle);
+      this.service.addVehicle(val).subscribe(res => {
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
+      });
+    }
+    else {
+      return false;
+    }
+
+
+
+
   }
-  editVehicle() {
-    var val = {
-      Id: this.vehicle.Id,
-      Description: this.vehicle.Description,
-      Brand: this.vehicle.Brand,
-      LicencePlate: this.vehicle.LicencePlate,
-      Model: this.vehicle.Model,
-      MeterValue: this.vehicle.MeterValue,
-      RegDate: this.vehicle.RegDate,
-      Weight: this.vehicle.Weight,
-      MCHCode: this.vehicle.MCHCode,
-      Vin: this.vehicle.Vin,
-      EngNo: this.vehicle.EngNo,
-      Colour: this.vehicle.Colour,
-      CreatedBy: 1,
-      UpdatedBy: 1,
-      CustomerId : this.vehicle.CustomerId
-    };
-    console.log('val',val);
-    this.service.editVehicle(val).subscribe(res=>{
-      console.log('res',res);
-      this.toastr.success(res.toString(),'', {
-        timeOut: 3000,
-      });
-    });
 
+  editVehicle() {
+
+    this.validationCheck();
+    if (!this.tempDescription && !this.tempBrand && !this.tempLicencePlate && !this.tempModel && !this.tempMeterValue && !this.tempRegDate && !this.tempWeight && !this.tempMCHCode && !this.tempVIN && !this.tempEngNo && !this.tempColour) {
+
+      var val = {
+        Id: this.vehicle.Id,
+        Description: this.vehicle.Description,
+        Brand: this.vehicle.Brand,
+        LicencePlate: this.vehicle.LicencePlate,
+        Model: this.vehicle.Model,
+        MeterValue: this.vehicle.MeterValue,
+        RegDate: this.vehicle.RegDate,
+        Weight: this.vehicle.Weight,
+        MCHCode: this.vehicle.MCHCode,
+        Vin: this.vehicle.Vin,
+        EngNo: this.vehicle.EngNo,
+        Colour: this.vehicle.Colour,
+        CreatedBy: 1,
+        UpdatedBy: 1,
+        CustomerId: this.vehicle.CustomerId
+      };
+      console.log('val', val);
+      this.service.editVehicle(val).subscribe(res => {
+        console.log('res', res);
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
+      });
+
+    } else {
+      return false;
+    }
   }
 
 }

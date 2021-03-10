@@ -1,85 +1,98 @@
-<div  class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
+<div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
-    <label class="col-sm-2 col-form-label" >Vehicle Description<span style="color: red;">*</span></label>
-    <div class="col-sm-5"></div>
-    <label class="col-sm-2 col-form-label">Brand<span style="color: red;">*</span></label>
+        <label class="col-sm-2 col-form-label">Vehicle Description<span style="color: red;">*</span></label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Brand<span style="color: red;">*</span></label>
     </div>
     <div class="row">
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='vehicle.Description'>
+            <span *ngIf="tempDescription">Description Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='vehicle.Brand'>
-        </div>
-        </div>
-        <div class="row">
-        <label class="col-sm-2 col-form-label">Licence Plate<span style="color: red;">*</span></label>
-        <div class="col-sm-5"></div>
-        <label class="col-sm-2 col-form-label">Modal<span style="color: red;">*</span></label>
-        </div>
-        <div class="row">
-            <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate'>
-            </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='vehicle.Model'>
-            </div>
-        </div>
-        <div class="row">
-            <label class="col-sm-2 col-form-label">Meter Value<span style="color: red;">*</span></label>
-            <div class="col-sm-5"></div>
-            <label class="col-sm-2 col-form-label">Registration Date<span style="color: red;">*</span></label>
-            </div>
-            <div class="row">
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" [(ngModel)]='vehicle.MeterValue'>
-                </div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-5">
-                    <input type="datetime-local" class="form-control" [(ngModel)]='vehicle.RegDate'>
-                </div>
-            </div>
-    
-            <div class="row">
-                <label class="col-sm-2 col-form-label">Vehicle Weight<span style="color: red;">*</span></label>
-                <div class="col-sm-5"></div>
-                <label class="col-sm-2 col-form-label">MCH Code<span style="color: red;">*</span></label>
-            </div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" [(ngModel)]='vehicle.Weight'>
-                    </div>
-                    <div class="col-sm-2"></div>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" [(ngModel)]='vehicle.MCHCode'> 
-                </div>
-            </div>
-            <div class="row">
-                <label class="col-sm-2 col-form-label">VIN<span style="color: red;">*</span></label>
-                <div class="col-sm-5"></div>
-                <label class="col-sm-2 col-form-label">Engine Number<span style="color: red;">*</span></label>
-            </div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" [(ngModel)]='vehicle.Vin'>
-                    </div>
-                    <div class="col-sm-2"></div>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" [(ngModel)]='vehicle.EngNo'>
-                </div>
-        </div>
-        <div class="row">
-            <label class="col-sm-2 col-form-label">Vehicle Color<span style="color: red;">*</span></label>
-        </div>
-            <div class="row">
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" [(ngModel)]='vehicle.Colour'>
-                </div>
+            <span *ngIf="tempBrand">Brand Required</span>
         </div>
     </div>
-    <button (click)="addVehicle()"  *ngIf="vehicle.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
-    
-    <button (click)="editVehicle()"  *ngIf="vehicle.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">Update Vehicle</button>
-    <!-- *ngIf="Id==0" -->
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Licence Plate<span style="color: red;">*</span></label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Model<span style="color: red;">*</span></label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate'>
+            <span *ngIf="tempLicencePlate">LicencePlate Required</span>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Model'>
+            <span *ngIf="tempModel">Model Required</span>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Meter Value<span style="color: red;">*</span></label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Registration Date<span style="color: red;">*</span></label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.MeterValue'>
+            <span *ngIf="tempMeterValue">Meter Value Required</span>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="datetime-local" class="form-control" [(ngModel)]='vehicle.RegDate'>
+            <span *ngIf="tempRegDate">Registration Date Required</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Vehicle Weight<span style="color: red;">*</span></label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">MCH Code<span style="color: red;">*</span></label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Weight'>
+            <span *ngIf="tempWeight">Weight Required</span>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.MCHCode'>
+            <span *ngIf="tempMCHCode">MCH Required</span>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">VIN<span style="color: red;">*</span></label>
+        <div class="col-sm-5"></div>
+        <label class="col-sm-2 col-form-label">Engine Number<span style="color: red;">*</span></label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Vin'>
+            <span *ngIf="tempVIN">VIN Required</span>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.EngNo'>
+            <span *ngIf="tempEngNo">Engine No Required</span>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Vehicle Color<span style="color: red;">*</span></label>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Colour'>
+            <span *ngIf="tempColour">Colour Required</span>
+        </div>
+    </div>
+</div>
+<button (click)="addVehicle()" *ngIf="vehicle.Id==0" class="btn btn-outline-primary"
+    style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
+
+<button (click)="editVehicle()" *ngIf="vehicle.Id!=0" class="btn btn-outline-primary"
+    style="margin-top:2%; margin-left: 43%;">Update Vehicle</button>
+<!-- *ngIf="Id==0" -->

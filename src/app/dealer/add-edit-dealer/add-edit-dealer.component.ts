@@ -10,10 +10,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddEditDealerComponent implements OnInit {
 
-  constructor(private service:SharedService,private toastr: ToastrService) { }
-  
+  constructor(private service: SharedService, private toastr: ToastrService) { }
+
   @Input() dealer: any;
-  Id:Number = 0;
+  Id: Number = 0;
   DealerName !: string;
   DealerNo!: Number;
   isActive!: string;
@@ -28,8 +28,7 @@ export class AddEditDealerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(this.dealer == undefined)
-    {
+    if (this.dealer == undefined) {
       this.dealer = {};
       this.dealer.DealerName = "";
     }
@@ -37,109 +36,119 @@ export class AddEditDealerComponent implements OnInit {
     console.log(this.dealer);
   }
 
-  tempDealerName =false;
-  tempDealerNo= false;
-  tempWebsite=false;
-  tempEmail=false;
-  tempPhoneNo=false;
-  tempAddress= false;
+  tempDealerName = false;
+  tempDealerNo = false;
+  tempWebsite = false;
+  tempEmail = false;
+  tempPhoneNo = false;
+  tempAddress = false;
+
+  validationCheck() {
+    if (!this.dealer.DealerName) {
+      this.tempDealerName = true;
+    } else {
+      this.tempDealerName = false;
+    }
+    if (!this.dealer.DealerNo) {
+      this.tempDealerNo = true;
+    } else {
+      this.tempDealerNo = false;
+    }
+    if (!this.dealer.Website) {
+      this.tempWebsite = true;
+    } else {
+      this.tempWebsite = false;
+    }
+    if (!this.dealer.Email) {
+      this.tempEmail = true;
+    } else {
+      this.tempEmail = false;
+    }
+    if (!this.dealer.PhoneNo) {
+      this.tempPhoneNo = true;
+    } else {
+      this.tempPhoneNo = false;
+    }
+    if (!this.dealer.Address) {
+      this.tempAddress = true;
+    } else {
+      this.tempAddress = false;
+    }
+
+  }
   addDealer() {
 
-    if(!this.dealer.DealerName){
-      this.tempDealerName = true;
-    }else{
-      this.tempDealerName =false;
-    }
-    if(!this.dealer.DealerNo){
-      this.tempDealerNo= true;
-    }else{
-      this.tempDealerNo=false;
-    }
-    if(!this.dealer.Website){
-      this.tempWebsite= true;
-    }else{
-      this.tempWebsite=false;
-    }
-    if(!this.dealer.Email){
-      this.tempEmail= true;
-    }else{
-      this.tempEmail=false;
-    }
-    if(!this.dealer.PhoneNo){
-      this.tempPhoneNo= true;
-    }else{
-      this.tempPhoneNo=false;
-    }
-    if(!this.dealer.Address){
-      this.tempAddress= true;
-    }else{
-      this.tempAddress=false;
-    }
 
+    this.validationCheck();
+    if (!this.tempAddress && !this.tempDealerName && !this.tempDealerNo && !this.tempEmail && !this.tempPhoneNo && !this.tempWebsite) {
 
-    if(!this.tempAddress && !this.tempDealerName && !this.tempDealerNo && !this.tempEmail && !this.tempPhoneNo && !this.tempWebsite){
-                    
-                if(this.dealer){
-                  
-                  var val = {
-                    Id: this.dealer.Id,
-                    DealerName : this.dealer.DealerName,
-                    DealerNo: this.dealer.DealerNo,
-                    isActive: this.dealer.isActive,
-                    Website: this.dealer.Website,
-                    PhoneNo: this.dealer.PhoneNo,
-                    Email: this.dealer.Email,
-                    Latitude: this.dealer.Latitude,
-                    Longitude: this.dealer.Longitude,
-                    isOnline: this.dealer.isOnline,
-                    Address: this.dealer.Address,
-                    CreatedBy: 1,
-                    UpdatedBy: 1,
-                  };
-                  if(val.isActive != true){
-                    val['isActive'] = false; 
-                  }
-                  if(val.isOnline != true){
-                    val['isOnline'] = false; 
-                  }
-                  this.service.addDealer(val).subscribe(res=>{
-                    this.toastr.success(res.toString(),'', {
-                      timeOut: 3000,
-                    });
-                  });
-              }
-    }else{
+      if (this.dealer) {
+
+        var val = {
+          Id: this.dealer.Id,
+          DealerName: this.dealer.DealerName,
+          DealerNo: this.dealer.DealerNo,
+          isActive: this.dealer.isActive,
+          Website: this.dealer.Website,
+          PhoneNo: this.dealer.PhoneNo,
+          Email: this.dealer.Email,
+          Latitude: this.dealer.Latitude,
+          Longitude: this.dealer.Longitude,
+          isOnline: this.dealer.isOnline,
+          Address: this.dealer.Address,
+          CreatedBy: 1,
+          UpdatedBy: 1,
+        };
+        if (val.isActive != true) {
+          val['isActive'] = false;
+        }
+        if (val.isOnline != true) {
+          val['isOnline'] = false;
+        }
+        this.service.addDealer(val).subscribe(res => {
+          this.toastr.success(res.toString(), '', {
+            timeOut: 3000,
+          });
+        });
+      }
+    } else {
       return false;
     }
-   
+
   }
   editDealer() {
 
-      console.log('ddd',this.dealer);
+    this.validationCheck();
+    if (!this.tempAddress && !this.tempDealerName && !this.tempDealerNo && !this.tempEmail && !this.tempPhoneNo && !this.tempWebsite) {
       var val = {
-      Id: this.dealer.Id,
-      DealerName : this.dealer.DealerName,
-      DealerNo: this.dealer.DealerNo,
-      isActive: this.dealer.isActive,
-      Website: this.dealer.Website,
-      PhoneNo: this.dealer.PhoneNo,
-      Email: this.dealer.Email,
-      Latitude: this.dealer.Latitude,
-      Longitude: this.dealer.Longitude,
-      isOnline: this.dealer.isOnline,
-      Address: this.dealer.Address,
-      CreatedBy: 1,
-      UpdatedBy: 1,
-    };
-    
-   
-    
-    console.log('val',val)
-    this.service.editDealer(val).subscribe(res=>{
-    this.toastr.success(res.toString(),'', {
-      timeOut: 3000,
-    });
-    });
+        Id: this.dealer.Id,
+        DealerName: this.dealer.DealerName,
+        DealerNo: this.dealer.DealerNo,
+        isActive: this.dealer.isActive,
+        Website: this.dealer.Website,
+        PhoneNo: this.dealer.PhoneNo,
+        Email: this.dealer.Email,
+        Latitude: this.dealer.Latitude,
+        Longitude: this.dealer.Longitude,
+        isOnline: this.dealer.isOnline,
+        Address: this.dealer.Address,
+        CreatedBy: 1,
+        UpdatedBy: 1,
+      };
+
+
+
+      console.log('val', val)
+      this.service.editDealer(val).subscribe(res => {
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
+      });
+    } else {
+      return false;
+    }
+
+
   }
 
 }
