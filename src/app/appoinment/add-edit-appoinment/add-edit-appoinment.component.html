@@ -116,7 +116,7 @@
                     <th>PricePerUnit</th>
                     <th>Quantity</th>
                     <th>SalesPart</th>
-                    
+                    <th>action</th>
                 </tr>
             </thead>
             <tbody>
@@ -132,6 +132,9 @@
                     <td>{{data.PricePerUnit}}
                     <td>{{data.Quantity}}</td>
                     <td>{{data.SalesPart}}</td>
+                     <button  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <!-- (click)="deleteserviceClick(data)" -->
                 </tr>
             </tbody>
         </table>
@@ -146,8 +149,8 @@
 
 
 <div *ngIf="appoinment.Id==0; ">
-    <div class="row" *ngIf="getvehical">
-        <div *ngIf="CustomerVehicleInfo">
+    <div class="row" *ngIf="!vehicalnotfound && CustomerVehicleInfo">
+        <div >
                 <label>Customer Details<span style="color: red;">*</span></label>
                 <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                     <thead>
@@ -174,7 +177,6 @@
                     </tbody>
                 </table>
                 <!-- </div> -->
-                <div class="row" *ngIf="getvehical">
                     <label>Vehicle Details<span style="color: red;">*</span></label>
                     <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                         <thead>
@@ -202,7 +204,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
         
                 <button (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-outline-primary"
                     style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
@@ -212,7 +213,7 @@
 
 
     <div *ngIf="appoinment.Id==0">
-        <div style="display: flex">
+        <div *ngIf="displayservice" style="display: flex">
             <div class="col-sm-5">
                 <label>Choose Service<span style="color: red;">*</span></label>
                 <select  id="service" name="service" class="form-control"
@@ -223,18 +224,19 @@
                 </select>
             </div>
             <div class="col-sm-5">
-                <label>Quantity<span style="color: red;">*</span></label>
-                <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity">
+                <!-- <label>Quantity<span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+                <button (click)="AddAppoinmentService()"  class="btn btn-outline-primary"
+                style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
             </div>
 
+           
         </div>
 
 
-        <button (click)="editAppoinment()"  class="btn btn-outline-primary"
-            style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
 
 
-        <div>
+        <div *ngIf="displayMechanic">
             <label>Choose Mechanic<span style="color: red;">*</span></label>
             <select (click)="loadMechanicList()" id="Mechanic" name="Mechanic" class="form-control"
                 [(ngModel)]="MechanicId">
@@ -249,19 +251,20 @@
 
                 </option>
             </select>
+            <div style="display: flex">
+                    <div class="col-sm-5">
+                        <label>Start Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
+                    </div>
+                    <div class="col-sm-5">
+                        <label>End Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
+                    </div>
+                </div>
+                <button (click)="createPlan()"  class="btn btn-outline-primary"
+                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+        
         </div>
-        <div style="display: flex">
-            <div class="col-sm-5">
-                <label>Start Date<span style="color: red;">*</span></label>
-                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
-            </div>
-            <div class="col-sm-5">
-                <label>End Date<span style="color: red;">*</span></label>
-                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
-            </div>
-        </div>
-        <button (click)="createPlan()"  class="btn btn-outline-primary"
-            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-
+        
 
     </div>

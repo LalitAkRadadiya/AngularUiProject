@@ -113,6 +113,9 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   }
 
+  displayservice = false;
+  displayMechanic = false;
+  serviceAppoinment  : any;
   addAppoinment() {
     var val = this.CustomerVehicleInfo;
     val['MobileNo'] = val['CustomerNo'];
@@ -122,18 +125,21 @@ export class AddEditAppoinmentComponent implements OnInit {
     console.log('app value', val);
 
     this.service.addAppoinment(val).subscribe(res => {
-      this.toastr.success(res.toString(), '', {
+      this.serviceAppoinment = res
+      this.toastr.success("SuccessFully Created", '', {
         timeOut: 3000,
       });
+      
+      this.displayservice = true;
     });
     this.loadServiceList(this.DealerId);
   }
   planAvailble = false;
-  editAppoinment() {
+  AddAppoinmentService() {
     this.planAvailble = true;
 
     var val = {
-      AppointmentId: this.appoinment.Id,
+      AppointmentId: this.serviceAppoinment,
       ServiceId: this.ServiceId,
       CostType: 'FIX',
       SalesPart: 50,
@@ -147,6 +153,7 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
+      this.displayMechanic= true;
     });
 
   }
@@ -175,11 +182,9 @@ export class AddEditAppoinmentComponent implements OnInit {
   //       this.toastr.success(res.toString());
   //                 });
   //     }
-  getvehical = false;
   vehicalnotfound = false;
   getCustomerVehicleInfo(item: string) {
 
-    this.getvehical = true;
     try {
 
       this.service.getCustomerVehicleInfo(item).subscribe(data => {
@@ -187,6 +192,8 @@ export class AddEditAppoinmentComponent implements OnInit {
         console.log('data0', data.length);
         if (data.length == 0) {
           this.vehicalnotfound = true;
+        }else{
+          this.vehicalnotfound= false;
         }
 
 
