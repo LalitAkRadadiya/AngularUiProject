@@ -1,7 +1,8 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { AddEditAppoinmentComponent } from '../add-edit-appoinment/add-edit-appoinment.component';
 @Component({
   selector: 'app-show-appoinment',
   templateUrl: './show-appoinment.component.html',
@@ -16,6 +17,7 @@ export class ShowAppoinmentComponent implements OnInit {
   ModalTitle!:string;
   ActivateAddEditAppoinmentComp:boolean=false;
   appoinment:any;
+
   
   ngOnInit(): void {
     // this.updateAppoinmentStatus();
@@ -60,7 +62,9 @@ export class ShowAppoinmentComponent implements OnInit {
     this.appoinment={
       Id: item.Id
     }
-    this.appoinment=item
+    this.appoinment=item;
+
+    
     console.log('curent ap', this.appoinment);
     this.ModalTitle="Edit Appoinment";
     this.ActivateAddEditAppoinmentComp=true;

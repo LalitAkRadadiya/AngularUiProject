@@ -43,7 +43,7 @@ export class SharedService {
   }
 
   getAppointmentServiceList() :Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + 'AppointmentService/allAppointmentServices');
+    return this.http.get<any>(this.APIUrl + '/AppointmentService/allAppointmentServices');
   }
   addAppoinmentService(val: any) {
     return this.http.post(this.APIUrl + '/AppoinmentService/CreateAppoinmentServices', val);

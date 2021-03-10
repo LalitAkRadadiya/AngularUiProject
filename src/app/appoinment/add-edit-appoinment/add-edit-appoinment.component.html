@@ -100,6 +100,43 @@
         </table>
     </div>
 
+    <div class="row">
+        <label>Appoinment Details<span style="color: red;">*</span></label>
+        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>AppoinmentId </th>
+                    <th>ServiceId</th>
+                    <th>CostType</th>
+                    <th>Description</th>
+                    <th>Discount</th>
+                    <th>FixPrice</th>
+                    <th>Price</th>
+                    <th>PricePerUnit</th>
+                    <th>Quantity</th>
+                    <th>SalesPart</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of AppServiceList">
+                    <td>{{data.Id}}</td>
+                    <td>{{data.AppoinmentId}}</td>
+                    <td>{{data.ServiceId}}</td>
+                    <td>{{data.CostType}}</td>
+                    <td>{{data.Description}}</td>
+                    <td>{{data.Discount }}</td>
+                    <td>{{data.FixPrice}}</td>
+                    <td>{{data.Price}}</td>
+                    <td>{{data.PricePerUnit}}
+                    <td>{{data.Quantity}}</td>
+                    <td>{{data.SalesPart}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 
 
 
