@@ -27,6 +27,7 @@ import {DataTablesModule} from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     routingmod ,
@@ -47,6 +48,7 @@ import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tr
     ShowMechanicalComponent,
     AddEditMechanicalComponent,
     AppoinmentTrackingComponent,
+    ErrorComponent,
 
    
   

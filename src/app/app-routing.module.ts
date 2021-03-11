@@ -7,7 +7,7 @@ import { DealerComponent } from './dealer/dealer.component';
 import { MechanicalComponent } from './mechanical/mechanical.component';
 import { CustomervehicleComponent } from './customervehicle/customervehicle.component';
 import { CommonModule } from '@angular/common';  
-
+import { ErrorComponent } from './error/error.component';
 import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
 const routes: Routes = [
@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:'dealer',component:DealerComponent},
   {path:'mechanic',component:MechanicalComponent},
   {path:'tracking/:id',component:AppoinmentTrackingComponent},
-  {path:'customervehicle', component:CustomervehicleComponent}
+  {path:'customervehicle', component:CustomervehicleComponent},
+  {path:'**',component:ErrorComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { AddEditAppoinmentComponent } from '../add-edit-appoinment/add-edit-appoinment.component';
@@ -8,8 +8,8 @@ import { AddEditAppoinmentComponent } from '../add-edit-appoinment/add-edit-appo
   templateUrl: './show-appoinment.component.html',
   styleUrls: ['./show-appoinment.component.css']
 })
-export class ShowAppoinmentComponent implements OnInit {
-
+export class ShowAppoinmentComponent implements OnInit  {
+ 
   constructor(private service:SharedService,private toastr: ToastrService) { }
 
   AppointmentList:any=[];

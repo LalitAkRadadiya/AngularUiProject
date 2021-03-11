@@ -51,6 +51,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   EndDate!: string;
   Duration!: string;
 
+
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
       this.DealerList = data;
