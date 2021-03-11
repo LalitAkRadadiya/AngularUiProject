@@ -38,7 +38,6 @@ export class AddEditMechanicalComponent implements OnInit {
   tempEmployeeNo = false;
   tempMobileNo = false;
   tempEmailId = false;
-  tempisActive = false;
   tempDealerId = false;
 
   validation() {
@@ -53,11 +52,7 @@ export class AddEditMechanicalComponent implements OnInit {
     } else {
       this.tempEmployeeNo = false;
     }
-    if (!this.Mechanic.isActive) {
-      this.tempisActive = true;
-    } else {
-      this.tempisActive = false;
-    }
+  
     if (!this.Mechanic.EmailId) {
       this.tempEmailId = true;
     } else {
@@ -77,7 +72,7 @@ export class AddEditMechanicalComponent implements OnInit {
   addMechanic() {
     this.validation();
 
-    if (!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo && !this.tempisActive) {
+    if (!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo ) {
 
       var val = {
         Id: this.Mechanic.Id,
@@ -106,7 +101,7 @@ export class AddEditMechanicalComponent implements OnInit {
     this.validation();
 
 
-    if (!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo && !this.tempisActive) {
+    if (!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo ) {
 
       console.log('ddd', this.Mechanic);
       var val = {

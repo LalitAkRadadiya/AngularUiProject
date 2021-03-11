@@ -82,12 +82,11 @@
 
 
                         <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
-                            [(ngModel)]="updatedStatus">
-                            <option >Pending</option>
-                            <option>Confirm</option>
-                            <option>Started</option>
-                            <option>Work Done</option>
-                            <option>Finished</option>
+                            [(ngModel)]="updatedStatus" >
+                            <option *ngIf="let data of statusArray" [selected]="data == appoinment.status" >
+                                {{data}}
+                            </option>
+                            
                         </select>
 
 

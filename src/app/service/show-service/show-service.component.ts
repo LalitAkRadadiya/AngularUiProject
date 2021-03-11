@@ -44,7 +44,8 @@ export class ShowServiceComponent implements OnInit {
     this.ActivateAddEditServiceComp = true;
   }
   editClick(item: any) {
-    this.services = item
+    this.services = item;
+    console.log('dealer id',this.services);
     this.ModalTitle = "Edit Service";
     this.ActivateAddEditServiceComp = true;
   }

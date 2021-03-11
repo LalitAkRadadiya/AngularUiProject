@@ -17,7 +17,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   MechanicList: any = [];
   constructor(private service: SharedService, private toastr: ToastrService) { }
-
+  statusArray = ['pending' , 'Confirm', 'Work done', 'Started','Finished']
   CustomerVehicleInfo: any;
   @Input() appoinment: any;
     Id: Number = 0;

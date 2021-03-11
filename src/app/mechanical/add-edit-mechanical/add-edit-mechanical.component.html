@@ -42,15 +42,16 @@
     <div class="row">
         <label class="col-sm-5 col-form-label">IsActive<span style="color: red;">*</span>
             <input type="checkbox" style="margin-left: 20px;" [(ngModel)]='Mechanic.isActive'></label>
-            <span *ngIf="tempisActive">isActive Required</span>
+           
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
 
             <label>
                 Please Select Dealer!
                 <span style="color: red;">*</span></label>
-            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
-                <option *ngFor="let data of DealerList" [value]="data.Id">
+                <!-- [disabled]="Mechanic.MobileNo ? true : false " -->
+            <select   id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <option *ngFor="let data of DealerList" [selected]="data.Id == Mechanic.DealerId" [value]="data.Id">
                     Dealer Name : {{data.DealerName}} - Mobile NO :{{data.PhoneNo}}
                 </option>
             </select>
