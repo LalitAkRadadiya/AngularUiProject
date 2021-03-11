@@ -11,11 +11,22 @@
         <div class="col-sm-5">
             
             
-            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+            <select [disabled]="services.Name ? true : false " id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                 <option *ngFor="let data of DealerList" [value]="data.Id">
                      Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}
                 </option>
             </select>
+            <!-- <h4>Basic mat-select</h4>
+                <mat-form-field appearance="fill">
+                <mat-label>Favorite food</mat-label>
+                <mat-select  [(ngModel)]="DealerId">
+                    <mat-option *ngFor="let data of DealerList" [value]="data.Id">
+                            Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field> -->
+
+
             <span *ngIf="serviceDealerId">Dealer Required</span>
         </div>
         <div class="col-sm-2"></div>

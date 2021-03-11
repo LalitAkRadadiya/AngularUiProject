@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule , routingmod } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppoinmentComponent } from './appoinment/appoinment.component';
-import { ShowAppoinmentComponent } from './appoinment/show-appoinment/show-appoinment.component';
 import { AddEditAppoinmentComponent } from './appoinment/add-edit-appoinment/add-edit-appoinment.component';
 import { HomeComponent } from './home/home.component';
 import {SharedService} from './shared.service';
@@ -25,7 +24,7 @@ import { AddEditMechanicalComponent } from './mechanical/add-edit-mechanical/add
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DataTablesModule} from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatSelectModule} from '@angular/material/select';
 import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
 import { ErrorComponent } from './error/error.component';
 @NgModule({
@@ -33,7 +32,6 @@ import { ErrorComponent } from './error/error.component';
     routingmod ,
     AppComponent,
     AppoinmentComponent,
-    ShowAppoinmentComponent,
     AddEditAppoinmentComponent,
     HomeComponent,
     ShowServiceComponent,
@@ -49,6 +47,7 @@ import { ErrorComponent } from './error/error.component';
     AddEditMechanicalComponent,
     AppoinmentTrackingComponent,
     ErrorComponent,
+    
 
    
   
@@ -62,6 +61,7 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     ReactiveFormsModule,
     CarouselModule,
+    MatSelectModule,
     DataTablesModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),

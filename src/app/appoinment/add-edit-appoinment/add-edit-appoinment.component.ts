@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
 import { ToastrService } from 'ngx-toastr';
-import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-add-edit-appoinment',
   templateUrl: './add-edit-appoinment.component.html',
@@ -21,35 +20,35 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   CustomerVehicleInfo: any;
   @Input() appoinment: any;
-  Id: Number = 0;
-  FName!: string;
-  LName!: string;
-  MobileNo!: Number;
-  Email!: string;
-  City!: string;
-  Country!: string;
-  Model!: string;
-  Brand!: string;
-  LicencePlate!: string;
-  Status!: string;
-  TotalTime!: string;
-  TotalPrice!: string;
-  CreatedBy!: string;
-  UpdateBy!: string;
+    Id: Number = 0;
+    FName!: string;
+    LName!: string;
+    MobileNo!: Number;
+    Email!: string;
+    City!: string;
+    Country!: string;
+    Model!: string;
+    Brand!: string;
+    LicencePlate!: string;
+    Status!: string;
+    TotalTime!: string;
+    TotalPrice!: string;
+    CreatedBy!: string;
+    UpdateBy!: string;
 
 
-  MechanicId: Number;
-  DealerId: Number;
-  ServiceId: Number;
-  CostType!: string;
-  SalesPart!: string;
-  Quantity!: string;
-  PricePerUnit!: string;
+    MechanicId: Number;
+    DealerId: Number;
+    ServiceId: Number;
+    CostType!: string;
+    SalesPart!: string;
+    Quantity!: string;
+    PricePerUnit!: string;
 
 
-  StartDate!: string;
-  EndDate!: string;
-  Duration!: string;
+    StartDate!: string;
+    EndDate!: string;
+    Duration!: string;
 
 
   loadDealerList() {
@@ -69,7 +68,13 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.ServiceList = data;
     });
   }
-  
+
+
+
+ 
+
+
+
   AppointmentServiceList(val : any){
     this.service.getAppointmentServiceList(val).subscribe(data =>{
       this.AppServiceList = data;
@@ -99,7 +104,6 @@ export class AddEditAppoinmentComponent implements OnInit {
   editAppinment = 0;
 
   ngOnInit() {
-
     this.editAppinment = this.appoinment.Id
      this.loadDealerList();
 
@@ -123,7 +127,7 @@ export class AddEditAppoinmentComponent implements OnInit {
     }
     console.log('id',this.appoinment.Id)
     this.AppointmentServiceList(this.appoinment.Id);
-     this.planningList(this.appoinment.Id);
+    this.planningList(this.appoinment.Id);
     
   }
 

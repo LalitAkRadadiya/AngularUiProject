@@ -11,7 +11,7 @@ import { VirtualTimeScheduler } from 'rxjs';
 export class AddEditServiceComponent implements OnInit {
 
   constructor(private service: SharedService, private toastr: ToastrService) { }
-
+  
   DealerList: any = [];
   @Input() services: any;
   Id: Number = 0;
@@ -34,8 +34,12 @@ export class AddEditServiceComponent implements OnInit {
       this.DealerList = data;
     });
   }
+  
   ngOnInit(): void {
+    console.log('sertgthfhf',this.services.Id);
     this.loadDealerList();
+   
+
     if (this.services != null && this.services != undefined) {
       this.Id = this.services.Id;
       this.Name = this.services.Name;
@@ -48,6 +52,7 @@ export class AddEditServiceComponent implements OnInit {
       this.Quantity = this.services.Quantity;
       this.PricePerUnit = this.services.PricePerUnit;
       this.SalesPart = this.services.SalesPart;
+     
     }
     console.log(this.services);
   }
