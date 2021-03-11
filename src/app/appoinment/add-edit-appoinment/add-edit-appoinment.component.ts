@@ -122,9 +122,9 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.TotalPrice = this.appoinment.TotalPrice;
     }
     console.log('id',this.appoinment.Id)
-     this.AppointmentServiceList(this.appoinment.Id);
+    this.AppointmentServiceList(this.appoinment.Id);
      this.planningList(this.appoinment.Id);
-
+    
   }
 
   displayservice = false;
@@ -232,10 +232,12 @@ disbaleplanningbutton = false;
     });
   }
   deletePlanning(val: any){
+    console.log('dletplanid',val.Id);
     this.service.deletePlanning(val.Id).subscribe(res => {
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
+      console.log('should dlt');
     });
   }
   // editAppoinment(){

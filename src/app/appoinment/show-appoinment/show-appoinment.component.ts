@@ -64,10 +64,12 @@ export class ShowAppoinmentComponent implements OnInit  {
     }
     this.appoinment=item;
 
-    
     console.log('curent ap', this.appoinment);
     this.ModalTitle="Edit Appoinment";
     this.ActivateAddEditAppoinmentComp=true;
+    // this.AppointmentServiceList(this.appoinment.Id);
+    // this.planningList(this.appoinment.Id);
+
   }
   closeClick(){
     this.ActivateAddEditAppoinmentComp=false;

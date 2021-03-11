@@ -83,7 +83,7 @@
 
                         <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
                             [(ngModel)]="updatedStatus">
-                            <option>Pending</option>
+                            <option >Pending</option>
                             <option>Confirm</option>
                             <option>Started</option>
                             <option>Work Done</option>
@@ -134,7 +134,7 @@
                         <td>{{data.PricePerUnit}}
                         <td>{{data.Quantity}}</td>
                         <td>{{data.SalesPart}}</td>
-                         <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                         <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i></button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
@@ -169,7 +169,7 @@
                         <td>{{data.StartDate }}</td>
                         <td>{{data.EndDate}}</td>
                         
-                         <button  (click)="deletePlanning(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                         <button (click)="deletePlanning(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i></button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
