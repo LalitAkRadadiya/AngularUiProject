@@ -134,7 +134,7 @@
                         <td>{{data.Quantity}}</td>
                         <td>{{data.SalesPart}}</td>
                          <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
@@ -169,7 +169,7 @@
                         <td>{{data.EndDate}}</td>
                         
                          <button (click)="deletePlanning(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>

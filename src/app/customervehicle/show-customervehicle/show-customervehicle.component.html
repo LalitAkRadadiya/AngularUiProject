@@ -72,13 +72,13 @@
                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                         data-bs-target="#customerModal" (click)="editCustomerClick(dataItem)" data-backdrop="static"
                         data-keyboard="false">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit
                     </button>
                     
 
                     <button [disabled]='!dataItem.DeleteButton' type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                         (click)="deleteCustomerClick(dataItem)">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete
                     </button>
 
 
@@ -136,10 +136,10 @@
                         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                             data-bs-target="#vehicleModal"(click)="editVehicleClick(dataItem)"
                             data-backdrop="static" data-keyboard="false">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit</button>
                         <button type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                             (click)="deleteVehicleClick(dataItem)">
-                            <i class="fa fa-trash" aria-hidden="true"></i></button>
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                     </td>
                 </tr>
             </tbody>

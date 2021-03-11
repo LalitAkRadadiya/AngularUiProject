@@ -60,11 +60,11 @@
                   data-bs-toggle="modal" data-bs-target="#exampleModal"
                   (click)="editDealerClick(dataItem)"
                   data-backdrop="static" data-keyboard="false">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit</button>
                   
                   <button [disabled]="!dataItem.DeleteButton" type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                   (click)="deleteDealer(dataItem)">
-                  <i class="fa fa-trash" aria-hidden="true"></i></button>
+                  <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
               </td>
           </tr>
       </tbody>
