@@ -20,6 +20,7 @@ export class AddEditServiceComponent implements OnInit {
   FixPrice!: Number;
   Discount!: Number;
   Description!: string;
+  Quantity!: string;
   CreatedBy!: string;
   UpdateBy!: string;
   DealerId!: number;
@@ -44,6 +45,7 @@ export class AddEditServiceComponent implements OnInit {
       this.Description = this.services.Description;
       this.DealerId = this.DealerId;
       this.CostType = this.services.CostType;
+      this.Quantity = this.services.Quantity;
       this.PricePerUnit = this.services.PricePerUnit;
       this.SalesPart = this.services.SalesPart;
     }
@@ -59,6 +61,7 @@ export class AddEditServiceComponent implements OnInit {
   serviceSalesPart = false;
   servicePricePerUnit = false;
   serviceCosttype = false;
+  serviceQuantity= false;
 
 validationCheck(){
   if (!this.services.Name) {
@@ -106,12 +109,17 @@ validationCheck(){
   } else {
     this.serviceDealerId = false;
   }
+  if(!this.services.Quantity){
+    this.serviceQuantity= true;
+  }else{
+    this.serviceQuantity= false;
+  }
 
 }
   addService() {
 
     this.validationCheck();
-    if (!this.serviceDealer && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
+    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
 
       
       var val = {
@@ -124,11 +132,13 @@ validationCheck(){
         CreatedBy: 1,
         UpdatedBy: 1,
         DealerId: this.DealerId,
+        Quantity : this.services.Quantity,
         SalesPart: this.services.SalesPart,
         PricePerUnit: this.services.PricePerUnit,
         CostType: this.services.CostType
       };
       // val['Description']=this.Description;
+      console.log('lollol',val)
       this.service.addService(val).subscribe(res => {
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
@@ -142,7 +152,7 @@ validationCheck(){
   }
   editService() {
     this.validationCheck();
-    if (!this.serviceDealer && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
+    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
     
       var val = {
         Id: this.Id,
@@ -154,6 +164,7 @@ validationCheck(){
         CreatedBy: 1,
         UpdatedBy: 1,
         SalesPart: this.services.SalesPart,
+        Quantity : this.services.Quantity,
         PricePerUnit: this.services.PricePerUnit,
         CostType: this.services.CostType
       };
