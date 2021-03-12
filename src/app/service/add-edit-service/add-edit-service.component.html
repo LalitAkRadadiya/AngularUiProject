@@ -1,4 +1,3 @@
-
 <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
     <div class="row">
         <label class="col-sm-2 col-form-label">
@@ -9,14 +8,14 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            
-                <!-- [disabled]="services.Name ? true : false " -->
-            <select  id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
-                <option *ngFor="let data of DealerList" [selected]="data.Id == services.DealerId" value={{data.Id}}>
+
+            <!-- [disabled]="services.Name ? true : false " -->
+            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="services.DealerId">
+                <option *ngFor="let data of DealerList"  value={{data.Id}}>
                      <span >Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}</span>
                 </option>
             </select>
-           
+
 
             <span *ngIf="serviceDealerId">Dealer Required</span>
         </div>
@@ -33,7 +32,7 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control"  (keypress)="IsNumeric($event)" [(ngModel)]='services.Price'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='services.Price'>
             <span *ngIf="servicePrice">Price Required</span>
         </div>
         <div class="col-sm-2"></div>
@@ -43,14 +42,14 @@
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label" >Discount<span style="color: red;">*</span></label>
+        <label class="col-sm-2 col-form-label">Discount<span style="color: red;">*</span></label>
         <div class="col-sm-5"></div>
         <label class="col-sm-2 col-form-label">Description<span style="color: red;">*</span></label>
         <!-- <label class="col-sm-2 col-form-label">Dealer Select<span style="color: red;">*</span></label> -->
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)"  [(ngModel)]='services.Discount'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='services.Discount'>
             <span *ngIf="serviceDiscount">Discount Required</span>
         </div>
         <div class="col-sm-2"></div>
@@ -69,7 +68,7 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control"  [(ngModel)]='services.CostType'>
+            <input type="text" class="form-control" [(ngModel)]='services.CostType'>
             <span *ngIf="serviceCosttype">CostType Required</span>
         </div>
         <div class="col-sm-2"></div>
@@ -86,8 +85,8 @@
     </div>
     <div class="row">
         <!-- <div class="col-sm-5"> -->
-            <!-- <input type="text" class="form-control"  [(ngModel)]='services.PricePerUnit'> -->
-            <!-- <span *ngIf="servicePricePerUnit">PricePerUnit Required</span> -->
+        <!-- <input type="text" class="form-control"  [(ngModel)]='services.PricePerUnit'> -->
+        <!-- <span *ngIf="servicePricePerUnit">PricePerUnit Required</span> -->
         <!-- </div> -->
         <!-- <div class="col-sm-2"></div> -->
         <div class="col-sm-5">
@@ -96,8 +95,8 @@
 
         </div>
 
-</div>
-<!-- 
+    </div>
+    <!-- 
 <button (click)="addService()" *ngIf="services.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >Add
     Service</button>
 
@@ -105,10 +104,10 @@
     Service</button> -->
 
 
-<div style="text-align: center">
+    <div style="text-align: center">
 
-    <button (click)="addService()" *ngIf="services.Id==0" type="button" class="btn btn-success">Save</button>
-    
-    <button (click)="editService()" *ngIf="services.Id!=0" type="button" class="btn btn-success">Save</button>
-    <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
-</div>
+        <button (click)="addService()" *ngIf="services.Id==0" type="button" class="btn btn-success">Save</button>
+
+        <button (click)="editService()" *ngIf="services.Id!=0" type="button" class="btn btn-success">Save</button>
+        <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+    </div>

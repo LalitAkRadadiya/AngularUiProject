@@ -14,19 +14,7 @@ export class AddEditServiceComponent implements OnInit {
   
   DealerList: any = [];
   @Input() services: any;
-  Id: Number = 0;
-  Name!: string;
-  Price!: Number;
-  FixPrice!: Number;
-  Discount!: Number;
-  Description!: string;
-  Quantity!: string;
-  CreatedBy!: string;
-  UpdateBy!: string;
-  DealerId!: number;
-  CostType!: string;
-  // PricePerUnit!: Number;
-  SalesPart !: string;
+  
 
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
@@ -40,20 +28,6 @@ export class AddEditServiceComponent implements OnInit {
     this.loadDealerList();
    
 
-    if (this.services != null && this.services != undefined) {
-      this.Id = this.services.Id;
-      this.Name = this.services.Name;
-      this.Price = this.services.Price;
-      this.FixPrice = this.services.FixPrice;
-      this.Discount = this.services.Discount;
-      this.Description = this.services.Description;
-      this.DealerId = this.DealerId;
-      this.CostType = this.services.CostType;
-      this.Quantity = this.services.Quantity;
-      // this.PricePerUnit = this.services.PricePerUnit;
-      this.SalesPart = this.services.SalesPart;
-     
-    }
     console.log(this.services);
   }
   serviceDealer = false;
@@ -109,7 +83,7 @@ validationCheck(){
   // } else {
   //   this.servicePricePerUnit = false;
   // }
-  if (!this.DealerId) {
+  if (!this.services.DealerId) {
     this.serviceDealerId = true;
   } else {
     this.serviceDealerId = false;
@@ -144,7 +118,6 @@ IsNumeric(e: KeyboardEvent) {
 
       
       var val = {
-        Id: this.Id,
         Name: this.services.Name,
         Price: this.services.Price,
         FixPrice: this.services.FixPrice,
@@ -152,7 +125,7 @@ IsNumeric(e: KeyboardEvent) {
         Description: this.services.Description,
         CreatedBy: 1,
         UpdatedBy: 1,
-        DealerId: this.DealerId,
+        DealerId: this.services.DealerId,
         Quantity : this.services.Quantity,
         SalesPart: this.services.SalesPart,
         // PricePerUnit: this.services.PricePerUnit,
@@ -177,7 +150,7 @@ IsNumeric(e: KeyboardEvent) {
     if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.serviceCosttype) {
     
       var val = {
-        Id: this.Id,
+        Id: this.services.Id,
         Name: this.services.Name,
         Price: this.services.Price,
         FixPrice: this.services.FixPrice,
@@ -185,6 +158,7 @@ IsNumeric(e: KeyboardEvent) {
         Description: this.services.Description,
         CreatedBy: 1,
         UpdatedBy: 1,
+        DealerId : this.services.DeaalerId,
         SalesPart: this.services.SalesPart,
         Quantity : this.services.Quantity,
         // PricePerUnit: this.services.PricePerUnit,

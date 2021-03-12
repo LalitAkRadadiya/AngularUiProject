@@ -63,7 +63,7 @@ export class AddEditMechanicalComponent implements OnInit {
     } else {
       this.tempMobileNo = false;
     }
-    if (!this.DealerId) {
+    if (!this.Mechanic.DealerId) {
       this.tempDealerId = true;
     } else {
       this.tempDealerId = false;
@@ -81,7 +81,7 @@ export class AddEditMechanicalComponent implements OnInit {
         isActive: this.Mechanic.isActive,
         EmailId: this.Mechanic.EmailId,
         MobileNo: this.Mechanic.MobileNo,
-        DealerId: this.DealerId,
+        DealerId: this.Mechanic.DealerId,
 
       };
       if (val.isActive != true) {
@@ -129,7 +129,7 @@ export class AddEditMechanicalComponent implements OnInit {
         isActive: this.Mechanic.isActive,
         EmailId: this.Mechanic.EmailId,
         MobileNo: this.Mechanic.MobileNo,
-        DealerId: this.DealerId,
+        DealerId: this.Mechanic.DealerId,
 
       };
 
