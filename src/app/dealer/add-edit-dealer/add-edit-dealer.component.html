@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='dealer.DealerNo'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.DealerNo'>
             <span *ngIf="tempDealerNo">DealerNo Required</span>
         </div>
     </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='dealer.PhoneNo'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.PhoneNo'>
             <span *ngIf="tempPhoneNo">PhoneNo Required</span>
         </div>
         <div class="col-sm-2"></div>

@@ -25,7 +25,7 @@ export class AddEditServiceComponent implements OnInit {
   UpdateBy!: string;
   DealerId!: number;
   CostType!: string;
-  PricePerUnit!: Number;
+  // PricePerUnit!: Number;
   SalesPart !: string;
 
   loadDealerList() {
@@ -50,7 +50,7 @@ export class AddEditServiceComponent implements OnInit {
       this.DealerId = this.DealerId;
       this.CostType = this.services.CostType;
       this.Quantity = this.services.Quantity;
-      this.PricePerUnit = this.services.PricePerUnit;
+      // this.PricePerUnit = this.services.PricePerUnit;
       this.SalesPart = this.services.SalesPart;
      
     }
@@ -64,7 +64,7 @@ export class AddEditServiceComponent implements OnInit {
   serviceDescription = false;
   serviceDealerId = false;
   serviceSalesPart = false;
-  servicePricePerUnit = false;
+  // servicePricePerUnit = false;
   serviceCosttype = false;
   serviceQuantity= false;
 
@@ -104,11 +104,11 @@ validationCheck(){
   } else {
     this.serviceSalesPart = false;
   }
-  if (!this.services.PricePerUnit) {
-    this.servicePricePerUnit = true;
-  } else {
-    this.servicePricePerUnit = false;
-  }
+  // if (!this.services.PricePerUnit) {
+  //   this.servicePricePerUnit = true;
+  // } else {
+  //   this.servicePricePerUnit = false;
+  // }
   if (!this.DealerId) {
     this.serviceDealerId = true;
   } else {
@@ -121,10 +121,26 @@ validationCheck(){
   }
 
 }
+IsNumeric(e: KeyboardEvent) {
+  var keyCode = e.which ? e.which : e.keyCode;
+  //// Allow: backspace, delete, tab, escape, enter and .
+  if (
+  $.inArray(keyCode, [8, 9, 27, 13, 190, 44, 45, 46]) !== -1 ||
+  // Allow: Ctrl+A, Command+A
+  (keyCode == 65 && (e.ctrlKey === true || e.metaKey === true))
+  ) {
+  // let it happen, don't do anything
+  return;
+  }
+  // Ensure that it is a number and stop the keypress
+  if (e.shiftKey || keyCode < 48 || keyCode > 57) {
+  e.preventDefault();
+  }
+  }
   addService() {
 
     this.validationCheck();
-    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
+    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart  && !this.serviceCosttype) {
 
       
       var val = {
@@ -139,7 +155,7 @@ validationCheck(){
         DealerId: this.DealerId,
         Quantity : this.services.Quantity,
         SalesPart: this.services.SalesPart,
-        PricePerUnit: this.services.PricePerUnit,
+        // PricePerUnit: this.services.PricePerUnit,
         CostType: this.services.CostType
       };
       // val['Description']=this.Description;
@@ -157,7 +173,7 @@ validationCheck(){
   }
   editService() {
     this.validationCheck();
-    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.servicePricePerUnit && !this.serviceCosttype) {
+    if (!this.serviceDealer && !this.serviceQuantity && !this.sericeName && !this.servicePrice && !this.servicefixprice && !this.serviceDiscount && !this.serviceDescription && !this.serviceDealerId && !this.serviceSalesPart && !this.serviceCosttype) {
     
       var val = {
         Id: this.Id,
@@ -170,7 +186,7 @@ validationCheck(){
         UpdatedBy: 1,
         SalesPart: this.services.SalesPart,
         Quantity : this.services.Quantity,
-        PricePerUnit: this.services.PricePerUnit,
+        // PricePerUnit: this.services.PricePerUnit,
         CostType: this.services.CostType
       };
       this.service.editService(val).subscribe(res => {

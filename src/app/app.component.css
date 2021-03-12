@@ -51,6 +51,10 @@ body {
   .fa{
     font-size: 30px;   
   }
+  button{
+    border: none; 
+        background-color: transparent; 
+  }
   /* body {
     position: relative;
     overflow-x: hidden;

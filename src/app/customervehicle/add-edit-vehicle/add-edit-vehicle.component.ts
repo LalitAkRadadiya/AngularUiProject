@@ -190,5 +190,20 @@ export class AddEditVehicleComponent implements OnInit {
       return false;
     }
   }
-
+  IsNumeric(e: KeyboardEvent) {
+    var keyCode = e.which ? e.which : e.keyCode;
+    //// Allow: backspace, delete, tab, escape, enter and .
+    if (
+    $.inArray(keyCode, [8, 9, 27, 13, 190, 44, 45, 46]) !== -1 ||
+    // Allow: Ctrl+A, Command+A
+    (keyCode == 65 && (e.ctrlKey === true || e.metaKey === true))
+    ) {
+    // let it happen, don't do anything
+    return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if (e.shiftKey || keyCode < 48 || keyCode > 57) {
+    e.preventDefault();
+    }
+    }
 }

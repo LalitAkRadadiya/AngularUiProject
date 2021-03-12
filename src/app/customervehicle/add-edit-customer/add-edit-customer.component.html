@@ -31,7 +31,7 @@
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.ZipCode' required placeholder="ZipCode"
+                <input type="text" class="form-control" [(ngModel)]='customer.ZipCode' (keypress)="IsNumeric($event)" required placeholder="ZipCode"
                     name="ZipCode">
                 <span *ngIf="tempZipCode">ZipCode Required</span>
             </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" [(ngModel)]='customer.CustomerNo' name="CustomerNo"
+                <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='customer.CustomerNo' name="CustomerNo"
                     placeholder="MobileNo" required>
                 <span *ngIf="tempCustomerNo">Mobile No Required</span>
             </div>

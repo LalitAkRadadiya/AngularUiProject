@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {AppoinmentComponent} from './appoinment/appoinment.component';
 import {HomeComponent} from './home/home.component';
 import { ServiceComponent } from './service/service.component';
+
+import { MsalGuard } from '@azure/msal-angular';
 import { DealerComponent } from './dealer/dealer.component';
 import { MechanicalComponent } from './mechanical/mechanical.component';
 import { CustomervehicleComponent } from './customervehicle/customervehicle.component';
@@ -13,12 +15,12 @@ import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mecha
 const routes: Routes = [
   {path:'',redirectTo:'home', pathMatch:'full'},
   {path:'home',component:HomeComponent},
-  {path:'appoinment',component:AppoinmentComponent},
-  {path:'service',component:ServiceComponent},
-  {path:'dealer',component:DealerComponent},
-  {path:'mechanic',component:MechanicalComponent},
-  {path:'tracking/:id',component:AppoinmentTrackingComponent},
-  {path:'customervehicle', component:CustomervehicleComponent},
+  {path:'appoinment',component:AppoinmentComponent,canActivate: [MsalGuard]},
+  {path:'service',component:ServiceComponent,canActivate: [MsalGuard]},
+  {path:'dealer',component:DealerComponent,canActivate:[MsalGuard]},
+  {path:'mechanic',component:MechanicalComponent,canActivate:[MsalGuard]},
+  {path:'tracking/:id',component:AppoinmentTrackingComponent,canActivate:[MsalGuard]},
+  {path:'customervehicle', component:CustomervehicleComponent,canActivate:[MsalGuard]},
   {path:'**',component:ErrorComponent}
 ];
 

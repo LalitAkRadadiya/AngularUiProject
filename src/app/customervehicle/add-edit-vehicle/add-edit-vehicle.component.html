@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.MeterValue'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='vehicle.MeterValue'>
             <span *ngIf="tempMeterValue">Meter Value Required</span>
         </div>
         <div class="col-sm-2"></div>
@@ -55,7 +55,7 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Weight'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)"  [(ngModel)]='vehicle.Weight'>
             <span *ngIf="tempWeight">Weight Required</span>
         </div>
         <div class="col-sm-2"></div>
