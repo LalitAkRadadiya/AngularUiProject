@@ -115,7 +115,7 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log('fail')
       this.hidemenu = false;
     }
-    //Toggle Click Function
+    
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -123,10 +123,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
 
-
-
-
-  // other methods
   checkAccount() {
     this.loggedIn = !!this.authService.getAccount();
   }
@@ -165,8 +161,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.profile = profile;
         },
         error: (err: AuthError) => {
-          // If there is an interaction required error,
-          // call one of the interactive methods and then make the request again.
           if (InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)) {
             this.authService.acquireTokenPopup({
               scopes: this.authService.getScopesForEndpoint(url)

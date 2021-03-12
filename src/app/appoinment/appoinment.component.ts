@@ -5,6 +5,7 @@ import {  ViewChild  } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { AddEditAppoinmentComponent } from './add-edit-appoinment/add-edit-appoinment.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-appoinment',
@@ -15,7 +16,7 @@ export class AppoinmentComponent implements OnInit  {
 
 
  
-  constructor(private titleService:Title,private service:SharedService,private toastr: ToastrService) { 
+  constructor(private titleService:Title,private service:SharedService,private toastr: ToastrService,  private spinner: NgxSpinnerService) { 
     this.titleService.setTitle("Appoinment");
   }
   @Input() appoinment:any;
@@ -70,6 +71,9 @@ export class AppoinmentComponent implements OnInit  {
   }
   
   editClick(item:any){
+
+    this.ActivateAddEditAppoinmentComp=false;
+    this.appoinment = [];
     this.appoinment=item;
 
     console.log('curent ap', this.appoinment);
@@ -98,11 +102,12 @@ export class AppoinmentComponent implements OnInit  {
   
   refreshAppoinmentList() {
      
+    this.spinner.show();
      this.service.getAppointmentList().subscribe(data => {
       this.AppointmentList = data;
+      this.spinner.hide();
     }
     );
-     
   }
 
 }

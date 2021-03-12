@@ -6,8 +6,7 @@
   <br>
 <h5 class="breadcrum">Home / Services</h5>
 
-
-
+<ngx-spinner bdColor = "rgba(219,215,215,0.62)" size = "medium" color = "#096dd1" type = "ball-pulse" [fullScreen] = "true" style="opacity: 0.1 !important"><p style="color: blue" > Loading... </p></ngx-spinner>
 
 <!-- Button trigger modal -->
   <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" 
@@ -68,9 +67,8 @@
               <td style="display: flex;">
                   <button type="button" class="btn btn-outline-success"
                   data-bs-toggle="modal" data-bs-target="#exampleModal"
-                  (click)="editClick(dataItem)"
-                  
-                  data-backdrop="static" data-keyboard="false">
+                  data-backdrop="static" data-keyboard="false" (click)="editClick(dataItem)">
+
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit</button>
                   <button [disabled]='!dataItem.DeleteButton' type="button" style="margin-left: 5%;" class="btn btn-outline-danger"
                   (click)="deleteClick(dataItem)">

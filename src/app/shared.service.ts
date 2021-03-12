@@ -11,7 +11,7 @@ import { ShowServiceComponent } from './service/show-service/show-service.compon
 export class SharedService {
   readonly APIUrl = "https://localhost:44370/api"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient ) { }
   
  
 

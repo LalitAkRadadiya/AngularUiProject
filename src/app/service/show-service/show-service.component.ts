@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { NgxSpinnerService } from "ngx-spinner";
+ 
 
 @Component({
   selector: 'app-show-service',
@@ -10,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ShowServiceComponent implements OnInit {
 
-  constructor(private service: SharedService, private toastr: ToastrService) { }
+  constructor(private service: SharedService, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
 
   ServiceList: any = [];
 
@@ -61,16 +62,19 @@ export class ShowServiceComponent implements OnInit {
         this.refreshServiceList();
       });
     }
+    
   }
   
-  refreshServiceList() {
-     
-     this.service.getServiceList().subscribe(data => {
-        
+   refreshServiceList() {
+    this.spinner.show();
+    this.service.getServiceList().subscribe(data => {
+   
       this.ServiceList = data;
-
-
+      this.spinner.hide();
+   
     }
+
+
     );
      
   }
