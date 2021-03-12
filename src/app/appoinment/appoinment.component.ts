@@ -5,6 +5,7 @@ import {  ViewChild  } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { AddEditAppoinmentComponent } from './add-edit-appoinment/add-edit-appoinment.component';
+
 @Component({
   selector: 'app-appoinment',
   templateUrl: './appoinment.component.html',
@@ -18,19 +19,6 @@ export class AppoinmentComponent implements OnInit  {
     this.titleService.setTitle("Appoinment");
   }
   @Input() appoinment:any;
-
-
-
-
-  // @ViewChild(AddEditAppoinmentComponent) getappoinment :  AddEditAppoinmentComponent;
-
-  // ngAfterViewInit(): void {
-   
-  //   this.getappoinment.getdata();
-  // }
-
-
-
 
   AppointmentList:any=[];
 
@@ -82,9 +70,6 @@ export class AppoinmentComponent implements OnInit  {
   }
   
   editClick(item:any){
-    this.appoinment={
-      Id: item.Id
-    }
     this.appoinment=item;
 
     console.log('curent ap', this.appoinment);

@@ -11,6 +11,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   DealerList: any = [];
   ServiceList: any = [];
+
+  EditAppoinment : any =[ ];
   AppServiceList : any = [];
   PlanningList :  any = [];
   updatedStatus: any;
@@ -75,18 +77,18 @@ export class AddEditAppoinmentComponent implements OnInit {
 
 
 
-  AppointmentServiceList(val : any){
-    this.service.getAppointmentServiceList(val).subscribe(data =>{
-      this.AppServiceList = data;
-      console.log('data',this.AppServiceList);
-    });
-  }
-  planningList(val : any){
-    this.service.getPlanningList(val).subscribe(data =>{
-      this.PlanningList = data;
-      console.log('data',this.PlanningList);
-    });
-  }
+  // AppointmentServiceList(val : any){
+  //   this.service.getAppointmentServiceList(val).subscribe(data =>{
+  //     this.AppServiceList = data;
+  //     console.log('data',this.AppServiceList);
+  //   });
+  // }
+  // planningList(val : any){
+  //   this.service.getPlanningList(val).subscribe(data =>{
+  //     this.PlanningList = data;
+  //     console.log('data',this.PlanningList);
+  //   });
+  // }
   
   updateAppoinmentStatus(id: any) {
     var val = {
@@ -101,34 +103,26 @@ export class AddEditAppoinmentComponent implements OnInit {
     });
   }
 
-  editAppinment = 0;
-
   ngOnInit() {
-    this.editAppinment = this.appoinment.Id
+
      this.loadDealerList();
 
-    if (this.appoinment != null && this.appoinment != undefined) {
-
-      this.Id = this.appoinment.Id;
-      this.FName = this.appoinment.FName;
-      this.LName = this.appoinment.LName;
-      this.MobileNo = this.appoinment.MobileNo;
-      this.Email = this.appoinment.Email;
-      this.City = this.appoinment.City;
-      this.Country = this.appoinment.Country;
-      this.Model = this.appoinment.Model;
-      this.Brand = this.appoinment.Brand;
-      this.LicencePlate = this.appoinment.LicencePlate;
-      this.Status = this.appoinment.Status;
-      this.StartDate = this.appoinment.StartDate;
-      this.EndDate = this.appoinment.EndDate;
-      this.TotalTime = this.appoinment.TotalTime;
-      this.TotalPrice = this.appoinment.TotalPrice;
-    }
     console.log('id',this.appoinment.Id)
-    this.AppointmentServiceList(this.appoinment.Id);
-    this.planningList(this.appoinment.Id);
+    // EditAppoinment
+    this.editAppoinment(this.appoinment.Id);
     
+    //localhost:44370/api/Appointment/AppointmentEdit/14
+    // this.AppointmentServiceList(this.appoinment.Id);
+    // this.planningList(this.appoinment.Id);
+    
+  }
+  editAppoinment(Id : any){
+    this.service.getEditAppoinmentList(Id).subscribe(res =>{
+      this.EditAppoinment = res;
+      this.AppServiceList = this.EditAppoinment.appointmentServicesList;
+      this.PlanningList = this.EditAppoinment.planningList;
+      console.log('id', res);
+    });
   }
 
   displayservice = false;
@@ -232,6 +226,7 @@ disbaleplanningbutton = false;
   }
   deleteApppoinmentService(val : any){
     this.service.deleteAppoinmentService(val.Id).subscribe(res => {
+      // this.AppServiceList = this.AppServiceList.filter((x: { Id: any; })=>x.Id != val.Id);
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
@@ -240,6 +235,7 @@ disbaleplanningbutton = false;
   deletePlanning(val: any){
     console.log('dletplanid',val.Id);
     this.service.deletePlanning(val.Id).subscribe(res => {
+      // this.PlanningList = this.PlanningList.filter((x: { Id: any; })=>x.Id != val.Id);
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });

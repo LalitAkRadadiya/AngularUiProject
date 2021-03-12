@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './error/error.component';
 import { AppoinmentTrackingComponent } from './appoinment-tracking/appoinment-tracking.component';
 import { ShowMechanicalComponent } from './mechanical/show-mechanical/show-mechanical.component';
+import { AddEditAppoinmentComponent } from './appoinment/add-edit-appoinment/add-edit-appoinment.component';
 const routes: Routes = [
   {path:'',redirectTo:'home', pathMatch:'full'},
   {path:'home',component:HomeComponent},
@@ -29,4 +30,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingmod =[DealerComponent,MechanicalComponent,CustomervehicleComponent];
+export const routingmod =[AppoinmentComponent,AddEditAppoinmentComponent,AppoinmentTrackingComponent,ServiceComponent,DealerComponent,MechanicalComponent,CustomervehicleComponent];

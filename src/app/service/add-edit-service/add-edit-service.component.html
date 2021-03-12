@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col-sm-5">
             
-            
-            <select [disabled]="services.Name ? true : false " id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <!-- [disabled]="services.Name ? true : false " -->
+            <select  id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
                 <option *ngFor="let data of DealerList" [selected]="data.Id == services.DealerId" value={{data.Id}}>
                      <span >Dealer Name : {{data.DealerName}} - Phone No :  {{data.PhoneNo}}</span>
                 </option>

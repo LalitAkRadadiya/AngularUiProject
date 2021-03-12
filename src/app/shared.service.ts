@@ -22,7 +22,11 @@ export class SharedService {
     return this.http.put(this.APIUrl + '/Appointment/UpdateStatus', val);
   }
 
- 
+ getEditAppoinmentList(id: any){
+  return this.http.get<any>(this.APIUrl + '/Appointment/AppointmentEdit/' + id);
+ }
+
+
 
   getAppointmentList() :Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Appointment/allAppointments');
