@@ -111,18 +111,10 @@ export class AppoinmentComponent implements OnInit  {
   }
 
   
-  loader = "";
   refreshAppoinmentList() {
      
-    this.loader = this.service.showLoadeer();
      this.service.getAppointmentList().subscribe(data => {
-      setTimeout(() => {
-        
       this.AppointmentList = data;
-
-
-      this.loader =  this.service.hideLoader();
-      }, 1000);
     }
     );
      

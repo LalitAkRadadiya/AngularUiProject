@@ -13,13 +13,7 @@ export class SharedService {
 
   constructor(private http: HttpClient) { }
   
-  loader = ""; 
-  showLoadeer(){
-     return this.loader = "ShowloadDisplay";
-  }
-  hideLoader(){
-    return this.loader ="HideloadDisaply";
-  }
+ 
 
   getAppointmentById(id: any):Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/Appointment/AppointmentTracker/' + id);

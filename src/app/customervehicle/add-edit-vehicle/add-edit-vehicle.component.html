@@ -24,6 +24,7 @@
         <div class="col-sm-5">
             <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate'>
             <span *ngIf="tempLicencePlate">LicencePlate Required</span>
+            <span *ngIf="vahicleavailblecheck">Vehicle Already availble</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">

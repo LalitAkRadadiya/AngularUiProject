@@ -22,7 +22,6 @@ export class ShowServiceComponent implements OnInit {
 
     this.refreshServiceList();
     
-    this.loader = this.service.showLoadeer();
     setTimeout(() => {
       //init Datatable
       
@@ -64,19 +63,13 @@ export class ShowServiceComponent implements OnInit {
     }
   }
   
-  loader = "";
   refreshServiceList() {
      
-    this.loader = this.service.showLoadeer();
      this.service.getServiceList().subscribe(data => {
-       console.log('data',data);
-      setTimeout(() => {
         
       this.ServiceList = data;
 
 
-      this.loader =  this.service.hideLoader();
-      }, 1000);
     }
     );
      

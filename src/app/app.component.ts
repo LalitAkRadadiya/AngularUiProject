@@ -22,15 +22,9 @@ export class AppComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   isIframe = false;
   loggedIn = false;
-  get getloader() {
-    return this.loader;
-  }
-
+  
   hidemenu = false;
 
-
-
-  loader = "";
 
 
 

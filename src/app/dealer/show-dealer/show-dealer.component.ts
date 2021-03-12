@@ -66,17 +66,12 @@ export class ShowDealerComponent implements OnInit {
   }
 
   
-  loader =""
   refreshDealerList(){
-    this.loader = this.service.showLoadeer();
     this.service.getDealerList().subscribe(data => {
-     setTimeout(() => {
        
      this.DealerList = data;
 
 
-     this.loader =  this.service.hideLoader();
-     }, 1000);
    }
    );
     }

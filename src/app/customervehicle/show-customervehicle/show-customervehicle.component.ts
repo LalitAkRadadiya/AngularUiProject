@@ -114,18 +114,13 @@ export class ShowCustomervehicleComponent implements OnInit {
     
   }
  
-  loader = "";
   refreshcustomerList() {
      
-    this.loader = this.service.showLoadeer();
      this.service.getCustomerList().subscribe(data => {
-      setTimeout(() => {
         
       this.CustomerList = data;
 
 
-      this.loader =  this.service.hideLoader();
-      }, 1000);
     }
     );
      

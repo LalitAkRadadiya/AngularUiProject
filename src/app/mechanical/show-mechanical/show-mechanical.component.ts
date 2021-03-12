@@ -66,17 +66,12 @@ export class ShowMechanicalComponent implements OnInit {
       });
   }
 
-  loader =""
   refreshMechanicList(){
-    this.loader = this.service.showLoadeer();
     this.service.getMechanicList().subscribe(data => {
-     setTimeout(() => {
        
      this.MechanicList = data;
 
 
-     this.loader =  this.service.hideLoader();
-     }, 1000);
    }
    );
     }

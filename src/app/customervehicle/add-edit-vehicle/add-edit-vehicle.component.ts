@@ -117,6 +117,7 @@ export class AddEditVehicleComponent implements OnInit {
       this.tempColour = false;
     }
   }
+  vahicleavailblecheck = false;
   addVehicle() {
 
     this.validationCheck();
@@ -142,12 +143,21 @@ export class AddEditVehicleComponent implements OnInit {
       };
       console.log('vehicle added', this.vehicle);
       this.service.addVehicle(val).subscribe(res => {
+        console.log('ehical availbale', res)
+        if(res == "Vehicle is Available"){
+          this.vahicleavailblecheck = true;
+          return false;
+        }else{
+          this.vahicleavailblecheck = false;
+          
+          let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
+          element.click();
+        }
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });
       });
-      let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
-      element.click();
+     
     }
     else {
       return false;
@@ -198,16 +208,16 @@ export class AddEditVehicleComponent implements OnInit {
     var keyCode = e.which ? e.which : e.keyCode;
     //// Allow: backspace, delete, tab, escape, enter and .
     if (
-    $.inArray(keyCode, [8, 9, 27, 13, 190, 44, 45, 46]) !== -1 ||
-    // Allow: Ctrl+A, Command+A
-    (keyCode == 65 && (e.ctrlKey === true || e.metaKey === true))
+      $.inArray(keyCode, [8, 9, 27, 13, 190, 44, 45, 46]) !== -1 ||
+      // Allow: Ctrl+A, Command+A
+      (keyCode == 65 && (e.ctrlKey === true || e.metaKey === true))
     ) {
-    // let it happen, don't do anything
-    return;
+      // let it happen, don't do anything
+      return;
     }
     // Ensure that it is a number and stop the keypress
     if (e.shiftKey || keyCode < 48 || keyCode > 57) {
-    e.preventDefault();
+      e.preventDefault();
     }
-    }
+  }
 }
