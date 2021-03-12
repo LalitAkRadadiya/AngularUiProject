@@ -126,6 +126,8 @@ export class AddEditDealerComponent implements OnInit {
           });
         });
       }
+      let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
+      element.click();
     } else {
       return false;
     }
@@ -159,6 +161,8 @@ export class AddEditDealerComponent implements OnInit {
           timeOut: 3000,
         });
       });
+      let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
+      element.click();
     } else {
       return false;
     }

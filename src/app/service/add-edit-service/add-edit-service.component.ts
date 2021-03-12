@@ -165,7 +165,8 @@ IsNumeric(e: KeyboardEvent) {
           timeOut: 3000,
         });
       });
-
+      let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
+      element.click();
     }else{
       return false;
     }
@@ -194,6 +195,8 @@ IsNumeric(e: KeyboardEvent) {
           timeOut: 3000,
         });
       });
+      let element: HTMLElement = document.getElementsByClassName('btn-danger')[0] as HTMLElement;
+      element.click();
     }else{
       return false;
     }

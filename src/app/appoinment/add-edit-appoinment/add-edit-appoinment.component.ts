@@ -227,6 +227,8 @@ disbaleplanningbutton = false;
       });
       this.disbaleplanningbutton=true;
     });
+    let element: HTMLElement = document.getElementsByClassName('done-plan')[0] as HTMLElement;
+      element.click();
   }
   deleteApppoinmentService(val : any){
     this.service.deleteAppoinmentService(val.Id).subscribe(res => {

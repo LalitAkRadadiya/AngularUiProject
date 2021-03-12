@@ -28,17 +28,17 @@
           <div id="page-content-wrapper">
             
             <nav  *ngIf="!hidemenu" class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-              <button class="btn btn-outline-dark" id="menu-toggle">&#9776;</button>
+              <!-- <button class="btn btn-outline-dark" id="menu-toggle">&#9776;</button> -->
         
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-        
+              </button> -->
+              <mat-card-content id='profile' style="white-space: nowrap;font-size: 20px;font-weight: 400;" *ngIf="profile?.name"> Welcome {{profile?.name}}! </mat-card-content>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
                     
-                      <mat-card-content id='profile' *ngIf="profile?.name"> Welcome {{profile?.name}}! </mat-card-content>
+                      
                       <button (click)="login()"   *ngIf="!profile?.name" class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Login</b> <span class="sr-only">(current)</span></button>
                   
                       <button (click)="logout()"  *ngIf="profile?.name"  class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Logout</b> <span class="sr-only">(current)</span></button>
