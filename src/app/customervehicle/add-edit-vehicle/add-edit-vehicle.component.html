@@ -90,9 +90,15 @@
         </div>
     </div>
 </div>
-<button (click)="addVehicle()" *ngIf="vehicle.Id==0" class="btn btn-outline-primary"
+<!-- <button (click)="addVehicle()" *ngIf="vehicle.Id==0" class="btn btn-outline-primary"
     style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
 
 <button (click)="editVehicle()" *ngIf="vehicle.Id!=0" class="btn btn-outline-primary"
-    style="margin-top:2%; margin-left: 43%;">Update Vehicle</button>
+    style="margin-top:2%; margin-left: 43%;">Update Vehicle</button> -->
 <!-- *ngIf="Id==0" -->
+<div style="text-align: center;">
+    <button (click)="addVehicle()" *ngIf="vehicle.Id==0" type="button" class="btn btn-success">Save</button>
+    <button (click)="editVehicle()"  *ngIf="vehicle.Id!=0"  type="button" class="btn btn-success">Save</button>
+    <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+</div>
+      
