@@ -6,13 +6,13 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" name="FName" [(ngModel)]='Mechanic.MechanicName'>
+            <input type="text" class="form-control" name="FName" placeholder="Machanic Name" [(ngModel)]='Mechanic.MechanicName'>
 
             <span *ngIf="tempMechanicName">MechanicName Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='Mechanic.EmployeeNo'>
+            <input type="text" class="form-control" placeholder="EmployeeNo" (keypress)="IsNumeric($event)" [(ngModel)]='Mechanic.EmployeeNo'>
 
             <span *ngIf="tempEmployeeNo">EmployeeNo Required</span>
         </div>
@@ -27,13 +27,13 @@
     <div class="row">
         <div class="col-sm-5">
 
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='Mechanic.MobileNo'>
+            <input type="text" class="form-control" placeholder="Mobile No" (keypress)="IsNumeric($event)" [(ngModel)]='Mechanic.MobileNo'>
 
             <span *ngIf="tempMobileNo">MobileNo Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='Mechanic.EmailId'>
+            <input type="text" class="form-control" placeholder="EmailId" [(ngModel)]='Mechanic.EmailId'>
 
             <span *ngIf="tempEmailId">EmailId Required</span>
         </div>
@@ -41,7 +41,7 @@
 
     <div class="row">
         <label class="col-sm-5 col-form-label">IsActive<span style="color: red;">*</span>
-            <input type="checkbox" style="margin-left: 20px;" [(ngModel)]='Mechanic.isActive'></label>
+            <input type="checkbox" style="margin-left: 20px;" placeholder="IsActive" [(ngModel)]='Mechanic.isActive'></label>
 
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
@@ -51,7 +51,7 @@
                 <span style="color: red;">*</span></label>
             <!-- [disabled]="Mechanic.MobileNo ? true : false " -->
 
-            <select id="dealer" name="dealer" class="form-control" [(ngModel)]="Mechanic.DealerId">
+            <select id="dealer" name="dealer" class="form-control" placeholder="Choose Dealer" [(ngModel)]="Mechanic.DealerId">
                             <option *ngFor="let data of DealerList" [selected]="data.Id == Mechanic.DealerId" [value]="data.Id">
                                 Dealer Name : {{data.DealerName}} - Mobile NO :{{data.PhoneNo}}
                             </option>
