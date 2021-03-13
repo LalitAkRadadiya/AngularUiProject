@@ -19,7 +19,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   MechanicList: any = [];
 
-  
+
   serviceAppoinment: any;
   currentAppoinmentServiceId: any;
 
@@ -92,19 +92,22 @@ export class AddEditAppoinmentComponent implements OnInit {
 
     this.loadDealerList();
 
-    console.log('id', this.appoinment.Id)
-    if(this.appoinment.Id != 0){
-      this.service.getEditAppoinmentList(this.appoinment.Id).subscribe(res => {
+    this.get_service_planning(this.appoinment.Id);
+
+  }
+  get_service_planning(id: Number) {
+    console.log('id', id)
+    if (id != 0) {
+      this.service.getEditAppoinmentList(id).subscribe(res => {
         this.EditAppoinment = res;
-        
-  
-          this.AppServiceList = this.EditAppoinment.appointmentServicesList;
-          this.PlanningList = this.EditAppoinment.planningList;
-        
-        console.log('id', res);
+
+
+        this.AppServiceList = this.EditAppoinment.appointmentServicesList;
+        this.PlanningList = this.EditAppoinment.planningList;
+
+        console.log('get service Planingn detail', res);
       });
     }
-
   }
 
   tempDealer = false;
@@ -115,8 +118,8 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.tempDealer = false;
     }
   }
-  
-  service_planning= false;
+
+  service_planning = false;
   disableappoinmentbutton = false;
   addAppoinment() {
     this.addappvalidation();
@@ -131,7 +134,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
       this.service.addAppoinment(val).subscribe(res => {
         this.serviceAppoinment = res;
-        this.service_planning =true;
+        this.service_planning = true;
         this.toastr.success("SuccessFully Created", '', {
           timeOut: 3000,
         });
@@ -143,9 +146,9 @@ export class AddEditAppoinmentComponent implements OnInit {
       return false;
     }
   }
-  
+
   tempAppservice = false;
-  validationofappoinmentservice(){
+  validationofappoinmentservice() {
     if (!this.ServiceId) {
       this.tempAppservice = true;
     } else {
@@ -155,7 +158,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   deleteApppoinmentService(val: any) {
     this.service.deleteAppoinmentService(val.Id).subscribe(res => {
-      // this.AppServiceList = this.AppServiceList.filter((x: { Id: any; })=>x.Id != val.Id);
+      this.AppServiceList = this.AppServiceList.filter((x: { Id: any; }) => x.Id != val.Id);
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
@@ -164,14 +167,14 @@ export class AddEditAppoinmentComponent implements OnInit {
   deletePlanning(val: any) {
     console.log('dletplanid', val.Id);
     this.service.deletePlanning(val.Id).subscribe(res => {
-      // this.PlanningList = this.PlanningList.filter((x: { Id: any; })=>x.Id != val.Id);
+      this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
       console.log('should dlt');
     });
   }
-  
+
   vehicalnotfound = false;
   getCustomerVehicleInfo(item: string) {
     try {
@@ -215,7 +218,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
 
 
-  displayServicePlanningList =true;
+  displayServicePlanningList = true;
   disappoinmentserviceubtton = true;
 
   displanningubutton = false;
@@ -223,12 +226,12 @@ export class AddEditAppoinmentComponent implements OnInit {
   moreService_PlanningButton = false;
 
 
-  moreService_Planning(){
+  moreService_Planning() {
     this.moreService_PlanningButton = false;
     this.disappoinmentserviceubtton = true;
 
   }
-  
+
   // AppServiceList: 
   // PlanningList: 
   AddAppoinmentService() {
@@ -245,13 +248,17 @@ export class AddEditAppoinmentComponent implements OnInit {
         PricePerUnit: 30,
         CreatedBy: "Lalit"
       };
-      this.AppServiceList.push(val);
+      // this.AppServiceList.push(val);
       console.log('val cal', val);
+
       this.service.addAppoinmentService(val).subscribe(res => {
         console.log(res);
         this.currentAppoinmentServiceId = res;
         this.displanningubutton = true;
         this.disappoinmentserviceubtton = false;
+        this.loadMechanicList();
+
+        this.get_service_planning(val.AppointmentId);
         this.toastr.success("Created Successfully", '', {
           timeOut: 3000,
         });
@@ -264,7 +271,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   createPlanning() {
     var val = {
       AppointmentId: this.serviceAppoinment,
-      MechanicId: 28,
+      MechanicId: this.MechanicId,
       AppointmentServiceId: this.currentAppoinmentServiceId,
       StartDate: this.StartDate,
       EndDate: this.EndDate,
@@ -272,22 +279,31 @@ export class AddEditAppoinmentComponent implements OnInit {
 
     }
     console.log(val);
-    
-    this.PlanningList.push(val);
+
+    // this.PlanningList.push(val);
+
     this.service.addPlanning(val).subscribe(res => {
       console.log(res);
-      this.displanningubutton = false;
-      this.moreService_PlanningButton = true;
-      this.toastr.success(res.toString(), '', {
-        timeOut: 3000,
-      });
+      if (res == "Mechanic is not Available. Choose other Date.") {
+        return false
+      } else {
+        this.displanningubutton = false;
+        this.moreService_PlanningButton = true;
+
+        this.get_service_planning(val.AppointmentId);
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
+      }
+
+
     });
-    
 
 
-    
+
+
   }
-  
+
 
 
 

@@ -259,7 +259,7 @@
     <div *ngIf="service_planning">
 
         <div *ngIf="displayServicePlanningList">
-                <div *ngIf="AppServiceList else elseBlockservice">
+                <div *ngIf="AppServiceList?.length else elseBlockservice">
                         <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                             <thead>
                                 <tr>
@@ -300,7 +300,7 @@
                 <ng-template #elseBlockservice style="text-align: center;">
                     <h1>No service availble</h1>
                 </ng-template>
-                <div *ngIf="PlanningList else elseBlock">
+                <div *ngIf="PlanningList?.length else elseBlock">
                         <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                             <thead>
                                 <tr>
@@ -364,7 +364,7 @@
             <div >
     
                 <label>Choose Mechanic<span style="color: red;">*</span></label>
-                <select (click)="loadMechanicList()"  id="Mechanic" name="Mechanic"
+                <select   id="Mechanic" name="Mechanic"
                     class="form-control" [(ngModel)]="MechanicId">
     
                     <option *ngFor="let data of MechanicList" [value]="data.Id">
