@@ -1,4 +1,4 @@
-<div *ngIf="appoinment.Id==0;  else elseBlock">
+<div *ngIf="appoinment.Id==0; else elseBlock">
 
 
 
@@ -8,7 +8,8 @@
                 <label>
                     Please Select Dealer!
                     <span style="color: red;">*</span></label>
-                <select [disabled]="disableappoinmentbutton" id="dealer" name="dealer" class="form-control" [(ngModel)]="DealerId">
+                <select [disabled]="disableappoinmentbutton" id="dealer" name="dealer" class="form-control"
+                    [(ngModel)]="DealerId">
                     <option *ngFor="let data of DealerList" [value]="data.Id">
                         DealerName : {{data.DealerName}} - MobileNo : {{data.PhoneNo}}
                     </option>
@@ -22,12 +23,13 @@
 
                 <div class="row">
                     <div style="display: flex">
-                        <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate">
+                        <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate"
+                            placeholder="Vehicle Licence Plate">
                         <button type="button" class="btn btn-success" style="margin: 0"
                             (click)="getCustomerVehicleInfo(LicencePlate)">
 
                             <i class="fa fa-search" aria-hidden="true"></i></button>
-                            <br>
+                        <br>
                     </div>
                     <span *ngIf="vehicalnotfound" style="color: red;">Vehical not Found</span>
 
@@ -40,7 +42,7 @@
             </div>
         </div>
 
-</div>
+    </div>
 
 
 
@@ -133,25 +135,27 @@
                         <td>{{data.PricePerUnit}}
                         <td>{{data.Quantity}}</td>
                         <td>{{data.SalesPart}}</td>
-                         <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                         <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
             </table>
         </div>
-        <ng-template #elseBlockservice style="text-align: center;"><h1>No service availble</h1></ng-template>
-        
+        <ng-template #elseBlockservice style="text-align: center;">
+            <h1>No service availble</h1>
+        </ng-template>
+
     </div>
-    <div class="row" >
+    <div class="row">
         <label>Planning Details<span style="color: red;">*</span></label>
         <div *ngIf="PlanningList else elseBlock">
-            <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <!-- <th>AppoinmentId </th> -->
-                        <th>AppointmentId</th> 
+                        <th>AppointmentId</th>
                         <th>AppointmentServiceId</th>
                         <th>Duration</th>
                         <th>StartDate</th>
@@ -168,90 +172,84 @@
                         <td>{{data.Duration}}</td>
                         <td>{{data.StartDate }}</td>
                         <td>{{data.EndDate}}</td>
-                        
-                         <button (click)="deletePlanning(data)"  type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+
+                        <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
+                            class="btn btn-outline-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
             </table>
         </div>
-        <ng-template #elseBlock style="text-align: center;"><h1>No Planning availble</h1></ng-template>
-        
+        <ng-template #elseBlock style="text-align: center;">
+            <h1>No Planning availble</h1>
+        </ng-template>
+
     </div>
-
-
-
-
 </ng-template>
-
-
-
 
 <div *ngIf="appoinment.Id==0; ">
     <div class="row" *ngIf="!vehicalnotfound && CustomerVehicleInfo">
-        <div >
-                <label>Customer Details<span style="color: red;">*</span></label>
-                <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Mobile</th>
-                            <th>Address</th>
-                            <!-- <th>Email</th> -->
-                            <th>City</th>
-                            <th>Country</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr >
-                            <td>{{CustomerVehicleInfo.FName }}</td>
-                            <td>{{CustomerVehicleInfo.LName }}</td>
-                            <td>{{CustomerVehicleInfo.CustomerNo }}</td>
-                            <td>{{CustomerVehicleInfo.Address }}</td>
-                            <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
-                            <td>{{CustomerVehicleInfo.City }}</td>
-                            <td>{{CustomerVehicleInfo.Country }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- </div> -->
-                    <label>Vehicle Details<span style="color: red;">*</span></label>
-                    <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                        <thead>
-                            <tr>
-                                <th>Licence Plate</th>
-                                <th>Model</th>
-                                <th>Brand</th>
-                                <th>Meter Value</th>
-                                <th>Reg. Date</th>
-                                <th>Vin</th>
-                                <th>Colour</th>
-                                <th>Eng. No</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr >
-                                <td>{{CustomerVehicleInfo.LicencePlate }}</td>
-                                <td>{{CustomerVehicleInfo.Model }}</td>
-                                <td>{{CustomerVehicleInfo.Brand }}</td>
-                                <td>{{CustomerVehicleInfo.MeterValue }}</td>
-                                <td>{{CustomerVehicleInfo.RegDate }}</td>
-                                <td>{{CustomerVehicleInfo.Vin }}</td>
-                                <td>{{CustomerVehicleInfo.Colour }}</td>
-                                <td>{{CustomerVehicleInfo.EngNo }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-        
-                <button [disabled]="disableappoinmentbutton" (click)="addAppoinment()" *ngIf="appoinment.Id==0" class="btn btn-success"
-                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
+        <div>
+            <label>Customer Details<span style="color: red;">*</span></label>
+            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <!-- <th>Email</th> -->
+                        <th>City</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{CustomerVehicleInfo.FName }}</td>
+                        <td>{{CustomerVehicleInfo.LName }}</td>
+                        <td>{{CustomerVehicleInfo.CustomerNo }}</td>
+                        <td>{{CustomerVehicleInfo.Address }}</td>
+                        <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
+                        <td>{{CustomerVehicleInfo.City }}</td>
+                        <td>{{CustomerVehicleInfo.Country }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- </div> -->
+            <label>Vehicle Details<span style="color: red;">*</span></label>
+            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                <thead>
+                    <tr>
+                        <th>Licence Plate</th>
+                        <th>Model</th>
+                        <th>Brand</th>
+                        <th>Meter Value</th>
+                        <th>Reg. Date</th>
+                        <th>Vin</th>
+                        <th>Colour</th>
+                        <th>Eng. No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{CustomerVehicleInfo.LicencePlate }}</td>
+                        <td>{{CustomerVehicleInfo.Model }}</td>
+                        <td>{{CustomerVehicleInfo.Brand }}</td>
+                        <td>{{CustomerVehicleInfo.MeterValue }}</td>
+                        <td>{{CustomerVehicleInfo.RegDate }}</td>
+                        <td>{{CustomerVehicleInfo.Vin }}</td>
+                        <td>{{CustomerVehicleInfo.Colour }}</td>
+                        <td>{{CustomerVehicleInfo.EngNo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button [disabled]="disableappoinmentbutton" (click)="addAppoinment()" *ngIf="appoinment.Id==0"
+                class="btn btn-success" style="margin-top:2%; width: 50% ;margin-left:25%;">Create Appoinment</button>
         </div>
-        
+
     </div>
-
-
     <div *ngIf="appoinment.Id==0">
         <div *ngIf="displayservice" style="display: flex">
             <div class="col-sm-9">
@@ -265,24 +263,24 @@
                 <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
             </div>
             <div class="col-sm-3">
-                 <!-- <label><span style="color: red;"></span></label> -->
-                 <br>
+                <!-- <label><span style="color: red;"></span></label> -->
+                <br>
                 <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
-                <button [disabled]="disableappservicebutton"(click)="AddAppoinmentService()"  class="btn btn-success"
-                style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
+                <button [disabled]="disableappservicebutton" (click)="AddAppoinmentService()" class="btn btn-success"
+                    style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
             </div>
 
-           
+
         </div>
 
 
 
 
         <div *ngIf="displayMechanic">
-       
+
             <label>Choose Mechanic<span style="color: red;">*</span></label>
-            <select (click)="loadMechanicList()" [disabled]="disbaleplanningbutton" id="Mechanic" name="Mechanic" class="form-control"
-                [(ngModel)]="MechanicId">
+            <select (click)="loadMechanicList()" [disabled]="disbaleplanningbutton" id="Mechanic" name="Mechanic"
+                class="form-control" [(ngModel)]="MechanicId">
 
                 <option *ngFor="let data of MechanicList" [value]="data.Id">
                     <div *ngIf="MechanicList?.length else elseBlock">
@@ -295,19 +293,21 @@
                 </option>
             </select>
             <div style="display: flex">
-                    <div class="col-sm-5">
-                        <label>Start Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate">
-                    </div>
-                    <div class="col-sm-5">
-                        <label>End Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate">
-                    </div>
+                <div class="col-sm-5">
+                    <label>Start Date<span style="color: red;">*</span></label>
+                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
+                        placeholder="Start Date">
                 </div>
-                <button [disabled]="disbaleplanningbutton" (click)="createPlanning()"  class="btn btn-success done-plan"
-                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-        
+                <div class="col-sm-5">
+                    <label>End Date<span style="color: red;">*</span></label>
+                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
+                        placeholder="End Date">
+                </div>
+            </div>
+            <button [disabled]="disbaleplanningbutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+
         </div>
-        
+
 
     </div>

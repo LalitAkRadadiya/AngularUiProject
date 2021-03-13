@@ -6,12 +6,12 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Description'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Description' placeholder="Vehicle Description">
             <span *ngIf="tempDescription">Description Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Brand'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Brand' placeholder="Vehicle Brand">
             <span *ngIf="tempBrand">Brand Required</span>
         </div>
     </div>
@@ -22,13 +22,13 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.LicencePlate' placeholder="Licence Plate">
             <span *ngIf="tempLicencePlate">LicencePlate Required</span>
             <span *ngIf="vahicleavailblecheck">Vehicle Already availble</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Model'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Model' placeholder="Vehicle Model">
             <span *ngIf="tempModel">Model Required</span>
         </div>
     </div>
@@ -39,12 +39,14 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='vehicle.MeterValue'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='vehicle.MeterValue'
+                placeholder="Vehicle Meter Value">
             <span *ngIf="tempMeterValue">Meter Value Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="datetime-local" class="form-control" [(ngModel)]='vehicle.RegDate'>
+            <input type="datetime-local" class="form-control" [(ngModel)]='vehicle.RegDate'
+                placeholder="Vehicle Registration Date">
             <span *ngIf="tempRegDate">Registration Date Required</span>
         </div>
     </div>
@@ -56,12 +58,13 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)"  [(ngModel)]='vehicle.Weight'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='vehicle.Weight'
+                placeholder="Vehicle Weight">
             <span *ngIf="tempWeight">Weight Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.MCHCode'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.MCHCode' placeholder="Vehicle MCH Code">
             <span *ngIf="tempMCHCode">MCH Required</span>
         </div>
     </div>
@@ -72,12 +75,12 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Vin'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Vin' placeholder="Vehicle Vin">
             <span *ngIf="tempVIN">VIN Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.EngNo'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.EngNo' placeholder="Vehicle Engine Number">
             <span *ngIf="tempEngNo">Engine No Required</span>
         </div>
     </div>
@@ -86,20 +89,19 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='vehicle.Colour'>
+            <input type="text" class="form-control" [(ngModel)]='vehicle.Colour' placeholder="Vehicle Colour">
             <span *ngIf="tempColour">Colour Required</span>
         </div>
     </div>
 </div>
 <!-- <button (click)="addVehicle()" *ngIf="vehicle.Id==0" class="btn btn-outline-primary"
-    style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
+style="margin-top:2%; margin-left: 43%;">Add Vehicle</button>
 
 <button (click)="editVehicle()" *ngIf="vehicle.Id!=0" class="btn btn-outline-primary"
-    style="margin-top:2%; margin-left: 43%;">Update Vehicle</button> -->
+style="margin-top:2%; margin-left: 43%;">Update Vehicle</button> -->
 <!-- *ngIf="Id==0" -->
 <div style="text-align: center;">
     <button (click)="addVehicle()" *ngIf="vehicle.Id==0" type="button" class="btn btn-success">Save</button>
-    <button (click)="editVehicle()"  *ngIf="vehicle.Id!=0"  type="button" class="btn btn-success">Save</button>
+    <button (click)="editVehicle()" *ngIf="vehicle.Id!=0" type="button" class="btn btn-success">Save</button>
     <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
 </div>
-      
