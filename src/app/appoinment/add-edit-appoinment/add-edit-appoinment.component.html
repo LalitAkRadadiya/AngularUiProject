@@ -81,15 +81,15 @@
                     <td>{{appoinment.Model}}</td>
                     <td>{{appoinment.Brand}}</td>
                     <td>{{appoinment.Status}}
+                        <!-- this.appoinment.Id -->
 
-
-                        <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                        <!-- <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
                             [(ngModel)]="updatedStatus" >
                             <option *ngIf="let data of statusArray" [selected]="data == appoinment.status" >
                                 {{data}}
                             </option>
                             
-                        </select>
+                        </select> -->
 
 
                     </td>
@@ -250,64 +250,156 @@
         </div>
 
     </div>
-    <div *ngIf="appoinment.Id==0">
-        <div *ngIf="displayservice" style="display: flex">
-            <div class="col-sm-9">
-                <label>Choose Service<span style="color: red;">*</span></label>
-                <select [disabled]="disableappservicebutton" id="service" name="service" class="form-control"
-                    [(ngModel)]="ServiceId">
-                    <option *ngFor="let data of ServiceList" [value]="data.Id">
-                        Service Name : {{data.Name}} - Price : {{data.Price}}
+   
+
+
+
+
+
+    <div *ngIf="service_planning">
+
+        <div *ngIf="displayServicePlanningList">
+                <div *ngIf="AppServiceList else elseBlockservice">
+                        <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <!-- <th>AppoinmentId </th> -->
+                                    <th>Service Name</th> 
+                                    <th>CostType</th>
+                                    <th>Description</th>
+                                    <th>Discount</th>
+                                    <th>FixPrice</th>
+                                    <th>Price</th>
+                                    <th>PricePerUnit</th>
+                                    <th>Quantity</th>
+                                    <th>SalesPart</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of AppServiceList">
+                                    <td>{{data.Id}}</td>
+                                    <!-- <td>{{data.AppoinmentId}}</td> -->
+                                    <td>{{data.ServiceName}}</td>
+                                    <td>{{data.CostType}}</td>
+                                    <td>{{data.Description}}</td>
+                                    <td>{{data.Discount }}</td>
+                                    <td>{{data.FixPrice}}</td>
+                                    <td>{{data.Price}}</td>
+                                    <td>{{data.PricePerUnit}}
+                                    <td>{{data.Quantity}}</td>
+                                    <td>{{data.SalesPart}}</td>
+                                     <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                                    <!-- (click)="deleteserviceClick(data)" -->
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <ng-template #elseBlockservice style="text-align: center;">
+                    <h1>No service availble</h1>
+                </ng-template>
+                <div *ngIf="PlanningList else elseBlock">
+                        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <!-- <th>AppoinmentId </th> -->
+                                    <th>AppointmentId</th>
+                                    <th>AppointmentServiceId</th>
+                                    <th>Duration</th>
+                                    <th>StartDate</th>
+                                    <th>EndDate</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of PlanningList">
+                                    <td>{{data.Id}}</td>
+                                    <!-- <td>{{data.AppoinmentId}}</td> -->
+                                    <td>{{data.AppointmentId}}</td>
+                                    <td>{{data.AppointmentServiceId}}</td>
+                                    <td>{{data.Duration}}</td>
+                                    <td>{{data.StartDate }}</td>
+                                    <td>{{data.EndDate}}</td>
+            
+                                    <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
+                                        class="btn btn-outline-danger">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                                    <!-- (click)="deleteserviceClick(data)" -->
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <ng-template #elseBlock style="text-align: center;">
+                    <h1>No Planning availble</h1>
+                </ng-template>
+        </div>
+
+
+        <div *ngIf="appoinment.Id==0">
+            <div  style="display: flex">
+                <div class="col-sm-9">
+                    <label>Choose Service<span style="color: red;">*</span></label>
+                    <select  id="service" name="service" class="form-control"
+                        [(ngModel)]="ServiceId">
+                        <option *ngFor="let data of ServiceList" [value]="data.Id">
+                            Service Name : {{data.Name}} - Price : {{data.Price}}
+                        </option>
+                    </select>
+                    <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
+                </div>
+                <div class="col-sm-3">
+                    <!-- <label><span style="color: red;"></span></label> -->
+                    <br>
+                    <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+                    <button [disabled]="!disappoinmentserviceubtton" (click)="AddAppoinmentService()" class="btn btn-success"
+                        style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
+                </div>
+    
+    
+            </div>
+
+            <div >
+    
+                <label>Choose Mechanic<span style="color: red;">*</span></label>
+                <select (click)="loadMechanicList()"  id="Mechanic" name="Mechanic"
+                    class="form-control" [(ngModel)]="MechanicId">
+    
+                    <option *ngFor="let data of MechanicList" [value]="data.Id">
+                        <div *ngIf="MechanicList?.length else elseBlock">
+                            Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
+                        </div>
+                        <ng-template #elseBlock>
+                            No Data Found
+                        </ng-template>
+    
                     </option>
                 </select>
-                <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
-            </div>
-            <div class="col-sm-3">
-                <!-- <label><span style="color: red;"></span></label> -->
-                <br>
-                <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
-                <button [disabled]="disableappservicebutton" (click)="AddAppoinmentService()" class="btn btn-success"
-                    style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
-            </div>
-
-
-        </div>
-
-
-
-
-        <div *ngIf="displayMechanic">
-
-            <label>Choose Mechanic<span style="color: red;">*</span></label>
-            <select (click)="loadMechanicList()" [disabled]="disbaleplanningbutton" id="Mechanic" name="Mechanic"
-                class="form-control" [(ngModel)]="MechanicId">
-
-                <option *ngFor="let data of MechanicList" [value]="data.Id">
-                    <div *ngIf="MechanicList?.length else elseBlock">
-                        Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
+                <div style="display: flex">
+                    <div class="col-sm-5">
+                        <label>Start Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
+                            placeholder="Start Date">
                     </div>
-                    <ng-template #elseBlock>
-                        No Data Found
-                    </ng-template>
-
-                </option>
-            </select>
-            <div style="display: flex">
-                <div class="col-sm-5">
-                    <label>Start Date<span style="color: red;">*</span></label>
-                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
-                        placeholder="Start Date">
+                    <div class="col-sm-5">
+                        <label>End Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
+                            placeholder="End Date">
+                    </div>
                 </div>
-                <div class="col-sm-5">
-                    <label>End Date<span style="color: red;">*</span></label>
-                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
-                        placeholder="End Date">
-                </div>
+                <button  [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+    
             </div>
-            <button [disabled]="disbaleplanningbutton" (click)="createPlanning()" class="btn btn-success done-plan"
-                style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-
+    
+    
         </div>
 
 
+        <button [disabled]="!moreService_PlanningButton" 
+        class="btn btn-success done-plan"
+        style="margin-top:2%; width: 50% ;margin-left:25%;"
+         (click)="moreService_Planning()">Add More Service & Planning</button>
     </div>

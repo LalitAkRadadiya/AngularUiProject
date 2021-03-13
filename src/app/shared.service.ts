@@ -122,7 +122,6 @@ export class SharedService {
 
 
   addPlanning(val: any){
-    console.log('postvval',val);
     return this.http.post(this.APIUrl + '/Planning/CreatePlanning', val);
   }
   errorMsg : any;
