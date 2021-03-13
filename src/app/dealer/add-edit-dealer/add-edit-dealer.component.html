@@ -6,17 +6,19 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" name="FName" [(ngModel)]='dealer.DealerName'>
+            <input type="text" class="form-control" name="FName" [(ngModel)]='dealer.DealerName'
+                placeholder="Dealer Name">
             <span *ngIf="tempDealerName">DealerName Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.DealerNo'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.DealerNo'
+                placeholder="Dealer Number">
             <span *ngIf="tempDealerNo">DealerNo Required</span>
         </div>
     </div>
     <div class="row">
-        <label class="col-sm-2 col-form-label">IsActive<span style="color: red;">*</span> 
+        <label class="col-sm-2 col-form-label">IsActive<span style="color: red;">*</span>
             <input style="margin-left: 20px;" type="checkbox"  [(ngModel)]='dealer.isActive'>
            
         </label>
@@ -34,12 +36,12 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='dealer.Website'>
+            <input type="text" class="form-control" [(ngModel)]='dealer.Website' placeholder="Website">
             <span *ngIf="tempWebsite">Website Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='dealer.Email'>
+            <input type="text" class="form-control" [(ngModel)]='dealer.Email' placeholder="Email Address">
             <span *ngIf="tempEmail">Email Required</span>
         </div>
     </div>
@@ -51,12 +53,13 @@
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.PhoneNo'>
+            <input type="text" class="form-control" (keypress)="IsNumeric($event)" [(ngModel)]='dealer.PhoneNo'
+                placeholder="Phone Number">
             <span *ngIf="tempPhoneNo">PhoneNo Required</span>
         </div>
         <div class="col-sm-2"></div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" [(ngModel)]='dealer.Address'>
+            <input type="text" class="form-control" [(ngModel)]='dealer.Address' placeholder="Address">
             <span *ngIf="tempAddress">Address Required</span>
         </div>
     </div>
@@ -64,14 +67,14 @@
 
 <!-- <button (click)="addDealer()" *ngIf="dealer.Id==0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;" >
     Add Dealer</button>
-
-<button (click)="editDealer()" *ngIf="dealer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">
+    
+    <button (click)="editDealer()" *ngIf="dealer.Id!=0" class="btn btn-outline-primary" style="margin-top:2%; margin-left: 43%;">
     Update Dealer</button>
-     -->
-    
-    <div style="text-align: center">
-    
-            <button (click)="addDealer()" *ngIf="dealer.Id==0" type="button" class="btn btn-success">Save</button>
-            <button (click)="editDealer()" *ngIf="dealer.Id!=0" type="button" class="btn btn-success">Save</button>
-            <button    data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
-    </div>
+    -->
+
+<div style="text-align: center">
+
+    <button (click)="addDealer()" *ngIf="dealer.Id==0" type="button" class="btn btn-success">Save</button>
+    <button (click)="editDealer()" *ngIf="dealer.Id!=0" type="button" class="btn btn-success">Save</button>
+    <button data-bs-dismiss="modal" aria-label="Close" type="button" class="btn btn-danger">Cancel</button>
+</div>
