@@ -259,7 +259,7 @@
     <div *ngIf="service_planning">
 
         <div *ngIf="displayServicePlanningList">
-                <div *ngIf="AppServiceList?.length else elseBlockservice">
+                <div *ngIf="AppServiceList?.length">
                         <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                             <thead>
                                 <tr>
@@ -297,10 +297,8 @@
                             </tbody>
                         </table>
                 </div>
-                <ng-template #elseBlockservice style="text-align: center;">
-                    <h1>No service availble</h1>
-                </ng-template>
-                <div *ngIf="PlanningList?.length else elseBlock">
+                
+                <div *ngIf="PlanningList?.length">
                         <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                             <thead>
                                 <tr>
@@ -332,9 +330,7 @@
                             </tbody>
                         </table>
                 </div>
-                <ng-template #elseBlock style="text-align: center;">
-                    <h1>No Planning availble</h1>
-                </ng-template>
+                
         </div>
 
 
