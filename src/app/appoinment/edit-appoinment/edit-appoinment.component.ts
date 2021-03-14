@@ -271,6 +271,7 @@ export class EditAppoinmentComponent implements OnInit {
       return false;
     }
   }
+  MechanicNotAvailble = false;
   createPlanning() {
     var val = {
       AppointmentId: this.appoinment.Id,
@@ -288,8 +289,10 @@ export class EditAppoinmentComponent implements OnInit {
     this.service.addPlanning(val).subscribe(res => {
       console.log(res);
       if (res == "Mechanic is not Available. Choose other Date.") {
-        return false
+        this.MechanicNotAvailble = true;
+        return false;
       } else {
+        this.MechanicNotAvailble = false;
         this.displanningubutton = false;
         this.moreService_PlanningButton = true;
 
