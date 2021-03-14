@@ -1,3 +1,6 @@
 span{
     color: red;
 }
+td{
+    max-width: 120px;
+}

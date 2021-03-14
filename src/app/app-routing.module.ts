@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'service',component:ServiceComponent,canActivate: [MsalGuard]},
   {path:'dealer',component:DealerComponent,canActivate:[MsalGuard]},
   {path:'mechanic',component:MechanicalComponent,canActivate:[MsalGuard]},
-  {path:'tracking/:id',component:AppoinmentTrackingComponent,canActivate:[MsalGuard]},
+  {path:'tracking/:id',component:AppoinmentTrackingComponent},
   {path:'customervehicle', component:CustomervehicleComponent,canActivate:[MsalGuard]},
   {path:'**',component:ErrorComponent}
 ];

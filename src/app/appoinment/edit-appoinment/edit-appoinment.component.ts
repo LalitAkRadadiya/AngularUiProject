@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-
+import * as moment from 'moment/moment';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-appoinment',
@@ -99,6 +99,8 @@ export class EditAppoinmentComponent implements OnInit {
     this.get_service_planning(this.appoinment.Id);
 
   }
+  
+  enddatetime : any;
   get_service_planning(id: Number) {
     console.log('id', id)
     if (id != 0) {
@@ -107,11 +109,21 @@ export class EditAppoinmentComponent implements OnInit {
 
 
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
+        this.enddatetime = this.AppServiceList[0].Quantity; 
+        
+        console.log('eunatity typeof', typeof this.enddatetime);
+        console.log('this.Quantity', this.enddatetime);
         this.PlanningList = this.EditAppoinment.planningList;
 
         console.log('get service Planingn detail', res);
       });
     }
+  }
+  
+  datetime(){
+    this.EndDate = "10-10-2020 03:11";
+    // this.EndDate = moment(this.enddatetime).format("yyyy-MM-ddThh:mm");
+    console.log('end date', '10-10-2020 03:11')
   }
 
   tempDealer = false;
@@ -273,6 +285,7 @@ export class EditAppoinmentComponent implements OnInit {
   }
   MechanicNotAvailble = false;
   createPlanning() {
+    console.log('enddate typeof', typeof this.EndDate);
     var val = {
       AppointmentId: this.appoinment.Id,
       MechanicId: this.MechanicId,

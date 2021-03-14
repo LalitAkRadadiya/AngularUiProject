@@ -29,6 +29,7 @@
     "datatables.net": "^1.10.23",
     "datatables.net-dt": "^1.10.23",
     "jquery": "^3.6.0",
+    "moment": "^2.29.1",
     "msal": "^1.4.4",
     "ngx-owl-carousel-o": "^5.0.0",
     "ngx-spinner": "^10.0.1",

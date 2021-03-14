@@ -109,7 +109,7 @@ export class AddEditAppoinmentComponent implements OnInit {
       });
     }
   }
-
+  
   tempDealer = false;
   addappvalidation() {
     if (!this.DealerId) {
