@@ -46,6 +46,7 @@ import {
 } from '@azure/msal-angular';
 
 import { msalConfig, msalAngularConfig } from './app-config';
+import { EditAppoinmentComponent } from './appoinment/edit-appoinment/edit-appoinment.component';
 
 function MSALConfigFactory(): Configuration {
   return msalConfig;
@@ -74,6 +75,7 @@ function MSALAngularConfigFactory(): MsalAngularConfiguration {
     AddEditMechanicalComponent,
     AppoinmentTrackingComponent,
     ErrorComponent,
+    EditAppoinmentComponent,
 
 
 

@@ -12,7 +12,7 @@
       data-backdrop="static" data-keyboard="false">
       <i class="fa fa-plus" aria-hidden="true"></i> &ensp;Add Appoinment</button>
         
-        <!-- Modal -->
+        <!-- add Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content" style="height: auto;
@@ -27,6 +27,27 @@
               <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
 
                   <app-add-edit-appoinment  [appoinment]="appoinment"></app-add-edit-appoinment>
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- edit compoennt -->
+        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content" style="height: auto;
+            overflow-x: hidden;
+            overflow-y: scroll;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                <button type="button" class="btn-close" 
+                data-bs-dismiss="modal" aria-label="Close"
+                (click)="closeClick()"></button>
+              </div>
+              <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
+
+                  <app-edit-appoinment  [appoinment]="appoinment"></app-edit-appoinment>
 
                   
               </div>
@@ -76,7 +97,7 @@
                   
                   <td style="display: flex;">
                       <button type="button" class="btn btn-outline-success"
-                      data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      data-bs-toggle="modal" data-bs-target="#exampleModaledit"
                       (click)="editClick(dataItem)"
                       
                       data-backdrop="static" data-keyboard="false">
