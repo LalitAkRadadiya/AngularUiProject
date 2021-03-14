@@ -1,4 +1,4 @@
-<div *ngIf="appoinment.Id==0; else elseBlock">
+<div *ngIf="appoinment.Id==0">
 
 
 
@@ -49,145 +49,6 @@
 
 
 </div>
-<ng-template #elseBlock>
-    <div class="row">
-        <label>Appoinment Details<span style="color: red;">*</span></label>
-        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Mobile</th>
-                    <th>Licence Plate</th>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th>Model</th>
-                    <th>Brand</th>
-                    <th>Status</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Total Time</th>
-                    <th>Total Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{appoinment.FName}}</td>
-                    <td>{{appoinment.LName}}</td>
-                    <td>{{appoinment.MobileNo}}</td>
-                    <td>{{appoinment.LicencePlate }}</td>
-                    <td>{{appoinment.City}}</td>
-                    <td>{{appoinment.Country }}</td>
-                    <td>{{appoinment.Model}}</td>
-                    <td>{{appoinment.Brand}}</td>
-                    <td>{{appoinment.Status}}
-                        <!-- this.appoinment.Id -->
-
-                        <!-- <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
-                            [(ngModel)]="updatedStatus" >
-                            <option *ngIf="let data of statusArray" [selected]="data == appoinment.status" >
-                                {{data}}
-                            </option>
-                            
-                        </select> -->
-
-
-                    </td>
-                    <td>{{appoinment.StartDate}}</td>
-                    <td>{{appoinment.EndDate}}</td>
-                    <td>{{appoinment.TotalTime}}</td>
-                    <td>{{appoinment.TotalPrice}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="row" >
-        <label>AppoinmentService Details<span style="color: red;">*</span></label>
-        <div *ngIf="AppServiceList else elseBlockservice">
-            <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <!-- <th>AppoinmentId </th> -->
-                        <th>Service Name</th> 
-                        <th>CostType</th>
-                        <th>Description</th>
-                        <th>Discount</th>
-                        <th>FixPrice</th>
-                        <th>Price</th>
-                        <th>PricePerUnit</th>
-                        <th>Quantity</th>
-                        <th>SalesPart</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of AppServiceList">
-                        <td>{{data.Id}}</td>
-                        <!-- <td>{{data.AppoinmentId}}</td> -->
-                        <td>{{data.ServiceName}}</td>
-                        <td>{{data.CostType}}</td>
-                        <td>{{data.Description}}</td>
-                        <td>{{data.Discount }}</td>
-                        <td>{{data.FixPrice}}</td>
-                        <td>{{data.Price}}</td>
-                        <td>{{data.PricePerUnit}}
-                        <td>{{data.Quantity}}</td>
-                        <td>{{data.SalesPart}}</td>
-                         <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                        <!-- (click)="deleteserviceClick(data)" -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <ng-template #elseBlockservice style="text-align: center;">
-            <h1>No service availble</h1>
-        </ng-template>
-
-    </div>
-    <div class="row">
-        <label>Planning Details<span style="color: red;">*</span></label>
-        <div *ngIf="PlanningList else elseBlock">
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <!-- <th>AppoinmentId </th> -->
-                        <th>AppointmentId</th>
-                        <th>AppointmentServiceId</th>
-                        <th>Duration</th>
-                        <th>StartDate</th>
-                        <th>EndDate</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of PlanningList">
-                        <td>{{data.Id}}</td>
-                        <!-- <td>{{data.AppoinmentId}}</td> -->
-                        <td>{{data.AppointmentId}}</td>
-                        <td>{{data.AppointmentServiceId}}</td>
-                        <td>{{data.Duration}}</td>
-                        <td>{{data.StartDate }}</td>
-                        <td>{{data.EndDate}}</td>
-
-                        <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
-                            class="btn btn-outline-danger">
-                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                        <!-- (click)="deleteserviceClick(data)" -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <ng-template #elseBlock style="text-align: center;">
-            <h1>No Planning availble</h1>
-        </ng-template>
-
-    </div>
-</ng-template>
-
 <div *ngIf="appoinment.Id==0; ">
     <div class="row" *ngIf="!vehicalnotfound && CustomerVehicleInfo">
         <div>
@@ -290,7 +151,7 @@
                                     <td>{{data.PricePerUnit}}
                                     <td>{{data.Quantity}}</td>
                                     <td>{{data.SalesPart}}</td>
-                                     <button [disabled]='data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                                     <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
                                     <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                                     <!-- (click)="deleteserviceClick(data)" -->
                                 </tr>

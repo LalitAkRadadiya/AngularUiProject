@@ -1,55 +1,5 @@
-<div *ngIf="appoinment.Id==0; else elseBlock">
 
-
-
-    <div class="form-group" style="background-color: rgba(158, 179, 175, 0.041);">
-        <div class="row">
-            <div class="col-sm-5">
-                <label>
-                    Please Select Dealer!
-                    <span style="color: red;">*</span></label>
-                <select [disabled]="disableappoinmentbutton" id="dealer" name="dealer" class="form-control"
-                    [(ngModel)]="DealerId">
-                    <option *ngFor="let data of DealerList" [value]="data.Id">
-                        DealerName : {{data.DealerName}} - MobileNo : {{data.PhoneNo}}
-                    </option>
-                </select>
-                <span *ngIf="tempDealer" style="color: red;">Please Select Dealer</span>
-            </div>
-            <div class="col-sm-5">
-                <div class="row">
-                    <label class="col-form-label">Enter Vehicle Number<span style="color: red;">*</span></label>
-                </div>
-
-                <div class="row">
-                    <div style="display: flex">
-                        <input type="text" class="form-control" name="LicencePlate" [(ngModel)]="LicencePlate"
-                            placeholder="Vehicle Licence Plate">
-                        <button type="button" class="btn btn-success" style="margin: 0"
-                            (click)="getCustomerVehicleInfo(LicencePlate)">
-
-                            <i class="fa fa-search" aria-hidden="true"></i></button>
-                        <br>
-                    </div>
-                    <span *ngIf="vehicalnotfound" style="color: red;">Vehical not Found</span>
-
-                    <div>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>
-
-
-
-
-
-</div>
-<ng-template #elseBlock>
+<div >
     <div class="row">
         <label>Appoinment Details<span style="color: red;">*</span></label>
         <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
@@ -83,13 +33,15 @@
                     <td>{{appoinment.Status}}
                         <!-- this.appoinment.Id -->
 
-                        <!-- <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                        <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
                             [(ngModel)]="updatedStatus" >
-                            <option *ngIf="let data of statusArray" [selected]="data == appoinment.status" >
-                                {{data}}
-                            </option>
+                            <option  value="pending">pedning</option>
+                            <option value="Confirm">Confirm</option>
+                            <option value="Work done">Work Done</option>
+                            <option value="Started">Started</option>
+                            <option value="Finished">Finished</option>
                             
-                        </select> -->
+                        </select>
 
 
                     </td>
@@ -251,68 +203,7 @@
                                 style="margin-top:2%; width: 50% ;margin-left:25%;"
                                 (click)="moreService_Planning()">Add More Service & Planning</button>
     <!-- </div> -->
-</ng-template>
+                            </div>
 
-<div *ngIf="appoinment.Id==0; ">
-    <div class="row" *ngIf="!vehicalnotfound && CustomerVehicleInfo">
-        <div>
-            <label>Customer Details<span style="color: red;">*</span></label>
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Mobile</th>
-                        <th>Address</th>
-                        <!-- <th>Email</th> -->
-                        <th>City</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{CustomerVehicleInfo.FName }}</td>
-                        <td>{{CustomerVehicleInfo.LName }}</td>
-                        <td>{{CustomerVehicleInfo.CustomerNo }}</td>
-                        <td>{{CustomerVehicleInfo.Address }}</td>
-                        <!-- <td>{{CustomerVehicleInfo.Email }}</td> -->
-                        <td>{{CustomerVehicleInfo.City }}</td>
-                        <td>{{CustomerVehicleInfo.Country }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- </div> -->
-            <label>Vehicle Details<span style="color: red;">*</span></label>
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <th>Licence Plate</th>
-                        <th>Model</th>
-                        <th>Brand</th>
-                        <th>Meter Value</th>
-                        <th>Reg. Date</th>
-                        <th>Vin</th>
-                        <th>Colour</th>
-                        <th>Eng. No</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{CustomerVehicleInfo.LicencePlate }}</td>
-                        <td>{{CustomerVehicleInfo.Model }}</td>
-                        <td>{{CustomerVehicleInfo.Brand }}</td>
-                        <td>{{CustomerVehicleInfo.MeterValue }}</td>
-                        <td>{{CustomerVehicleInfo.RegDate }}</td>
-                        <td>{{CustomerVehicleInfo.Vin }}</td>
-                        <td>{{CustomerVehicleInfo.Colour }}</td>
-                        <td>{{CustomerVehicleInfo.EngNo }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-    </div>
-   
 
 

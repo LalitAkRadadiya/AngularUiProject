@@ -25,7 +25,8 @@ export class EditAppoinmentComponent implements OnInit {
   currentAppoinmentServiceId: any;
 
   constructor(private service: SharedService, private toastr: ToastrService) { }
-  statusArray = ['pending', 'Confirm', 'Work done', 'Started', 'Finished']
+  statusArray: any = ['pending', 'Confirm', 'Work done', 'Started', 'Finished'];
+   
   CustomerVehicleInfo: any;
   @Input() appoinment: any;
   Id: Number = 0;
@@ -81,8 +82,9 @@ export class EditAppoinmentComponent implements OnInit {
       Id: id,
       Status: this.updatedStatus
     }
-
+    this.appoinment.Status = this.updatedStatus
     this.service.editAppoinmentStatus(val).subscribe(res => {
+      
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
