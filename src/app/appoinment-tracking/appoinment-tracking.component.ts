@@ -10,11 +10,38 @@ import { SharedService } from 'src/app/shared.service'
 export class AppoinmentTrackingComponent implements OnInit {
 
   id: any;
-  counts: any[] = ["pending", "Confirm", "Started","Work Done", "Finished"];
-  orderStatus: any = "[pending";
+  counts: any[] = ["pending", "Confirm", "Started","Work done", "Finished"];
+  orderStatus: any = "pending";
   appoinmentData: any;
+  EditAppoinment : any;
+  AppServiceList : any;
+  PlanningList : any;
   constructor(private service: SharedService, private router: ActivatedRoute) { }
 
+  ModalTitle = "Apppoinment Service and Planning Details"
+  ActivateAddEditAppoinmentComp = false;
+  MoreDetail(){
+    this.ActivateAddEditAppoinmentComp = true;
+    this.get_service_planning(this.id);
+
+  }
+  closeClick(){
+    this.ActivateAddEditAppoinmentComp = false;
+  }
+  get_service_planning(id: Number) {
+    console.log('id', id)
+    if (id != 0) {
+      this.service.getEditAppoinmentList(id).subscribe(res => {
+        this.EditAppoinment = res;
+
+
+        this.AppServiceList = this.EditAppoinment.appointmentServicesList;
+        this.PlanningList = this.EditAppoinment.planningList;
+
+        console.log('get service Planingn detail', res);
+      });
+    }
+  }
   ngOnInit(): void {
 
     
