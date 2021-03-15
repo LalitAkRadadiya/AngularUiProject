@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     loginFailureSubscription = this.broadcastService.subscribe('msal:acquireTokenFailure', (payload) => {
       console.log('access token acquisition fails');
-      console.log(payload);
+      console.log('payload profile',payload);
     });
 
     this.subscriptions.push(loginSuccessSubscription);
@@ -159,6 +159,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.http.get(url).subscribe({
         next: (profile) => {
           this.profile = profile;
+          console.log('profile', this.profile);
         },
         error: (err: AuthError) => {
           if (InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)) {

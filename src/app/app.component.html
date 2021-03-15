@@ -39,9 +39,9 @@
                   <li class="nav-item active">
                     
                       
-                      <button (click)="login()"   *ngIf="!profile?.name" class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Login</b> <span class="sr-only">(current)</span></button>
+                      <button (click)="login()"  *ngIf="!loggedIn"  class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Login</b> <span class="sr-only">(current)</span></button>
                   
-                      <button (click)="logout()"  *ngIf="profile?.name"  class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Logout</b> <span class="sr-only">(current)</span></button>
+                      <button (click)="logout()" *ngIf="loggedIn"   class="nav-link" ><i class="fa fa-power-off" aria-hidden="true"></i><b> Logout</b> <span class="sr-only">(current)</span></button>
                   </li>
                 </ul>
               </div>

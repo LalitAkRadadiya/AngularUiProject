@@ -109,6 +109,8 @@ export class EditAppoinmentComponent implements OnInit {
 
 
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
+
+
         this.enddatetime = this.AppServiceList[0].Quantity; 
         
         console.log('eunatity typeof', typeof this.enddatetime);
@@ -121,9 +123,17 @@ export class EditAppoinmentComponent implements OnInit {
   }
   
   datetime(){
-    this.EndDate = "10-10-2020 03:11";
+    debugger;
+ 
+    var qt = new Date(this.enddatetime.ToString("dd/MM/yyyy hh:mm:ss"));
+    var dt = new Date(this.StartDate); 
+    dt.setHours(dt.getHours() + qt.getHours());
+    
+    dt.setMinutes(dt.getMinutes() + qt.getMinutes());
+    // this.EndDate =  this.StartDate + this.Quantity;  //8:30
+    // this.EndDate = "10-10-2020 03:11";
     // this.EndDate = moment(this.enddatetime).format("yyyy-MM-ddThh:mm");
-    console.log('end date', '10-10-2020 03:11')
+    console.log('end date', this.EndDate)
   }
 
   tempDealer = false;

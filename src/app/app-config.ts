@@ -6,34 +6,35 @@ export const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.n
 
 export const b2cPolicies = {
     names: {
-        signUpSignIn: 'b2c_1_susi',
-        resetPassword: 'b2c_1_reset',
-        editProfile: 'b2c_1_edit_profile'
+        signUpSignIn: 'B2C_1_lalit',
+        resetPassword: 'B2C_1_lalit_reset',
+        editProfile: 'B2C_1_lalit_edit'
     },
     authorities: {
         signUpSignIn: {
-            authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi'
+            authority: 'https://lalitakradadiya.b2clogin.com/lalitakradadiya.onmicrosoft.com/B2C_1_lalit'
         },
         resetPassword: {
-            authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset'
+            authority: 'https://lalitakradadiya.b2clogin.com/lalitakradadiya.onmicrosoft.com/B2C_1_lalit_reset'
         },
         editProfile: {
-            authority: 'https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile'
+            authority: 'https://lalitakradadiya.b2clogin.com/lalitakradadiya.onmicrosoft.com/B2C_1_lalit_edit'
         }
     }
 };
 export const apiConfig: {b2cScopes: string[]; webApi: string} = {
-    b2cScopes: ['https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read'],
-    webApi: 'https://fabrikamb2chello.azurewebsites.net/hello'
+    b2cScopes: ['openid', 'profile'],
+    webApi: ''
 };
 export const msalConfig: Configuration = {
+    
     auth: {
-        clientId: 'e760cab2-b9a1-4c0d-86fb-ff7084abd902',
+        clientId: 'a2efe93c-519e-4a8c-8132-a778a4e2b3fa',
         authority: b2cPolicies.authorities.signUpSignIn.authority,
-        redirectUri: 'http://localhost:6420/',
-        postLogoutRedirectUri: 'http://localhost:6420/',
+        redirectUri: 'http://localhost:4200/',
+        postLogoutRedirectUri: 'http://localhost:4200/',
         navigateToLoginRequestUrl: true,
-        validateAuthority: false,
+        validateAuthority: false
       },
     cache: {
         cacheLocation: 'localStorage',
