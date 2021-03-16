@@ -97,6 +97,15 @@ export class EditAppoinmentComponent implements OnInit {
 
     this.loadServiceList(this.appoinment.DealerId);
     this.get_service_planning(this.appoinment.Id);
+    setTimeout(() => {
+      //init Datatable
+      $('#filterListTable').DataTable(
+        {
+          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+          stateSave: true,
+        }
+      );
+    }, 5000);
 
   }
 

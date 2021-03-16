@@ -90,8 +90,8 @@
 
     <div class="row">
         <label>AppoinmentService Details<span style="color: red;">*</span></label>
-        <div *ngIf="AppServiceList else elseBlockservice">
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+        <div *ngIf="AppServiceList ">
+            <table  id="filterListTable"  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
                         <!-- <th>Id</th> -->
@@ -131,9 +131,7 @@
                 </tbody>
             </table>
         </div>
-        <ng-template #elseBlockservice style="text-align: center;">
-            <h1>No service availble</h1>
-        </ng-template>
+      
 
 
         <div style="display: flex">
@@ -162,8 +160,8 @@
     </div>
     <div class="row">
         <label>Planning Details<span style="color: red;">*</span></label>
-        <div *ngIf="PlanningList else elseBlock">
-            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+        <div *ngIf="PlanningList">
+            <table  id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
                         <!-- <th>Id</th> -->
@@ -198,10 +196,7 @@
                 </tbody>
             </table>
         </div>
-        <ng-template #elseBlock style="text-align: center;">
-            <h1>No Planning availble</h1>
-        </ng-template>
-
+      
         <div>
 
             <label>Choose Mechanic<span style="color: red;">*</span></label>
