@@ -2,56 +2,91 @@
 <div >
     <div class="row">
         <label>Appoinment Details<span style="color: red;">*</span></label>
-        <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Mobile</th>
-                    <th>Licence Plate</th>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th>Model</th>
-                    <th>Brand</th>
-                    <th>Status</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Total Time</th>
-                    <th>Total Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{appoinment.FName}}</td>
-                    <td>{{appoinment.LName}}</td>
-                    <td>{{appoinment.MobileNo}}</td>
-                    <td>{{appoinment.LicencePlate }}</td>
-                    <td>{{appoinment.City}}</td>
-                    <td>{{appoinment.Country }}</td>
-                    <td>{{appoinment.Model}}</td>
-                    <td>{{appoinment.Brand}}</td>
-                    <td>{{appoinment.Status}}
-                        <!-- this.appoinment.Id -->
+        <div style="display: flex;">
+        <div class="col-md-5">
+            <div>First Name : {{appoinment.FName}}</div>
+           
+        </div>
+        <div class="col-md-5">
+            <div>Last Name : {{appoinment.LName}}</div>
+        </div>
+    </div>
+    
+        <div style="display: flex;">
+            <div class="col-md-5">
+                <div>Mobile : {{appoinment.MobileNo}}</div>
+               
+            </div>
+            <div class="col-md-5">
+                <div>Licence Plate : {{appoinment.LicencePlate }}</div>
 
-                        <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
-                            [(ngModel)]="updatedStatus" >
-                            <option  value="pending">pedning</option>
-                            <option value="Confirm">Confirm</option>
-                            <option value="Work done">Work Done</option>
-                            <option value="Started">Started</option>
-                            <option value="Finished">Finished</option>
-                            
-                        </select>
-
-
-                    </td>
-                    <td>{{appoinment.StartDate}}</td>
-                    <td>{{appoinment.EndDate}}</td>
-                    <td>{{appoinment.TotalTime}}</td>
-                    <td>{{appoinment.TotalPrice}}</td>
-                </tr>
-            </tbody>
-        </table>
+            </div>
+        </div>
+        
+        <div style="display: flex;">
+            <div class="col-md-5">
+                <div>City : {{appoinment.City}}</div>
+               
+            </div>
+            <div class="col-md-5">
+                <div>Country : {{appoinment.Country }}</div>
+               
+            </div>
+        </div>
+        
+        <div style="display: flex;">
+            <div class="col-md-5">
+                <div>Model : {{appoinment.Model}}</div>
+               
+            </div>
+            <div class="col-md-5">
+                <div>Brand : {{appoinment.Brand}}</div>
+               
+            </div>
+        </div>
+          
+        <div style="display: flex;">
+            <div class="col-md-5">
+                <div>Status : {{appoinment.Status}}</div>
+                <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                [(ngModel)]="updatedStatus" >
+                <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
+                <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
+                <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
+                <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
+                <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
+                
+            </select>
+            </div>
+            <div class="col-md-5">
+                <div>Start Date : {{appoinment.StartDate}}</div>
+             
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="col-md-5">
+               
+                <div>End Date : {{appoinment.EndDate}}</div>
+               
+            </div>
+            <div class="col-md-5">
+                
+                <div>Total Time : {{appoinment.TotalTime}}</div>
+               
+           
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="col-md-5">
+                <div>Total Price : {{appoinment.TotalPrice}}</div>
+               
+            </div>
+            <div class="col-md-5">
+                
+                <!-- <span>Total Time</span> -->
+            </div>
+        </div>
+       
     </div>
 
     <div class="row" >
@@ -69,7 +104,7 @@
                         <th>FixPrice</th>
                         <th>Price</th>
                         <th>Price Per Unit</th>
-                        <th>Quantity</th>
+                        <th>Quantity [Hour] </th>
                         <th>Sales Part</th>
                         <th>Action</th>
                     </tr>

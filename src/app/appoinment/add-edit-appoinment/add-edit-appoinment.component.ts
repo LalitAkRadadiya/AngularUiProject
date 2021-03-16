@@ -286,6 +286,7 @@ export class AddEditAppoinmentComponent implements OnInit {
     this.service.addPlanning(val).subscribe(res => {
       console.log(res);
       if (res == "Mechanic is not Available. Choose other Date.") {
+        this.toastr.error(res.toString());
         this.MechanicNotAvailble = true;
         return false;
       } else {
