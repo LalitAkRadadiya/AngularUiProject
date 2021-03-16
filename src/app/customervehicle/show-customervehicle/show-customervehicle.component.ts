@@ -80,7 +80,7 @@ export class ShowCustomervehicleComponent implements OnInit {
   }
 
   deleteCustomerClick(item:any){
-    if(confirm('Are You Sure?')){
+    if(confirm('Are You Sure? Want to Delete?')){
       this.service.deleteCustomer(item.Id).subscribe(data=>{
         this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshcustomerList();
@@ -89,7 +89,7 @@ export class ShowCustomervehicleComponent implements OnInit {
   }
 
   deleteVehicleClick(item:any){
-    // if(confirm('Are You Sure?')){
+    if(confirm('Are You Sure? Want to Delete?')){
       
       console.log('data',item.Id);
       this.service.deleteVehicle(item.Id).subscribe(data=>{
@@ -97,7 +97,7 @@ export class ShowCustomervehicleComponent implements OnInit {
         console.log('data',data);
         this.refreshcustomerList();
       });
-    // }
+    }
   }
   display = false;
  

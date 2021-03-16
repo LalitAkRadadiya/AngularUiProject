@@ -54,7 +54,7 @@ export class ShowServiceComponent implements OnInit {
     this.refreshServiceList();
   }
   deleteClick(item: any) {
-    if (confirm('Are You Sure?')) {
+    if (confirm('Are You Sure? Want to Delete?')) {
       this.service.deleteService(item.Id).subscribe(data => {
         this.toastr.success(data.toString(),'', {
           timeOut: 2000,

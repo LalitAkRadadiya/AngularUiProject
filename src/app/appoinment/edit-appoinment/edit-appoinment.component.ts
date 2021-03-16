@@ -182,22 +182,27 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
   deleteApppoinmentService(val: any) {
-    this.service.deleteAppoinmentService(val.Id).subscribe(res => {
-      this.AppServiceList = this.AppServiceList.filter((x: { Id: any; }) => x.Id != val.Id);
-      this.toastr.success(res.toString(), '', {
-        timeOut: 3000,
+    if(confirm("Are you Sure? Want to Delete?")){
+      this.service.deleteAppoinmentService(val.Id).subscribe(res => {
+        this.AppServiceList = this.AppServiceList.filter((x: { Id: any; }) => x.Id != val.Id);
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
       });
-    });
+    }
   }
+
   deletePlanning(val: any) {
-    console.log('dletplanid', val.Id);
-    this.service.deletePlanning(val.Id).subscribe(res => {
-      this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
-      this.toastr.success(res.toString(), '', {
-        timeOut: 3000,
+    if(confirm("Are you Sure? Want to Delete?")){
+      console.log('dletplanid', val.Id);
+      this.service.deletePlanning(val.Id).subscribe(res => {
+        this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
+        this.toastr.success(res.toString(), '', {
+          timeOut: 3000,
+        });
+        console.log('should dlt');
       });
-      console.log('should dlt');
-    });
+    }
   }
 
   vehicalnotfound = false;

@@ -89,7 +89,7 @@ export class AppoinmentComponent implements OnInit {
   }
 
   deleteClick(item: any) {
-    if (confirm('Are You Sure?')) {
+    if (confirm('Are You Sure? Want to Delete?')) {
       this.service.deleteAppoinment(item.Id).subscribe(data => {
         this.toastr.success(data.toString(), '', { timeOut: 2000, });
         this.refreshAppoinmentList();
