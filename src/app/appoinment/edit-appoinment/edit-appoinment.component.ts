@@ -97,6 +97,9 @@ export class EditAppoinmentComponent implements OnInit {
 
     this.loadServiceList(this.appoinment.DealerId);
     this.get_service_planning(this.appoinment.Id);
+    if (this.appoinment.Status !=null){
+      this.updatedStatus=this.appoinment.Status;
+    }
     setTimeout(() => {
       //init Datatable
       $('#filterListTable').DataTable(

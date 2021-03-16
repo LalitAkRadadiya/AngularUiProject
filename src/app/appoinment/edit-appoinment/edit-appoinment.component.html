@@ -46,8 +46,8 @@
 
         <div style="display: flex;">
             <div class="col-md-5">
-                <div>Status : {{appoinment.Status}}</div>
-                <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                <div>
+                    <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
                     [(ngModel)]="updatedStatus">
                     <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
                     <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
@@ -56,6 +56,8 @@
                     <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
 
                 </select>
+                </div>
+               
             </div>
             <div class="col-md-5">
                 <div>Start Date : {{appoinment.StartDate}}</div>
