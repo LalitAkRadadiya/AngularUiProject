@@ -269,6 +269,28 @@ export class AddEditAppoinmentComponent implements OnInit {
     }
   }
   MechanicNotAvailble = false;
+  
+  tempMechanicName = false;
+  tempstartDate = false;
+  tempEndDate = false;
+
+  validationplanning(){
+    if(!this.StartDate){
+      this.tempstartDate = true;
+    }else{
+      this.tempstartDate = false;
+    }
+    if(!this.EndDate){
+      this.tempEndDate = true;
+    }else{
+      this.tempEndDate = false;
+    }
+    if(!this.MechanicId){
+      this.tempMechanicName = true;
+    }else{
+      this.tempMechanicName = false;
+    }
+  }
   createPlanning() {
     var val = {
       AppointmentId: this.serviceAppoinment,
@@ -279,29 +301,36 @@ export class AddEditAppoinmentComponent implements OnInit {
       Duration: this.EndDate
 
     }
+    this.validationplanning();
+
     console.log(val);
-
+    if(!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName){
+      this.service.addPlanning(val).subscribe(res => {
+        console.log(res);
+        if (res == "Mechanic is not Available. Choose other Date.") {
+          this.toastr.error(res.toString());
+          this.MechanicNotAvailble = true;
+          return false;
+        } else {
+          this.displanningubutton = false;
+          this.MechanicNotAvailble = false; 
+          this.moreService_PlanningButton = true;
+  
+          this.get_service_planning(val.AppointmentId);
+          this.toastr.success(res.toString(), '', {
+            timeOut: 3000,
+          });
+          
+        }
+      });
+    }else{
+      return false;
+    }
     // this.PlanningList.push(val);
-
-    this.service.addPlanning(val).subscribe(res => {
-      console.log(res);
-      if (res == "Mechanic is not Available. Choose other Date.") {
-        this.toastr.error(res.toString());
-        this.MechanicNotAvailble = true;
-        return false;
-      } else {
-        this.displanningubutton = false;
-        this.MechanicNotAvailble = false; 
-        this.moreService_PlanningButton = true;
-
-        this.get_service_planning(val.AppointmentId);
-        this.toastr.success(res.toString(), '', {
-          timeOut: 3000,
-        });
-      }
+    
 
 
-    });
+  
 
 
 

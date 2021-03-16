@@ -168,6 +168,7 @@
                                     <!-- <th>Id</th> -->
                                      <!-- <th>AppointmentId</th> -->
                                     <!--<th>AppointmentServiceId</th> -->
+                                    <th>Mechanic Name</th>
                                     <th>Duration</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
@@ -179,6 +180,7 @@
                                     <!-- <td>{{data.Id}}</td> -->
                                     <!-- <td>{{data.AppointmentId}}</td> -->
                                     <!-- <td>{{data.AppointmentServiceId}}</td> -->
+                                    <td>{{data.MechanicName}}</td>
                                     <td>{{data.Duration}}</td>
                                     <td>{{data.StartDate }}</td>
                                     <td>{{data.EndDate}}</td>
@@ -236,6 +238,8 @@
     
                     </option>
                 </select>
+                
+                <span *ngIf="tempMechanicName" style="color: red;">Please Select Mechanic</span>
                 <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
                                         
                 <div style="display: flex">
@@ -243,11 +247,15 @@
                         <label>Start Date<span style="color: red;">*</span></label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
                             placeholder="Start Date">
+                            <span *ngIf="tempstartDate" style="color: red;">Please Select Mechanic</span>
+                
                     </div>
                     <div class="col-sm-5">
                         <label>End Date<span style="color: red;">*</span></label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
                             placeholder="End Date">
+                            <span *ngIf="tempEndDate" style="color: red;">Please Select Mechanic</span>
+                
                     </div>
                 </div>
                 <button  [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"

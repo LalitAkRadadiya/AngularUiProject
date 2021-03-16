@@ -104,7 +104,9 @@ export class AppoinmentComponent implements OnInit  {
      
     this.spinner.show();
      this.service.getAppointmentList().subscribe(data => {
+
       this.AppointmentList = data;
+      console.log(this.AppointmentList)
       this.spinner.hide();
     }
     );

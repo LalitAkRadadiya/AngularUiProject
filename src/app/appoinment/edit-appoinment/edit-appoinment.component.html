@@ -170,6 +170,7 @@
                         <!-- <th>AppoinmentId </th> -->
                         <!-- <th>AppointmentId</th> -->
                         <!-- <th>AppointmentServiceId</th> -->
+                        <th>Mechanic Name</th>
                         <th>Duration</th>
                         <th>StartDate</th>
                         <th>EndDate</th>
@@ -182,6 +183,7 @@
                         <!-- <td>{{data.AppoinmentId}}</td> -->
                         <!-- <td>{{data.AppointmentId}}</td> -->
                         <!-- <td>{{data.AppointmentServiceId}}</td> -->
+                        <td>{{data.MechanicName}}</td>
                         <td>{{data.Duration}}</td>
                         <td>{{data.StartDate }}</td>
                         <td>{{data.EndDate}}</td>
@@ -203,36 +205,42 @@
                                     <div >
                                 
                                         <label>Choose Mechanic<span style="color: red;">*</span></label>
-                                        <select [disabled]="!displanningubutton"  id="Mechanic" name="Mechanic"
-                                            class="form-control" [(ngModel)]="MechanicId">
-
-                                            <option *ngFor="let data of MechanicList" [value]="data.Id">
-                                                <div *ngIf="MechanicList?.length else elseBlock">
-                                                    Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
-                                                </div>
-                                                <ng-template #elseBlock>
-                                                    No Data Found
-                                                </ng-template>
-
-                                            </option>
-                                        </select>
-                                        <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
+                <select   id="Mechanic" name="Mechanic"
+                    class="form-control" [(ngModel)]="MechanicId">
+    
+                    <option *ngFor="let data of MechanicList" [value]="data.Id">
+                        <div *ngIf="MechanicList?.length else elseBlock">
+                            Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
+                        </div>
+                        <ng-template #elseBlock>
+                            No Data Found
+                        </ng-template>
+    
+                    </option>
+                </select>
+                
+                <span *ngIf="tempMechanicName" style="color: red;">Please Select Mechanic</span>
+                <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
                                         
-                                        <div style="display: flex">
-                                            <div class="col-sm-5">
-                                                <label>Start Date<span style="color: red;">*</span></label>
-                                                <input (keypress)="datetime();" [disabled]="!displanningubutton" type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
-                                                    placeholder="Start Date">
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <label>End Date<span style="color: red;">*</span></label>
-                                                <input  [disabled]="!displanningubutton" type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
-                                                    placeholder="End Date">
-                                            </div>
-                                        </div>
-                                        <button  [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
-                                            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-
+                <div style="display: flex">
+                    <div class="col-sm-5">
+                        <label>Start Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
+                            placeholder="Start Date">
+                            <span *ngIf="tempstartDate" style="color: red;">Please Select Mechanic</span>
+                
+                    </div>
+                    <div class="col-sm-5">
+                        <label>End Date<span style="color: red;">*</span></label>
+                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
+                            placeholder="End Date">
+                            <span *ngIf="tempEndDate" style="color: red;">Please Select Mechanic</span>
+                
+                    </div>
+                </div>
+                <button  [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+    
                                     </div>
 
 

@@ -294,6 +294,28 @@ export class EditAppoinmentComponent implements OnInit {
     }
   }
   MechanicNotAvailble = false;
+  
+  tempMechanicName = false;
+  tempstartDate = false;
+  tempEndDate = false;
+
+  validationplanning(){
+    if(!this.StartDate){
+      this.tempstartDate = true;
+    }else{
+      this.tempstartDate = false;
+    }
+    if(!this.EndDate){
+      this.tempEndDate = true;
+    }else{
+      this.tempEndDate = false;
+    }
+    if(!this.MechanicId){
+      this.tempMechanicName = true;
+    }else{
+      this.tempMechanicName = false;
+    }
+  }
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);
     var val = {
@@ -305,32 +327,37 @@ export class EditAppoinmentComponent implements OnInit {
       Duration: this.EndDate
 
     }
+    this.validationplanning();
     console.log(val);
 
     // this.PlanningList.push(val);
+    if(!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName){
 
-    this.service.addPlanning(val).subscribe(res => {
-      console.log(res);
-      if (res == "Mechanic is not Available. Choose other Date.") {
-        this.toastr.error(res.toString());
-        this.MechanicNotAvailble = true;
-        return false;
-      } else {
-        this.MechanicNotAvailble = false;
-        this.displanningubutton = false;
-        this.moreService_PlanningButton = true;
-
-        this.get_service_planning(val.AppointmentId);
-        this.toastr.success(res.toString(), '', {
-          timeOut: 3000,
-        });
-      }
-
-
-    });
-
-
-
+      this.service.addPlanning(val).subscribe(res => {
+        console.log(res);
+        if (res == "Mechanic is not Available. Choose other Date.") {
+          this.toastr.error(res.toString());
+          this.MechanicNotAvailble = true;
+          return false;
+        } else {
+          this.MechanicNotAvailble = false;
+          this.displanningubutton = false;
+          this.moreService_PlanningButton = true;
+  
+          this.get_service_planning(val.AppointmentId);
+          this.toastr.success(res.toString(), '', {
+            timeOut: 3000,
+          });
+        }
+  
+  
+      });
+  
+  
+  
+    }else{
+      return false;
+  }
 
   }
 
