@@ -273,7 +273,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   tempMechanicName = false;
   tempstartDate = false;
   tempEndDate = false;
-
+  validdate = false;
   validationplanning() {
     if (!this.StartDate) {
       this.tempstartDate = true;
@@ -290,6 +290,17 @@ export class AddEditAppoinmentComponent implements OnInit {
     } else {
       this.tempMechanicName = false;
     }
+    if(this.StartDate && this.EndDate){
+      debugger
+            var sd = new Date(this.StartDate);
+            var ed = new Date(this.EndDate);
+            if(sd> ed){
+              this.validdate = true;
+            }else{
+              this.validdate  = false;
+            }
+          }
+    
   }
   createPlanning() {
     var val = {
@@ -304,7 +315,7 @@ export class AddEditAppoinmentComponent implements OnInit {
     this.validationplanning();
 
     console.log(val);
-    if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName) {
+    if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName && !this.validdate) {
       this.service.addPlanning(val).subscribe(res => {
         console.log(res);
         if (res == "Mechanic is not Available. Choose other Date.") {

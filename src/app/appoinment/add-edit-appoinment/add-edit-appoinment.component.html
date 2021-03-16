@@ -246,20 +246,22 @@
                         <label>Start Date<span style="color: red;">*</span></label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
                             placeholder="Start Date">
-                        <span *ngIf="tempstartDate" style="color: red;">Please Select Mechanic</span>
+                        <span *ngIf="tempstartDate" style="color: red;">Please Select Start Date</span>
 
                     </div>
                     <div class="col-sm-5">
                         <label>End Date<span style="color: red;">*</span></label>
                         <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
                             placeholder="End Date">
-                        <span *ngIf="tempEndDate" style="color: red;">Please Select Mechanic</span>
+                        <span *ngIf="tempEndDate" style="color: red;">Please Select End Date</span>
 
                     </div>
                 </div>
+                <div style="text-align: center;display: grid;">
+                    <span style="color: red;" *ngIf="validdate"> Please Select Valid Date</span>
                 <button [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
                     style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-
+                </div>
             </div>
 
 
