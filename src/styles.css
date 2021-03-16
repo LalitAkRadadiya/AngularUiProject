@@ -175,3 +175,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+
+
+
+th{
+  text-transform: capitalize;
+}

@@ -60,23 +60,23 @@
             <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <!-- <th>Id</th> -->
                         <!-- <th>AppoinmentId </th> -->
                         <th>Service Name</th> 
-                        <th>CostType</th>
+                        <th>Cost Type</th>
                         <th>Description</th>
                         <th>Discount</th>
                         <th>FixPrice</th>
                         <th>Price</th>
-                        <th>PricePerUnit</th>
+                        <th>Price Per Unit</th>
                         <th>Quantity</th>
-                        <th>SalesPart</th>
-                        <th>action</th>
+                        <th>Sales Part</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of AppServiceList">
-                        <td>{{data.Id}}</td>
+                        <!-- <td>{{data.Id}}</td> -->
                         <!-- <td>{{data.AppoinmentId}}</td> -->
                         <td>{{data.ServiceName}}</td>
                         <td>{{data.CostType}}</td>
@@ -87,8 +87,10 @@
                         <td>{{data.PricePerUnit}}
                         <td>{{data.Quantity}}</td>
                         <td>{{data.SalesPart}}</td>
-                         <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                         <td>
+                            <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                         </td>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
@@ -129,10 +131,10 @@
             <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <!-- <th>Id</th> -->
                         <!-- <th>AppoinmentId </th> -->
-                        <th>AppointmentId</th>
-                        <th>AppointmentServiceId</th>
+                        <!-- <th>AppointmentId</th> -->
+                        <!-- <th>AppointmentServiceId</th> -->
                         <th>Duration</th>
                         <th>StartDate</th>
                         <th>EndDate</th>
@@ -141,17 +143,19 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let data of PlanningList">
-                        <td>{{data.Id}}</td>
+                        <!-- <td>{{data.Id}}</td> -->
                         <!-- <td>{{data.AppoinmentId}}</td> -->
-                        <td>{{data.AppointmentId}}</td>
-                        <td>{{data.AppointmentServiceId}}</td>
+                        <!-- <td>{{data.AppointmentId}}</td> -->
+                        <!-- <td>{{data.AppointmentServiceId}}</td> -->
                         <td>{{data.Duration}}</td>
                         <td>{{data.StartDate }}</td>
                         <td>{{data.EndDate}}</td>
 
-                        <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
+                        <td>
+                            <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
                             class="btn btn-outline-danger">
                             <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                        </td>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
@@ -177,7 +181,7 @@
 
                                             </option>
                                         </select>
-                                        <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span>
+                                        <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
                                         
                                         <div style="display: flex">
                                             <div class="col-sm-5">
