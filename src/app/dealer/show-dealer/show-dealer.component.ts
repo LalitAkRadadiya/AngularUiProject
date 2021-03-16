@@ -57,12 +57,15 @@ export class ShowDealerComponent implements OnInit {
     this.refreshDealerList();
   }
   deleteDealer(item:any){
-    console.log('id',item.Id);
-      this.service.deleteDealer(item.Id).subscribe(data=>{
-        // this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
-        this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
-        this.refreshDealerList();
-      });
+  if(confirm("Are You Sure? Want to Delete?")){
+    this.service.deleteDealer(item.Id).subscribe(data=>{
+      // this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
+      this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
+      this.refreshDealerList();
+    });
+    this.refreshDealerList();
+  }
+      
   }
 
   
