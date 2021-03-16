@@ -167,8 +167,8 @@
                                 <!-- <td>{{data.AppointmentServiceId}}</td> -->
                                 <td>{{data.MechanicName}}</td>
                                 <td>{{data.Duration}}</td>
-                                <td>{{data.StartDate }}</td>
-                                <td>{{data.EndDate}}</td>
+                                <td>{{data.StartDate  |  date:'dd/mm/yyyy hh:mm a' }}</td>
+                                <td>{{data.EndDate  |  date:'dd/mm/yyyy hh:mm a'}}</td>
                             </tr>
                         </tbody>
                     </table>

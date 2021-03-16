@@ -31,6 +31,8 @@ export const msalConfig: Configuration = {
     auth: {
         clientId: 'a2efe93c-519e-4a8c-8132-a778a4e2b3fa',
         authority: b2cPolicies.authorities.signUpSignIn.authority,
+        // redirectUri: 'https://dev9431.d1dgp2pzgjkpir.amplifyapp.com/',
+        // postLogoutRedirectUri: 'https://dev9431.d1dgp2pzgjkpir.amplifyapp.com/',
         redirectUri: 'http://localhost:4200/',
         postLogoutRedirectUri: 'http://localhost:4200/',
         navigateToLoginRequestUrl: true,

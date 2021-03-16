@@ -2,137 +2,76 @@
     <div class="row">
         <label>Appoinment Details<span style="color: red;">*</span></label>
         <div style="display: flex;">
-            <div class="col-md-5">
-                <div>First Name : {{appoinment.FName}}</div>
-
-            </div>
-            <div class="col-md-5">
-                <div>Last Name : {{appoinment.LName}}</div>
-            </div>
+                <div class="col-md-5" style="display: flex;">
+                        <div class="col-md-5 title">
+                            <div>First Name    </div>
+                            <div>Last Name      </div>
+                            <div>Mobile        </div>
+                            <div>Licence Plate </div>
+                            <div>City          </div>
+                            <div>Country       </div>
+                            <div>Status        </div>
+            
+                        </div>
+                        <div class="col-md-5">
+                            <div>: {{appoinment.FName}}</div>
+                            <div>: {{appoinment.LName}}</div>
+                            <div>: {{appoinment.MobileNo}}</div>
+                            <div>: {{appoinment.LicencePlate }}</div>
+                            <div>: {{appoinment.City}}</div>
+                            <div>: {{appoinment.Country }}</div>
+                            <div>
+                            
+                                <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
+                                    [(ngModel)]="updatedStatus">
+                                    <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
+                                    <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
+                                    <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
+                                    <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
+                                    <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
+                            
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="col-md-5"  style="display: flex;">
+                           <div class="col-md-5 title" >
+                            <div>Model       </div>
+                            <div>Brand        </div>
+                            <div>Total Price </div>
+                            <div>Total Time   </div>
+                            <div>Start Date  </div>
+                            <div>End Date    </div>
+                           
+                            
+                           </div>
+                           <div class="col-md-5">
+                            <div>: {{appoinment.Model}}</div>
+                            <div>: {{appoinment.Brand}}</div>
+                            <div>: {{appoinment.TotalPrice}}</div>
+                            <div>: {{appoinment.TotalTime}}</div>
+                            <div>: {{appoinment.StartDate  |  date:'dd/mm/yyyy hh:mm a'}}</div>
+                            <div>: {{appoinment.EndDate  | date:'dd/mm/yyyy hh:mm a'}}</div>
+                           
+                            
+                           </div>
+                    </div>
         </div>
-
         <div style="display: flex;">
             <div class="col-md-5">
-                <div>Mobile : {{appoinment.MobileNo}}</div>
-
-            </div>
-            <div class="col-md-5">
-                <div>Licence Plate : {{appoinment.LicencePlate }}</div>
-
-            </div>
-        </div>
-
-        <div style="display: flex;">
-            <div class="col-md-5">
-                <div>City : {{appoinment.City}}</div>
-
-            </div>
-            <div class="col-md-5">
-                <div>Country : {{appoinment.Country }}</div>
-
-            </div>
-        </div>
-
-        <div style="display: flex;">
-            <div class="col-md-5">
-                <div>Model : {{appoinment.Model}}</div>
-
-            </div>
-            <div class="col-md-5">
-                <div>Brand : {{appoinment.Brand}}</div>
-
-            </div>
-        </div>
-
-        <div style="display: flex;">
-            <div class="col-md-5">
-                <div>
-                    <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
-                    [(ngModel)]="updatedStatus">
-                    <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
-                    <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
-                    <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
-                    <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
-                    <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
-
-                </select>
-                </div>
+               
                
             </div>
             <div class="col-md-5">
-                <div>Start Date : {{appoinment.StartDate}}</div>
 
             </div>
         </div>
-        <div style="display: flex;">
-            <div class="col-md-5">
-
-                <div>End Date : {{appoinment.EndDate}}</div>
-
-            </div>
-            <div class="col-md-5">
-
-                <div>Total Time : {{appoinment.TotalTime}}</div>
-
-
-            </div>
-        </div>
-        <div style="display: flex;">
-            <div class="col-md-5">
-                <div>Total Price : {{appoinment.TotalPrice}}</div>
-
-            </div>
-            <div class="col-md-5">
-
-                <!-- <span>Total Time</span> -->
-            </div>
-        </div>
+        
 
     </div>
 
     <div class="row">
-        <label>AppoinmentService Details<span style="color: red;">*</span></label>
-        <div *ngIf="AppServiceList ">
-            <table  id="filterListTable"  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <!-- <th>Id</th> -->
-                        <!-- <th>AppoinmentId </th> -->
-                        <th>Service Name</th>
-                        <th>Cost Type</th>
-                        <th>Description</th>
-                        <th>Discount</th>
-                        <th>FixPrice</th>
-                        <th>Price</th>
-                        <th>Price Per Unit</th>
-                        <th>Quantity [Hour] </th>
-                        <th>Sales Part</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of AppServiceList">
-                        <!-- <td>{{data.Id}}</td> -->
-                        <!-- <td>{{data.AppoinmentId}}</td> -->
-                        <td>{{data.ServiceName}}</td>
-                        <td>{{data.CostType}}</td>
-                        <td>{{data.Description}}</td>
-                        <td>{{data.Discount }}</td>
-                        <td>{{data.FixPrice}}</td>
-                        <td>{{data.Price}}</td>
-                        <td>{{data.PricePerUnit}}
-                        <td>{{data.Quantity}}</td>
-                        <td>{{data.SalesPart}}</td>
-                        <td>
-                            <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"
-                                type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
-                                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                        </td>
-                        <!-- (click)="deleteserviceClick(data)" -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        
       
 
 
@@ -161,44 +100,7 @@
 
     </div>
     <div class="row">
-        <label>Planning Details<span style="color: red;">*</span></label>
-        <div *ngIf="PlanningList">
-            <table  id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                <thead>
-                    <tr>
-                        <!-- <th>Id</th> -->
-                        <!-- <th>AppoinmentId </th> -->
-                        <!-- <th>AppointmentId</th> -->
-                        <!-- <th>AppointmentServiceId</th> -->
-                        <th>Mechanic Name</th>
-                        <th>Duration</th>
-                        <th>StartDate</th>
-                        <th>EndDate</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of PlanningList">
-                        <!-- <td>{{data.Id}}</td> -->
-                        <!-- <td>{{data.AppoinmentId}}</td> -->
-                        <!-- <td>{{data.AppointmentId}}</td> -->
-                        <!-- <td>{{data.AppointmentServiceId}}</td> -->
-                        <td>{{data.MechanicName}}</td>
-                        <td>{{data.Duration}}</td>
-                        <td>{{data.StartDate }}</td>
-                        <td>{{data.EndDate}}</td>
-
-                        <td>
-                            <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
-                                class="btn btn-outline-danger">
-                                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                        </td>
-                        <!-- (click)="deleteserviceClick(data)" -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-      
+       
         <div>
 
             <label>Choose Mechanic<span style="color: red;">*</span></label>
@@ -250,4 +152,92 @@
         style="margin-top:2%; width: 50% ;margin-left:25%;" (click)="moreService_Planning()">Add More Service &
         Planning</button>
     <!-- </div> -->
+    <br>
+    <label>Appoinment Service Details</label>
+    <div >
+        <table   class="table" style="background-color: rgba(212, 226, 250, 0.5);zoom: 0.9;">
+            <thead>
+                <tr>
+                    <!-- <th>Id</th> -->
+                    <!-- <th>AppoinmentId </th> -->
+                    <th>Service Name</th>
+                    <th>Cost Type</th>
+                    <th>Description</th>
+                    <th>Discount</th>
+                    <th>FixPrice</th>
+                    <th>Price</th>
+                    <th>Price Per Unit</th>
+                    <th>Quantity [Hour] </th>
+                    <th>Sales Part</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="AppServiceList else elseBlock ">
+                <tr *ngFor="let data of AppServiceList">
+                    <!-- <td>{{data.Id}}</td> -->
+                    <!-- <td>{{data.AppoinmentId}}</td> -->
+                    <td>{{data.ServiceName}}</td>
+                    <td>{{data.CostType}}</td>
+                    <td>{{data.Description}}</td>
+                    <td>{{data.Discount }}</td>
+                    <td>{{data.FixPrice}}</td>
+                    <td>{{data.Price}}</td>
+                    <td>{{data.PricePerUnit}}
+                    <td>{{data.Quantity}}</td>
+                    <td>{{data.SalesPart}}</td>
+                    <td>
+                        <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"
+                            type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                    </td>
+                    <!-- (click)="deleteserviceClick(data)" -->
+                </tr>
+            </tbody>
+            <ng-template #elseBlock>
+                No data found
+            </ng-template>
+        </table>
+    </div>
+
+    <label>Planning Details</label>
+    <div >
+        <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);zoom: 0.9;">
+            <thead>
+                <tr>
+                    <!-- <th>Id</th> -->
+                    <!-- <th>AppoinmentId </th> -->
+                    <!-- <th>AppointmentId</th> -->
+                    <!-- <th>AppointmentServiceId</th> -->
+                    <th>Mechanic Name</th>
+                    <th>Duration</th>
+                    <th>StartDate</th>
+                    <th>EndDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="PlanningList?.length else elseBlockplan">
+                <tr *ngFor="let data of PlanningList">
+                    <!-- <td>{{data.Id}}</td> -->
+                    <!-- <td>{{data.AppoinmentId}}</td> -->
+                    <!-- <td>{{data.AppointmentId}}</td> -->
+                    <!-- <td>{{data.AppointmentServiceId}}</td> -->
+                    <td>{{data.MechanicName}}</td>
+                    <td>{{data.Duration}}</td>
+                    <td>{{data.StartDate  |  date:'dd/mm/yyyy hh:mm a' }}</td>
+                    <td>{{data.EndDate  |  date:'dd/mm/yyyy hh:mm a'}}</td>
+
+                    <td>
+                        <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
+                            class="btn btn-outline-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                    </td>
+                    <!-- (click)="deleteserviceClick(data)" -->
+                </tr>
+            </tbody>
+            <ng-template #elseBlockplan>
+                    No data found
+            </ng-template>
+        </table>
+    </div>
+  
 </div>

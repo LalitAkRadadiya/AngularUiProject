@@ -93,6 +93,15 @@ export class AddEditAppoinmentComponent implements OnInit {
     this.loadDealerList();
 
     this.get_service_planning(this.appoinment.Id);
+    setTimeout(() => {
+      //init Datatable
+      $('#filterListTable').DataTable(
+        {
+          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+          stateSave: true,
+        }
+      );
+    }, 5000);
 
   }
   get_service_planning(id: Number) {
@@ -295,7 +304,7 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.tempMechanicName = false;
     }
     if(this.StartDate && this.EndDate){
-      debugger
+   
             var sd = new Date(this.StartDate);
             var ed = new Date(this.EndDate);
             if(sd> ed){

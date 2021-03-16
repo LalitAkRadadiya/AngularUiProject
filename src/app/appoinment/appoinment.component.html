@@ -86,7 +86,7 @@
       <td>{{dataItem.TotalPrice}}</td>
       <td>{{dataItem.Model}}</td>
       <td>{{dataItem.Brand}}</td>
-      <td>{{dataItem.CreatedDate}}</td>
+      <td>{{dataItem.CreatedDate |  date:'dd/mm/yyyy hh:mm a' }}</td>
       <td>
         {{dataItem.Status}}
         <!-- <button>Update Status</button> -->

@@ -4,3 +4,12 @@ span{
 td{
     max-width: 120px;
 }
+
+.title> div{
+    font-size: 16px;
+    font-weight: 500;
+}
+th{
+    width: 50px;
+    word-wrap: break-word;
+  }

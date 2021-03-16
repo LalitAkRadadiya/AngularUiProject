@@ -123,8 +123,6 @@ export class EditAppoinmentComponent implements OnInit {
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
 
 
-        this.enddatetime = this.AppServiceList[0].Quantity;
-
         console.log('eunatity typeof', typeof this.enddatetime);
         console.log('this.Quantity', this.enddatetime);
         this.PlanningList = this.EditAppoinment.planningList;
@@ -135,7 +133,6 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
   datetime() {
-    debugger;
 
     var qt = new Date(this.enddatetime.ToString("dd/MM/yyyy hh:mm:ss"));
     var dt = new Date(this.StartDate);
@@ -333,7 +330,6 @@ export class EditAppoinmentComponent implements OnInit {
       this.tempMechanicName = false;
     }
     if(this.StartDate && this.EndDate){
-      debugger
             var sd = new Date(this.StartDate);
             var ed = new Date(this.EndDate);
             if(sd> ed){

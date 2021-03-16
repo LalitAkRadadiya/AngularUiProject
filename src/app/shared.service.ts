@@ -9,8 +9,9 @@ import { ShowServiceComponent } from './service/show-service/show-service.compon
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl = "https://localhost:44370/api"
+  // readonly APIUrl = "https://lalitakradadiya.azurewebsites.net/api"
 
+  readonly APIUrl = "https://localhost:44370/api"
   constructor(private http: HttpClient ) { }
   
  
