@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditAppoinmentComponent implements OnInit {
 
-  
+
   DealerList: any = [];
   ServiceList: any = [];
 
@@ -26,7 +26,7 @@ export class EditAppoinmentComponent implements OnInit {
 
   constructor(private service: SharedService, private toastr: ToastrService) { }
   statusArray: any = ['pending', 'Confirm', 'Work done', 'Started', 'Finished'];
-   
+
   CustomerVehicleInfo: any;
   @Input() appoinment: any;
   Id: Number = 0;
@@ -84,7 +84,7 @@ export class EditAppoinmentComponent implements OnInit {
     }
     this.appoinment.Status = this.updatedStatus
     this.service.editAppoinmentStatus(val).subscribe(res => {
-      
+
       this.toastr.success(res.toString(), '', {
         timeOut: 3000,
       });
@@ -99,8 +99,8 @@ export class EditAppoinmentComponent implements OnInit {
     this.get_service_planning(this.appoinment.Id);
 
   }
-  
-  enddatetime : any;
+
+  enddatetime: any;
   get_service_planning(id: Number) {
     console.log('id', id)
     if (id != 0) {
@@ -111,8 +111,8 @@ export class EditAppoinmentComponent implements OnInit {
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
 
 
-        this.enddatetime = this.AppServiceList[0].Quantity; 
-        
+        this.enddatetime = this.AppServiceList[0].Quantity;
+
         console.log('eunatity typeof', typeof this.enddatetime);
         console.log('this.Quantity', this.enddatetime);
         this.PlanningList = this.EditAppoinment.planningList;
@@ -121,14 +121,14 @@ export class EditAppoinmentComponent implements OnInit {
       });
     }
   }
-  
-  datetime(){
+
+  datetime() {
     debugger;
- 
+
     var qt = new Date(this.enddatetime.ToString("dd/MM/yyyy hh:mm:ss"));
-    var dt = new Date(this.StartDate); 
+    var dt = new Date(this.StartDate);
     dt.setHours(dt.getHours() + qt.getHours());
-    
+
     dt.setMinutes(dt.getMinutes() + qt.getMinutes());
     // this.EndDate =  this.StartDate + this.Quantity;  //8:30
     // this.EndDate = "10-10-2020 03:11";
@@ -294,25 +294,25 @@ export class EditAppoinmentComponent implements OnInit {
     }
   }
   MechanicNotAvailble = false;
-  
+
   tempMechanicName = false;
   tempstartDate = false;
   tempEndDate = false;
 
-  validationplanning(){
-    if(!this.StartDate){
+  validationplanning() {
+    if (!this.StartDate) {
       this.tempstartDate = true;
-    }else{
+    } else {
       this.tempstartDate = false;
     }
-    if(!this.EndDate){
+    if (!this.EndDate) {
       this.tempEndDate = true;
-    }else{
+    } else {
       this.tempEndDate = false;
     }
-    if(!this.MechanicId){
+    if (!this.MechanicId) {
       this.tempMechanicName = true;
-    }else{
+    } else {
       this.tempMechanicName = false;
     }
   }
@@ -331,7 +331,7 @@ export class EditAppoinmentComponent implements OnInit {
     console.log(val);
 
     // this.PlanningList.push(val);
-    if(!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName){
+    if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName) {
 
       this.service.addPlanning(val).subscribe(res => {
         console.log(res);
@@ -343,21 +343,21 @@ export class EditAppoinmentComponent implements OnInit {
           this.MechanicNotAvailble = false;
           this.displanningubutton = false;
           this.moreService_PlanningButton = true;
-  
+
           this.get_service_planning(val.AppointmentId);
           this.toastr.success(res.toString(), '', {
             timeOut: 3000,
           });
         }
-  
-  
+
+
       });
-  
-  
-  
-    }else{
+
+
+
+    } else {
       return false;
-  }
+    }
 
   }
 

@@ -1,117 +1,108 @@
 <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      </head>
-      <br>
-      <h5 class="breadcrum">Home / Appoinment</h5>
-      <!-- <ngx-spinner bdColor="rgba(221,213,213,0.8)" size = "medium" color = "#096dd1" type = "ball-pulse" [fullScreen] = "true"><p style="color: rgb(21, 20, 78)" > Loading... </p></ngx-spinner> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<br>
+<h5 class="breadcrum">Home / Appoinment</h5>
+<!-- <ngx-spinner bdColor="rgba(221,213,213,0.8)" size = "medium" color = "#096dd1" type = "ball-pulse" [fullScreen] = "true"><p style="color: rgb(21, 20, 78)" > Loading... </p></ngx-spinner> -->
 
-      <!-- Button trigger modal -->
-      <button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" 
-      data-bs-toggle="modal" data-bs-target="#exampleModal"
-      (click)="addClick()"
-      data-backdrop="static" data-keyboard="false">
-      <i class="fa fa-plus" aria-hidden="true"></i> &ensp;Add Appoinment</button>
-        
-        <!-- add Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content" style="height: auto;
+<!-- Button trigger modal -->
+<button style="float:right;margin-top: 1%;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+  data-bs-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">
+  <i class="fa fa-plus" aria-hidden="true"></i> &ensp;Add Appoinment</button>
+
+<!-- add Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content" style="height: auto;
             overflow-x: hidden;
             overflow-y: scroll;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-                <button type="button" class="btn-close" 
-                data-bs-dismiss="modal" aria-label="Close"
-                (click)="closeClick()"></button>
-              </div>
-              <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
 
-                  <app-add-edit-appoinment  [appoinment]="appoinment"></app-add-edit-appoinment>
+        <app-add-edit-appoinment [appoinment]="appoinment"></app-add-edit-appoinment>
 
-                  
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- edit compoennt -->
-        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content" style="height: auto;
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- edit compoennt -->
+<div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content" style="height: auto;
             overflow-x: hidden;
             overflow-y: scroll;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-                <button type="button" class="btn-close" 
-                data-bs-dismiss="modal" aria-label="Close"
-                (click)="closeClick()"></button>
-              </div>
-              <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
 
-                  <app-edit-appoinment  [appoinment]="appoinment"></app-edit-appoinment>
+        <app-edit-appoinment [appoinment]="appoinment"></app-edit-appoinment>
 
-                  
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      
-      <table id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Dealer Name</th>
-                  <th>Licence Plate</th>
-                  <th>Customer Name</th>
-                  <!-- <th>Name</th> -->
-                  <th>Mobile</th>
-                  <!-- <th>Email</th> -->
-                  <!-- <th>City</th>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<table id="filterListTable" class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Dealer Name</th>
+      <th>Licence Plate</th>
+      <th>Customer Name</th>
+      <!-- <th>Name</th> -->
+      <th>Mobile</th>
+      <!-- <th>Email</th> -->
+      <!-- <th>City</th>
                   <th>Country</th> -->
-                  <th>Total Price</th>
-                  <th>model</th>
-                  <th>Brand</th>
-                  <th>Booking Date</th>
-                  <th>Status</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let dataItem of AppointmentList">
-                  <td>{{dataItem.Id}}</td>
-                  <td>{{dataItem.DealerName}}</td>
-                  <td>{{dataItem.LicencePlate}}</td>
-                  <td>{{dataItem.FName}} {{dataItem.LName}}</td>
-                  <!-- <td></td> -->
-                  <td>{{dataItem.MobileNo}}</td>
-                  <!-- <td>{{dataItem.Email}}</td> -->
-                  <!-- <td>{{dataItem.City}}</td>
+      <th>Total Price</th>
+      <th>model</th>
+      <th>Brand</th>
+      <th>Booking Date</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of AppointmentList">
+      <td>{{dataItem.Id}}</td>
+      <td>{{dataItem.DealerName}}</td>
+      <td>{{dataItem.LicencePlate}}</td>
+      <td>{{dataItem.FName}} {{dataItem.LName}}</td>
+      <!-- <td></td> -->
+      <td>{{dataItem.MobileNo}}</td>
+      <!-- <td>{{dataItem.Email}}</td> -->
+      <!-- <td>{{dataItem.City}}</td>
                   <td>{{dataItem.Country}}</td> -->
-                  <td>{{dataItem.TotalPrice}}</td>
-                  <td>{{dataItem.Model}}</td>
-                  <td>{{dataItem.Brand}}</td>
-                  <td>{{dataItem.CreatedDate}}</td>
-                  <td>
-                    {{dataItem.Status}}
-                    <!-- <button>Update Status</button> -->
-                   
-                  </td>
-                  
-                  <td style="display: flex;">
-                      <button type="button" class="btn btn-outline-success"
-                      data-bs-toggle="modal" data-bs-target="#exampleModaledit"
-                      (click)="editClick(dataItem)"
-                      
-                      data-backdrop="static" data-keyboard="false">
-                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit</button>
-                      
-                      
-                      <button [disabled]='!dataItem.DeleteButton' type="button"
-                       style="margin-left: 5%;" class="btn btn-outline-danger"
-                      (click)="deleteClick(dataItem)">
-                      <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      
+      <td>{{dataItem.TotalPrice}}</td>
+      <td>{{dataItem.Model}}</td>
+      <td>{{dataItem.Brand}}</td>
+      <td>{{dataItem.CreatedDate}}</td>
+      <td>
+        {{dataItem.Status}}
+        <!-- <button>Update Status</button> -->
+
+      </td>
+
+      <td style="display: flex;">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModaledit"
+          (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Edit</button>
+
+
+        <button [disabled]='!dataItem.DeleteButton' type="button" style="margin-left: 5%;"
+          class="btn btn-outline-danger" (click)="deleteClick(dataItem)">
+          <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

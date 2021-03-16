@@ -1,103 +1,102 @@
-
-<div >
+<div>
     <div class="row">
         <label>Appoinment Details<span style="color: red;">*</span></label>
         <div style="display: flex;">
-        <div class="col-md-5">
-            <div>First Name : {{appoinment.FName}}</div>
-           
+            <div class="col-md-5">
+                <div>First Name : {{appoinment.FName}}</div>
+
+            </div>
+            <div class="col-md-5">
+                <div>Last Name : {{appoinment.LName}}</div>
+            </div>
         </div>
-        <div class="col-md-5">
-            <div>Last Name : {{appoinment.LName}}</div>
-        </div>
-    </div>
-    
+
         <div style="display: flex;">
             <div class="col-md-5">
                 <div>Mobile : {{appoinment.MobileNo}}</div>
-               
+
             </div>
             <div class="col-md-5">
                 <div>Licence Plate : {{appoinment.LicencePlate }}</div>
 
             </div>
         </div>
-        
+
         <div style="display: flex;">
             <div class="col-md-5">
                 <div>City : {{appoinment.City}}</div>
-               
+
             </div>
             <div class="col-md-5">
                 <div>Country : {{appoinment.Country }}</div>
-               
+
             </div>
         </div>
-        
+
         <div style="display: flex;">
             <div class="col-md-5">
                 <div>Model : {{appoinment.Model}}</div>
-               
+
             </div>
             <div class="col-md-5">
                 <div>Brand : {{appoinment.Brand}}</div>
-               
+
             </div>
         </div>
-          
+
         <div style="display: flex;">
             <div class="col-md-5">
                 <div>Status : {{appoinment.Status}}</div>
                 <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
-                [(ngModel)]="updatedStatus" >
-                <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
-                <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
-                <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
-                <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
-                <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
-                
-            </select>
+                    [(ngModel)]="updatedStatus">
+                    <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
+                    <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
+                    <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
+                    <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
+                    <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
+
+                </select>
             </div>
             <div class="col-md-5">
                 <div>Start Date : {{appoinment.StartDate}}</div>
-             
+
             </div>
         </div>
         <div style="display: flex;">
             <div class="col-md-5">
-               
+
                 <div>End Date : {{appoinment.EndDate}}</div>
-               
+
             </div>
             <div class="col-md-5">
-                
+
                 <div>Total Time : {{appoinment.TotalTime}}</div>
-               
-           
+
+
             </div>
         </div>
         <div style="display: flex;">
             <div class="col-md-5">
                 <div>Total Price : {{appoinment.TotalPrice}}</div>
-               
+
             </div>
             <div class="col-md-5">
-                
+
                 <!-- <span>Total Time</span> -->
             </div>
         </div>
-       
+
     </div>
 
-    <div class="row" >
+    <div class="row">
         <label>AppoinmentService Details<span style="color: red;">*</span></label>
         <div *ngIf="AppServiceList else elseBlockservice">
-            <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
+            <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                 <thead>
                     <tr>
                         <!-- <th>Id</th> -->
                         <!-- <th>AppoinmentId </th> -->
-                        <th>Service Name</th> 
+                        <th>Service Name</th>
                         <th>Cost Type</th>
                         <th>Description</th>
                         <th>Discount</th>
@@ -122,10 +121,11 @@
                         <td>{{data.PricePerUnit}}
                         <td>{{data.Quantity}}</td>
                         <td>{{data.SalesPart}}</td>
-                         <td>
-                            <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)" type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
+                        <td>
+                            <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"
+                                type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
                                 <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
-                         </td>
+                        </td>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
                 </tbody>
@@ -136,27 +136,27 @@
         </ng-template>
 
 
-                                    <div  style="display: flex">
-                                        <div class="col-sm-9">
-                                            <label>Choose Service<span style="color: red;">*</span></label>
-                                            <select [disabled]="!disappoinmentserviceubtton" id="service" name="service" class="form-control"
-                                                [(ngModel)]="ServiceId">
-                                                <option *ngFor="let data of ServiceList" [value]="data.Id">
-                                                    Service Name : {{data.Name}} - Price : {{data.Price}}
-                                                </option>
-                                            </select>
-                                            <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <!-- <label><span style="color: red;"></span></label> -->
-                                            <br>
-                                            <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
-                                            <button [disabled]="!disappoinmentserviceubtton" (click)="AddAppoinmentService()" class="btn btn-success"
-                                                style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
-                                        </div>
+        <div style="display: flex">
+            <div class="col-sm-9">
+                <label>Choose Service<span style="color: red;">*</span></label>
+                <select [disabled]="!disappoinmentserviceubtton" id="service" name="service" class="form-control"
+                    [(ngModel)]="ServiceId">
+                    <option *ngFor="let data of ServiceList" [value]="data.Id">
+                        Service Name : {{data.Name}} - Price : {{data.Price}}
+                    </option>
+                </select>
+                <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
+            </div>
+            <div class="col-sm-3">
+                <!-- <label><span style="color: red;"></span></label> -->
+                <br>
+                <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+                <button [disabled]="!disappoinmentserviceubtton" (click)="AddAppoinmentService()"
+                    class="btn btn-success" style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
+            </div>
 
 
-                                    </div>
+        </div>
 
 
     </div>
@@ -190,8 +190,8 @@
 
                         <td>
                             <button (click)="deletePlanning(data)" type="button" style="margin-left: 5%;"
-                            class="btn btn-outline-danger">
-                            <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
+                                class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete</button>
                         </td>
                         <!-- (click)="deleteserviceClick(data)" -->
                     </tr>
@@ -202,57 +202,52 @@
             <h1>No Planning availble</h1>
         </ng-template>
 
-                                    <div >
-                                
-                                        <label>Choose Mechanic<span style="color: red;">*</span></label>
-                <select   id="Mechanic" name="Mechanic"
-                    class="form-control" [(ngModel)]="MechanicId">
-    
-                    <option *ngFor="let data of MechanicList" [value]="data.Id">
-                        <div *ngIf="MechanicList?.length else elseBlock">
-                            Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
-                        </div>
-                        <ng-template #elseBlock>
-                            No Data Found
-                        </ng-template>
-    
-                    </option>
-                </select>
-                
-                <span *ngIf="tempMechanicName" style="color: red;">Please Select Mechanic</span>
-                <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
-                                        
-                <div style="display: flex">
-                    <div class="col-sm-5">
-                        <label>Start Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
-                            placeholder="Start Date">
-                            <span *ngIf="tempstartDate" style="color: red;">Please Select Mechanic</span>
-                
+        <div>
+
+            <label>Choose Mechanic<span style="color: red;">*</span></label>
+            <select id="Mechanic" name="Mechanic" class="form-control" [(ngModel)]="MechanicId">
+
+                <option *ngFor="let data of MechanicList" [value]="data.Id">
+                    <div *ngIf="MechanicList?.length else elseBlock">
+                        Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
                     </div>
-                    <div class="col-sm-5">
-                        <label>End Date<span style="color: red;">*</span></label>
-                        <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
-                            placeholder="End Date">
-                            <span *ngIf="tempEndDate" style="color: red;">Please Select Mechanic</span>
-                
-                    </div>
+                    <ng-template #elseBlock>
+                        No Data Found
+                    </ng-template>
+
+                </option>
+            </select>
+
+            <span *ngIf="tempMechanicName" style="color: red;">Please Select Mechanic</span>
+            <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
+
+            <div style="display: flex">
+                <div class="col-sm-5">
+                    <label>Start Date<span style="color: red;">*</span></label>
+                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
+                        placeholder="Start Date">
+                    <span *ngIf="tempstartDate" style="color: red;">Please Select Mechanic</span>
+
                 </div>
-                <button  [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
-                    style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
-    
-                                    </div>
+                <div class="col-sm-5">
+                    <label>End Date<span style="color: red;">*</span></label>
+                    <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
+                        placeholder="End Date">
+                    <span *ngIf="tempEndDate" style="color: red;">Please Select Mechanic</span>
+
+                </div>
+            </div>
+            <button [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+
+        </div>
 
 
-                                </div>
+    </div>
 
 
-                                <button [disabled]="!moreService_PlanningButton" 
-                                class="btn btn-success done-plan"
-                                style="margin-top:2%; width: 50% ;margin-left:25%;"
-                                (click)="moreService_Planning()">Add More Service & Planning</button>
+    <button [disabled]="!moreService_PlanningButton" class="btn btn-success done-plan"
+        style="margin-top:2%; width: 50% ;margin-left:25%;" (click)="moreService_Planning()">Add More Service &
+        Planning</button>
     <!-- </div> -->
-                            </div>
-
-
-
+</div>

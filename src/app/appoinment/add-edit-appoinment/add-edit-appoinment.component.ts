@@ -109,7 +109,7 @@ export class AddEditAppoinmentComponent implements OnInit {
       });
     }
   }
-  
+
   tempDealer = false;
   addappvalidation() {
     if (!this.DealerId) {
@@ -269,25 +269,25 @@ export class AddEditAppoinmentComponent implements OnInit {
     }
   }
   MechanicNotAvailble = false;
-  
+
   tempMechanicName = false;
   tempstartDate = false;
   tempEndDate = false;
 
-  validationplanning(){
-    if(!this.StartDate){
+  validationplanning() {
+    if (!this.StartDate) {
       this.tempstartDate = true;
-    }else{
+    } else {
       this.tempstartDate = false;
     }
-    if(!this.EndDate){
+    if (!this.EndDate) {
       this.tempEndDate = true;
-    }else{
+    } else {
       this.tempEndDate = false;
     }
-    if(!this.MechanicId){
+    if (!this.MechanicId) {
       this.tempMechanicName = true;
-    }else{
+    } else {
       this.tempMechanicName = false;
     }
   }
@@ -304,7 +304,7 @@ export class AddEditAppoinmentComponent implements OnInit {
     this.validationplanning();
 
     console.log(val);
-    if(!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName){
+    if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName) {
       this.service.addPlanning(val).subscribe(res => {
         console.log(res);
         if (res == "Mechanic is not Available. Choose other Date.") {
@@ -313,24 +313,24 @@ export class AddEditAppoinmentComponent implements OnInit {
           return false;
         } else {
           this.displanningubutton = false;
-          this.MechanicNotAvailble = false; 
+          this.MechanicNotAvailble = false;
           this.moreService_PlanningButton = true;
-  
+
           this.get_service_planning(val.AppointmentId);
           this.toastr.success(res.toString(), '', {
             timeOut: 3000,
           });
-          
+
         }
       });
-    }else{
+    } else {
       return false;
     }
     // this.PlanningList.push(val);
-    
 
 
-  
+
+
 
 
 
