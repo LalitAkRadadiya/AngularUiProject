@@ -8,41 +8,41 @@ import { isIE, b2cPolicies } from './app-config';
 import { HttpClient } from '@angular/common/http';
 import { InteractionRequiredAuthError, AuthError } from 'msal';
 import { apiConfig } from './app-config';
-
 import { SharedService } from './shared.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(service: SharedService, private broadcastService: BroadcastService, private authService: MsalService,  private http: HttpClient) {
-
+  constructor(service: SharedService, private broadcastService: BroadcastService, private authService: MsalService, private http: HttpClient) {
   }
   subscriptions: Subscription[] = [];
   isIframe = false;
   loggedIn = false;
-  
   hidemenu = false;
-
-
-
-
+  firstname: String;
+  lastname: String;
   title = 'ProjectUI';
   ngOnInit() {
     let loginSuccessSubscription: Subscription;
     let loginFailureSubscription: Subscription;
 
     this.getProfile(apiConfig.webApi);
-
     loginSuccessSubscription = this.broadcastService.subscribe('msal:acquireTokenSuccess', (payload) => {
       console.log('access token acquired at: ' + new Date().toString());
-      console.log('payload',payload);
+      console.log('payload', payload);
+      if (payload != undefined && payload.account != undefined && payload.account.idToken != undefined) {
+        this.firstname = payload.account.idToken.given_name;
+        this.lastname = payload.account.idToken.family_name;
+      }
+
     });
 
     loginFailureSubscription = this.broadcastService.subscribe('msal:acquireTokenFailure', (payload) => {
       console.log('access token acquisition fails');
-      console.log('payload profile',payload);
+      console.log('payload profile', payload);
     });
 
     this.subscriptions.push(loginSuccessSubscription);
@@ -55,17 +55,21 @@ export class AppComponent implements OnInit, OnDestroy {
     // event listeners for authentication status
     loginSuccessSubscription = this.broadcastService.subscribe('msal:loginSuccess', (success) => {
 
-    // We need to reject id tokens that were not issued with the default sign-in policy.
-    // "acr" claim in the token tells us what policy is used (NOTE: for new policies (v2.0), use "tfp" instead of "acr")
-    // To learn more about b2c tokens, visit https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview
+      // We need to reject id tokens that were not issued with the default sign-in policy.
+      // "acr" claim in the token tells us what policy is used (NOTE: for new policies (v2.0), use "tfp" instead of "acr")
+      // To learn more about b2c tokens, visit https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview
       if (success.idToken.claims.acr === b2cPolicies.names.resetPassword) {
         window.alert('Password has been reset successfully. \nPlease sign-in with your new password');
         return this.authService.logout();
       }
 
       console.log('login succeeded. id token acquired at: ' + new Date().toString());
-      console.log(success);
 
+      if (success != undefined && success.account != undefined && success.account.idToken != undefined) {
+        this.firstname = success.account.idToken.given_name;
+        this.lastname = success.account.idToken.family_name;
+      }
+      console.log(success);
       this.checkAccount();
     });
 
@@ -115,18 +119,15 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log('fail')
       this.hidemenu = false;
     }
-    
+
     $("#menu-toggle").click(function (e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
   }
-
-
   checkAccount() {
     this.loggedIn = !!this.authService.getAccount();
   }
-
   login() {
     if (isIE) {
       this.authService.loginRedirect();
@@ -134,11 +135,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.authService.loginPopup();
     }
   }
-
   logout() {
     this.authService.logout();
   }
-
   editProfile() {
     if (isIE) {
       this.authService.loginRedirect(b2cPolicies.authorities.editProfile);
@@ -146,34 +145,30 @@ export class AppComponent implements OnInit, OnDestroy {
       this.authService.loginPopup(b2cPolicies.authorities.editProfile);
     }
   }
-
   profile: any;
-
-  
-
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   getProfile(url: string) {
     this.http.get(url).subscribe({
-        next: (profile) => {
-          this.profile = profile;
-          console.log('profile', this.profile);
-        },
-        error: (err: AuthError) => {
-          if (InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)) {
-            this.authService.acquireTokenPopup({
-              scopes: this.authService.getScopesForEndpoint(url)
-            }).then(() => {
-              this.http.get(url).toPromise()
-                .then(profile => {
-                  this.profile = profile;
-                });
-            });
-          }
+      next: (profile) => {
+        this.profile = profile;
+        console.log('profile', this.profile);
+      },
+      error: (err: AuthError) => {
+        if (InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)) {
+          this.authService.acquireTokenPopup({
+            scopes: this.authService.getScopesForEndpoint(url)
+          }).then(() => {
+            this.http.get(url).toPromise()
+              .then(profile => {
+                this.profile = profile;
+              });
+          });
         }
-      });
-      console.log('profile name', this.profile)
+      }
+    });
+    console.log('profile name', this.profile)
   }
 }
