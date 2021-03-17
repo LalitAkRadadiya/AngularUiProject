@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-show-dealer',
@@ -13,7 +14,7 @@ export class ShowDealerComponent implements OnInit {
  
   ActivateAddEditDealerComp:boolean=false;
   
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service:SharedService,private toastr: ToastrService, private spinner: NgxSpinnerService) { }
   dealer:any;
   DealerList:any = [];
 
@@ -56,6 +57,7 @@ export class ShowDealerComponent implements OnInit {
     this.ActivateAddEditDealerComp=false;
     this.refreshDealerList();
   }
+
   deleteDealer(item:any){
   if(confirm("Are You Sure? Want to Delete?")){
     this.service.deleteDealer(item.Id).subscribe(data=>{
@@ -70,10 +72,11 @@ export class ShowDealerComponent implements OnInit {
 
   
   refreshDealerList(){
+    this.spinner.show();
     this.service.getDealerList().subscribe(data => {
        
      this.DealerList = data;
-
+this.spinner.hide();
 
    }
    );
