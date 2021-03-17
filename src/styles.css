@@ -177,6 +177,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
-th{
+th, td{
   text-transform: capitalize;
 }
