@@ -24,10 +24,10 @@
                             
                                 <select name="status" class="form-control" (change)="updateAppoinmentStatus(appoinment.Id)"
                                     [(ngModel)]="updatedStatus">
-                                    <option [selected]="'pending' == appoinment.Status" value="pending">pending</option>
+                                    <option [selected]="'pending' == appoinment.Status" value="pending">Pending</option>
                                     <option [selected]="'Confirm' ==appoinment.Status" value="Confirm">Confirm</option>
-                                    <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
                                     <option [selected]="'Started' ==appoinment.Status" value="Started">Started</option>
+                                    <option [selected]="'Workdone' ==appoinment.Status" value="Work done">Work Done</option>
                                     <option [selected]="'Finished' ==appoinment.Status" value="Finished">Finished</option>
                             
                                 </select>

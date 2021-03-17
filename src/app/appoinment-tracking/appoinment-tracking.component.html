@@ -10,25 +10,6 @@
   </div>
   <div>
     <div style="display: flex;text-align: center; padding-left: 18%;">
-
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Name :<span class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
-        </div>
-      </div>
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
-        </div>
-      </div>
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
-        </div>
-      </div>
-    </div>
-
-    <div style="display: flex;text-align: center; padding-left: 18%;">
       <div class="card col-md-3">
         <div class="card-body">
           <span>Licence Plate:<span
@@ -37,10 +18,30 @@
       </div>
       <div class="card col-md-3">
         <div class="card-body">
+          <span>Name :<span class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
+        </div>
+      </div>
+    
+      <div class="card col-md-3">
+        <div class="card-body">
+          <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex;text-align: center; padding-left: 18%;">
+       <div class="card col-md-3">
+        <div class="card-body">
           <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment.DealerName}}</span></span><br>
           
         </div>
       </div>
+      <div class="card col-md-3">
+        <div class="card-body">
+          <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
+        </div>
+      </div>
+     
       <div class="card col-md-3">
         <div class="card-body">
           <span>Mechanic Name:<span
@@ -55,12 +56,12 @@
   <br>
   <br>
   <br>
-  <h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status :   
+  <h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status  
 
     <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appserviceandplanning" (click)="MoreDetail()"  data-backdrop="static" data-keyboard="false"> More Detail </button> -->
     <div class="container">
       <span *ngFor="let item of counts;let i = index">
-        <span class="circle-desc" [class.circle-desc-active]="orderStatus == item">{{ item }}</span>
+        <span class="circle-desc" [class.circle-desc-active]="orderStatus == item" style="text-transform: capitalize;">{{ item }}</span>
         <span class="circles" [class.active]="orderStatus == item"></span>
         <span class="bar" *ngIf="(i != counts.length-1)"></span>
       </span>
@@ -70,7 +71,7 @@
       <br>
       <br>
     </div>
-    <label>AppoinmentService Details<span style="color: red;">*</span></label>
+    <label>Your Services Details</label>
             <div>
                 <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                     <thead>
@@ -112,7 +113,7 @@
             </div>
             
             <br>
-            <label>Planning Details<span style="color: red;">*</span></label>
+            <label>Planning Details</label>
             <div>
                 <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
                     <thead>
