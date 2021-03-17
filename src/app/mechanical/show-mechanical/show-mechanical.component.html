@@ -35,10 +35,17 @@
       <thead>
           <tr>
             <!-- <th>ID</th> -->
-            <th>Name</th>
+            <th>
+              <div class="th-inner" (click)="sortMaterialData('MechanicName')">
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Mechanic Name"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span *ngIf="sortedColumn == 'MechanicName'" class="sorting">
+                    <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                </span>
+              </div>
+            </th>
             <th>
               <div class="th-inner" (click)="sortMaterialData('EmployeeNo')">
-                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"EmployeeNo"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Employee No"}}<i class="fa fa-fw fa-sort"></i></span>
                 <span *ngIf="sortedColumn == 'EmployeeNo'" class="sorting">
                     <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
                 </span>
@@ -50,11 +57,32 @@
                     <span *ngIf="sortedColumn == 'MobileNo'" class="sorting">
                         <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
                     </span>
-                  </div> 
+                </div> 
             </th>
-            <th>Email Id</th>
-            <th>IsActive</th>
-            <th>Dealer Name</th>
+            <th>
+              <div class="th-inner" (click)="sortMaterialData('EmailId')">
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Email Id"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span *ngIf="sortedColumn == 'EmailId'" class="sorting">
+                    <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                </span>
+              </div>
+            </th>
+            <th>
+              <div class="th-inner" (click)="sortMaterialData('isActive')">
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Active Status"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span *ngIf="sortedColumn == 'isActive'" class="sorting">
+                    <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                </span>
+              </div>
+            </th>
+            <th>
+              <div class="th-inner" (click)="sortMaterialData('DealerName')">
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Dealer Name"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span *ngIf="sortedColumn == 'DealerName'" class="sorting">
+                    <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                </span>
+              </div>
+            </th>
             <th>Action</th>
   
           </tr>

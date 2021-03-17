@@ -55,11 +55,39 @@
                             </span>
                         </div>   
             </th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Zip Code</th>
+            <th>
+                <div class="th-inner" (click)="sortMaterialData('Address')">
+                    <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Address"}}<i class="fa fa-fw fa-sort"></i></span>
+                    <span *ngIf="sortedColumn == 'Address'" class="sorting">
+                        <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="th-inner" (click)="sortMaterialData('City')">
+                    <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"City"}}<i class="fa fa-fw fa-sort"></i></span>
+                    <span *ngIf="sortedColumn == 'City'" class="sorting">
+                        <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="th-inner" (click)="sortMaterialData('ZipCode')">
+                    <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Zip Code"}}<i class="fa fa-fw fa-sort"></i></span>
+                    <span *ngIf="sortedColumn == 'ZipCode'" class="sorting">
+                        <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                    </span>
+                </div>
+            </th>
             <!-- <th>Country</th> -->
-            <th>Mobile</th>
+            <th>
+                <div class="th-inner" (click)="sortMaterialData('CustomerNo')">
+                    <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Mobile No"}}<i class="fa fa-fw fa-sort"></i></span>
+                    <span *ngIf="sortedColumn == 'CustomerNo'" class="sorting">
+                        <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                    </span>
+                </div>
+            </th>
             <th style="text-align:center">Action</th>
         </tr>
     </thead>
