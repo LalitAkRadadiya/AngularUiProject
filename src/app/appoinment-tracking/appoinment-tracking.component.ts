@@ -43,7 +43,6 @@ export class AppoinmentTrackingComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-
     
     this.id = this.router.snapshot.params.id;
     console.log('id',this.id)
@@ -56,5 +55,7 @@ export class AppoinmentTrackingComponent implements OnInit {
         console.log(this.appoinmentData);
       });
     }
+    
+    this.MoreDetail();
   }
 }

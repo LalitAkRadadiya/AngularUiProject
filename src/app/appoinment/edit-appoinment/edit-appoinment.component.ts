@@ -124,7 +124,7 @@ export class EditAppoinmentComponent implements OnInit {
 
 
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
-
+        this.appoinment =res;
 
         console.log('eunatity typeof', typeof this.enddatetime);
         console.log('this.Quantity', this.enddatetime);
@@ -200,9 +200,10 @@ export class EditAppoinmentComponent implements OnInit {
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });
+        
+        this.get_service_planning(this.appoinment.Id);
       });
       
-    this.get_service_planning(this.appoinment.Id);
     }
     
   }
@@ -216,9 +217,10 @@ export class EditAppoinmentComponent implements OnInit {
           timeOut: 3000,
         });
         console.log('should dlt');
+        
+        this.get_service_planning(this.appoinment.Id);
       });
       
-    this.get_service_planning(this.appoinment.Id);
     }
     
   }

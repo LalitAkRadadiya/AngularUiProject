@@ -136,7 +136,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
       var val = this.CustomerVehicleInfo;
       val['MobileNo'] = val['CustomerNo'];
-      val['Email'] = "123";
+      val['Email'] = "";
       val['DealerId'] = this.DealerId;
       val['Status'] = "pending";
       console.log('app value', val);
