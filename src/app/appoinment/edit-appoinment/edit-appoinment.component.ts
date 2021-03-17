@@ -72,10 +72,13 @@ export class EditAppoinmentComponent implements OnInit {
     });
   }
   loadServiceList(val: any) {
-    this.service.serviceDropdown(val).subscribe(data => {
-      console.log('load', data);
-      this.ServiceList = data;
-    });
+    if(val!= undefined){
+
+      this.service.serviceDropdown(val).subscribe(data => {
+        console.log('load', data);
+        this.ServiceList = data;
+      });
+    }
   }
   updateAppoinmentStatus(id: any) {
     var val = {
@@ -198,7 +201,10 @@ export class EditAppoinmentComponent implements OnInit {
           timeOut: 3000,
         });
       });
+      
+    this.get_service_planning(this.appoinment.Id);
     }
+    
   }
 
   deletePlanning(val: any) {
@@ -211,7 +217,10 @@ export class EditAppoinmentComponent implements OnInit {
         });
         console.log('should dlt');
       });
+      
+    this.get_service_planning(this.appoinment.Id);
     }
+    
   }
 
   vehicalnotfound = false;
