@@ -31,18 +31,7 @@ export class AppoinmentComponent implements OnInit {
   ngOnInit(): void {
     // this.updateAppoinmentStatus();
     this.refreshAppoinmentList();
-    this.tabelLoad();
-  }
-  tabelLoad() {
-    setTimeout(() => {
-      //init Datatable
-      $('#filterListTable').DataTable(
-        {
-          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-          stateSave: true,
-        }
-      );
-    }, 3000);
+  
   }
   addClick() {
     this.appoinment = {
@@ -110,6 +99,44 @@ export class AppoinmentComponent implements OnInit {
       this.spinner.hide();
     }
     );
+  }
+  
+
+  @Input() isAscending: boolean = true
+  @Input() sortedColumn: string = '';
+
+
+  sortMaterialData(columnName: string, isIgnoreDirectionCheck: boolean = false) {
+    if (!isIgnoreDirectionCheck) {
+      if (this.sortedColumn == columnName) {
+        this.isAscending = !this.isAscending;
+      }
+      else {
+        this.sortedColumn = columnName;
+        this.isAscending = true;
+      }
+    }
+    let sortOrder = this.isAscending ? 1 : -1;
+    this.AppointmentList = this.AppointmentList.sort((a: any, b: any) => {
+      let val1 = a[columnName];
+      let val2 = b[columnName];
+
+      if (val1 == undefined || val1 == null) {
+        val1 = '';
+      }
+      else {
+        val1 = val1
+      }
+      if (val2 == undefined || val1 == null) {
+        val2 = '';
+      }
+      else {
+        val2 = val2
+      }
+      let result = (val1 < val2) ? -1 : (val1 > val2) ? 1 : 0;
+
+      return result * sortOrder;
+    });
   }
 
 }

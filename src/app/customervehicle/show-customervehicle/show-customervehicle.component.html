@@ -47,7 +47,14 @@
     <thead>
         <tr>
             <!-- <th style="width: 10px;">ID</th> -->
-            <th>Name</th>
+            <th>
+                    <div class="th-inner" (click)="sortMaterialData('CustomerName')">
+                            <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Dealer Name"}}<i class="fa fa-fw fa-sort"></i></span>
+                            <span *ngIf="sortedColumn == 'CustomerName'" class="sorting">
+                                <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                            </span>
+                        </div>   
+            </th>
             <th>Address</th>
             <th>City</th>
             <th>Zip Code</th>

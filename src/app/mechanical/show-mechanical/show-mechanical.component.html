@@ -36,8 +36,22 @@
           <tr>
             <!-- <th>ID</th> -->
             <th>Name</th>
-            <th>Address</th>
-            <th>Website</th>
+            <th>
+              <div class="th-inner" (click)="sortMaterialData('EmployeeNo')">
+                <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"EmployeeNo"}}<i class="fa fa-fw fa-sort"></i></span>
+                <span *ngIf="sortedColumn == 'EmployeeNo'" class="sorting">
+                    <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                </span>
+              </div>   
+            </th>
+            <th>
+                <div class="th-inner" (click)="sortMaterialData('MobileNo')">
+                    <span class="float-left cursor-pointer sortColumn" id="mtSalesPartCol">{{"Mobile No"}}<i class="fa fa-fw fa-sort"></i></span>
+                    <span *ngIf="sortedColumn == 'MobileNo'" class="sorting">
+                        <a [class.sorting-up]="isAscending" [class.sorting-down]="!isAscending"></a>
+                    </span>
+                  </div> 
+            </th>
             <th>Email Id</th>
             <th>IsActive</th>
             <th>Dealer Name</th>

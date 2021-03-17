@@ -180,3 +180,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 th, td{
   text-transform: capitalize;
 }
+#mtSalesPartCol{
+  cursor: pointer;
+}

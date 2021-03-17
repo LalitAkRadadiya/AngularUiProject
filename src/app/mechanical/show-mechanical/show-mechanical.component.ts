@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit,enableProdMode } from '@angular/core';
+import { Component, OnInit, AfterViewInit,enableProdMode, Input } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
@@ -26,15 +26,7 @@ export class ShowMechanicalComponent implements OnInit {
   ngOnInit(): void {
     
     this.refreshMechanicList();
-      setTimeout(() => {
-        //init Datatable
-        $('#filterListTable').DataTable(
-        {
-        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-        stateSave: true,
-        }
-        );
-        }, 5000);
+    
     
   }
   
@@ -83,5 +75,42 @@ export class ShowMechanicalComponent implements OnInit {
    });
     }
  
+    
 
+  @Input() isAscending: boolean = true
+  @Input() sortedColumn: string = '';
+
+
+  sortMaterialData(columnName: string, isIgnoreDirectionCheck: boolean = false) {
+    if (!isIgnoreDirectionCheck) {
+      if (this.sortedColumn == columnName) {
+        this.isAscending = !this.isAscending;
+      }
+      else {
+        this.sortedColumn = columnName;
+        this.isAscending = true;
+      }
+    }
+    let sortOrder = this.isAscending ? 1 : -1;
+    this.MechanicList = this.MechanicList.sort((a: any, b: any) => {
+      let val1 = a[columnName];
+      let val2 = b[columnName];
+
+      if (val1 == undefined || val1 == null) {
+        val1 = '';
+      }
+      else {
+        val1 = val1
+      }
+      if (val2 == undefined || val1 == null) {
+        val2 = '';
+      }
+      else {
+        val2 = val2
+      }
+      let result = (val1 < val2) ? -1 : (val1 > val2) ? 1 : 0;
+
+      return result * sortOrder;
+    });
+  }
 }

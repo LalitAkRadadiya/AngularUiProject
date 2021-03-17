@@ -13,17 +13,17 @@
 
       <div class="card col-md-3">
         <div class="card-body">
-          <span>Name :<span class="text-primary font-weight-bold">{{ appoinmentData.FName + ' ' +appoinmentData.LName}}</span></span><br>
+          <span>Name :<span class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
         </div>
       </div>
       <div class="card col-md-3">
         <div class="card-body">
-          <span>Total Price : <span class="text-primary font-weight-bold">{{appoinmentData.TotalPrice}}</span></span><br>
+          <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
         </div>
       </div>
       <div class="card col-md-3">
         <div class="card-body">
-          <span>Mobile:<span class="text-primary font-weight-bold">{{appoinmentData.MobileNo}}</span></span><br>
+          <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
         </div>
       </div>
     </div>
@@ -32,19 +32,19 @@
       <div class="card col-md-3">
         <div class="card-body">
           <span>Licence Plate:<span
-              class="text-primary font-weight-bold">{{appoinmentData.LicencePlate}}</span></span><br>
+              class="text-primary font-weight-bold">{{EditAppoinment.LicencePlate}}</span></span><br>
         </div>
       </div>
       <div class="card col-md-3">
         <div class="card-body">
-          <span>Dealer Name:<span class="text-primary font-weight-bold">{{appoinmentData.DealerName}}</span></span><br>
+          <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment.DealerName}}</span></span><br>
           
         </div>
       </div>
       <div class="card col-md-3">
         <div class="card-body">
           <span>Mechanic Name:<span
-              class="text-primary font-weight-bold">{{appoinmentData.MechanicName}}</span></span><br>
+              class="text-primary font-weight-bold">{{(EditAppoinment.MechanicName) ||  ' NA '}}</span></span><br>
         </div>
       </div>
     </div>
