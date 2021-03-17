@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ShowCustomervehicleComponent implements OnInit {
 
   isEdit= false;
   
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service:SharedService,private toastr: ToastrService, private spinner: NgxSpinnerService) { }
 
   CustomerList:any = [];
   
@@ -25,20 +26,20 @@ export class ShowCustomervehicleComponent implements OnInit {
   customer:any;
   vehicle:any;
 
-
+ 
   ngOnInit(): void {
     this.refreshcustomerList();
-      setTimeout(() => {
-        //init Datatable
-        $('#filterListTable').DataTable(
-        {
-        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-        stateSave: true,
-        }
-        );
-        }, 5000);
-
-        
+    setTimeout(() => {
+      //init Datatable
+      $('#filterListTable').DataTable(
+      {
+      "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+      stateSave: true,
+      }
+      );
+      }, 5000);
+    
+  
   }
 
   addCustomerClick(){
@@ -105,22 +106,25 @@ export class ShowCustomervehicleComponent implements OnInit {
 
   vehical:any = [];
   currentVehical = 0;
+
   displayVehicles(item:any){
     this.display= true;
     this.currentVehical = item.Id;
+    this.spinner.show();
     this.service.getVehicalById(item.Id).subscribe(data=>{
       this.vehical = data;
+      this.spinner.hide();
     });
     
   }
  
   refreshcustomerList() {
-     
+    this.spinner.show();
      this.service.getCustomerList().subscribe(data => {
         
       this.CustomerList = data;
 
-
+      this.spinner.hide();
     }
     );
      

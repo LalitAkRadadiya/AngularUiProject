@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit,enableProdMode } from '@angular/core';
 
 import { SharedService } from 'src/app/shared.service';
 import { ToastrService } from 'ngx-toastr';
+
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-show-mechanical',
   templateUrl: './show-mechanical.component.html',
@@ -13,7 +15,7 @@ export class ShowMechanicalComponent implements OnInit {
 
   ActivateAddEditMechanicComp:boolean=false;
   
-  constructor(private service:SharedService,private toastr: ToastrService) { }
+  constructor(private service:SharedService,private toastr: ToastrService, private spinner : NgxSpinnerService) { }
   mechanic:any;
   MechanicList:any = [];
 
@@ -22,6 +24,8 @@ export class ShowMechanicalComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    this.refreshMechanicList();
       setTimeout(() => {
         //init Datatable
         $('#filterListTable').DataTable(
@@ -32,7 +36,6 @@ export class ShowMechanicalComponent implements OnInit {
         );
         }, 5000);
     
-    this.refreshMechanicList();
   }
   
   addMechanicClick(){
@@ -68,13 +71,16 @@ export class ShowMechanicalComponent implements OnInit {
   }
 
   refreshMechanicList(){
+    
+    this.spinner.show();
     this.service.getMechanicList().subscribe(data => {
        
      this.MechanicList = data;
 
+     this.spinner.hide();
+     
 
-   }
-   );
+   });
     }
  
 
