@@ -77,7 +77,7 @@ export class AddEditMechanicalComponent implements OnInit {
       var val = {
         Id: this.Mechanic.Id,
         MechanicName: this.Mechanic.MechanicName,
-        EmployeeNo: this.Mechanic.EmployeeNo,
+        EmployeeNo: 'DL'+ this.Mechanic.DealerId + 'EMP' + this.Mechanic.EmployeeNo,
         isActive: this.Mechanic.isActive,
         EmailId: this.Mechanic.EmailId,
         MobileNo: this.Mechanic.MobileNo,
