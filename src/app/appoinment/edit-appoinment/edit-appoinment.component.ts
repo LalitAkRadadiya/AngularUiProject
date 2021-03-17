@@ -103,15 +103,7 @@ export class EditAppoinmentComponent implements OnInit {
     if (this.appoinment.Status !=null){
       this.updatedStatus=this.appoinment.Status;
     }
-    setTimeout(() => {
-      //init Datatable
-      $('#filterListTable').DataTable(
-        {
-          "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-          stateSave: true,
-        }
-      );
-    }, 5000);
+    
 
   }
 
