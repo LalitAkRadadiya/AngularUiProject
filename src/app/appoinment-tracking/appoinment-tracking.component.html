@@ -1,5 +1,5 @@
 <h1 style="text-align: center; padding:3%; font-size: 50px;background: #c7c7ff;">Service Tracker</h1>
-
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-spin-clockwise" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 
 <!-- <img  style="margin-left: 27%;"   src="../../assets/bg4.gif"/> -->
 
@@ -99,9 +99,9 @@
           <tr *ngFor="let data of AppServiceList">
             <!-- <td>{{data.Id}}</td> -->
             <!-- <td>{{data.AppoinmentId}}</td> -->
-            <td>{{data.ServiceName}}</td>
+            <td class="trancate">{{data.ServiceName}}</td>
             <td>{{data.CostType}}</td>
-            <td>{{data.Description}}</td>
+            <td class="trancate">{{data.Description}}</td>
             <td>{{data.Discount }}</td>
             <td>{{data.FixPrice}}</td>
             <td>{{data.Price}}</td>
