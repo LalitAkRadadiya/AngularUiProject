@@ -108,7 +108,9 @@ export class ShowCustomervehicleComponent implements OnInit {
     });
     
   }
- 
+  closeClick(){
+    this.refreshcustomerList();  
+  }
   refreshcustomerList() {
     this.spinner.show();
      this.service.getCustomerList().subscribe(data => {

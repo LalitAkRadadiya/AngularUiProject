@@ -1,181 +1,190 @@
+<h1 style="text-align: center; padding:3%; font-size: 50px;background: #c7c7ff;">Service Tracker</h1>
 
-  <h1 style="text-align: center; padding:3%; font-size: 50px;background: #c7c7ff;">Service Tracker</h1>
 
+<!-- <img  style="margin-left: 27%;"   src="../../assets/bg4.gif"/> -->
 
-  <!-- <img  style="margin-left: 27%;"   src="../../assets/bg4.gif"/> -->
-
-  <div class="appoinmentid">
-    <h1 style="text-align: center;margin:10px 0px;  padding: 3% 0px;">Appoinment ID: <span
-        class="text-primary font-weight-bold">{{id}}</span></h1>
-  </div>
-  <div>
-    <div style="display: flex;text-align: center; padding-left: 18%;">
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Licence Plate:<span
-              class="text-primary font-weight-bold">{{EditAppoinment.LicencePlate}}</span></span><br>
-        </div>
+<div class="appoinmentid">
+  <h1 style="text-align: center;margin:10px 0px;  padding: 3% 0px;">Appoinment ID: <span
+      class="text-primary font-weight-bold">{{id}}</span></h1>
+</div>
+<div>
+  <div style="display: flex;text-align: center; padding-left: 18%;">
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Licence Plate:<span
+            class="text-primary font-weight-bold">{{EditAppoinment.LicencePlate}}</span></span><br>
       </div>
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Name :<span class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
-        </div>
-      </div>
-    
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
-        </div>
+    </div>
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Name :<span
+            class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
       </div>
     </div>
 
-    <div style="display: flex;text-align: center; padding-left: 18%;">
-       <div class="card col-md-3">
-        <div class="card-body">
-          <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment.DealerName}}</span></span><br>
-          
-        </div>
-      </div>
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
-        </div>
-      </div>
-     
-      <div class="card col-md-3">
-        <div class="card-body">
-          <span>Mechanic Name:<span
-              class="text-primary font-weight-bold">{{(EditAppoinment.MechanicName) ||  ' NA '}}</span></span><br>
-        </div>
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
       </div>
     </div>
-    
-
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status  
 
-    <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appserviceandplanning" (click)="MoreDetail()"  data-backdrop="static" data-keyboard="false"> More Detail </button> -->
-    
- <div class="container">
+  <div style="display: flex;text-align: center; padding-left: 18%;">
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment.DealerName}}</span></span><br>
+
+      </div>
+    </div>
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
+      </div>
+    </div>
+
+    <div class="card col-md-3">
+      <div class="card-body">
+        <span>Total Time :<span class="text-primary font-weight-bold">{{ (EditAppoinment.TotalTime) ||  ' NA '}}
+            HOURS</span></span><br>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status
+
+  <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appserviceandplanning" (click)="MoreDetail()"  data-backdrop="static" data-keyboard="false"> More Detail </button> -->
+
+  <div class="container">
     <span *ngFor="let item of counts;let i = index">
       <span class="circle-desc" [class.circle-desc-active]="orderStatus == item">{{ item }}</span>
       <span class="circles" [class.active]="orderStatus == item"></span>
       <span class="bar" *ngIf="(i != counts.length-1)"></span>
     </span>
- 
+
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div style="display: flex;">
+
+    <div style="width: 1%;"></div>
+    <div style="width: 48%;">
+      <label>Your Services Details</label>
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- <th>Id</th> -->
+            <!-- <th>AppoinmentId </th> -->
+            <th>Service Name</th>
+            <th>Cost Type</th>
+            <th>Description</th>
+            <th>Discount</th>
+            <th>Fix Price</th>
+            <th>Price</th>
+            <th>Price Per Unit</th>
+            <th>Quantity</th>
+            <th>Sales Part</th>
+            <!-- <th>action</th> -->
+          </tr>
+        </thead>
+        <tbody *ngIf="AppServiceList else elseBlockservice">
+          <tr *ngFor="let data of AppServiceList">
+            <!-- <td>{{data.Id}}</td> -->
+            <!-- <td>{{data.AppoinmentId}}</td> -->
+            <td>{{data.ServiceName}}</td>
+            <td>{{data.CostType}}</td>
+            <td>{{data.Description}}</td>
+            <td>{{data.Discount }}</td>
+            <td>{{data.FixPrice}}</td>
+            <td>{{data.Price}}</td>
+            <td>{{data.PricePerUnit}}
+            <td>{{data.Quantity}}</td>
+            <td>{{data.SalesPart}}</td>
+
+          </tr>
+        </tbody>
+        <ng-template #elseBlockservice style="text-align: center;">
+          <h1>No service availble</h1>
+        </ng-template>
+      </table>
+
+    </div>
+    <div style="width: 1%;"></div>
+    <div style="width: 48%;">
+      <label>Planning Details</label>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <!-- <th>Id</th> -->
+
+              <!-- <th>Appoinment Id </th> -->
+              <!-- <th>AppointmentId</th> -->
+              <!-- <th>AppointmentServiceId</th> -->
+              <th>Mechanic Name</th>
+              <th>Duration</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <!-- <th>Action</th> -->
+            </tr>
+          </thead>
+          <tbody *ngIf="PlanningList?.length else elseBlock">
+            <tr *ngFor="let data of PlanningList">
+              <!-- <td>{{data.Id}}</td> -->
+              <!-- <td>{{data.AppoinmentId}}</td> -->
+              <!-- <td>{{data.AppointmentId}}</td> -->
+              <!-- <td>{{data.AppointmentServiceId}}</td> -->
+              <td>{{data.MechanicName}}</td>
+              <td>{{data.Duration}}</td>
+              <td>{{data.StartDate  |  date:'dd/mm/yyyy hh:mm a' }}</td>
+              <td>{{data.EndDate  |  date:'dd/mm/yyyy hh:mm a'}}</td>
+            </tr>
+          </tbody>
+          <ng-template #elseBlock>
+            <h4>No Planning availble</h4>
+          </ng-template>
+        </table>
+      </div>
       <br>
       <br>
       <br>
       <br>
     </div>
-    <label>Your Services Details</label>
-            <div>
-                <table  class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                    <thead>
-                        <tr>
-                            <!-- <th>Id</th> -->
-                            <!-- <th>AppoinmentId </th> -->
-                            <th>Service Name</th> 
-                            <th>Cost Type</th>
-                            <th>Description</th>
-                            <th>Discount</th>
-                            <th>Fix Price</th>
-                            <th>Price</th>
-                            <th>Price Per Unit</th>
-                            <th>Quantity</th>
-                            <th>Sales Part</th>
-                            <!-- <th>action</th> -->
-                        </tr>
-                    </thead>
-                    <tbody  *ngIf="AppServiceList else elseBlockservice">
-                        <tr *ngFor="let data of AppServiceList">
-                            <!-- <td>{{data.Id}}</td> -->
-                            <!-- <td>{{data.AppoinmentId}}</td> -->
-                            <td>{{data.ServiceName}}</td>
-                            <td>{{data.CostType}}</td>
-                            <td>{{data.Description}}</td>
-                            <td>{{data.Discount }}</td>
-                            <td>{{data.FixPrice}}</td>
-                            <td>{{data.Price}}</td>
-                            <td>{{data.PricePerUnit}}
-                            <td>{{data.Quantity}}</td>
-                            <td>{{data.SalesPart}}</td>
-                         
-                        </tr>
-                    </tbody>
-                    <ng-template #elseBlockservice style="text-align: center;">
-                      <h1>No service availble</h1>
-                  </ng-template>
-                </table>
-            </div>
-            
-            <br>
-            <label>Planning Details</label>
-            <div>
-                <table class="table" style="background-color: rgba(212, 226, 250, 0.5);">
-                    <thead>
-                        <tr>
-                            <!-- <th>Id</th> -->
 
-                            <!-- <th>Appoinment Id </th> -->
-                            <!-- <th>AppointmentId</th> -->
-                            <!-- <th>AppointmentServiceId</th> -->
-                            <th>Mechanic Name</th>
-                            <th>Duration</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <!-- <th>Action</th> -->
-                        </tr>
-                    </thead>
-                    <tbody  *ngIf="PlanningList?.length else elseBlock">
-                        <tr *ngFor="let data of PlanningList">
-                            <!-- <td>{{data.Id}}</td> -->
-                            <!-- <td>{{data.AppoinmentId}}</td> -->
-                            <!-- <td>{{data.AppointmentId}}</td> -->
-                            <!-- <td>{{data.AppointmentServiceId}}</td> -->
-                            <td>{{data.MechanicName}}</td>
-                            <td>{{data.Duration}}</td>
-                            <td>{{data.StartDate  |  date:'dd/mm/yyyy hh:mm a' }}</td>
-                            <td>{{data.EndDate  |  date:'dd/mm/yyyy hh:mm a'}}</td>
-                        </tr>
-                    </tbody>
-                    <ng-template #elseBlock>
-                      <h4>No Planning availble</h4>
-                  </ng-template>
-                </table>
-            </div>
-           
-    
-  </h1>
-  
-  
-  
-
-
-  
-  
+  </div>
+</h1>
 
 
 
 
-  <div class="modal fade" id="appserviceandplanning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-      <div class="modal-content" style="height: auto;
+
+
+
+
+
+
+
+<div class="modal fade" id="appserviceandplanning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content" style="height: auto;
       overflow-x: hidden;
       overflow-y: scroll;">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
-          <button type="button" class="btn-close" 
-          data-bs-dismiss="modal" aria-label="Close"
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
           (click)="closeClick()"></button>
-        </div>
-        <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
+      </div>
+      <div class="modal-body" *ngIf="ActivateAddEditAppoinmentComp">
 
-          
+
       </div>
     </div>
   </div>
