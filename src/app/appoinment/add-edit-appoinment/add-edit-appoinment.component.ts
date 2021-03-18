@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-edit-appoinment',
@@ -23,7 +23,7 @@ export class AddEditAppoinmentComponent implements OnInit {
   serviceAppoinment: any;
   currentAppoinmentServiceId: any;
 
-  constructor(private service: SharedService, private toastr: ToastrService) { }
+  constructor(private service: SharedService, private toastr: ToastrService , private spinner : NgxSpinnerService) { }
   statusArray = ['pending', 'Confirm', 'Work done', 'Started', 'Finished']
   CustomerVehicleInfo: any;
   @Input() appoinment: any;
@@ -75,18 +75,7 @@ export class AddEditAppoinmentComponent implements OnInit {
       this.ServiceList = data;
     });
   }
-  updateAppoinmentStatus(id: any) {
-    var val = {
-      Id: id,
-      Status: this.updatedStatus
-    }
 
-    this.service.editAppoinmentStatus(val).subscribe(res => {
-      this.toastr.success(res.toString(), '', {
-        timeOut: 3000,
-      });
-    });
-  }
 
   ngOnInit() {
 
@@ -159,16 +148,22 @@ export class AddEditAppoinmentComponent implements OnInit {
 
   deleteApppoinmentService(val: any) {
     if(confirm("Are you Sure? Want to Delete?")){
+      
+      this.spinner.show();
       this.service.deleteAppoinmentService(val.Id).subscribe(res => {
         this.AppServiceList = this.AppServiceList.filter((x: { Id: any; }) => x.Id != val.Id);
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });
       });
+      
+      this.spinner.hide();
     }
   }
   deletePlanning(val: any) {
     if(confirm("Are you Sure? Want to Delete?")){
+      
+      this.spinner.show();
       console.log('dletplanid', val.Id);
       this.service.deletePlanning(val.Id).subscribe(res => {
         this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
@@ -177,12 +172,15 @@ export class AddEditAppoinmentComponent implements OnInit {
         });
         console.log('should dlt');
       });
+      
+      this.spinner.hide();
     }
   }
 
   vehicalnotfound = false;
   getCustomerVehicleInfo(item: string) {
     try {
+      this.spinner.show();
       this.service.getCustomerVehicleInfo(item).subscribe(data => {
 
         console.log('data0', data.length);
@@ -195,6 +193,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
 
       });
+      this.spinner.hide();
     } catch (ex) {
       console.log('eee', ex);
     }
@@ -244,6 +243,7 @@ export class AddEditAppoinmentComponent implements OnInit {
 
     if (!this.tempAppservice) {
 
+      this.spinner.show();
       var val = {
         AppointmentId: this.serviceAppoinment,
         ServiceId: this.ServiceId,
@@ -269,6 +269,7 @@ export class AddEditAppoinmentComponent implements OnInit {
         });
       });
 
+      this.spinner.hide();
     } else {
       return false;
     }
@@ -321,6 +322,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
     console.log(val);
     if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName && !this.validdate) {
+      
+    this.spinner.show();
       this.service.addPlanning(val).subscribe(res => {
         console.log(res);
         if (res == "Mechanic is not Available. Choose other Date.") {
@@ -339,6 +342,8 @@ export class AddEditAppoinmentComponent implements OnInit {
 
         }
       });
+      
+    this.spinner.hide();
     } else {
       return false;
     }

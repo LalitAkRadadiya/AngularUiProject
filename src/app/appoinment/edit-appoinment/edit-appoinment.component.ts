@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import * as moment from 'moment/moment';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-edit-appoinment',
   templateUrl: './edit-appoinment.component.html',
@@ -24,7 +26,7 @@ export class EditAppoinmentComponent implements OnInit {
   serviceAppoinment: any;
   currentAppoinmentServiceId: any;
 
-  constructor(private service: SharedService, private toastr: ToastrService) { }
+  constructor(private service: SharedService, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
   statusArray: any = ['pending', 'Confirm', 'Work done', 'Started', 'Finished'];
 
   CustomerVehicleInfo: any;
@@ -72,7 +74,7 @@ export class EditAppoinmentComponent implements OnInit {
     });
   }
   loadServiceList(val: any) {
-    if(val!= undefined){
+    if (val != undefined) {
 
       this.service.serviceDropdown(val).subscribe(data => {
         console.log('load', data);
@@ -100,10 +102,10 @@ export class EditAppoinmentComponent implements OnInit {
 
     this.loadServiceList(this.appoinment.DealerId);
     this.get_service_planning(this.appoinment.Id);
-    if (this.appoinment.Status !=null){
-      this.updatedStatus=this.appoinment.Status;
+    if (this.appoinment.Status != null) {
+      this.updatedStatus = this.appoinment.Status;
     }
-    
+
 
   }
 
@@ -116,12 +118,11 @@ export class EditAppoinmentComponent implements OnInit {
 
 
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
-        this.appoinment =res;
+        this.appoinment = res;
 
         console.log('eunatity typeof', typeof this.enddatetime);
         console.log('this.Quantity', this.enddatetime);
         this.PlanningList = this.EditAppoinment.planningList;
-
         console.log('get service Planingn detail', res);
       });
     }
@@ -152,9 +153,10 @@ export class EditAppoinmentComponent implements OnInit {
   service_planning = false;
   disableappoinmentbutton = false;
   addAppoinment() {
+
     this.addappvalidation();
     if (!this.tempDealer) {
-
+      this.spinner.show();
       var val = this.CustomerVehicleInfo;
       val['MobileNo'] = val['CustomerNo'];
       val['Email'] = "123";
@@ -171,6 +173,8 @@ export class EditAppoinmentComponent implements OnInit {
 
       });
       this.disableappoinmentbutton = true;
+      this.spinner.hide();
+
     } else {
       return false;
     }
@@ -186,22 +190,28 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
   deleteApppoinmentService(val: any) {
-    if(confirm("Are you Sure? Want to Delete?")){
+    if (confirm("Are you Sure? Want to Delete?")) {
+
+      this.spinner.show();
       this.service.deleteAppoinmentService(val.Id).subscribe(res => {
         this.AppServiceList = this.AppServiceList.filter((x: { Id: any; }) => x.Id != val.Id);
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });
-        
+
         this.get_service_planning(this.appoinment.Id);
+
+        this.spinner.hide();
       });
-      
+
     }
-    
+
   }
 
   deletePlanning(val: any) {
-    if(confirm("Are you Sure? Want to Delete?")){
+    if (confirm("Are you Sure? Want to Delete?")) {
+
+      this.spinner.show();
       console.log('dletplanid', val.Id);
       this.service.deletePlanning(val.Id).subscribe(res => {
         this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
@@ -209,17 +219,20 @@ export class EditAppoinmentComponent implements OnInit {
           timeOut: 3000,
         });
         console.log('should dlt');
-        
+
         this.get_service_planning(this.appoinment.Id);
+
+        this.spinner.hide();
       });
-      
+
     }
-    
+
   }
 
   vehicalnotfound = false;
   getCustomerVehicleInfo(item: string) {
     try {
+      this.spinner.show();
       this.service.getCustomerVehicleInfo(item).subscribe(data => {
 
         console.log('data0', data.length);
@@ -231,6 +244,7 @@ export class EditAppoinmentComponent implements OnInit {
         this.CustomerVehicleInfo = data;
 
 
+        this.spinner.show();
       });
     } catch (ex) {
       console.log('eee', ex);
@@ -332,15 +346,15 @@ export class EditAppoinmentComponent implements OnInit {
     } else {
       this.tempMechanicName = false;
     }
-    if(this.StartDate && this.EndDate){
-            var sd = new Date(this.StartDate);
-            var ed = new Date(this.EndDate);
-            if(sd> ed){
-              this.validdate = true;
-            }else{
-              this.validdate  = false;
-            }
-          }
+    if (this.StartDate && this.EndDate) {
+      var sd = new Date(this.StartDate);
+      var ed = new Date(this.EndDate);
+      if (sd > ed) {
+        this.validdate = true;
+      } else {
+        this.validdate = false;
+      }
+    }
   }
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);

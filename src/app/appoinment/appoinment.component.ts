@@ -29,7 +29,6 @@ export class AppoinmentComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.updateAppoinmentStatus();
     this.refreshAppoinmentList();
   
   }
