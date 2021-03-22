@@ -160,7 +160,7 @@
             <thead>
                 <tr>
                     <!-- <th>Id</th> -->
-                    <!-- <th>AppoinmentId </th> -->
+                    <th>Flag </th>
                     <th>Service Name</th>
                     <th>Cost Type</th>
                     <th>Description</th>
@@ -177,6 +177,7 @@
                 <tr *ngFor="let data of AppServiceList">
                     <!-- <td>{{data.Id}}</td> -->
                     <!-- <td>{{data.AppoinmentId}}</td> -->
+                    <td><i class="fas fa-snowflake"></i></td>
                     <td class="trancate-text">{{data.ServiceName}}</td>
                     <td>{{data.CostType}}</td>
                     <td class="trancate-text">{{data.Description}}</td>

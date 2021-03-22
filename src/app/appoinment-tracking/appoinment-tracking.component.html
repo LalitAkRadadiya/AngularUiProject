@@ -162,7 +162,35 @@
   </div>
 </h1>
 
+<div class="row">
+        
+      
 
+
+  <div style="display: flex">
+      <div class="col-sm-9">
+          <label>Choose Service<span style="color: red;">*</span></label>
+          <select id="service" name="service" class="form-control"
+              [(ngModel)]="ServiceId">
+              <option *ngFor="let data of ServiceList" [value]="data.Id">
+                  Service Name : {{data.Name}} - Price : {{data.Price}}
+              </option>
+          </select>
+          <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
+      </div>
+      <div class="col-sm-3">
+          <!-- <label><span style="color: red;"></span></label> -->
+          <br>
+          <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+          <button (click)="AddAppoinmentService()"
+              class="btn btn-success" style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
+      </div>
+
+
+  </div>
+
+
+</div>
 
 
 
