@@ -116,7 +116,7 @@ export class EditAppoinmentComponent implements OnInit {
       this.service.getEditAppoinmentList(id).subscribe(res => {
         this.EditAppoinment = res;
 
-
+        
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
         this.appoinment = res;
 
@@ -127,7 +127,7 @@ export class EditAppoinmentComponent implements OnInit {
       });
     }
   }
-
+  
   datetime() {
 
     var qt = new Date(this.enddatetime.ToString("dd/MM/yyyy hh:mm:ss"));
@@ -356,6 +356,13 @@ export class EditAppoinmentComponent implements OnInit {
       }
     }
   }
+
+  enableadditionalplanning = false;
+  OpenAdditionalPlanning(){
+  this.enableadditionalplanning = true;
+  console.log("QWERTY")
+  }
+
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);
     var val = {

@@ -71,11 +71,9 @@
 
     </div>
 
+    <!-- Appointment Service Modal -->
     <div class="row">
         
-      
-
-
         <div style="display: flex">
             <div class="col-sm-9">
                 <label>Choose Service<span style="color: red;">*</span></label>
@@ -100,6 +98,9 @@
 
 
     </div>
+    <!-- Appointment Service Modal -->
+
+    <!-- Planning Modal -->
     <div class="row">
        
         <div>
@@ -147,10 +148,80 @@
 
 
     </div>
+    <!-- Planning Modal -->
 
+    <!-- Add Additional Planning -->
+
+    <div class="modal fade" id="additionalPlanning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content" style="height: auto;
+                  overflow-x: hidden;
+                  overflow-y: scroll;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Planning</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+      
+              
+                <div class="row">
+       
+                    <div>
+            
+                        <label>Choose Mechanic<span style="color: red;">*</span></label>
+                        <select id="Mechanic" name="Mechanic" class="form-control" [(ngModel)]="MechanicId">
+            
+                            <option *ngFor="let data of MechanicList" [value]="data.Id">
+                                <div *ngIf="MechanicList?.length else elseBlock">
+                                    Mechanic : {{data.MechanicName}} - MobileNo : {{data.MobileNo}}
+                                </div>
+                                <ng-template #elseBlock>
+                                    No Data Found
+                                </ng-template>
+            
+                            </option>
+                        </select>
+            
+                        <span *ngIf="tempMechanicName" style="color: red;">Please Select Mechanic</span>
+                        <!-- <span *ngIf="MechanicNotAvailble">Mechanic Not Availble. Choose Other Date</span> -->
+            
+                        <div style="display: flex">
+                            <div class="col-sm-5">
+                                <label>Start Date<span style="color: red;">*</span></label>
+                                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="StartDate"
+                                    placeholder="Start Date">
+                                <span *ngIf="tempstartDate" style="color: red;">Please Select Start Date</span>
+            
+                            </div>
+                            <div class="col-sm-5">
+                                <label>End Date<span style="color: red;">*</span></label>
+                                <input type="datetime-local" class="form-control" name="LicencePlate" [(ngModel)]="EndDate"
+                                    placeholder="End Date">
+                                <span *ngIf="tempEndDate" style="color: red;">Please Select End Date</span>
+            
+                            </div>
+                        </div>
+                        <div style="text-align: center;display: grid;">
+                            <span style="color: red;" *ngIf="validdate"> Please Select Valid Date</span>
+                        <button [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                            style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
+                        </div>
+            
+                    </div>
+            
+            
+                </div>
+      
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Add Additional Planning -->
 
     <button [disabled]="!moreService_PlanningButton" class="btn btn-success done-plan"
-        style="margin-top:2%; width: 50% ;margin-left:25%;" (click)="moreService_Planning()">Add More Service &
+        style="margin-top:2%; width: 50% ;margin-left:25%;"  (click)="moreService_Planning()">Add More Service &
         Planning</button>
     <!-- </div> -->
     <br>
@@ -177,7 +248,7 @@
                 <tr *ngFor="let data of AppServiceList">
                     <!-- <td>{{data.Id}}</td> -->
                     <!-- <td>{{data.AppoinmentId}}</td> -->
-                    <td><i class="fas fa-snowflake"></i></td>
+                    <td *ngIf="!data.IsAdditional"><button type="btn btn-default" data-bs-toggle="modal" data-bs-target="#additionalPlanning" (click)="OpenAdditionalPlanning()"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                     <td class="trancate-text">{{data.ServiceName}}</td>
                     <td>{{data.CostType}}</td>
                     <td class="trancate-text">{{data.Description}}</td>
