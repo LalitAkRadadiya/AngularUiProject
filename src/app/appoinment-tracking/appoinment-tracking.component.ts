@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 
+import { WindowRefService } from '../window-ref.service';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SharedService } from 'src/app/shared.service'
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-appoinment-tracking',
   templateUrl: './appoinment-tracking.component.html',
@@ -12,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppoinmentTrackingComponent implements OnInit {
 
+  private REST_API_SERVER = "https://localhost:44370";
   id: any;
   counts: any[] = ["pending", "Confirm", "Started","Work done", "Finished"];
   orderStatus: any = "pending";
@@ -48,7 +52,8 @@ export class AppoinmentTrackingComponent implements OnInit {
   StartDate!: string;
   EndDate!: string;
   Duration!: string;
-  constructor(private toastr: ToastrService,private service: SharedService, private router: ActivatedRoute , public spinner : NgxSpinnerService) {
+  data: any;
+  constructor(private winRef: WindowRefService, private httpClient: HttpClient,private toastr: ToastrService,private service: SharedService, private router: ActivatedRoute , public spinner : NgxSpinnerService) {
   
   }
 
@@ -189,5 +194,62 @@ export class AppoinmentTrackingComponent implements OnInit {
   tempEndDate = false;
   validdate = false;
 
+
+
+
+
+
+
+
+
+
+  
+  createRzpayOrder() {
+    console.log();
+    // call api to create order_id
+
+    this.httpClient.get(('https://localhost:44370/api/Payment/createPayment')).subscribe((data: any) => {
+      console.log(data);
+      this.payWithRazor(data['order_id'], data['amount']);
+    })
+  }
+
+  payWithRazor(val:any, amt:any) {
+    const options: any = {
+      key: 'rzp_test_IY4gqVRUhefixp',
+      amount: amt, // amount should be in paise format to display Rs 1255 without decimal point
+      currency: 'INR',
+      name: '', // company name or product name
+      description: '',  // product description
+      // company logo or product image
+      order_id: val, // order_id created by you in backend
+      modal: {
+        // We should prevent closing of the form when esc key is pressed.
+        escape: false,
+      },
+      notes: {
+        // include notes if any
+      },
+      theme: {
+        color: '#0c238a'
+      }
+    };
+    options.handler = ((response:any, error:any) => {
+      options.response = response;
+      console.log("rs");
+      console.log(response);
+      console.log(options);
+
+      this.httpClient.post((this.REST_API_SERVER + '/api/Payment/checkPaymentStatus'), { rzp_paymentid: response['razorpay_payment_id'], rzp_orderid: '554' }).subscribe((data: any) => {
+        console.log('date', data);
+      })
+    });
+    options.modal.ondismiss = (() => {
+      // handle the case when user closes the form while transaction is in progress
+      console.log('Transaction cancelled.');
+    });
+    const rzp = new this.winRef.nativeWindow.Razorpay(options);
+    rzp.open();
+  }
 
 }
