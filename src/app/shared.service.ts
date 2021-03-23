@@ -65,6 +65,10 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/AppoinmentService/CreateAppoinmentServices', val);
   }
 
+  editAppoinmentService(val: any) {
+    return this.http.put(this.APIUrl + '/AppointmentService/UpdateAppointmentService', val);
+  }
+
   getDealerList():Observable<any[]>  {
     return this.http.get<any>(this.APIUrl + '/Dealer/allDealers');
   }

@@ -62,17 +62,21 @@ export class EditAppoinmentComponent implements OnInit {
   Duration!: string;
 
 
+  CurrentAppService : any;
+
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
       this.DealerList = data;
     });
   }
+
   loadMechanicList() {
     console.log('', this.appoinment.DealerId);
     this.service.mechanicDropdown(this.appoinment.DealerId).subscribe(data => {
       this.MechanicList = data;
     });
   }
+
   loadServiceList(val: any) {
     if (val != undefined) {
 
@@ -252,34 +256,12 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   displayServicePlanningList = true;
   disappoinmentserviceubtton = true;
 
   displanningubutton = false;
 
-  moreService_PlanningButton = false;
+  moreService_PlanningButton = true;
 
 
   moreService_Planning() {
@@ -356,13 +338,19 @@ export class EditAppoinmentComponent implements OnInit {
       }
     }
   }
-
-  enableadditionalplanning = false;
-  OpenAdditionalPlanning(){
-  this.enableadditionalplanning = true;
-  console.log("QWERTY")
+  
+  OpenAdditionalPlanning(item : any){
+  console.log("QWERTY", item, this.appoinment);
+  this.loadMechanicList();
+  console.log('MechanicList', this.MechanicList);
+  this.currentAppoinmentServiceId = item.Id;
+ 
+  this.CurrentAppService = item;
+  this.displanningubutton = true;
+  this.disappoinmentserviceubtton = false;
   }
 
+  
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);
     var val = {
@@ -391,6 +379,7 @@ export class EditAppoinmentComponent implements OnInit {
           this.MechanicNotAvailble = false;
           this.displanningubutton = false;
           this.moreService_PlanningButton = true;
+          this.moreService_Planning();
 
           this.get_service_planning(val.AppointmentId);
           this.toastr.success(res.toString(), '', {
@@ -400,8 +389,6 @@ export class EditAppoinmentComponent implements OnInit {
 
 
       });
-
-
 
     } else {
       return false;
