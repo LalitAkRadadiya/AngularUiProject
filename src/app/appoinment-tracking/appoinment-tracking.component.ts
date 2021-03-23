@@ -162,7 +162,8 @@ export class AppoinmentTrackingComponent implements OnInit {
         SalesPart: 50,
         Quantity: this.Quantity,
         PricePerUnit: 30,
-        CreatedBy: "Lalit"
+        CreatedBy: "Lalit",
+        IsAdditional: true
       };
       // this.AppServiceList.push(val);
       console.log('val cal', val);

@@ -152,7 +152,7 @@
 
     <!-- Add Additional Planning -->
 
-    <div class="modal fade" id="additionalPlanning" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="additionalPlanning" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content" style="height: auto;
                   overflow-x: hidden;
@@ -220,17 +220,17 @@
 
     <!-- Add Additional Planning -->
 
-    <button [disabled]="!moreService_PlanningButton" class="btn btn-success done-plan"
+    <!-- <button [disabled]="!moreService_PlanningButton" class="btn btn-success done-plan"
         style="margin-top:2%; width: 50% ;margin-left:25%;"  (click)="moreService_Planning()">Add More Service &
-        Planning</button>
+        Planning</button> -->
     <!-- </div> -->
     <br>
     <label>Appoinment Service Details</label>
     <div >
-        <table   class="table" style="background-color: rgba(212, 226, 250, 0.5);zoom: 0.9;">
+        <table   class="table" style="background-color: rgba(212, 226, 250, 0.5);zoom: 0.9; ">
             <thead>
                 <tr>
-                    <!-- <th>Id</th> -->
+                    <th>Id</th>
                     <th>Planning Status </th>
                     <th>Service Name</th>
                     <th>Cost Type</th>
@@ -238,20 +238,22 @@
                     <th>Discount</th>
                     <th>FixPrice</th>
                     <th>Price</th>
-                    <th>Price Per Unit</th>
+                    <!-- <th>Price Per Unit</th> -->
                     <th>Quantity [Hour] </th>
                     <th>Sales Part</th>
+                    <th>Added By</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody *ngIf="AppServiceList else elseBlock ">
                 <tr *ngFor="let data of AppServiceList">
-                    <!-- <td>{{data.Id}}</td> -->
+                    <td>{{data.Id}}</td>
                     <!-- <td>{{data.AppoinmentId}}</td> -->
                     <td>
+                        <!-- data-bs-toggle="modal" data-bs-target="#additionalPlanning" -->
                         <div *ngIf="data.DeleteButton else elseBlock">
                             <button style=" background-color: transparent;
-                            outline: none;border: none;display: flex;" type="btn btn-default" data-bs-toggle="modal" data-bs-target="#additionalPlanning" (click)="OpenAdditionalPlanning(data)"><h1 style="color: green;">+</h1><p style="color: red;">Pending</p></button>
+                            outline: none;border: none;display: flex;" type="btn btn-default" (click)="OpenAdditionalPlanning(data)"><h1 style="color: green;">+</h1><p style="color: red;">Pending</p></button>
                         </div>
                         <ng-template #elseBlock>
                             
@@ -264,9 +266,17 @@
                     <td>{{data.Discount }}</td>
                     <td>{{data.FixPrice}}</td>
                     <td>{{data.Price}}</td>
-                    <td>{{data.PricePerUnit}}
+                    <!-- <td>{{data.PricePerUnit}} -->
                     <td>{{data.Quantity}}</td>
                     <td>{{data.SalesPart}}</td>
+                    <td>
+                        <div *ngIf="data.IsAdditional">
+                            Customer
+                        </div>
+                        <div *ngIf="!data.IsAdditional">
+                            Dealer
+                        </div>
+                    </td>
                     <td>
                         <button [disabled]='!data.DeleteButton' (click)="deleteApppoinmentService(data)"
                             type="button" style="margin-left: 5%;" class="btn btn-outline-danger">
@@ -289,7 +299,7 @@
                     <!-- <th>Id</th> -->
                     <!-- <th>AppoinmentId </th> -->
                     <!-- <th>AppointmentId</th> -->
-                    <!-- <th>AppointmentServiceId</th> -->
+                    <th>AppointmentServiceId</th>
                     <th>Mechanic Name</th>
                     <th>Duration</th>
                     <th>StartDate</th>
@@ -302,7 +312,7 @@
                     <!-- <td>{{data.Id}}</td> -->
                     <!-- <td>{{data.AppoinmentId}}</td> -->
                     <!-- <td>{{data.AppointmentId}}</td> -->
-                    <!-- <td>{{data.AppointmentServiceId}}</td> -->
+                    <td>{{data.AppointmentServiceId}}</td>
                     <td>{{data.MechanicName}}</td>
                     <td>{{data.Duration}}</td>
                     <td>{{data.StartDate  |  date:'dd/mm/yyyy hh:mm a' }}</td>

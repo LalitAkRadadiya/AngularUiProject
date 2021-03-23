@@ -261,7 +261,7 @@ export class EditAppoinmentComponent implements OnInit {
 
   displanningubutton = false;
 
-  moreService_PlanningButton = false;
+  moreService_PlanningButton = true;
 
 
   moreService_Planning() {
@@ -338,18 +338,19 @@ export class EditAppoinmentComponent implements OnInit {
       }
     }
   }
-
   
   OpenAdditionalPlanning(item : any){
   console.log("QWERTY", item, this.appoinment);
   this.loadMechanicList();
   console.log('MechanicList', this.MechanicList);
   this.currentAppoinmentServiceId = item.Id;
-  this.enableadditionalplanning = true;
+ 
   this.CurrentAppService = item;
+  this.displanningubutton = true;
+  this.disappoinmentserviceubtton = false;
   }
 
-  enableadditionalplanning = false;
+  
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);
     var val = {
@@ -378,12 +379,7 @@ export class EditAppoinmentComponent implements OnInit {
           this.MechanicNotAvailble = false;
           this.displanningubutton = false;
           this.moreService_PlanningButton = true;
-          
-          if(this.enableadditionalplanning)
-          {
-            this.CurrentAppService.IsAdditional = true;
-            this.service.editAppoinmentService(this.CurrentAppService).subscribe();
-          }
+          this.moreService_Planning();
 
           this.get_service_planning(val.AppointmentId);
           this.toastr.success(res.toString(), '', {
