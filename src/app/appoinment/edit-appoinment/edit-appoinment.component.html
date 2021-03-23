@@ -204,7 +204,7 @@
                         </div>
                         <div style="text-align: center;display: grid;">
                             <span style="color: red;" *ngIf="validdate"> Please Select Valid Date</span>
-                        <button [disabled]="!displanningubutton" (click)="createPlanning()" class="btn btn-success done-plan"
+                        <button (click)="createPlanning()" class="btn btn-success done-plan"
                             style="margin-top:2%; width: 50% ;margin-left:25%;">Create Plan</button>
                         </div>
             
@@ -231,7 +231,7 @@
             <thead>
                 <tr>
                     <!-- <th>Id</th> -->
-                    <th>Flag </th>
+                    <th>Planning Status </th>
                     <th>Service Name</th>
                     <th>Cost Type</th>
                     <th>Description</th>
@@ -248,7 +248,16 @@
                 <tr *ngFor="let data of AppServiceList">
                     <!-- <td>{{data.Id}}</td> -->
                     <!-- <td>{{data.AppoinmentId}}</td> -->
-                    <td *ngIf="!data.IsAdditional"><button type="btn btn-default" data-bs-toggle="modal" data-bs-target="#additionalPlanning" (click)="OpenAdditionalPlanning()"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                    <td>
+                        <div *ngIf="data.DeleteButton else elseBlock">
+                            <button style=" background-color: transparent;
+                            outline: none;border: none;display: flex;" type="btn btn-default" data-bs-toggle="modal" data-bs-target="#additionalPlanning" (click)="OpenAdditionalPlanning(data)"><h1 style="color: green;">+</h1><p style="color: red;">Pending</p></button>
+                        </div>
+                        <ng-template #elseBlock>
+                            
+                            <p style="color: green;">Done</p>
+                        </ng-template>
+                    </td>
                     <td class="trancate-text">{{data.ServiceName}}</td>
                     <td>{{data.CostType}}</td>
                     <td class="trancate-text">{{data.Description}}</td>

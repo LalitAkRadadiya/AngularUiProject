@@ -62,17 +62,21 @@ export class EditAppoinmentComponent implements OnInit {
   Duration!: string;
 
 
+  CurrentAppService : any;
+
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
       this.DealerList = data;
     });
   }
+
   loadMechanicList() {
     console.log('', this.appoinment.DealerId);
     this.service.mechanicDropdown(this.appoinment.DealerId).subscribe(data => {
       this.MechanicList = data;
     });
   }
+
   loadServiceList(val: any) {
     if (val != undefined) {
 
@@ -252,28 +256,6 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   displayServicePlanningList = true;
   disappoinmentserviceubtton = true;
 
@@ -357,12 +339,17 @@ export class EditAppoinmentComponent implements OnInit {
     }
   }
 
-  enableadditionalplanning = false;
-  OpenAdditionalPlanning(){
+  
+  OpenAdditionalPlanning(item : any){
+  console.log("QWERTY", item, this.appoinment);
+  this.loadMechanicList();
+  console.log('MechanicList', this.MechanicList);
+  this.currentAppoinmentServiceId = item.Id;
   this.enableadditionalplanning = true;
-  console.log("QWERTY")
+  this.CurrentAppService = item;
   }
 
+  enableadditionalplanning = false;
   createPlanning() {
     console.log('enddate typeof', typeof this.EndDate);
     var val = {
@@ -391,6 +378,12 @@ export class EditAppoinmentComponent implements OnInit {
           this.MechanicNotAvailble = false;
           this.displanningubutton = false;
           this.moreService_PlanningButton = true;
+          
+          if(this.enableadditionalplanning)
+          {
+            this.CurrentAppService.IsAdditional = true;
+            this.service.editAppoinmentService(this.CurrentAppService).subscribe();
+          }
 
           this.get_service_planning(val.AppointmentId);
           this.toastr.success(res.toString(), '', {
@@ -400,8 +393,6 @@ export class EditAppoinmentComponent implements OnInit {
 
 
       });
-
-
 
     } else {
       return false;
