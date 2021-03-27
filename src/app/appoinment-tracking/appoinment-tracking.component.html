@@ -1,3 +1,6 @@
+<head>
+  <meta name="viewport" content="orientation: landscape">
+</head>
 <h1 style="text-align: center; padding:3%; font-size: 50px;background: #c7c7ff;">Service Tracker</h1>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-spin-clockwise" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
 
@@ -8,49 +11,58 @@
       class="text-primary font-weight-bold">{{id}}</span></h1>
 </div>
 <div>
-  <div style="display: flex;text-align: center; padding-left: 18%;">
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Licence Plate:<span
-            class="text-primary font-weight-bold">{{EditAppoinment.LicencePlate}}</span></span><br>
-      </div>
-    </div>
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Name :<span
-            class="text-primary font-weight-bold">{{ EditAppoinment.FName + ' ' +EditAppoinment.LName}}</span></span><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <span>Licence Plate:<span
+              class="text-primary font-weight-bold">{{EditAppoinment?.LicencePlate}}</span></span><br>
+        </div>
       </div>
     </div>
 
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment.MobileNo}}</span></span><br>
+    <div class="col-md-12 col-lg-4">
+        <div class="card">
+          <div class="card-body">
+              <span>Name :<span
+                class="text-primary font-weight-bold">{{ EditAppoinment?.FName + ' ' +EditAppoinment?.LName}}</span></span><br>
+      </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-lg-4">
+        <div class="card">
+          <div class="card-body">
+      <span>Mobile:<span class="text-primary font-weight-bold">{{EditAppoinment?.MobileNo}}</span></span><br>
+      
       </div>
     </div>
   </div>
 
-  <div style="display: flex;text-align: center; padding-left: 18%;">
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment.DealerName}}</span></span><br>
-
+  <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+        <span>Dealer Name:<span class="text-primary font-weight-bold">{{EditAppoinment?.DealerName}}</span></span><br>
       </div>
     </div>
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment.TotalPrice}}</span></span><br>
+  </div>
+  <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+        <span>Total Price : <span class="text-primary font-weight-bold">{{EditAppoinment?.TotalPrice}}</span></span><br>
       </div>
     </div>
+  </div>
 
-    <div class="card col-md-3">
-      <div class="card-body">
-        <span>Total Time :<span class="text-primary font-weight-bold">{{ (EditAppoinment.TotalTime) ||  ' NA '}}
+  <div class="col-md-12 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+        <span>Total Time :<span class="text-primary font-weight-bold">{{ (EditAppoinment?.TotalTime) ||  ' NA '}}
             HOURS</span></span><br>
       </div>
     </div>
   </div>
-
-
+  </div>
 </div>
 <br>
 <br>
