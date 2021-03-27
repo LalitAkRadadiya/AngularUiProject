@@ -56,8 +56,11 @@
 <br>
 <br>
 <br>
-<h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status
-  <button (click)="createRzpayOrder()">Pay With Razorpay</button>
+<h1 style="padding-top: 50px;background: #c7c7ff;;">Service Status : 
+  <button [disabled]="orderStatus != 'Finished'" class="btn btn-success" (click)="createRzpayOrder()">
+      <i class="fa fa-credit-card" aria-hidden="true"></i>
+      Pay Now
+    </button>
 
 
   <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appserviceandplanning" (click)="MoreDetail()"  data-backdrop="static" data-keyboard="false"> More Detail </button> -->
@@ -75,6 +78,39 @@
     <br>
   </div>
 
+  <div class="row" >
+        
+      
+
+
+      <div style="display: flex" >
+          <div class="col-sm-2"></div>
+          <div class="col-sm-6">
+              <label>Choose Service<span style="color: red;">*</span></label>
+              <select id="service" name="service" class="form-control"
+                  [(ngModel)]="ServiceId">
+                  <option *ngFor="let data of ServiceList" [value]="data.Id">
+                      Service Name : {{data.Name}} - Price : {{data.Price}}
+                  </option>
+              </select>
+              <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
+          </div>
+          <div class="col-sm-3">
+              <!-- <label><span style="color: red;"></span></label> -->
+              <br>
+              <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
+              <button (click)="AddAppoinmentService()"
+                  class="btn btn-success" >Add Service</button>
+          </div>
+    
+    
+      </div>
+    <br>
+    <br>
+    <br>
+    
+    </div>
+    
   <div style="display: flex;">
 
     <div style="width: 1%;"></div>
@@ -91,9 +127,11 @@
             <th>Discount</th>
             <th>Fix Price</th>
             <th>Price</th>
-            <th>Price Per Unit</th>
+            <!-- <th>Price Per Unit</th> -->
             <th>Quantity</th>
             <th>Sales Part</th>
+            <th>Planning Status</th>
+            <th>Added By</th>
             <!-- <th>action</th> -->
           </tr>
         </thead>
@@ -107,9 +145,26 @@
             <td>{{data.Discount }}</td>
             <td>{{data.FixPrice}}</td>
             <td>{{data.Price}}</td>
-            <td>{{data.PricePerUnit}}
+            <!-- <td>{{data.PricePerUnit}}</td> -->
             <td>{{data.Quantity}}</td>
             <td>{{data.SalesPart}}</td>
+            <th>
+              <div *ngIf="data.DeleteButton else elseBlock">
+                <p style="color: red;">Pending</p>
+            </div>
+            <ng-template #elseBlock>
+                
+                <p style="color: green;">Approved</p>
+            </ng-template>
+            </th>
+            <td>
+                  <div *ngIf="data.IsAdditional">
+                    Customer
+                </div>
+                <div *ngIf="!data.IsAdditional">
+                    Dealer
+                </div>
+            </td>
 
           </tr>
         </tbody>
@@ -163,36 +218,6 @@
 
   </div>
 </h1>
-
-<div class="row">
-        
-      
-
-
-  <div style="display: flex">
-      <div class="col-sm-9">
-          <label>Choose Service<span style="color: red;">*</span></label>
-          <select id="service" name="service" class="form-control"
-              [(ngModel)]="ServiceId">
-              <option *ngFor="let data of ServiceList" [value]="data.Id">
-                  Service Name : {{data.Name}} - Price : {{data.Price}}
-              </option>
-          </select>
-          <span *ngIf="tempAppservice" style="color: red;">Please Select Service</span>
-      </div>
-      <div class="col-sm-3">
-          <!-- <label><span style="color: red;"></span></label> -->
-          <br>
-          <!--<input type="text" class="form-control" name="LicencePlate" [(ngModel)]="Quantity"> -->
-          <button (click)="AddAppoinmentService()"
-              class="btn btn-success" style="margin-top:2%; width: 50% ;margin-left:25%;">Add Service</button>
-      </div>
-
-
-  </div>
-
-
-</div>
 
 
 

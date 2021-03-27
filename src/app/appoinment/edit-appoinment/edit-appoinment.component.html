@@ -252,12 +252,12 @@
                     <td>
                         <!-- data-bs-toggle="modal" data-bs-target="#additionalPlanning" -->
                         <div *ngIf="data.DeleteButton else elseBlock">
-                            <button style=" background-color: transparent;
-                            outline: none;border: none;display: flex;" type="btn btn-default" (click)="OpenAdditionalPlanning(data)"><h1 style="color: green;">+</h1><p style="color: red;">Pending</p></button>
+                            <button class="btn btn-danger" style="zoom: 0.8;"
+                             type="btn btn-default" (click)="OpenAdditionalPlanning(data)">+ Planning
+                            </button>
                         </div>
                         <ng-template #elseBlock>
-                            
-                            <p style="color: green;">Done</p>
+                            <p style="color: green;">Approved</p>
                         </ng-template>
                     </td>
                     <td class="trancate-text">{{data.ServiceName}}</td>
