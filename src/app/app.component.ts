@@ -31,8 +31,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.getProfile(apiConfig.webApi);
     loginSuccessSubscription = this.broadcastService.subscribe('msal:acquireTokenSuccess', (payload) => {
-      console.log('access token acquired at: ' + new Date().toString());
-      console.log('payload', payload);
+      // console.log('access token acquired at: ' + new Date().toString());
+      // console.log('payload', payload);
       if (payload != undefined && payload.account != undefined && payload.account.idToken != undefined) {
         this.firstname = payload.account.idToken.given_name;
         this.lastname = payload.account.idToken.family_name;
@@ -41,8 +41,8 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     loginFailureSubscription = this.broadcastService.subscribe('msal:acquireTokenFailure', (payload) => {
-      console.log('access token acquisition fails');
-      console.log('payload profile', payload);
+      // console.log('access token acquisition fails');
+      // console.log('payload profile', payload);
     });
 
     this.subscriptions.push(loginSuccessSubscription);
@@ -63,18 +63,18 @@ export class AppComponent implements OnInit, OnDestroy {
         return this.authService.logout();
       }
 
-      console.log('login succeeded. id token acquired at: ' + new Date().toString());
+      // console.log('login succeeded. id token acquired at: ' + new Date().toString());
 
       if (success != undefined && success.account != undefined && success.account.idToken != undefined) {
         this.firstname = success.account.idToken.given_name;
         this.lastname = success.account.idToken.family_name;
       }
-      console.log(success);
+      // console.log(success);
       this.checkAccount();
     });
 
     loginFailureSubscription = this.broadcastService.subscribe('msal:loginFailure', (error) => {
-      console.log('login failed');
+      // console.log('login failed');
       console.log(error);
 
       if (error.errorMessage) {
@@ -97,11 +97,11 @@ export class AppComponent implements OnInit, OnDestroy {
         return;
       }
 
-      console.log('Redirect Success: ', response);
+      // console.log('Redirect Success: ', response);
     });
 
     this.authService.setLogger(new Logger((logLevel, message, piiEnabled) => {
-      console.log('MSAL Logging: ', message);
+      // console.log('MSAL Logging: ', message);
     }, {
       correlationId: CryptoUtils.createNewGuid(),
       piiLoggingEnabled: false
@@ -111,12 +111,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptions.push(loginFailureSubscription);
 
     let url = (window.location.href).toString();
-    console.log("log", window.location.href);
     if (url.includes("tracking")) {
-      console.log('tra');
       this.hidemenu = true;
     } else {
-      console.log('fail')
       this.hidemenu = false;
     }
 
@@ -154,7 +151,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.http.get(url).subscribe({
       next: (profile) => {
         this.profile = profile;
-        console.log('profile', this.profile);
       },
       error: (err: AuthError) => {
         if (InteractionRequiredAuthError.isInteractionRequiredError(err.errorCode)) {
@@ -169,6 +165,5 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     });
-    console.log('profile name', this.profile)
   }
 }

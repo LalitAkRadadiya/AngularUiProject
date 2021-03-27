@@ -18,17 +18,14 @@ export class AddEditServiceComponent implements OnInit {
 
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
-      console.log('load', data);
       this.DealerList = data;
     });
   }
 
   ngOnInit(): void {
-    console.log('sertgthfhf', this.services.Id);
     this.loadDealerList();
 
 
-    console.log(this.services);
   }
   serviceDealer = false;
   sericeName = false;
@@ -132,7 +129,6 @@ export class AddEditServiceComponent implements OnInit {
         CostType: this.services.CostType
       };
       // val['Description']=this.Description;
-      console.log('lollol', val)
       this.service.addService(val).subscribe(res => {
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,

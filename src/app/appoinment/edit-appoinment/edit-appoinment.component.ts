@@ -71,7 +71,6 @@ export class EditAppoinmentComponent implements OnInit {
   }
 
   loadMechanicList() {
-    console.log('', this.appoinment.DealerId);
     this.service.mechanicDropdown(this.appoinment.DealerId).subscribe(data => {
       this.MechanicList = data;
     });
@@ -81,7 +80,6 @@ export class EditAppoinmentComponent implements OnInit {
     if (val != undefined) {
 
       this.service.serviceDropdown(val).subscribe(data => {
-        console.log('load', data);
         this.ServiceList = data;
       });
     }
@@ -115,7 +113,7 @@ export class EditAppoinmentComponent implements OnInit {
 
   enddatetime: any;
   get_service_planning(id: Number) {
-    console.log('id', id)
+    // console.log('id', id)
     if (id != 0) {
       this.service.getEditAppoinmentList(id).subscribe(res => {
         this.EditAppoinment = res;
@@ -124,10 +122,10 @@ export class EditAppoinmentComponent implements OnInit {
         this.AppServiceList = this.EditAppoinment.appointmentServicesList;
         this.appoinment = res;
 
-        console.log('eunatity typeof', typeof this.enddatetime);
-        console.log('this.Quantity', this.enddatetime);
+        // console.log('eunatity typeof', typeof this.enddatetime);
+        // console.log('this.Quantity', this.enddatetime);
         this.PlanningList = this.EditAppoinment.planningList;
-        console.log('get service Planingn detail', res);
+        // console.log('get service Planingn detail', res);
       });
     }
   }
@@ -142,7 +140,7 @@ export class EditAppoinmentComponent implements OnInit {
     // this.EndDate =  this.StartDate + this.Quantity;  //8:30
     // this.EndDate = "10-10-2020 03:11";
     // this.EndDate = moment(this.enddatetime).format("yyyy-MM-ddThh:mm");
-    console.log('end date', this.EndDate)
+    // console.log('end date', this.EndDate)
   }
 
   tempDealer = false;
@@ -166,7 +164,7 @@ export class EditAppoinmentComponent implements OnInit {
       val['Email'] = "123";
       val['DealerId'] = this.DealerId;
       val['Status'] = "pending";
-      console.log('app value', val);
+      // console.log('app value', val);
 
       this.service.addAppoinment(val).subscribe(res => {
         this.serviceAppoinment = res;
@@ -216,13 +214,13 @@ export class EditAppoinmentComponent implements OnInit {
     if (confirm("Are you Sure? Want to Delete?")) {
 
       this.spinner.show();
-      console.log('dletplanid', val.Id);
+      // console.log('dletplanid', val.Id);
       this.service.deletePlanning(val.Id).subscribe(res => {
         this.PlanningList = this.PlanningList.filter((x: { Id: any; }) => x.Id != val.Id);
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });
-        console.log('should dlt');
+        // console.log('should dlt');
 
         this.get_service_planning(this.appoinment.Id);
 
@@ -239,7 +237,7 @@ export class EditAppoinmentComponent implements OnInit {
       this.spinner.show();
       this.service.getCustomerVehicleInfo(item).subscribe(data => {
 
-        console.log('data0', data.length);
+        // console.log('data0', data.length);
         if (data.length == 0) {
           this.vehicalnotfound = true;
         } else {
@@ -251,7 +249,7 @@ export class EditAppoinmentComponent implements OnInit {
         this.spinner.show();
       });
     } catch (ex) {
-      console.log('eee', ex);
+      // console.log('eee', ex);
     }
   }
 
@@ -287,10 +285,10 @@ export class EditAppoinmentComponent implements OnInit {
         CreatedBy: "Lalit"
       };
       // this.AppServiceList.push(val);
-      console.log('val cal', val);
+      // console.log('val cal', val);
 
       this.service.addAppoinmentService(val).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         this.currentAppoinmentServiceId = res;
         this.displanningubutton = true;
         this.disappoinmentserviceubtton = false;
@@ -340,9 +338,9 @@ export class EditAppoinmentComponent implements OnInit {
   }
   
   OpenAdditionalPlanning(item : any){
-  console.log("QWERTY", item, this.appoinment);
+  // console.log("QWERTY", item, this.appoinment);
   this.loadMechanicList();
-  console.log('MechanicList', this.MechanicList);
+  // console.log('MechanicList', this.MechanicList);
   this.currentAppoinmentServiceId = item.Id;
  
   this.CurrentAppService = item;
@@ -352,7 +350,7 @@ export class EditAppoinmentComponent implements OnInit {
 
   
   createPlanning() {
-    console.log('enddate typeof', typeof this.EndDate);
+    // console.log('enddate typeof', typeof this.EndDate);
     var val = {
       AppointmentId: this.appoinment.Id,
       MechanicId: this.MechanicId,
@@ -364,13 +362,13 @@ export class EditAppoinmentComponent implements OnInit {
     }
 
     this.validationplanning();
-    console.log(val);
+    // console.log(val);
 
     // this.PlanningList.push(val);
     if (!this.tempstartDate && !this.tempEndDate && !this.tempMechanicName && !this.validdate) {
 
       this.service.addPlanning(val).subscribe(res => {
-        console.log(res);
+        // console.log(res);
         if (res == "Mechanic is not Available. Choose other Date.") {
           this.toastr.error(res.toString());
           this.MechanicNotAvailble = true;

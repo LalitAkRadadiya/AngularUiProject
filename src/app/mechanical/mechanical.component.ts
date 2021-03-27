@@ -40,7 +40,6 @@ export class MechanicalComponent implements OnInit {
 
 
   editMechanicClick(item : any){
-    console.log('ddd',item);
     this.mechanic=item;
     this.ModalTitle = "Edit Mechanic";
     
@@ -53,7 +52,6 @@ export class MechanicalComponent implements OnInit {
     this.refreshMechanicList();
   }
   deleteMechanic(item:any){
-    console.log('id',item.Id);
       this.service.deleteMechanic(item.Id).subscribe(data=>{
         this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
         this.refreshMechanicList();

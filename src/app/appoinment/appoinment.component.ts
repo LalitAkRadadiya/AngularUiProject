@@ -64,7 +64,6 @@ export class AppoinmentComponent implements OnInit {
     this.appoinment = [];
     this.appoinment = item;
 
-    console.log('curent ap', this.appoinment);
     this.ModalTitle = "Edit Appoinment";
     this.ActivateAddEditAppoinmentComp = true;
     // this.AppointmentServiceList(this.appoinment.Id);
@@ -94,7 +93,6 @@ export class AppoinmentComponent implements OnInit {
     this.service.getAppointmentList().subscribe(data => {
 
       this.AppointmentList = data;
-      console.log(this.AppointmentList)
       this.spinner.hide();
     }
     );

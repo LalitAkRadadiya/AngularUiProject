@@ -29,7 +29,6 @@ export class AddEditVehicleComponent implements OnInit {
   // UpdateBy!: string;
 
   ngOnInit(): void {
-    console.log(this.vehicle.Id);
 
 
   }
@@ -141,9 +140,7 @@ export class AddEditVehicleComponent implements OnInit {
         CustomerId: this.vehicle.CustomerId
 
       };
-      console.log('vehicle added', this.vehicle);
       this.service.addVehicle(val).subscribe(res => {
-        console.log('ehical availbale', res)
         if(res == "Vehicle is Available"){
           this.vahicleavailblecheck = true;
           return false;
@@ -190,9 +187,7 @@ export class AddEditVehicleComponent implements OnInit {
         UpdatedBy: 1,
         CustomerId: this.vehicle.CustomerId
       };
-      console.log('val', val);
       this.service.editVehicle(val).subscribe(res => {
-        console.log('res', res);
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
         });

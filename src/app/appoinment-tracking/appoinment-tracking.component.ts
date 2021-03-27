@@ -68,7 +68,6 @@ export class AppoinmentTrackingComponent implements OnInit {
     this.ActivateAddEditAppoinmentComp = false;
   }
   get_service_planning(id: Number) {
-    console.log('id', id)
     if (id != 0) {
       
     this.spinner.show();
@@ -81,7 +80,6 @@ export class AppoinmentTrackingComponent implements OnInit {
         this.PlanningList = this.EditAppoinment.planningList;
 
         this.spinner.hide();
-        console.log('get service Planingn detail', res);
       });
       
     }
@@ -89,7 +87,6 @@ export class AppoinmentTrackingComponent implements OnInit {
   
   ngOnInit(): void {
     this.id = this.router.snapshot.params.id;
-    console.log('id',this.id)
 
 
     if (this.id > 0) {
@@ -99,7 +96,6 @@ export class AppoinmentTrackingComponent implements OnInit {
         this.appoinmentData = res;
         this.orderStatus = this.appoinmentData.Status;
         this.spinner.hide();
-        console.log(this.appoinmentData);
         
       });
     }
@@ -150,7 +146,6 @@ export class AppoinmentTrackingComponent implements OnInit {
     if (val != undefined) {
 
       this.service.serviceDropdown(val).subscribe(data => {
-        console.log('load', data);
         this.ServiceList = data;
       });
     }
@@ -171,10 +166,8 @@ export class AppoinmentTrackingComponent implements OnInit {
         IsAdditional: true
       };
       // this.AppServiceList.push(val);
-      console.log('val cal', val);
 
       this.service.addAppoinmentService(val).subscribe(res => {
-        console.log(res);
         this.currentAppoinmentServiceId = res;
         this.displanningubutton = true;
         this.disappoinmentserviceubtton = false;
@@ -206,11 +199,9 @@ export class AppoinmentTrackingComponent implements OnInit {
 
   
   createRzpayOrder() {
-    console.log();
     // call api to create order_id
 
     this.httpClient.get(('https://localhost:44370/api/Payment/createPayment')).subscribe((data: any) => {
-      console.log(data);
       this.payWithRazor(data['order_id'], data['amount']);
     })
   }
@@ -237,17 +228,13 @@ export class AppoinmentTrackingComponent implements OnInit {
     };
     options.handler = ((response:any, error:any) => {
       options.response = response;
-      console.log("rs");
-      console.log(response);
-      console.log(options);
+
 
       this.httpClient.post((this.REST_API_SERVER + '/api/Payment/checkPaymentStatus'), { rzp_paymentid: response['razorpay_payment_id'], rzp_orderid: '554' }).subscribe((data: any) => {
-        console.log('date', data);
       })
     });
     options.modal.ondismiss = (() => {
       // handle the case when user closes the form while transaction is in progress
-      console.log('Transaction cancelled.');
     });
     const rzp = new this.winRef.nativeWindow.Razorpay(options);
     rzp.open();

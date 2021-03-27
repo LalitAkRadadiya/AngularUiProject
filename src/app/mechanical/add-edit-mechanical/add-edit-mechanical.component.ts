@@ -27,7 +27,6 @@ export class AddEditMechanicalComponent implements OnInit {
   loadDealerList() {
     this.service.dealerDropdown().subscribe(data => {
       this.DealerList = data;
-      console.log('dealer', this.DealerList);
     });
   }
   ngOnInit(): void {
@@ -120,8 +119,6 @@ export class AddEditMechanicalComponent implements OnInit {
 
 
     if (!this.tempDealerId && !this.tempEmailId && !this.tempEmployeeNo && !this.tempMechanicName && !this.tempMobileNo ) {
-
-      console.log('ddd', this.Mechanic);
       var val = {
         Id: this.Mechanic.Id,
         MechanicName: this.Mechanic.MechanicName,
@@ -134,8 +131,6 @@ export class AddEditMechanicalComponent implements OnInit {
       };
 
 
-
-      console.log('val', val)
       this.service.editMechanic(val).subscribe(res => {
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,

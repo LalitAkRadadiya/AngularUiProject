@@ -51,7 +51,6 @@ export class ShowCustomervehicleComponent implements OnInit {
   addVehicleClick(item: any){
     
     
-    console.log('addvehicleclick',item);
     this.vehicle = item;
     this.vehicle={
       Id:0,
@@ -83,10 +82,8 @@ export class ShowCustomervehicleComponent implements OnInit {
   deleteVehicleClick(item:any){
     if(confirm('Are You Sure? Want to Delete?')){
       
-      console.log('data',item.Id);
       this.service.deleteVehicle(item.Id).subscribe(data=>{
         this.toastr.success(data.toString(),'', {           timeOut: 2000,         });
-        console.log('data',data);
         this.refreshcustomerList();
       });
     }

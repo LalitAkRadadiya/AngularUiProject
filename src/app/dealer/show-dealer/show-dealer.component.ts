@@ -37,7 +37,6 @@ export class ShowDealerComponent implements OnInit {
 
 
   editDealerClick(item : any){
-    console.log('ddd',item);
     this.dealer=item;
     this.ModalTitle = "Edit Dealer";
     

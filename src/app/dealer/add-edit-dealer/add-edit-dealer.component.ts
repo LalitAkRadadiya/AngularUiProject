@@ -33,7 +33,6 @@ export class AddEditDealerComponent implements OnInit {
       this.dealer.DealerName = "";
     }
     // this.DealerName = this.dealer.DealerName;
-    console.log(this.dealer);
   }
 
   tempDealerName = false;
@@ -155,7 +154,6 @@ export class AddEditDealerComponent implements OnInit {
 
 
 
-      console.log('val', val)
       this.service.editDealer(val).subscribe(res => {
         this.toastr.success(res.toString(), '', {
           timeOut: 3000,
